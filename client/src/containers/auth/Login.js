@@ -1,9 +1,8 @@
 import React from "react";
-import LoginForm from "../components/auth/LoginForm";
-import RegisterForm from "../components/auth/RegisterForm";
+import LoginForm from "../../components/auth/LoginForm";
 // import Topbar from "../components/Topbar";
 // import Todos from "../containers/Todos";
-import styles from "./Login.module.css";
+import styles from "./Auth.module.css";
 // import Form from "../components/Form";
 
 const Login = () => {
@@ -11,8 +10,6 @@ const Login = () => {
     <>
       <div className={styles.form}>
         <LoginForm />
-        <hr />
-        <RegisterForm />
       </div>
     </>
   );

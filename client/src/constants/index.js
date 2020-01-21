@@ -3,5 +3,6 @@ export const ROUTES = {
   toolkit: "/toolkit",
   designstudio: "/designstudio",
   login: "/login",
-  request: "/request"
+  request: "/request",
+  register: "/register"
 };

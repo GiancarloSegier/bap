@@ -7,6 +7,7 @@
   "license": "MIT",
   "scripts": {
     "start": "cd server/ && yarn && yarn start",
+    "develop": "cd client / && yarn start",
     "build": "cd client/ && yarn && yarn build"
   },
   "cacheDirectories": [

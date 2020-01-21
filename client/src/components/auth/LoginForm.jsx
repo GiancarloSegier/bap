@@ -22,46 +22,35 @@ const LoginForm = ({ userStore, history }) => {
   return (
     <>
       <div className={styles.container}>
-        <div className={styles.authBox}>
-          <div className={styles.logoBox}>
-            <h1 className={styles.logo__img}>
-              <span className="hidden">Mr. Todo</span>
-            </h1>
-          </div>
+        <form onSubmit={handleSubmit} className={styles.form}>
+          <h2>Login</h2>
+          <input
+            type="email"
+            name="email"
+            id="email="
+            placeholder="email"
+            ref={emailInput}
+            className={styles.input}
+          />
 
-          <form onSubmit={handleSubmit} className={styles.form}>
-            <h2 className={styles.heading2}>Login</h2>
-            <input
-              type="email"
-              name="email"
-              id="email="
-              placeholder="email"
-              ref={emailInput}
-              className={styles.input}
-            />
+          <input
+            type="password"
+            name="password"
+            id="password"
+            placeholder="password"
+            ref={pwdInput}
+            className={styles.input}
+          />
 
-            <input
-              type="password"
-              name="password"
-              id="password"
-              placeholder="password"
-              ref={pwdInput}
-              className={styles.input}
-            />
+          <input type="submit" value="login" className={styles.button} />
 
-            <input type="submit" value="login" className={styles.button} />
-
-            <p className={styles.subLink}>
-              No account?{` `}
-              <Link to={ROUTES.request} className={styles.link}>
-                Send a request!
-              </Link>
-            </p>
-          </form>
-        </div>
-        <div>
-          <p>{}</p>
-        </div>
+          <p className={styles.subLink}>
+            No account?{` `}
+            <Link to={ROUTES.request} className={styles.link}>
+              Send a request!
+            </Link>
+          </p>
+        </form>
       </div>
     </>
   );
