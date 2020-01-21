@@ -7,7 +7,7 @@ import { ROUTES } from "../constants";
 import DesignStudio from "./DesignStudio.js";
 import Login from "./Login.js";
 import Request from "./Request.js";
-import NavBar from "../components/Navbar.js";
+import NavBar from "../components/Navbar.jsx";
 
 class App extends Component {
   render() {
