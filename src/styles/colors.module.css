@@ -1,0 +1,9 @@
+:global(:root) {
+  --dark-color: #252625;
+  --grey-color: #a3a3a3;
+  --light-color: #f3f3f3;
+  --yellow-color: #ffd000;
+  --darkyellow-color: #fcbf00;
+  --alarm-color: #d80b3d;
+  --done-color: #56d636;
+}

@@ -7,11 +7,13 @@ import { ROUTES } from "../constants";
 import DesignStudio from "./DesignStudio.js";
 import Login from "./Login.js";
 import Request from "./Request.js";
+import NavBar from "../components/Navbar.js";
 
 class App extends Component {
   render() {
     return (
       <main>
+        <NavBar />
         <Switch>
           <Route path={ROUTES.home} exact strict component={Home} />
           <Route path={ROUTES.toolkit} strict component={Toolkit} />
