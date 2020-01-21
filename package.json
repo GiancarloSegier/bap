@@ -1,38 +1,19 @@
 {
   "name": "bap",
-  "version": "0.1.0",
-  "private": true,
-  "dependencies": {
-    "@testing-library/jest-dom": "^4.2.4",
-    "@testing-library/react": "^9.3.2",
-    "@testing-library/user-event": "^7.1.2",
-    "js-cookie": "^2.2.1",
-    "mobx": "^5.15.2",
-    "mobx-react": "^6.1.5",
-    "react": "^16.12.0",
-    "react-dom": "^16.12.0",
-    "react-router-dom": "^5.1.2",
-    "react-scripts": "3.3.0"
-  },
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com/GiancarloSegier/bap.git",
+  "author": "Giancarlo Segier <giancarlo.segier@hotmail.com>, Laurens Segaert <segaertlaurens@gmail.com>, Linde Raats<linde.raats@hotmail.com>",
+  "license": "MIT",
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "start": "cd server/ && yarn && yarn start",
+    "build": "cd client/ && yarn && yarn build"
   },
-  "eslintConfig": {
-    "extends": "react-app"
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+  "cacheDirectories": [
+    "client/node_modules",
+    "server/node_modules"
+  ],
+  "dependencies": {
+    "multer": "^1.4.1"
   }
 }

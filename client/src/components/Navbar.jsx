@@ -5,7 +5,10 @@ import { ROUTES } from "../constants";
 import { inject, observer } from "mobx-react";
 
 const Navbar = ({ userStore }) => {
-  console.log(userStore);
+  const handleLogout = e => {
+    e.preventDefault();
+    userStore.logout();
+  };
 
   return (
     <ul className={styles.navbar}>
@@ -40,26 +43,38 @@ const Navbar = ({ userStore }) => {
             Toolkit
           </NavLink>
         </li>
-        <li>
-          <NavLink
-            exact={true}
-            className={styles.navLink + " " + styles.darkLink}
-            to={ROUTES.login}
-            activeClassName={styles.activeDark}
-          >
-            Member login
-          </NavLink>
-        </li>
-        <li>
-          <NavLink
-            exact={true}
-            className={styles.navLink + " " + styles.darkLink}
-            to={ROUTES.request}
-            activeClassName={styles.activeDark}
-          >
-            Request acces
-          </NavLink>
-        </li>
+        {!userStore.authUser ? (
+          <>
+            <li>
+              <NavLink
+                exact={true}
+                className={styles.navLink + " " + styles.darkLink}
+                to={ROUTES.login}
+                activeClassName={styles.activeDark}
+              >
+                Member login
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                exact={true}
+                className={styles.navLink + " " + styles.darkLink}
+                to={ROUTES.request}
+                activeClassName={styles.activeDark}
+              >
+                Request acces
+              </NavLink>
+            </li>
+          </>
+        ) : (
+          <>
+            <p>{userStore.authUser.name}</p>
+            <button onClick={handleLogout} className={styles.logout}>
+              <span className={styles.logoutIcon} />
+              Log out{` `}
+            </button>
+          </>
+        )}
       </div>
     </ul>
   );
