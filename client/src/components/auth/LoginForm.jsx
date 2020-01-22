@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import { inject } from "mobx-react";
 import { Link } from "react-router-dom";
 import { withRouter } from "react-router-dom";
@@ -27,7 +27,7 @@ class LoginForm extends React.Component {
     if (this.state.email !== "" && this.state.pwd !== "") {
       this.props.userStore.login(this.state.email, this.state.pwd).then(() => {
         if (this.props.userStore.authUser) {
-          this.props.history.push(ROUTES.home);
+          this.props.history.push(ROUTES.dashboard);
         } else {
           this.setState({ error: true, checkUser: true });
         }

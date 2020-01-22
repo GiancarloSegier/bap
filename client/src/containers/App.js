@@ -10,6 +10,10 @@ import Request from "./auth/Request.js";
 import NavBar from "../components/Navbar.jsx";
 import Register from "./auth/Register.js";
 
+import { inject, observer } from "mobx-react";
+import Dashboard from "./Dashboard.js";
+import NotFound from "./NotFound.js";
+
 class App extends Component {
   render() {
     return (
@@ -22,10 +26,14 @@ class App extends Component {
           <Route path={ROUTES.login} strict component={Login} />
           <Route path={ROUTES.request} strict component={Request} />
           <Route path={ROUTES.register} strict component={Register} />
+          {this.props.userStore.authUser ? (
+            <Route path={ROUTES.dashboard} strict component={Dashboard} />
+          ) : null}
+          <Route path="*" component={NotFound} />
         </Switch>
       </main>
     );
   }
 }
 
-export default App;
+export default inject(`userStore`)(observer(App));

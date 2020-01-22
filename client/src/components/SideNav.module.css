@@ -1,0 +1,35 @@
+.sideNav {
+  display: flex;
+  flex-direction: row;
+  padding: 3rem 0;
+  justify-content: space-between;
+}
+.rightMenu {
+  display: flex;
+}
+.navLink {
+  padding: 1.5rem;
+  align-self: center;
+  justify-self: center;
+  color: grey;
+  margin: 0 1rem;
+}
+.logo {
+  justify-self: flex-start;
+}
+.darkLink {
+  color: white;
+  background-color: rgb(62, 58, 58);
+  border-radius: 5rem;
+  padding: 1.5rem;
+}
+.active {
+  font-weight: bold;
+  color: black;
+  background-color: rgb(228, 228, 228);
+}
+.activeDark {
+  font-weight: bold;
+  color: white;
+  background-color: rgb(114, 114, 114);
+}

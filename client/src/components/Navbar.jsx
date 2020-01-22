@@ -1,12 +1,11 @@
 import React from "react";
 import styles from "./Navbar.module.css";
-import { NavLink } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import { ROUTES } from "../constants";
 import { inject, observer } from "mobx-react";
 
 const Navbar = ({ userStore }) => {
   const handleLogout = e => {
-    e.preventDefault();
     userStore.logout();
   };
 
@@ -23,6 +22,18 @@ const Navbar = ({ userStore }) => {
         </NavLink>
       </li>
       <div className={styles.rightMenu}>
+        {userStore.authUser ? (
+          <li>
+            <NavLink
+              exact={true}
+              className={styles.navLink}
+              to={ROUTES.dashboard}
+              activeClassName={styles.activeDark}
+            >
+              Dashboard
+            </NavLink>
+          </li>
+        ) : null}
         <li>
           <NavLink
             exact={true}
@@ -69,10 +80,15 @@ const Navbar = ({ userStore }) => {
         ) : (
           <>
             <p>{userStore.authUser.name}</p>
-            <button onClick={handleLogout} className={styles.logout}>
-              <span className={styles.logoutIcon} />
-              Log out{` `}
-            </button>
+
+            <NavLink
+              exact={true}
+              onClick={handleLogout}
+              className={styles.navLink + " " + styles.darkLink}
+              to={ROUTES.home}
+            >
+              Log out
+            </NavLink>
           </>
         )}
       </div>
