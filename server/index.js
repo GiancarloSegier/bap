@@ -36,22 +36,22 @@ sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
 app.get("/send-email", (req, res) => {
   //get variables
-  const { recipient, country, city, phone, text } = req.query;
+  const { recipient, country, city, phone, text, id } = req.query;
+  console.log(id);
 
   const msg = {
     to: recipient,
     from: "donotreply@thinkpinkeurope.be",
-    subject: "Request is approved!",
-    text: text,
-    html:
-      "<a href='http://127.0.0.1:4000/register'><strong>Open this link to proceed.</strong></a>",
+    templateId: "d-f2d5d418da744ad69f688cae8c790a76",
     dynamic_template_data: {
+      text: text,
       country: country,
       city: city,
-      phone: phone
+      phone: phone,
+      id: id
     }
   };
-  sgMail.send(msg).then(msg => console.log(msg));
+  sgMail.send(msg);
 });
 
 require("./app/routes/auth.routes.js")(app);

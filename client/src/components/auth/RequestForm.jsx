@@ -14,15 +14,17 @@ const RequestForm = ({ userStore, history }) => {
   console.log(userStore);
 
   const handleSubmit = e => {
+    const uuidv1 = require("uuid/v1");
     const city = cityInput.current.value;
     const recipient = emailInput.current.value;
     const country = countryInput.current.value;
     const text = textInput.current.value;
     const phone = phoneInput.current.value;
+    const requestId = uuidv1();
 
     e.preventDefault();
     fetch(
-      `http://127.0.0.1:4000/send-email?recipient=${recipient}&text=${text}&city=${city}&country=${country}&phone=${phone}`
+      `http://127.0.0.1:4000/send-email?recipient=${recipient}&text=${text}&city=${city}&country=${country}&phone=${phone}&id=${requestId}`
     ).catch(err => console.log(err));
     cityInput.current.value = "";
     emailInput.current.value = "";
