@@ -1,59 +1,121 @@
-import React from "react";
+import React, { Component } from "react";
 import { inject } from "mobx-react";
 import { Link } from "react-router-dom";
 import { withRouter } from "react-router-dom";
 import { ROUTES } from "../../constants";
 import styles from "./Auth.module.css";
 
-const LoginForm = ({ userStore, history }) => {
-  const emailInput = React.createRef();
-  const pwdInput = React.createRef();
-  console.log(userStore);
+class LoginForm extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      email: "",
+      pwd: "",
+      emailError: false,
+      error: false,
+      disabled: true,
+      checkUser: false
+    };
+    console.log(props);
 
-  const handleSubmit = e => {
+    this.emailInput = React.createRef();
+    this.pwdInput = React.createRef();
+  }
+
+  handleSubmit = e => {
     e.preventDefault();
-    userStore
-      .login(emailInput.current.value, pwdInput.current.value)
-      .then(() => {
-        history.push(ROUTES.home);
+    if (this.state.email !== "" && this.state.pwd !== "") {
+      this.props.userStore.login(this.state.email, this.state.pwd).then(() => {
+        if (this.props.userStore.authUser) {
+          this.props.history.push(ROUTES.home);
+        } else {
+          this.setState({ error: true, checkUser: true });
+        }
       });
+    } else {
+      this.setState({ error: true });
+    }
+  };
+  checkInput = (e, inputType) => {
+    const re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    const value = e.target.value;
+    this.setState({ checkUser: false });
+    if (inputType === "email") {
+      if (re.test(value)) {
+        this.setState({ email: value, emailError: false });
+      } else {
+        this.setState({ email: "", emailError: true });
+      }
+    }
+    if (inputType === "pwd") {
+      this.setState({ pwd: value });
+    }
+    this.checkFilledForm();
   };
 
-  return (
-    <>
-      <div className={styles.container}>
-        <form onSubmit={handleSubmit} className={styles.form}>
-          <h2>Login</h2>
-          <input
-            type="email"
-            name="email"
-            id="email="
-            placeholder="email"
-            ref={emailInput}
-            className={styles.input}
-          />
+  checkFilledForm() {
+    console.log(this.state);
+    if (
+      this.state.email !== "" &&
+      this.state.pwd !== "" &&
+      this.state.pwd.length > 1
+    ) {
+      this.setState({ disabled: false, error: false });
+    } else {
+      this.setState({ disabled: true });
+    }
+  }
 
-          <input
-            type="password"
-            name="password"
-            id="password"
-            placeholder="password"
-            ref={pwdInput}
-            className={styles.input}
-          />
+  render() {
+    return (
+      <>
+        <div className={styles.container}>
+          <form onSubmit={this.handleSubmit} className={styles.form}>
+            <h2>Login</h2>
+            <input
+              name="email"
+              id="email="
+              placeholder="email"
+              ref={this.emailInput}
+              className={styles.input}
+              onChange={e => this.checkInput(e, "email")}
+            />
+            <p
+              className={
+                this.state.emailError ? styles.error : styles.errorHidden
+              }
+            >
+              You have to fill in a valid email
+            </p>
 
-          <input type="submit" value="login" className={styles.button} />
+            <input
+              type="password"
+              name="password"
+              id="password"
+              placeholder="password"
+              ref={this.pwdInput}
+              className={styles.input}
+              onChange={e => this.checkInput(e, "pwd")}
+            />
 
-          <p className={styles.subLink}>
-            No account?{` `}
-            <Link to={ROUTES.request} className={styles.link}>
-              Send a request!
-            </Link>
-          </p>
-        </form>
-      </div>
-    </>
-  );
-};
+            <input type="submit" value="login" className={styles.button} />
+            <p className={this.state.error ? styles.error : styles.errorHidden}>
+              {this.state.checkUser
+                ? "Incorrect email or password"
+                : "Please fill in all fields correctly"}
+            </p>
+
+            <p className={styles.subLink}>
+              No account?{` `}
+              <Link to={ROUTES.request} className={styles.link}>
+                Send a request!
+              </Link>
+            </p>
+          </form>
+        </div>
+      </>
+    );
+  }
+}
 
 export default inject(`userStore`)(withRouter(LoginForm));
