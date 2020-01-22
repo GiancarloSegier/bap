@@ -25,10 +25,10 @@ const Navbar = ({ userStore }) => {
         {userStore.authUser ? (
           <li>
             <NavLink
-              exact={true}
+              strict={true}
               className={styles.navLink}
               to={ROUTES.dashboard}
-              activeClassName={styles.activeDark}
+              activeClassName={styles.active}
             >
               Dashboard
             </NavLink>
@@ -36,7 +36,7 @@ const Navbar = ({ userStore }) => {
         ) : null}
         <li>
           <NavLink
-            exact={true}
+            strict={true}
             className={styles.navLink}
             to={ROUTES.designstudio}
             activeClassName={styles.active}
@@ -46,10 +46,10 @@ const Navbar = ({ userStore }) => {
         </li>
         <li>
           <NavLink
-            exact={true}
+            strict={true}
             className={styles.navLink}
             to={ROUTES.toolkit}
-            activeClassName={styles.activeDark}
+            activeClassName={styles.active}
           >
             Toolkit
           </NavLink>
@@ -58,7 +58,7 @@ const Navbar = ({ userStore }) => {
           <>
             <li>
               <NavLink
-                exact={true}
+                strict={true}
                 className={styles.navLink + " " + styles.darkLink}
                 to={ROUTES.login}
                 activeClassName={styles.activeDark}
@@ -68,7 +68,7 @@ const Navbar = ({ userStore }) => {
             </li>
             <li>
               <NavLink
-                exact={true}
+                strict={true}
                 className={styles.navLink + " " + styles.darkLink}
                 to={ROUTES.request}
                 activeClassName={styles.activeDark}
@@ -82,7 +82,7 @@ const Navbar = ({ userStore }) => {
             <p>{userStore.authUser.name}</p>
 
             <NavLink
-              exact={true}
+              strict={true}
               onClick={handleLogout}
               className={styles.navLink + " " + styles.darkLink}
               to={ROUTES.home}
