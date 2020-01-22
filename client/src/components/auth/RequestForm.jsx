@@ -1,88 +1,170 @@
-import React from "react";
+import React, { Component } from "react";
 import { inject } from "mobx-react";
-import { Link } from "react-router-dom";
+
 import { withRouter } from "react-router-dom";
-import { ROUTES } from "../../constants";
+
 import styles from "./Auth.module.css";
 
-const RequestForm = ({ userStore, history }) => {
-  const emailInput = React.createRef();
-  const cityInput = React.createRef();
-  const countryInput = React.createRef();
-  const phoneInput = React.createRef();
-  const textInput = React.createRef();
-  console.log(userStore);
+class RequestForm extends Component {
+  constructor(props) {
+    super(props);
+    this.nameInput = React.createRef();
+    this.surnameInput = React.createRef();
+    this.organisationInput = React.createRef();
+    this.phoneInput = React.createRef();
+    this.emailInput = React.createRef();
 
-  const handleSubmit = e => {
-    const uuidv1 = require("uuid/v1");
-    const city = cityInput.current.value;
-    const recipient = emailInput.current.value;
-    const country = countryInput.current.value;
-    const text = textInput.current.value;
-    const phone = phoneInput.current.value;
-    const requestId = uuidv1();
+    this.messageInput = React.createRef();
+
+    this.state = {
+      emailError: false,
+      error: false
+    };
+  }
+
+  handleSubmit = e => {
+    const uuid = require("uuid");
+    const requestId = uuid();
+    const name = this.nameInput.current.value;
+    const surname = this.surnameInput.current.value;
+    const organisation = this.organisationInput.current.value;
+    const phone = this.phoneInput.current.value;
+    const sender = this.state.email;
+
+    const message = this.messageInput.current.value;
 
     e.preventDefault();
-    fetch(
-      `http://127.0.0.1:4000/send-email?recipient=${recipient}&text=${text}&city=${city}&country=${country}&phone=${phone}&id=${requestId}`
-    ).catch(err => console.log(err));
-    cityInput.current.value = "";
-    emailInput.current.value = "";
-    countryInput.current.value = "";
-    textInput.current.value = "";
-    phoneInput.current.value = "";
+
+    if (
+      name !== "" &&
+      surname !== "" &&
+      organisation !== "" &&
+      phone !== "" &&
+      this.state.email !== "" &&
+      message !== ""
+    ) {
+      fetch(
+        `http://127.0.0.1:4000/send-request?sender=${sender}&message=${message}&name=${name}&surname=${surname}&phone=${phone}&organisation=${organisation}&id=${requestId}`
+      ).catch(err => console.log(err));
+
+      this.props.requestStore.addRequest({
+        id: requestId,
+        name: name,
+        surname: surname,
+        organisation: organisation,
+        phone: phone,
+        email: sender,
+        message: message
+      });
+
+      this.nameInput.current.value = "";
+      this.emailInput.current.value = "";
+      this.surnameInput.current.value = "";
+      this.messageInput.current.value = "";
+      this.phoneInput.current.value = "";
+      this.organisationInput.current.value = "";
+    } else {
+      this.setState({ error: true });
+    }
   };
 
-  return (
-    <>
-      <div className={styles.container}>
-        <form onSubmit={handleSubmit} className={styles.form}>
-          <h2>Request acces</h2>
-          <input
-            type="email"
-            name="email"
-            id="email="
-            placeholder="email"
-            ref={emailInput}
-            className={styles.input}
-          />
-          <input
-            type="text"
-            name="country"
-            id="country="
-            placeholder="country"
-            ref={countryInput}
-            className={styles.input}
-          />
-          <input
-            type="text"
-            name="city"
-            id="city"
-            placeholder="city"
-            ref={cityInput}
-            className={styles.input}
-          />
-          <input
-            type="text"
-            name="phone"
-            id="phone="
-            placeholder="phone"
-            ref={phoneInput}
-            className={styles.input}
-          />
-          <textarea
-            name="text"
-            id="text"
-            placeholder="text"
-            ref={textInput}
-            className={styles.input}
-          />
+  checkEmail = (e, inputType) => {
+    const re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    const value = e.target.value;
+    this.setState({ checkUser: false });
+    if (inputType === "email") {
+      if (re.test(value)) {
+        this.setState({ email: value, emailError: false });
+      } else {
+        this.setState({ email: "", emailError: true });
+      }
+    }
 
-          <input type="submit" value="send request" className={styles.button} />
-        </form>
-      </div>
-    </>
-  );
-};
+    this.checkFilledForm();
+  };
 
-export default inject(`userStore`)(withRouter(RequestForm));
+  checkFilledForm() {
+    console.log(this.state);
+    if (this.state.email !== "") {
+      this.setState({ error: false });
+    }
+  }
+  render() {
+    return (
+      <>
+        <div className={styles.container}>
+          <form onSubmit={this.handleSubmit} className={styles.form}>
+            <h2>Request acces</h2>
+            <input
+              type="text"
+              name="name"
+              id="name"
+              placeholder="name"
+              ref={this.nameInput}
+              className={styles.input}
+            />
+            <input
+              type="text"
+              name="surname"
+              id="surname="
+              placeholder="surname"
+              ref={this.surnameInput}
+              className={styles.input}
+            />
+            <input
+              type="text"
+              name="organisation"
+              id="organisation"
+              placeholder="organisation"
+              ref={this.organisationInput}
+              className={styles.input}
+            />
+            <input
+              type="tel"
+              name="phone"
+              id="phone="
+              placeholder="phone"
+              ref={this.phoneInput}
+              className={styles.input}
+            />
+            <input
+              type="email"
+              name="email"
+              id="email="
+              placeholder="email"
+              ref={this.emailInput}
+              className={styles.input}
+              onChange={e => this.checkEmail(e, "email")}
+            />
+            <p
+              className={
+                this.state.emailError ? styles.error : styles.errorHidden
+              }
+            >
+              You have to fill in a valid email
+            </p>
+
+            <textarea
+              name="message"
+              id="message"
+              placeholder="message"
+              ref={this.messageInput}
+              className={styles.input}
+            />
+
+            <input
+              type="submit"
+              value="send request"
+              className={styles.button}
+            />
+            <p className={this.state.error ? styles.error : styles.errorHidden}>
+              Please fill in all fields correctly
+            </p>
+          </form>
+        </div>
+      </>
+    );
+  }
+}
+
+export default inject(`userStore`, `requestStore`)(withRouter(RequestForm));

@@ -3,7 +3,6 @@ const path = require("path");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const cookieParser = require("cookie-parser");
-const request = require("request");
 const sgMail = require("@sendgrid/mail");
 const cors = require("cors");
 
@@ -34,19 +33,22 @@ app.use(bodyParser.json());
 app.use(cors());
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
-app.get("/send-email", (req, res) => {
-  //get variables
-  const { recipient, country, city, phone, text, id } = req.query;
-  console.log(id);
+// visitor sends request to join
 
+app.get("/send-request", (req, res) => {
+  //get variables
+  const { sender, message, name, surname, phone, organisation, id } = req.query;
+  console.log(id);
+  const superVisor = "giancarlo.segier@student.howest.be";
   const msg = {
-    to: recipient,
-    from: "donotreply@thinkpinkeurope.be",
+    to: superVisor,
+    from: sender,
     templateId: "d-f2d5d418da744ad69f688cae8c790a76",
     dynamic_template_data: {
-      text: text,
-      country: country,
-      city: city,
+      message: message,
+      name: name,
+      surname: surname,
+      organisation: organisation,
       phone: phone,
       id: id
     }
@@ -55,7 +57,7 @@ app.get("/send-email", (req, res) => {
 });
 
 require("./app/routes/auth.routes.js")(app);
-// require("./app/routes/todos.routes.js")(app);
+require("./app/routes/requests.routes.js")(app);
 
 app.get("*", (req, res) => {
   res.sendFile(path.resolve(__dirname, "../client/build/", "index.html"));
