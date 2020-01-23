@@ -79,7 +79,12 @@ const Navbar = ({ userStore }) => {
           </>
         ) : (
           <>
-            <p>{userStore.authUser.name}</p>
+            <img
+              className={styles.avatar}
+              src={userStore.authUser.avatarUrl}
+              alt={`Avatar from ${userStore.authUser.name}`}
+            />
+            <p className={styles.navLink}>{userStore.authUser.name}</p>
 
             <NavLink
               strict={true}

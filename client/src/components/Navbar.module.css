@@ -6,6 +6,7 @@
 }
 .rightMenu {
   display: flex;
+  align-items: center;
 }
 .navLink {
   padding: 1.5rem;
@@ -32,4 +33,10 @@
   font-weight: bold;
   color: white;
   background-color: rgb(114, 114, 114);
+}
+.avatar {
+  width: 4rem;
+  height: 4rem;
+  object-fit: cover;
+  border-radius: 4rem;
 }
