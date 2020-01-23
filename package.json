@@ -15,6 +15,7 @@
     "server/node_modules"
   ],
   "dependencies": {
-    "multer": "^1.4.1"
+    "multer": "^1.4.1",
+    "webpack-dev-middleware": "^3.7.2"
   }
 }

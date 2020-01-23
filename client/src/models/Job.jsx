@@ -21,7 +21,7 @@ class Job {
   setPrivileges = privileges => (this.privileges = privileges);
 
   updateFromServer = values => {
-    this.setId(values.id);
+    this.setId(values._id);
     this.setJob(values.assignment);
     this.setPrivileges(values.privileges);
   };

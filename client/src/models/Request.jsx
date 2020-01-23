@@ -33,7 +33,7 @@ class Request {
   setMessage = message => (this.message = message);
 
   updateFromServer = values => {
-    this.setId(values.id);
+    this.setId(values._id);
     this.setName(values.name);
     this.setSurname(values.surname);
     this.setPhone(values.phone);

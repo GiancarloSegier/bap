@@ -63,25 +63,53 @@ app.post("/image-upload", (req, res) => {
 
 app.use(cors());
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
-app.get("/send-request", (req, res) => {
+
+app.get("/send-mail", (req, res) => {
   //get variables
-  const { sender, message, name, surname, phone, organisation, id } = req.query;
+  const {
+    type,
+    recipient,
+    sender,
+    message,
+    name,
+    surname,
+    phone,
+    organisation,
+    id
+  } = req.query;
+
   console.log(id);
-  const superVisor = "giancarlo.segier@student.howest.be";
-  const msg = {
-    to: superVisor,
-    from: sender,
-    templateId: "d-f2d5d418da744ad69f688cae8c790a76",
-    dynamic_template_data: {
-      message: message,
-      name: name,
-      surname: surname,
-      organisation: organisation,
-      phone: phone,
-      id: id
-    }
-  };
-  sgMail.send(msg);
+  this.msg = {};
+  if (type === "request") {
+    console.log("request mail send");
+    this.msg = {
+      to: "giancarlo.segier@student.howest.be",
+      from: sender,
+      templateId: "d-7b4b40c908a64aedba28c61c228908ad",
+      dynamic_template_data: {
+        message: message,
+        name: name,
+        surname: surname,
+        organisation: organisation,
+        phone: phone,
+        sender: sender,
+        id: id
+      }
+    };
+  } else if (type === "invite") {
+    console.log("invite mail sended");
+    this.msg = {
+      to: recipient,
+      from: "donotreply@thinkpinkeurope.be",
+      templateId: "d-dcc0154d157d45939f37d82faefa1dfc",
+      dynamic_template_data: {
+        id: id,
+        name: name,
+        organisation: organisation
+      }
+    };
+  }
+  sgMail.send(this.msg);
 });
 
 require("./app/routes/auth.routes.js")(app);
