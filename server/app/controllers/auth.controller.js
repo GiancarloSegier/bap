@@ -23,10 +23,15 @@ exports.login = async (req, res) => {
     } else {
       const isPasswordCorrect = await user.validPassword(password);
       if (isPasswordCorrect) {
-        const { _id, name, roles } = user;
-        const token = jwt.sign({ _id, name, roles }, process.env.SECRET, {
-          expiresIn: "24h"
-        });
+        const { _id, name, surname, email, job } = user;
+        console.log(user);
+        const token = jwt.sign(
+          { _id, name, surname, email, job },
+          process.env.SECRET,
+          {
+            expiresIn: "24h"
+          }
+        );
         const parts = token.split(".");
         const signature = parts.splice(2);
         res

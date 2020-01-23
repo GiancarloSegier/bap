@@ -11,7 +11,10 @@ class UserStore {
     this.setUser(getUserFromCookie());
   }
 
-  setUser = value => (this.authUser = value);
+  setUser = value => {
+    console.log(value);
+    this.authUser = value;
+  };
 
   login = (email, password) => {
     return this.authService
