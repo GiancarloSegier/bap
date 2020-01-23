@@ -29,7 +29,8 @@ class Auth {
     });
   };
 
-  register = (name, email, password) => {
+  register = (name, surname, email, password, job) => {
+    console.log(job);
     return fetch(`/auth/register`, {
       method: `POST`,
       headers: {
@@ -37,10 +38,13 @@ class Auth {
       },
       body: JSON.stringify({
         name,
+        surname,
         email,
-        password
+        password,
+        job
       })
     }).then(res => {
+      console.log(res);
       if (res.status === 200) {
         Promise.resolve();
       } else {

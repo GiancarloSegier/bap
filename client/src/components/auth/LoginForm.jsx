@@ -1,11 +1,11 @@
-import React from "react";
+import React, { Component } from "react";
 import { inject } from "mobx-react";
 import { Link } from "react-router-dom";
 import { withRouter } from "react-router-dom";
 import { ROUTES } from "../../constants";
 import styles from "./Auth.module.css";
 
-class LoginForm extends React.Component {
+class LoginForm extends Component {
   constructor(props) {
     super(props);
     this.state = {

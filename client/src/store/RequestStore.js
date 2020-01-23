@@ -27,7 +27,6 @@ class RequestStore {
   };
 
   _addRequest = values => {
-    console.log(values);
     const request = new Request();
     request.updateFromServer(values);
     runInAction(() => {
@@ -36,7 +35,6 @@ class RequestStore {
   };
 
   updateRequest = request => {
-    console.log(request);
     this.api
       .update(request)
       .then(requestValues => request.updateFromServer(requestValues));

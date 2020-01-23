@@ -13,9 +13,9 @@ class UserStore {
 
   setUser = value => (this.authUser = value);
 
-  login = (username, password) => {
+  login = (email, password) => {
     return this.authService
-      .login(username, password)
+      .login(email, password)
       .then(() => {
         this.setUser(getUserFromCookie());
         Promise.resolve();
@@ -26,7 +26,8 @@ class UserStore {
       });
   };
 
-  register = (name, email, pwd) => this.authService.register(name, email, pwd);
+  register = (name, surname, email, pwd, job) =>
+    this.authService.register(name, surname, email, pwd, job);
 
   logout = () => {
     this.authService.logout().then(() => this.setUser(null));

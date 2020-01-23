@@ -1,40 +1,64 @@
 import React, { Component } from "react";
-import { inject } from "mobx-react";
+import { inject, observer } from "mobx-react";
 import { Link } from "react-router-dom";
 import { withRouter } from "react-router-dom";
 import { ROUTES } from "../../constants";
 import styles from "./Auth.module.css";
 
 class RegisterForm extends Component {
-  constructor() {
-    super();
-    this.state = { email: ``, pwd: ``, pwd2: ``, name: `` };
+  constructor(props) {
+    super(props);
+    this.state = {
+      email: ``,
+      pwd: ``,
+      pwd2: ``,
+      name: ``,
+      surname: ``,
+      job: {}
+    };
+    console.log(props);
   }
 
   handleChange = e => {
     const input = e.currentTarget;
     const state = { ...this.state };
-    state[input.name] = input.value;
-    this.setState(state);
+    if (input.name === "job") {
+      const splitValue = input.value.split("|");
+      const job = {
+        assignment: splitValue[0],
+        privileges: splitValue[1]
+      };
+
+      state[input.name] = job;
+      this.setState(state);
+    } else {
+      state[input.name] = input.value;
+      this.setState(state);
+    }
   };
 
   handleSubmit = e => {
     e.preventDefault();
     const { userStore, history } = this.props;
-    const { email, pwd, name } = this.state;
-    userStore.register(name, email, pwd).then(() => {
-      history.push(ROUTES.login);
-    });
+    const { email, pwd, name, surname, job } = this.state;
+    userStore
+      .register(name, surname, email, pwd, job)
+      .then(() => {
+        userStore.login(email, pwd);
+      })
+      .then(() => {
+        history.push(ROUTES.dashboard);
+      });
   };
 
   render() {
-    const { email, pwd, pwd2, name } = this.state;
+    const { email, pwd, pwd2, name, surname } = this.state;
     return (
       <>
         <div className={styles.container}>
           <form onSubmit={this.handleSubmit} className={styles.form}>
             <h2>Register</h2>
-            <label htmlFor="email">
+            <label htmlFor="name">
               <input
                 type="test"
                 name="name"
@@ -42,7 +66,18 @@ class RegisterForm extends Component {
                 value={name}
                 onChange={this.handleChange}
                 className={styles.input}
-                placeholder="Username"
+                placeholder="name"
+              />
+            </label>
+            <label htmlFor="surname">
+              <input
+                type="test"
+                name="surname"
+                id="surname="
+                value={surname}
+                onChange={this.handleChange}
+                className={styles.input}
+                placeholder="surname"
               />
             </label>
             <label htmlFor="email">
@@ -78,10 +113,21 @@ class RegisterForm extends Component {
                 placeholder="Confirm password"
               />
             </label>
+
+            <select name="job" onChange={this.handleChange}>
+              {this.props.jobStore.jobs.map(job => (
+                <option value={`${job.assignment}|${job.privileges}`}>
+                  {job.assignment}
+                </option>
+              ))}
+            </select>
+
             <input
               type="submit"
               value="Register"
-              disabled={(pwd && pwd !== pwd2) || !email || !name || !pwd}
+              disabled={
+                (pwd && pwd !== pwd2) || !email || !name || !surname || !pwd
+              }
               className={styles.button}
             />
             <p className={styles.subLink}>
@@ -97,4 +143,7 @@ class RegisterForm extends Component {
   }
 }
 
-export default inject(`userStore`)(withRouter(RegisterForm));
+export default inject(
+  `userStore`,
+  `jobStore`
+)(withRouter(observer(RegisterForm)));
