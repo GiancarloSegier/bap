@@ -4,6 +4,7 @@ import { getUserFromCookie } from "../utils/index.js";
 
 class UserStore {
   authUser = null;
+  privileges = "public";
 
   constructor(rootStore) {
     this.rootStore = rootStore;
@@ -12,8 +13,10 @@ class UserStore {
   }
 
   setUser = value => {
-    console.log(value);
     this.authUser = value;
+    if (value !== null) {
+      this.privileges = value.job.privileges;
+    }
   };
 
   login = (email, password) => {
@@ -37,6 +40,10 @@ class UserStore {
   };
 }
 
-decorate(UserStore, { authUser: observable, setUser: action });
+decorate(UserStore, {
+  authUser: observable,
+  setUser: action,
+  privileges: observable
+});
 
 export default UserStore;

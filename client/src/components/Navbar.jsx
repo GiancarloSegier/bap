@@ -26,7 +26,6 @@ const Navbar = ({ userStore }) => {
           <li>
             <NavLink
               strict={true}
-              exact={true}
               className={styles.navLink}
               to={ROUTES.dashboard}
               activeClassName={styles.active}
@@ -38,7 +37,6 @@ const Navbar = ({ userStore }) => {
         <li>
           <NavLink
             strict={true}
-            exact={true}
             className={styles.navLink}
             to={ROUTES.designstudio}
             activeClassName={styles.active}
@@ -49,7 +47,6 @@ const Navbar = ({ userStore }) => {
         <li>
           <NavLink
             strict={true}
-            exact={true}
             className={styles.navLink}
             to={ROUTES.toolkit}
             activeClassName={styles.active}
@@ -61,7 +58,6 @@ const Navbar = ({ userStore }) => {
           <>
             <li>
               <NavLink
-                exact={true}
                 strict={true}
                 className={styles.navLink + " " + styles.darkLink}
                 to={ROUTES.login}
@@ -73,7 +69,6 @@ const Navbar = ({ userStore }) => {
             <li>
               <NavLink
                 strict={true}
-                exact={true}
                 className={styles.navLink + " " + styles.darkLink}
                 to={ROUTES.request}
                 activeClassName={styles.activeDark}
@@ -88,7 +83,6 @@ const Navbar = ({ userStore }) => {
 
             <NavLink
               strict={true}
-              exact={true}
               onClick={handleLogout}
               className={styles.navLink + " " + styles.darkLink}
               to={ROUTES.home}
