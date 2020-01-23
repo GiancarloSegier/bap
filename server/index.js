@@ -6,6 +6,9 @@ const cookieParser = require("cookie-parser");
 const sgMail = require("@sendgrid/mail");
 const cors = require("cors");
 
+const cloudinary = require("cloudinary");
+const formData = require("express-form-data");
+
 require("dotenv").config();
 
 const DB_URL = process.env.DB_URL;
@@ -30,11 +33,36 @@ app.use(cookieParser());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-app.use(cors());
-sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+// image upload
+
+cloudinary.config({
+  cloud_name: process.env.CLOUD_NAME,
+  api_key: process.env.CLOUDINARY_API_KEY,
+  api_secret: process.env.CLOUDINARY_SECRET
+});
+
+app.use(
+  cors({
+    origin: process.env.CLIENT_ORIGIN
+  })
+);
+
+app.use(formData.parse());
+
+app.post("/image-upload", (req, res) => {
+  const values = Object.values(req.files);
+  const promises = values.map(image => cloudinary.uploader.upload(image.path));
+  values.map(image => {
+    console.log(image);
+  });
+
+  Promise.all(promises).then(results => res.json(results));
+});
 
 // visitor sends request to join
 
+app.use(cors());
+sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 app.get("/send-request", (req, res) => {
   //get variables
   const { sender, message, name, surname, phone, organisation, id } = req.query;

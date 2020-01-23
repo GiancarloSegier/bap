@@ -29,8 +29,8 @@ class Auth {
     });
   };
 
-  register = (name, surname, email, password, job) => {
-    console.log(job);
+  register = (name, surname, email, password, job, avatarUrl) => {
+    console.log(avatarUrl);
     return fetch(`/auth/register`, {
       method: `POST`,
       headers: {
@@ -41,7 +41,8 @@ class Auth {
         surname,
         email,
         password,
-        job
+        job,
+        avatarUrl
       })
     }).then(res => {
       console.log(res);

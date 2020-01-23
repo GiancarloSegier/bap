@@ -9,6 +9,11 @@ const DashboardHome = ({ userStore }) => {
     <>
       <div>
         <h1 className={styles.heading1}>{userStore.authUser.job.privileges}</h1>
+        <img
+          className={styles.avatar}
+          src={userStore.authUser.avatarUrl}
+          alt="image"
+        />
         <p>
           Goeiemorgen {userStore.authUser.name} {userStore.authUser.surname}
         </p>

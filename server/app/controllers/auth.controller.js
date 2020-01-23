@@ -23,10 +23,10 @@ exports.login = async (req, res) => {
     } else {
       const isPasswordCorrect = await user.validPassword(password);
       if (isPasswordCorrect) {
-        const { _id, name, surname, email, job } = user;
+        const { _id, name, surname, email, job, avatarUrl } = user;
         console.log(user);
         const token = jwt.sign(
-          { _id, name, surname, email, job },
+          { _id, name, surname, email, job, avatarUrl },
           process.env.SECRET,
           {
             expiresIn: "24h"
@@ -60,8 +60,8 @@ exports.logout = (req, res) => {
 };
 
 exports.register = (req, res) => {
-  const { email, password, name, surname, job } = req.body;
-  const user = new User({ email, password, name, surname, job });
+  const { email, password, name, surname, job, avatarUrl } = req.body;
+  const user = new User({ email, password, name, surname, job, avatarUrl });
   user.save(err => {
     if (err) {
       res.status(500).send("Error registering new user please try again.");

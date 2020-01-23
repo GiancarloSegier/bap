@@ -5,6 +5,8 @@ import { withRouter } from "react-router-dom";
 import { ROUTES } from "../../constants";
 import styles from "./Auth.module.css";
 
+import ImageUploader from "react-images-upload";
+
 class RegisterForm extends Component {
   constructor(props) {
     super(props);
@@ -14,8 +16,13 @@ class RegisterForm extends Component {
       pwd2: ``,
       name: ``,
       surname: ``,
-      job: {}
+      job: {
+        assignment: "Race coordinator",
+        privileges: "supervisor"
+      },
+      images: []
     };
+
     console.log(props);
   }
 
@@ -37,18 +44,47 @@ class RegisterForm extends Component {
     }
   };
 
-  handleSubmit = e => {
+  handleSubmit = async e => {
     e.preventDefault();
     const { userStore, history } = this.props;
-    const { email, pwd, name, surname, job } = this.state;
-    userStore
-      .register(name, surname, email, pwd, job)
+
+    await this.uploadAvatar();
+    const { email, pwd, name, surname, job, avatarUrl } = this.state;
+    await userStore
+      .register(name, surname, email, pwd, job, avatarUrl)
       .then(() => {
         userStore.login(email, pwd);
       })
       .then(() => {
         history.push(ROUTES.dashboard);
       });
+  };
+
+  uploadAvatar = async () => {
+    await fetch(`http://localhost:4000/image-upload`, {
+      method: "POST",
+      body: this.state.formData
+    })
+      .then(res => res.json())
+      .then(images => {
+        this.setState({
+          avatarUrl: images[0].url
+        });
+      });
+  };
+
+  changeFile = e => {
+    console.log(e);
+    const files = Array.from(e);
+    this.setState({ uploading: true });
+
+    const formData = new FormData();
+
+    files.forEach((file, i) => {
+      formData.append(i, file);
+    });
+
+    this.setState({ formData: formData });
   };
 
   render() {
@@ -58,6 +94,15 @@ class RegisterForm extends Component {
         <div className={styles.container}>
           <form onSubmit={this.handleSubmit} className={styles.form}>
             <h2>Register</h2>
+            <ImageUploader
+              withIcon={true}
+              buttonText="Choose images"
+              onChange={this.changeFile}
+              imgExtension={[".jpg", ".gif", ".png", ".gif"]}
+              maxFileSize={5242880}
+              withPreview={true}
+              singleImage={true}
+            />
             <label htmlFor="name">
               <input
                 type="test"

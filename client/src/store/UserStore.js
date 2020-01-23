@@ -32,8 +32,8 @@ class UserStore {
       });
   };
 
-  register = (name, surname, email, pwd, job) =>
-    this.authService.register(name, surname, email, pwd, job);
+  register = (name, surname, email, pwd, job, avatarUrl) =>
+    this.authService.register(name, surname, email, pwd, job, avatarUrl);
 
   logout = () => {
     this.authService.logout().then(() => this.setUser(null));
