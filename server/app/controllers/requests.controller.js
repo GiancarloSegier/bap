@@ -7,7 +7,8 @@ exports.create = (req, res) => {
     organisation: req.body.organisation,
     phone: req.body.phone,
     email: req.body.email,
-    message: req.body.message
+    message: req.body.message,
+    pending: req.body.pending
   });
 
   request
@@ -40,6 +41,39 @@ exports.findOne = async (req, res) => {
   } catch (err) {
     if (err.kind === "ObjectId") {
       return res.status(500).send("Geen geldig ID");
+    }
+    return res.status(500).send(err);
+  }
+};
+
+exports.update = async (req, res) => {
+  console.log(req.body);
+  try {
+    const request = await Request.findOneAndUpdate(
+      {
+        _id: req.params.requestId
+      },
+      {
+        name: req.body.name,
+        surname: req.body.surname,
+        organisation: req.body.organisation,
+        phone: req.body.phone,
+        email: req.body.email,
+        message: req.body.message,
+        pending: req.body.pending
+      },
+      {
+        new: true
+      }
+    );
+
+    if (!request) {
+      return res.status(404).send("No request found");
+    }
+    res.send(request);
+  } catch (err) {
+    if (err.kind === "ObjectId") {
+      return res.status(417).send("Geen geldig ID");
     }
     return res.status(500).send(err);
   }

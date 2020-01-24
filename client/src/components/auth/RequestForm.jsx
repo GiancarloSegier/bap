@@ -54,7 +54,8 @@ class RequestForm extends Component {
         organisation: organisation,
         phone: phone,
         email: sender,
-        message: message
+        message: message,
+        pending: false
       });
 
       this.nameInput.current.value = "";

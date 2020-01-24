@@ -2,12 +2,15 @@ import React from "react";
 // import styles from "./Requests.module.css";
 // import Form from "../components/Form";
 
-import { inject, observer } from "mobx-react";
+import { inject, observer, PropTypes } from "mobx-react";
+import RequestDetail from "../../components/dashboard/RequestDetail";
 
 const Requests = ({ requestStore }) => {
-  const approveRequest = request => {
-    console.log(request);
-    fetch(
+  console.log(requestStore.requests);
+  const onUpdateRequest = async request => {
+    await requestStore.updateRequest(request);
+
+    await fetch(
       `http://127.0.0.1:4000/send-mail?type=invite&id=${request.id}&name=${request.name}&recipient=${request.email}&organisation=${request.organisation}`
     ).catch(err => console.log(err));
   };
@@ -17,12 +20,10 @@ const Requests = ({ requestStore }) => {
         <div>
           <ul>
             {requestStore.requests.map(request => (
-              <li>
-                {request.name} - {request.organisation}
-                <button onClick={() => approveRequest(request)}>
-                  Approve request
-                </button>
-              </li>
+              <RequestDetail
+                currentRequest={request}
+                onUpdateRequest={onUpdateRequest}
+              />
             ))}
           </ul>
         </div>
@@ -31,6 +32,10 @@ const Requests = ({ requestStore }) => {
       )}
     </>
   );
+};
+
+Requests.propTypes = {
+  requestStore: PropTypes.observableObject.isRequired
 };
 
 export default inject(`requestStore`)(observer(Requests));

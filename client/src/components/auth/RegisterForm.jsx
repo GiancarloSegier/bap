@@ -23,8 +23,23 @@ class RegisterForm extends Component {
       images: []
     };
 
-    console.log(props);
+    this.getRequestId().then(() => {
+      this.getCurrentRequest();
+    });
   }
+
+  getRequestId = async () => {
+    const query = new URLSearchParams(this.props.location.search);
+    const id = query.get("id");
+    await this.props.requestStore.getOne(id);
+  };
+
+  getCurrentRequest = () => {
+    this.setState({
+      currentRequest: this.props.requestStore.currentRequest
+    });
+    console.log(this.props.requestStore.currentRequest);
+  };
 
   handleChange = e => {
     const input = e.currentTarget;
@@ -190,5 +205,6 @@ class RegisterForm extends Component {
 
 export default inject(
   `userStore`,
-  `jobStore`
+  `jobStore`,
+  `requestStore`
 )(withRouter(observer(RegisterForm)));

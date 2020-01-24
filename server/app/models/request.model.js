@@ -7,7 +7,8 @@ const RequestSchema = mongoose.Schema(
     organisation: String,
     phone: String,
     email: String,
-    message: String
+    message: String,
+    pending: Boolean
   },
   {
     timestamps: true
