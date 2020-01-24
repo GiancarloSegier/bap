@@ -15,14 +15,12 @@ class RequestDetail extends Component {
   };
 
   render() {
-    const { currentRequest, approveRequest } = this.props;
+    const { currentRequest } = this.props;
     return (
       <li>
         {currentRequest.name} - {currentRequest.organisation} - pending:{" "}
         {String(currentRequest.pending)}
-        {currentRequest.pending === true ? (
-          console.log("true pending")
-        ) : (
+        {currentRequest.pending === true ? null : (
           <button onClick={() => this.approveRequest(currentRequest)}>
             Approve request
           </button>

@@ -2,7 +2,17 @@ import uuid from "uuid";
 import { decorate, observable, computed, action } from "mobx";
 
 class Request {
-  constructor(id, name, surname, phone, organisation, email, message, pending) {
+  constructor(
+    id,
+    name,
+    surname,
+    phone,
+    organisation,
+    email,
+    message,
+    job,
+    pending
+  ) {
     this.id = id;
     this.name = name;
     this.surname = surname;
@@ -10,6 +20,7 @@ class Request {
     this.organisation = organisation;
     this.email = email;
     this.message = message;
+    this.job = job;
     this.pending = pending;
   }
 
@@ -22,6 +33,7 @@ class Request {
       organisation: this.organisation,
       email: this.email,
       message: this.message,
+      job: this.job,
       pending: this.pending
     };
   }
@@ -33,6 +45,7 @@ class Request {
   setOrganisation = organisation => (this.organisation = organisation);
   setEmail = email => (this.email = email);
   setMessage = message => (this.message = message);
+  setJob = job => (this.job = job);
   setPending = pending => (this.pending = pending);
 
   updateFromServer = values => {
@@ -44,6 +57,7 @@ class Request {
     this.setOrganisation(values.organisation);
     this.setEmail(values.email);
     this.setMessage(values.message);
+    this.setJob(values.job);
     this.setPending(values.pending);
   };
 }
@@ -57,6 +71,7 @@ decorate(Request, {
   setPhone: action,
   setEmail: action,
   setMessage: action,
+  setJob: action,
   setPending: action,
   values: computed
 });

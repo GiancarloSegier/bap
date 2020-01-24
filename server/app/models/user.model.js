@@ -6,8 +6,10 @@ const UserSchema = new mongoose.Schema({
   password: { type: String, required: true },
   name: { type: String, required: true },
   surname: { type: String, required: true },
-  job: Object,
-  avatarUrl: String
+  job: { type: Object, required: true },
+  phone: { type: String, required: true },
+  organisation: { type: String, required: true },
+  avatarUrl: { type: String, required: true }
 });
 
 UserSchema.methods.validPassword = function(password) {

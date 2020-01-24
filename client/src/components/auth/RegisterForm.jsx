@@ -11,22 +11,16 @@ class RegisterForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      email: ``,
-      pwd: ``,
-      pwd2: ``,
-      name: ``,
-      surname: ``,
-      job: {
-        assignment: "Race coordinator",
-        privileges: "supervisor"
-      },
+      password: ``,
+      password2: ``,
+      phone: ``,
       images: []
     };
-
-    this.getRequestId().then(() => {
-      this.getCurrentRequest();
-    });
   }
+
+  componentDidMount = async () => {
+    await this.getRequestId();
+  };
 
   getRequestId = async () => {
     const query = new URLSearchParams(this.props.location.search);
@@ -34,29 +28,12 @@ class RegisterForm extends Component {
     await this.props.requestStore.getOne(id);
   };
 
-  getCurrentRequest = () => {
-    this.setState({
-      currentRequest: this.props.requestStore.currentRequest
-    });
-    console.log(this.props.requestStore.currentRequest);
-  };
-
   handleChange = e => {
     const input = e.currentTarget;
     const state = { ...this.state };
-    if (input.name === "job") {
-      const splitValue = input.value.split("|");
-      const job = {
-        assignment: splitValue[0],
-        privileges: splitValue[1]
-      };
 
-      state[input.name] = job;
-      this.setState(state);
-    } else {
-      state[input.name] = input.value;
-      this.setState(state);
-    }
+    state[input.name] = input.value;
+    this.setState(state);
   };
 
   handleSubmit = async e => {
@@ -64,11 +41,32 @@ class RegisterForm extends Component {
     const { userStore, history } = this.props;
 
     await this.uploadAvatar();
-    const { email, pwd, name, surname, job, avatarUrl } = this.state;
+
+    const { password, avatarUrl, newPhone } = this.state;
+    const {
+      email,
+      name,
+      surname,
+      phone,
+      organisation,
+      job
+    } = this.props.requestStore.currentRequest;
+
+    console.log(avatarUrl);
+
     await userStore
-      .register(name, surname, email, pwd, job, avatarUrl)
+      .register(
+        name,
+        surname,
+        email,
+        password,
+        job,
+        phone,
+        organisation,
+        avatarUrl
+      )
       .then(() => {
-        userStore.login(email, pwd);
+        userStore.login(email, password);
       })
       .then(() => {
         history.push(ROUTES.dashboard);
@@ -103,7 +101,13 @@ class RegisterForm extends Component {
   };
 
   render() {
-    const { email, pwd, pwd2, name, surname } = this.state;
+    const { password, password2, newPhone } = this.state;
+    const {
+      email,
+      name,
+      surname,
+      phone
+    } = this.props.requestStore.currentRequest;
     return (
       <>
         <div className={styles.container}>
@@ -118,75 +122,59 @@ class RegisterForm extends Component {
               withPreview={true}
               singleImage={true}
             />
-            <label htmlFor="name">
-              <input
-                type="test"
-                name="name"
-                id="name="
-                value={name}
-                onChange={this.handleChange}
-                className={styles.input}
-                placeholder="name"
-              />
-            </label>
-            <label htmlFor="surname">
-              <input
-                type="test"
-                name="surname"
-                id="surname="
-                value={surname}
-                onChange={this.handleChange}
-                className={styles.input}
-                placeholder="surname"
-              />
-            </label>
-            <label htmlFor="email">
-              <input
-                type="email"
-                name="email"
-                id="email="
-                value={email}
-                onChange={this.handleChange}
-                className={styles.input}
-                placeholder="Email"
-              />
-            </label>
-            <label htmlFor="username">
+
+            <label htmlFor="password">
               <input
                 type="password"
-                name="pwd"
-                id="pwd"
-                value={pwd}
+                name="password"
+                id="password"
+                value={password}
                 onChange={this.handleChange}
                 className={styles.input}
                 placeholder="Password"
               />
             </label>
-            <label htmlFor="username">
+            <label htmlFor="password2">
               <input
                 type="password"
-                name="pwd2"
-                id="pwd2"
-                ref={pwd2}
+                name="password2"
+                id="password2"
+                ref={password2}
                 onChange={this.handleChange}
                 className={styles.input}
                 placeholder="Confirm password"
               />
             </label>
 
-            <select name="job" onChange={this.handleChange}>
+            {/* <select name="job" onChange={this.handleChange}>
               {this.props.jobStore.jobs.map(job => (
                 <option value={`${job.assignment}|${job.privileges}`}>
                   {job.assignment}
                 </option>
               ))}
-            </select>
-
+            </select> */}
+            {phone ? null : (
+              <label htmlFor="newPhone">
+                <input
+                  type="text"
+                  name="newPhone"
+                  id="newPhone"
+                  value={newPhone}
+                  onChange={this.handleChange}
+                  className={styles.input}
+                  placeholder="phone"
+                />
+              </label>
+            )}
             <input
               type="submit"
               value="Register"
               disabled={
-                (pwd && pwd !== pwd2) || !email || !name || !surname || !pwd
+                (password && password !== password2) ||
+                !email ||
+                !name ||
+                !surname ||
+                !password
               }
               className={styles.button}
             />

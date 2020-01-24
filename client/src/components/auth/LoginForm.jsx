@@ -10,7 +10,7 @@ class LoginForm extends Component {
     super(props);
     this.state = {
       email: "",
-      pwd: "",
+      password: "",
       emailError: false,
       error: false,
       disabled: true,
@@ -19,13 +19,13 @@ class LoginForm extends Component {
     console.log(props);
 
     this.emailInput = React.createRef();
-    this.pwdInput = React.createRef();
+    this.passwordInput = React.createRef();
   }
 
   handleSubmit = e => {
     e.preventDefault();
-    if (this.state.email !== "" && this.state.pwd !== "") {
-      this.props.userStore.login(this.state.email, this.state.pwd).then(() => {
+    if (this.state.email !== "" && this.state.password !== "") {
+      this.props.userStore.login(this.state.email, this.state.password).then(() => {
         if (this.props.userStore.authUser) {
           this.props.history.push(ROUTES.dashboard);
         } else {
@@ -47,8 +47,8 @@ class LoginForm extends Component {
         this.setState({ email: "", emailError: true });
       }
     }
-    if (inputType === "pwd") {
-      this.setState({ pwd: value });
+    if (inputType === "password") {
+      this.setState({ password: value });
     }
     this.checkFilledForm();
   };
@@ -57,8 +57,8 @@ class LoginForm extends Component {
     console.log(this.state);
     if (
       this.state.email !== "" &&
-      this.state.pwd !== "" &&
-      this.state.pwd.length > 1
+      this.state.password !== "" &&
+      this.state.password.length > 1
     ) {
       this.setState({ disabled: false, error: false });
     } else {
@@ -93,9 +93,9 @@ class LoginForm extends Component {
               name="password"
               id="password"
               placeholder="password"
-              ref={this.pwdInput}
+              ref={this.passwordInput}
               className={styles.input}
-              onChange={e => this.checkInput(e, "pwd")}
+              onChange={e => this.checkInput(e, "password")}
             />
 
             <input type="submit" value="login" className={styles.button} />

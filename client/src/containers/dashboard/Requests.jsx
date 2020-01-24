@@ -6,7 +6,6 @@ import { inject, observer, PropTypes } from "mobx-react";
 import RequestDetail from "../../components/dashboard/RequestDetail";
 
 const Requests = ({ requestStore }) => {
-  console.log(requestStore.requests);
   const onUpdateRequest = async request => {
     await requestStore.updateRequest(request);
 

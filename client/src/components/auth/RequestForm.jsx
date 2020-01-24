@@ -55,6 +55,10 @@ class RequestForm extends Component {
         phone: phone,
         email: sender,
         message: message,
+        job: {
+          assignment: "Event Manager",
+          privileges: "admin"
+        },
         pending: false
       });
 

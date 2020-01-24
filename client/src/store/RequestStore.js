@@ -3,10 +3,10 @@ import Request from "../models/Request";
 import Api from "../api";
 
 configure({ enforceActions: `observed` });
+
 class RequestStore {
   requests = [];
   currentRequest = {};
-
   constructor(rootStore) {
     this.rootStore = rootStore;
     this.api = new Api(`requests`);
@@ -19,9 +19,7 @@ class RequestStore {
 
   getOne = id => {
     this.api.getOne(id).then(d => {
-      this.currentRequest = d;
-      console.log(d);
-      console.log(this.currentRequest);
+      this._getCurrentRequest(d);
     });
   };
 
@@ -43,14 +41,19 @@ class RequestStore {
     });
   };
 
+  _getCurrentRequest = values => {
+    const request = new Request();
+    request.updateFromServer(values);
+    runInAction(() => {
+      this.currentRequest = request;
+    });
+    console.log(values);
+  };
+
   updateRequest = request => {
-    console.log(request);
     this.api
       .update(request)
       .then(requestValues => request.updateFromServer(requestValues));
-
-    // this.requests = [];
-    // this.getAll();
   };
 
   deleteRequest = request => {

@@ -8,6 +8,7 @@ exports.create = (req, res) => {
     phone: req.body.phone,
     email: req.body.email,
     message: req.body.message,
+    job: req.body.job,
     pending: req.body.pending
   });
 
@@ -47,7 +48,6 @@ exports.findOne = async (req, res) => {
 };
 
 exports.update = async (req, res) => {
-  console.log(req.body);
   try {
     const request = await Request.findOneAndUpdate(
       {
@@ -60,6 +60,7 @@ exports.update = async (req, res) => {
         phone: req.body.phone,
         email: req.body.email,
         message: req.body.message,
+        job: req.body.job,
         pending: req.body.pending
       },
       {

@@ -30,6 +30,6 @@
   },
   "scripts": {
     "dev": "nodemon index.js",
-    "start": "node index.js"
+    "start": "node --inspect=0.0.0.0:9229 index.js"
   }
 }

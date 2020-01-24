@@ -1,6 +1,6 @@
 class Auth {
-  login = (email, password) => {
-    return fetch(`/auth/login`, {
+  login = async (email, password) => {
+    const res = await fetch(`/auth/login`, {
       method: `POST`,
       headers: {
         "content-type": `application/json`
@@ -9,15 +9,14 @@ class Auth {
         email,
         password
       })
-    }).then(res => {
-      if (res.status === 200) {
-        Promise.resolve();
-      } else {
-        return res.json().then(data => {
-          Promise.reject(data);
-        });
-      }
     });
+    if (res.status === 200) {
+      Promise.resolve();
+    } else {
+      return res.json().then(data => {
+        Promise.reject(data);
+      });
+    }
   };
 
   logout = () => {
@@ -29,8 +28,16 @@ class Auth {
     });
   };
 
-  register = (name, surname, email, password, job, avatarUrl) => {
-    console.log(avatarUrl);
+  register = (
+    name,
+    surname,
+    email,
+    password,
+    job,
+    phone,
+    organisation,
+    avatarUrl
+  ) => {
     return fetch(`/auth/register`, {
       method: `POST`,
       headers: {
@@ -42,10 +49,11 @@ class Auth {
         email,
         password,
         job,
+        phone,
+        organisation,
         avatarUrl
       })
     }).then(res => {
-      console.log(res);
       if (res.status === 200) {
         Promise.resolve();
       } else {

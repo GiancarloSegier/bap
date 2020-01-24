@@ -18,15 +18,37 @@ exports.login = async (req, res) => {
   }
   try {
     const user = await User.findOne({ email });
+    console.log(user);
     if (!user) {
       res.status(401).send({ error: "incorrect email or password" });
     } else {
+      console.log(password);
       const isPasswordCorrect = await user.validPassword(password);
+      console.log(isPasswordCorrect);
       if (isPasswordCorrect) {
-        const { _id, name, surname, email, job, avatarUrl } = user;
-        console.log(user);
+        const {
+          _id,
+          name,
+          surname,
+          email,
+          password,
+          job,
+          phone,
+          organisation,
+          avatarUrl
+        } = user;
         const token = jwt.sign(
-          { _id, name, surname, email, job, avatarUrl },
+          {
+            _id,
+            name,
+            surname,
+            email,
+            password,
+            job,
+            phone,
+            organisation,
+            avatarUrl
+          },
           process.env.SECRET,
           {
             expiresIn: "24h"
@@ -60,8 +82,26 @@ exports.logout = (req, res) => {
 };
 
 exports.register = (req, res) => {
-  const { email, password, name, surname, job, avatarUrl } = req.body;
-  const user = new User({ email, password, name, surname, job, avatarUrl });
+  const {
+    name,
+    surname,
+    email,
+    password,
+    job,
+    phone,
+    organisation,
+    avatarUrl
+  } = req.body;
+  const user = new User({
+    name,
+    surname,
+    email,
+    password,
+    job,
+    phone,
+    organisation,
+    avatarUrl
+  });
   user.save(err => {
     if (err) {
       res.status(500).send("Error registering new user please try again.");

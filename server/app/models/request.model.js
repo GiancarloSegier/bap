@@ -8,6 +8,7 @@ const RequestSchema = mongoose.Schema(
     phone: String,
     email: String,
     message: String,
+    job: Object,
     pending: Boolean
   },
   {
