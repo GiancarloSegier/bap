@@ -3,7 +3,7 @@ import React from "react";
 // import Form from "../components/Form";
 
 import { inject, observer, PropTypes } from "mobx-react";
-import RequestDetail from "../../components/dashboard/RequestDetail";
+import RequestDetail from "../../../components/dashboard/RequestDetail";
 
 const Requests = ({ requestStore }) => {
   const onUpdateRequest = async request => {

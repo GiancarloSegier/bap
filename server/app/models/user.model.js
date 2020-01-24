@@ -9,6 +9,7 @@ const UserSchema = new mongoose.Schema({
   job: { type: Object, required: true },
   phone: { type: String, required: true },
   organisation: { type: String, required: true },
+  committeeId: { type: mongoose.Schema.ObjectId, required: true },
   avatarUrl: { type: String, required: true }
 });
 

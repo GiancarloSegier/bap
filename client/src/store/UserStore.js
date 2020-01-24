@@ -40,6 +40,7 @@ class UserStore {
     job,
     phone,
     organisation,
+    committeeId,
     avatarUrl
   ) => {
     await this.authService.register(
@@ -50,6 +51,7 @@ class UserStore {
       job,
       phone,
       organisation,
+      committeeId,
       avatarUrl
     );
   };

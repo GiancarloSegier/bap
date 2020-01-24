@@ -36,6 +36,7 @@ class Auth {
     job,
     phone,
     organisation,
+    committeeId,
     avatarUrl
   ) => {
     return fetch(`/auth/register`, {
@@ -51,6 +52,7 @@ class Auth {
         job,
         phone,
         organisation,
+        committeeId,
         avatarUrl
       })
     }).then(res => {

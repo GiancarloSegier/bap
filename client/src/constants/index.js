@@ -7,7 +7,10 @@ export const ROUTES = {
   register: "/register",
   dashboard: "/dashboard",
   dashboardHome: "/dashboard",
-  teams: "/dashboard/teams",
+  committees: "/dashboard/committees",
   requests: "/dashboard/requests",
-  updates: "/dashboard/updates"
+  updates: "/dashboard/updates",
+  myCommittee: "/dashboard/mycommittee",
+  news: "/dashboard/news",
+  planner: "/dashboard/planner"
 };

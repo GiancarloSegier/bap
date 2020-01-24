@@ -9,7 +9,7 @@ const DashboardHome = ({ userStore }) => {
   return (
     <>
       <div>
-        {/* <h1 className={styles.heading1}>{userStore.authUser.job.privileges}</h1> */}
+        <h1 className={styles.heading1}>{userStore.authUser.job.privileges}</h1>
         <img
           className={styles.avatar}
           src={userStore.authUser.avatarUrl}

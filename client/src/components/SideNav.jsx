@@ -25,10 +25,10 @@ const SideNav = ({ userStore }) => {
               <NavLink
                 strict={true}
                 className={styles.navLink}
-                to={ROUTES.teams}
+                to={ROUTES.committees}
                 activeClassName={styles.active}
               >
-                Teams
+                Committees
               </NavLink>
             </li>
             <li>
@@ -58,17 +58,17 @@ const SideNav = ({ userStore }) => {
               <NavLink
                 strict={true}
                 className={styles.navLink}
-                to={ROUTES.teams}
+                to={ROUTES.myCommittee}
                 activeClassName={styles.active}
               >
-                Team
+                Committee
               </NavLink>
             </li>
             <li>
               <NavLink
                 strict={true}
                 className={styles.navLink}
-                to={ROUTES.requests}
+                to={ROUTES.planner}
                 activeClassName={styles.active}
               >
                 Planner
@@ -78,7 +78,7 @@ const SideNav = ({ userStore }) => {
               <NavLink
                 strict={true}
                 className={styles.navLink}
-                to={ROUTES.updates}
+                to={ROUTES.news}
                 activeClassName={styles.active}
               >
                 News

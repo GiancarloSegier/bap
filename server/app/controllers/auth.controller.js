@@ -35,6 +35,7 @@ exports.login = async (req, res) => {
           job,
           phone,
           organisation,
+          committeeId,
           avatarUrl
         } = user;
         const token = jwt.sign(
@@ -47,6 +48,7 @@ exports.login = async (req, res) => {
             job,
             phone,
             organisation,
+            committeeId,
             avatarUrl
           },
           process.env.SECRET,
@@ -90,6 +92,7 @@ exports.register = (req, res) => {
     job,
     phone,
     organisation,
+    committeeId,
     avatarUrl
   } = req.body;
   const user = new User({
@@ -100,6 +103,7 @@ exports.register = (req, res) => {
     job,
     phone,
     organisation,
+    committeeId,
     avatarUrl
   });
   user.save(err => {

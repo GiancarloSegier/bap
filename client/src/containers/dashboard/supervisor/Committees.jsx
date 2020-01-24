@@ -4,7 +4,7 @@ import React from "react";
 
 import { inject, observer } from "mobx-react";
 
-const Teams = ({ jobStore }) => {
+const Committees = ({ jobStore }) => {
   return (
     <>
       {jobStore.jobs.length > 0 ? (
@@ -24,4 +24,4 @@ const Teams = ({ jobStore }) => {
   );
 };
 
-export default inject(`jobStore`)(observer(Teams));
+export default inject(`jobStore`)(observer(Committees));

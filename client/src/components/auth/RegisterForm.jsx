@@ -38,12 +38,13 @@ class RegisterForm extends Component {
 
   handleSubmit = async e => {
     e.preventDefault();
-    const { userStore, history } = this.props;
+    const { userStore, committeeStore, history } = this.props;
 
     await this.uploadAvatar();
 
     const { password, avatarUrl, newPhone } = this.state;
     const {
+      id,
       email,
       name,
       surname,
@@ -51,6 +52,13 @@ class RegisterForm extends Component {
       organisation,
       job
     } = this.props.requestStore.currentRequest;
+    const committeeId = id;
+
+    if (phone) {
+      this.phone = phone;
+    } else {
+      this.phone = newPhone;
+    }
 
     console.log(avatarUrl);
 
@@ -63,10 +71,21 @@ class RegisterForm extends Component {
         job,
         phone,
         organisation,
+        committeeId,
         avatarUrl
       )
       .then(() => {
         userStore.login(email, password);
+      })
+      .then(() => {
+        committeeStore.addCommittee({
+          id: committeeId,
+          name: organisation,
+          raceday: new Date("2020-09-29"),
+          city: "",
+          country: "",
+          description: ""
+        });
       })
       .then(() => {
         history.push(ROUTES.dashboard);
@@ -194,5 +213,6 @@ class RegisterForm extends Component {
 export default inject(
   `userStore`,
   `jobStore`,
-  `requestStore`
+  `requestStore`,
+  `committeeStore`
 )(withRouter(observer(RegisterForm)));
