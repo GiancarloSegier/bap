@@ -38,7 +38,7 @@ class RegisterForm extends Component {
 
   handleSubmit = async e => {
     e.preventDefault();
-    const { userStore, committeeStore, history } = this.props;
+    const { userStore, committeeStore, requestStore, history } = this.props;
 
     await this.uploadAvatar();
 
@@ -89,6 +89,9 @@ class RegisterForm extends Component {
       })
       .then(() => {
         history.push(ROUTES.dashboard);
+      })
+      .then(() => {
+        requestStore.deleteRequest(this.props.requestStore.currentRequest);
       });
   };
 
