@@ -131,6 +131,7 @@ require("./app/routes/auth.routes.js")(app);
 require("./app/routes/requests.routes.js")(app);
 require("./app/routes/jobs.routes.js")(app);
 require("./app/routes/committees.routes.js")(app);
+require("./app/routes/invites.routes.js")(app);
 
 app.get("*", (req, res) => {
   res.sendFile(path.resolve(__dirname, "../client/build/", "index.html"));

@@ -15,6 +15,9 @@ class MyCommittee extends Component {
 
   render() {
     const { name } = this.props.committeeStore.currentCommittee;
+    const invites = this.props.inviteStore.invites;
+
+    // console.log(invites);
     return (
       <>
         <div>
@@ -24,10 +27,28 @@ class MyCommittee extends Component {
           <hr />
           <p>Invite new member</p>
           <InviteForm />
+          <br />
+          <hr />
+          {invites.length > 0 ? (
+            <>
+              <p className={styles.heading1}>Invites:</p>
+              {invites.map(invite => {
+                return (
+                  <p>
+                    {invite.name} - {invite.surname} - {invite.job.assignment}
+                  </p>
+                );
+              })}
+            </>
+          ) : null}
         </div>
       </>
     );
   }
 }
 
-export default inject(`userStore`, `committeeStore`)(observer(MyCommittee));
+export default inject(
+  `userStore`,
+  `committeeStore`,
+  `inviteStore`
+)(observer(MyCommittee));

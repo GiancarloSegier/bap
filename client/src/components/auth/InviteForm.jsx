@@ -14,38 +14,50 @@ class InviteForm extends Component {
 
     this.state = {
       emailError: false,
-      error: false,
-      job: {
-        assignment: "Event Manager",
-        privileges: "member"
-      }
+      error: false
     };
   }
 
   handleSubmit = e => {
+    e.preventDefault();
     const uuid = require("uuid");
     const inviteId = uuid();
+    let assignment = "";
+    let memberJobs = [];
 
-    const { name, surname, email } = this.state;
+    const { name, surname, email, jobAssignment } = this.state;
+    const { committeeId, organisation } = this.props.userStore.authUser;
+    const { jobs } = this.props.jobStore;
 
-    e.preventDefault();
+    if (!jobAssignment) {
+      for (let i = 0; i < jobs.length; i++) {
+        const job = jobs[i];
+
+        if (job.privileges === "member") {
+          memberJobs.push(job);
+        }
+      }
+      assignment = memberJobs[0].assignment;
+    } else {
+      assignment = jobAssignment;
+    }
 
     if (name !== "" && surname !== "" && email !== "") {
       fetch(
-        `http://127.0.0.1:4000/send-mail?type=committeeinvite&sender=${email}&sendername=${this.props.userStore.authUser.name}&name=${name}&surname=${surname}&committee=${this.props.userStore.authUser.organisation}&id=${inviteId}`
+        `http://127.0.0.1:4000/send-mail?type=committeeinvite&sender=${email}&sendername=${this.props.userStore.authUser.name}&name=${name}&surname=${surname}&committee=${organisation}&id=${inviteId}`
       ).catch(err => console.log(err));
 
-      // this.props.requestStore.addRequest({
-      //   id: inviteId,
-      //   name: name,
-      //   surname: surname,
-      //   email: sender,
-      //   job: {
-      //     assignment: "Event Manager",
-      //     privileges: "admin"
-      //   },
-      //   pending: false
-      // });
+      this.props.inviteStore.addInvite({
+        id: inviteId,
+        name: name,
+        surname: surname,
+        email: email,
+        committeeId: committeeId,
+        job: {
+          assignment: assignment,
+          privileges: "member"
+        }
+      });
 
       this.setState({ name: "", surname: "", email: "" });
       this.nameInput.current.value = "";
@@ -161,5 +173,6 @@ class InviteForm extends Component {
 export default inject(
   `userStore`,
   `jobStore`,
-  `requestStore`
+  `requestStore`,
+  `inviteStore`
 )(withRouter(InviteForm));
