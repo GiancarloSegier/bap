@@ -11,11 +11,14 @@ class Api {
 
   getOne = async id => {
     console.log(id);
-    const r = await fetch(`/api/${this.entity}/${id}`);
+    if (id) {
+      const r = await fetch(`/api/${this.entity}/${id}`);
 
-    console.log(r);
-    if (r.ok === true) {
-      return await r.json();
+      if (r.ok === true) {
+        return await r.json();
+      } else {
+        return null;
+      }
     } else {
       return null;
     }

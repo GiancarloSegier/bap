@@ -25,6 +25,7 @@ class RegisterForm extends Component {
   getRequestId = async () => {
     const query = new URLSearchParams(this.props.location.search);
     const id = query.get("id");
+    this.setState({ requestId: id });
     await this.props.requestStore.getOne(id);
   };
 
@@ -131,7 +132,7 @@ class RegisterForm extends Component {
       phone
     } = this.props.requestStore.currentRequest;
 
-    if (email && name && surname && phone) {
+    if (email && name && surname && phone && this.state.requestId) {
       return (
         <>
           <div className={styles.container}>
