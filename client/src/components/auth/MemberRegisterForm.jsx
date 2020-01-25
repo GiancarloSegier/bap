@@ -16,6 +16,7 @@ class RegisterForm extends Component {
       phone: ``,
       images: []
     };
+    console.log("memberregister");
   }
 
   componentDidMount = async () => {
@@ -43,7 +44,7 @@ class RegisterForm extends Component {
 
     await this.uploadAvatar();
 
-    const { password, avatarUrl, newPhone } = this.state;
+    const { password, avatarUrl } = this.state;
     const {
       id,
       email,
@@ -54,12 +55,6 @@ class RegisterForm extends Component {
       job
     } = this.props.requestStore.currentRequest;
     const committeeId = id;
-
-    if (phone) {
-      this.phone = phone;
-    } else {
-      this.phone = newPhone;
-    }
 
     console.log(avatarUrl);
 
@@ -136,8 +131,10 @@ class RegisterForm extends Component {
       return (
         <>
           <div className={styles.container}>
+            <p>Member register</p>
+            <h1 className={styles.heading1}>Hi {name}!</h1>
+            <p>Please pick your avatar and password to proceed.</p>
             <form onSubmit={this.handleSubmit} className={styles.form}>
-              <h2>Register</h2>
               <ImageUploader
                 withIcon={true}
                 buttonText="Choose images"
