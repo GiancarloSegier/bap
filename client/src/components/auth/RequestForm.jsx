@@ -25,13 +25,8 @@ class RequestForm extends Component {
   handleSubmit = e => {
     const uuid = require("uuid");
     const requestId = uuid();
-    const name = this.nameInput.current.value;
-    const surname = this.surnameInput.current.value;
-    const organisation = this.organisationInput.current.value;
-    const phone = this.phoneInput.current.value;
-    const sender = this.state.email;
 
-    const message = this.messageInput.current.value;
+    const { name, surname, email, message, phone, organisation } = this.state;
 
     e.preventDefault();
 
@@ -40,11 +35,11 @@ class RequestForm extends Component {
       surname !== "" &&
       organisation !== "" &&
       phone !== "" &&
-      this.state.email !== "" &&
+      email !== "" &&
       message !== ""
     ) {
       fetch(
-        `http://127.0.0.1:4000/send-mail?type=request&sender=${sender}&message=${message}&name=${name}&surname=${surname}&phone=${phone}&organisation=${organisation}&id=${requestId}`
+        `http://127.0.0.1:4000/send-mail?type=request&sender=${email}&message=${message}&name=${name}&surname=${surname}&phone=${phone}&organisation=${organisation}&id=${requestId}`
       ).catch(err => console.log(err));
 
       this.props.requestStore.addRequest({
@@ -53,13 +48,22 @@ class RequestForm extends Component {
         surname: surname,
         organisation: organisation,
         phone: phone,
-        email: sender,
+        email: email,
         message: message,
         job: {
           assignment: "Event Manager",
           privileges: "admin"
         },
         pending: false
+      });
+
+      this.setState({
+        name: "",
+        surname: "",
+        email: "",
+        organisation: "",
+        phone: "",
+        message: ""
       });
 
       this.nameInput.current.value = "";
@@ -94,7 +98,18 @@ class RequestForm extends Component {
       this.setState({ error: false });
     }
   }
+
+  handleChange = e => {
+    const input = e.currentTarget;
+    const state = { ...this.state };
+
+    state[input.name] = input.value;
+    this.setState(state);
+  };
+
   render() {
+    const { name, surname, email, message, phone, organisation } = this.state;
+
     return (
       <>
         <div className={styles.container}>
@@ -107,6 +122,7 @@ class RequestForm extends Component {
               placeholder="name"
               ref={this.nameInput}
               className={styles.input}
+              onChange={this.handleChange}
             />
             <input
               type="text"
@@ -115,6 +131,7 @@ class RequestForm extends Component {
               placeholder="surname"
               ref={this.surnameInput}
               className={styles.input}
+              onChange={this.handleChange}
             />
             <input
               type="text"
@@ -123,6 +140,7 @@ class RequestForm extends Component {
               placeholder="organisation"
               ref={this.organisationInput}
               className={styles.input}
+              onChange={this.handleChange}
             />
             <input
               type="tel"
@@ -131,6 +149,7 @@ class RequestForm extends Component {
               placeholder="phone"
               ref={this.phoneInput}
               className={styles.input}
+              onChange={this.handleChange}
             />
             <input
               type="email"
@@ -155,12 +174,21 @@ class RequestForm extends Component {
               placeholder="message"
               ref={this.messageInput}
               className={styles.input}
+              onChange={this.handleChange}
             />
 
             <input
               type="submit"
               value="send request"
               className={styles.button}
+              disabled={
+                !name ||
+                !surname ||
+                !email ||
+                !phone ||
+                !message ||
+                !organisation
+              }
             />
             <p className={this.state.error ? styles.error : styles.errorHidden}>
               Please fill in all fields correctly

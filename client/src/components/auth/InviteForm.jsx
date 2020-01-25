@@ -26,15 +26,13 @@ class InviteForm extends Component {
     const uuid = require("uuid");
     const inviteId = uuid();
 
-    const name = this.nameInput.current.value;
-    const surname = this.surnameInput.current.value;
-    const sender = this.emailInput.current.value;
+    const { name, surname, email } = this.state;
 
     e.preventDefault();
 
-    if (name !== "" && surname !== "" && sender !== "") {
+    if (name !== "" && surname !== "" && email !== "") {
       fetch(
-        `http://127.0.0.1:4000/send-mail?type=committeeinvite&sender=${sender}&sendername=${this.props.userStore.authUser.name}&name=${name}&surname=${surname}&committee=${this.props.userStore.authUser.organisation}&id=${inviteId}`
+        `http://127.0.0.1:4000/send-mail?type=committeeinvite&sender=${email}&sendername=${this.props.userStore.authUser.name}&name=${name}&surname=${surname}&committee=${this.props.userStore.authUser.organisation}&id=${inviteId}`
       ).catch(err => console.log(err));
 
       // this.props.requestStore.addRequest({
@@ -49,6 +47,7 @@ class InviteForm extends Component {
       //   pending: false
       // });
 
+      this.setState({ name: "", surname: "", email: "" });
       this.nameInput.current.value = "";
       this.emailInput.current.value = "";
       this.surnameInput.current.value = "";
@@ -79,11 +78,20 @@ class InviteForm extends Component {
     }
   }
 
-  handleChange = e => {
+  handleChangeJob = e => {
     console.log(e.target.value);
     this.setState({ jobAssignment: e.target.value });
   };
+
+  handleChange = e => {
+    const input = e.currentTarget;
+    const state = { ...this.state };
+
+    state[input.name] = input.value;
+    this.setState(state);
+  };
   render() {
+    const { name, surname, email } = this.state;
     return (
       <>
         <div className={styles.container}>
@@ -94,6 +102,7 @@ class InviteForm extends Component {
               id="name"
               placeholder="name"
               ref={this.nameInput}
+              onChange={this.handleChange}
               className={styles.input}
             />
             <input
@@ -102,6 +111,7 @@ class InviteForm extends Component {
               id="surname="
               placeholder="surname"
               ref={this.surnameInput}
+              onChange={this.handleChange}
               className={styles.input}
             />
             <input
@@ -111,7 +121,7 @@ class InviteForm extends Component {
               placeholder="email"
               ref={this.emailInput}
               className={styles.input}
-              // onChange={e => this.checkEmail(e, "email")}
+              onChange={e => this.checkEmail(e, "email")}
             />
             <p
               className={
@@ -120,7 +130,7 @@ class InviteForm extends Component {
             >
               You have to fill in a valid email
             </p>
-            <select name="job" onChange={this.handleChange}>
+            <select name="job" onChange={this.handleChangeJob}>
               {this.props.jobStore.jobs.map(job => {
                 if (job.privileges === "member") {
                   return (
@@ -136,11 +146,7 @@ class InviteForm extends Component {
               type="submit"
               value="send invite"
               className={styles.button}
-              // disabled={
-              //   !this.emailInput.current.value ||
-              //   !this.nameInput.current.value ||
-              //   !this.surnameInput.current.value
-              // }
+              disabled={!email || !name || !surname}
             />
             <p className={this.state.error ? styles.error : styles.errorHidden}>
               Please fill in all fields correctly
