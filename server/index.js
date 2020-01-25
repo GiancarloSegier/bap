@@ -75,7 +75,9 @@ app.get("/send-mail", (req, res) => {
     surname,
     phone,
     organisation,
-    id
+    id,
+    sendername,
+    committee
   } = req.query;
 
   console.log(id);
@@ -106,6 +108,19 @@ app.get("/send-mail", (req, res) => {
         id: id,
         name: name,
         organisation: organisation
+      }
+    };
+  } else if (type === "committeeinvite") {
+    console.log("committee invite mail sended");
+    this.msg = {
+      to: sender,
+      from: "donotreply@thinkpinkeurope.be",
+      templateId: "d-27cc6c7e8538484594e31f719903c311",
+      dynamic_template_data: {
+        id: id,
+        name: name,
+        sendername: sendername,
+        committee: committee
       }
     };
   }

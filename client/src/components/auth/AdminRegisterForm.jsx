@@ -134,6 +134,7 @@ class AdminRegisterForm extends Component {
             <p>Admin register</p>
             <h1 className={styles.heading1}>Hi {name}!</h1>
             <p>Please pick your avatar and password to proceed.</p>
+            <hr />
             <form onSubmit={this.handleSubmit} className={styles.form}>
               <ImageUploader
                 withIcon={true}
@@ -168,13 +169,6 @@ class AdminRegisterForm extends Component {
                 />
               </label>
 
-              {/* <select name="job" onChange={this.handleChange}>
-              {this.props.jobStore.jobs.map(job => (
-                <option value={`${job.assignment}|${job.privileges}`}>
-                  {job.assignment}
-                </option>
-              ))}
-            </select> */}
               {phone ? null : (
                 <label htmlFor="newPhone">
                   <input

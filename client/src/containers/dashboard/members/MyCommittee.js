@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { inject, observer } from "mobx-react";
 import styles from "./MyCommittee.module.css";
+import InviteForm from "../../../components/auth/InviteForm";
 // import Form from "../components/Form";
 
 class MyCommittee extends Component {
@@ -19,6 +20,10 @@ class MyCommittee extends Component {
         <div>
           <h1>MyCommittee</h1>
           <p className={styles.heading1}>Team name: {name}</p>
+          <br />
+          <hr />
+          <p>Invite new member</p>
+          <InviteForm />
         </div>
       </>
     );

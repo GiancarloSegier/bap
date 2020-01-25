@@ -134,6 +134,7 @@ class RegisterForm extends Component {
             <p>Member register</p>
             <h1 className={styles.heading1}>Hi {name}!</h1>
             <p>Please pick your avatar and password to proceed.</p>
+            <hr />
             <form onSubmit={this.handleSubmit} className={styles.form}>
               <ImageUploader
                 withIcon={true}
