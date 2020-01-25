@@ -130,86 +130,96 @@ class RegisterForm extends Component {
       surname,
       phone
     } = this.props.requestStore.currentRequest;
-    return (
-      <>
-        <div className={styles.container}>
-          <form onSubmit={this.handleSubmit} className={styles.form}>
-            <h2>Register</h2>
-            <ImageUploader
-              withIcon={true}
-              buttonText="Choose images"
-              onChange={this.changeFile}
-              imgExtension={[".jpg", ".gif", ".png", ".gif"]}
-              maxFileSize={5242880}
-              withPreview={true}
-              singleImage={true}
-            />
 
-            <label htmlFor="password">
-              <input
-                type="password"
-                name="password"
-                id="password"
-                value={password}
-                onChange={this.handleChange}
-                className={styles.input}
-                placeholder="Password"
+    if (email && name && surname && phone) {
+      return (
+        <>
+          <div className={styles.container}>
+            <form onSubmit={this.handleSubmit} className={styles.form}>
+              <h2>Register</h2>
+              <ImageUploader
+                withIcon={true}
+                buttonText="Choose images"
+                onChange={this.changeFile}
+                imgExtension={[".jpg", ".gif", ".png", ".gif"]}
+                maxFileSize={5242880}
+                withPreview={true}
+                singleImage={true}
               />
-            </label>
-            <label htmlFor="password2">
-              <input
-                type="password"
-                name="password2"
-                id="password2"
-                ref={password2}
-                onChange={this.handleChange}
-                className={styles.input}
-                placeholder="Confirm password"
-              />
-            </label>
 
-            {/* <select name="job" onChange={this.handleChange}>
+              <label htmlFor="password">
+                <input
+                  type="password"
+                  name="password"
+                  id="password"
+                  value={password}
+                  onChange={this.handleChange}
+                  className={styles.input}
+                  placeholder="Password"
+                />
+              </label>
+              <label htmlFor="password2">
+                <input
+                  type="password"
+                  name="password2"
+                  id="password2"
+                  ref={password2}
+                  onChange={this.handleChange}
+                  className={styles.input}
+                  placeholder="Confirm password"
+                />
+              </label>
+
+              {/* <select name="job" onChange={this.handleChange}>
               {this.props.jobStore.jobs.map(job => (
                 <option value={`${job.assignment}|${job.privileges}`}>
                   {job.assignment}
                 </option>
               ))}
             </select> */}
-            {phone ? null : (
-              <label htmlFor="newPhone">
-                <input
-                  type="text"
-                  name="newPhone"
-                  id="newPhone"
-                  value={newPhone}
-                  onChange={this.handleChange}
-                  className={styles.input}
-                  placeholder="phone"
-                />
-              </label>
-            )}
-            <input
-              type="submit"
-              value="Register"
-              disabled={
-                (password && password !== password2) ||
-                !email ||
-                !name ||
-                !surname ||
-                !password
-              }
-              className={styles.button}
-            />
-            <p className={styles.subLink}>
-              Have an account?{` `}
-              <Link to={ROUTES.login} className={styles.link}>
-                Login!
-              </Link>
-            </p>
-          </form>
+              {phone ? null : (
+                <label htmlFor="newPhone">
+                  <input
+                    type="text"
+                    name="newPhone"
+                    id="newPhone"
+                    value={newPhone}
+                    onChange={this.handleChange}
+                    className={styles.input}
+                    placeholder="phone"
+                  />
+                </label>
+              )}
+              <input
+                type="submit"
+                value="Register"
+                disabled={
+                  (password && password !== password2) ||
+                  !email ||
+                  !name ||
+                  !surname ||
+                  !password
+                }
+                className={styles.button}
+              />
+              <p className={styles.subLink}>
+                Have an account?{` `}
+                <Link to={ROUTES.login} className={styles.link}>
+                  Login!
+                </Link>
+              </p>
+            </form>
+          </div>
+        </>
+      );
+    } else {
+      return (
+        <div>
+          <p>Seems like you haven't received an invitation.</p>
+          <p>Or you allready used your invitationlink.</p>
         </div>
-      </>
-    );
+      );
+    }
   }
 }
 

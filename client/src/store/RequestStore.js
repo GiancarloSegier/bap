@@ -19,7 +19,9 @@ class RequestStore {
 
   getOne = id => {
     this.api.getOne(id).then(d => {
-      this._getCurrentRequest(d);
+      if (d !== null) {
+        this._getCurrentRequest(d);
+      }
     });
   };
 
