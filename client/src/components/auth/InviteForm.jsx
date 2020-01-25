@@ -16,12 +16,27 @@ class InviteForm extends Component {
       emailError: false,
       error: false
     };
+
+    console.log(this.randomStr(24, "12345abcde"));
   }
+
+  randomStr = (len, arr) => {
+    let ans = "";
+    for (let i = len; i > 0; i--) {
+      ans += arr[Math.floor(Math.random() * arr.length)];
+    }
+    return ans;
+  };
 
   handleSubmit = e => {
     e.preventDefault();
     const uuid = require("uuid");
-    const inviteId = uuid();
+    const mongoose = require("mongoose");
+
+    const randomId = this.randomStr(24, "12345abcde");
+    const inviteId = mongoose.Types.ObjectId(randomId);
+
+    console.log(inviteId);
     let assignment = "";
     let memberJobs = [];
 

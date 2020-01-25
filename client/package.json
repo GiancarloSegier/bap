@@ -12,6 +12,7 @@
     "js-cookie": "^2.2.1",
     "mobx": "^5.15.2",
     "mobx-react": "^6.1.5",
+    "mongoose": "^5.8.9",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-images-upload": "^1.2.7",

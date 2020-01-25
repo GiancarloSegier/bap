@@ -1,7 +1,9 @@
 const Invite = require("../models/invite.model.js");
 
 exports.create = (req, res) => {
+  console.log(req.body);
   const invite = new Invite({
+    _id: req.body.id,
     name: req.body.name,
     surname: req.body.surname,
     email: req.body.email,
@@ -22,6 +24,7 @@ exports.findAll = async (req, res) => {
     const invites = await Invite.find();
     res.send(invites);
   } catch (err) {
+    console.log(err);
     res.status(500).send({ err: err.invite || "Error" });
   }
 };

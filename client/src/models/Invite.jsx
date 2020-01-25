@@ -31,7 +31,7 @@ class Invite {
 
   updateFromServer = values => {
     console.log(values);
-    this.setId(values._id);
+    this.setId(values.id);
     this.setName(values.name);
     this.setSurname(values.surname);
     this.setEmail(values.email);
