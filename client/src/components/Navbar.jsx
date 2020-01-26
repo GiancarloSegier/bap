@@ -86,14 +86,13 @@ const Navbar = ({ userStore }) => {
             />
             <p className={styles.navLink}>{userStore.authUser.name}</p>
 
-            <NavLink
-              strict={true}
+            <a
+              href="http://localhost:4000"
               onClick={handleLogout}
               className={styles.navLink + " " + styles.darkLink}
-              to={ROUTES.home}
             >
               Log out
-            </NavLink>
+            </a>
           </>
         )}
       </div>

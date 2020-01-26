@@ -1,5 +1,6 @@
 import { decorate, observable, configure, action, runInAction } from "mobx";
 import Committee from "../models/Committee";
+import CommitteeMember from "../models/CommitteeMember";
 import Api from "../api";
 
 configure({ enforceActions: `observed` });
@@ -20,16 +21,11 @@ class CommitteeStore {
   };
 
   getCommitteeMembers = committeeId => {
-    // console.log(committeeId);
-    // console.log(this.committees);
-    // this.committees.forEach(committee => {
-    //   console.log(committee);
-    //   if (committee.id === committeeId) {
-    //     this.committeeMembers.push(committee);
-    //   }
-    // });
+    this.committeeMembers = [];
     this.userApi.getAll().then(d => {
-      d.forEach(this._addCommitteeMember);
+      d.filter(user => user.committeeId === committeeId).forEach(
+        this._addCommitteeMember
+      );
     });
   };
 
@@ -60,10 +56,10 @@ class CommitteeStore {
   };
   _addCommitteeMember = values => {
     console.log(values);
-    const committeeMember = new CommitteeMember();
-    committee.updateFromServer(values);
+    const member = new CommitteeMember();
+    member.updateFromServer(values);
     runInAction(() => {
-      this.committees.push(committee);
+      this.committeeMembers.push(member);
     });
   };
 
