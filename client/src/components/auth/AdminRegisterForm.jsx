@@ -16,7 +16,6 @@ class AdminRegisterForm extends Component {
       phone: ``,
       images: []
     };
-    console.log("adminregister");
   }
 
   componentDidMount = async () => {
@@ -55,8 +54,6 @@ class AdminRegisterForm extends Component {
       job
     } = this.props.requestStore.currentRequest;
     const committeeId = id;
-
-    console.log(avatarUrl);
 
     await userStore
       .register(
@@ -105,7 +102,6 @@ class AdminRegisterForm extends Component {
   };
 
   changeFile = e => {
-    console.log(e);
     const files = Array.from(e);
     this.setState({ uploading: true });
 
@@ -217,7 +213,6 @@ class AdminRegisterForm extends Component {
 
 export default inject(
   `userStore`,
-  `jobStore`,
   `requestStore`,
   `committeeStore`
 )(withRouter(observer(AdminRegisterForm)));

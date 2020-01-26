@@ -8,7 +8,7 @@ const UserSchema = new mongoose.Schema({
   surname: { type: String, required: true },
   job: { type: Object, required: true },
   phone: { type: String, required: true },
-  organisation: { type: String, required: true },
+  organisation: { type: String, required: false },
   committeeId: { type: mongoose.Schema.ObjectId, required: true },
   avatarUrl: { type: String, required: true }
 });

@@ -34,7 +34,7 @@ const Dashboard = ({ userStore }) => {
         </Switch>
       </>
     );
-  } else if (privileges === "admin") {
+  } else if (privileges === "admin" || privileges === "member") {
     return (
       <>
         <SideNav />

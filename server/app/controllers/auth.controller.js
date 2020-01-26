@@ -11,6 +11,16 @@ const signatureCookie = {
   sameSite: true
 };
 
+exports.findAll = async (req, res) => {
+  try {
+    const users = await User.find();
+    res.send(users);
+  } catch (err) {
+    console.log(err);
+    res.status(500).send({ err: err.user || "Error" });
+  }
+};
+
 exports.login = async (req, res) => {
   const { email, password } = req.body;
   if (!email || !password) {

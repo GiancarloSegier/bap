@@ -8,6 +8,7 @@ exports.create = (req, res) => {
     surname: req.body.surname,
     email: req.body.email,
     committeeId: req.body.committeeId,
+    organisation: req.body.organisation,
     job: req.body.job
   });
 

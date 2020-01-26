@@ -2,13 +2,14 @@ import uuid from "uuid";
 import { decorate, observable, computed, action } from "mobx";
 
 class Invite {
-  constructor(id, name, surname, email, job, committeeId) {
+  constructor(id, name, surname, email, job, committeeId, organisation) {
     this.id = id;
     this.name = name;
     this.surname = surname;
     this.email = email;
     this.job = job;
     this.committeeId = committeeId;
+    this.organisation = organisation;
   }
 
   get values() {
@@ -18,7 +19,8 @@ class Invite {
       surname: this.surname,
       email: this.email,
       job: this.job,
-      committeeId: this.committeeId
+      committeeId: this.committeeId,
+      organisation: this.organisation
     };
   }
 
@@ -28,6 +30,7 @@ class Invite {
   setEmail = email => (this.email = email);
   setJob = job => (this.job = job);
   setCommitteeId = committeeId => (this.committeeId = committeeId);
+  setOrganisation = organisation => (this.organisation = organisation);
 
   updateFromServer = values => {
     console.log(values);
@@ -37,6 +40,7 @@ class Invite {
     this.setEmail(values.email);
     this.setJob(values.job);
     this.setCommitteeId(values.committeeId);
+    this.setOrganisation(values.organisation);
   };
 }
 
@@ -48,6 +52,7 @@ decorate(Invite, {
   setEmail: action,
   setJob: action,
   setCommitteeId: action,
+  setOrganisation: action,
   values: computed
 });
 

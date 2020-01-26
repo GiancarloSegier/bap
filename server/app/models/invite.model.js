@@ -7,7 +7,8 @@ const InviteSchema = mongoose.Schema(
     surname: String,
     email: String,
     job: Object,
-    committeeId: mongoose.Schema.ObjectId
+    committeeId: mongoose.Schema.ObjectId,
+    organisation: String
   },
   {
     timestamps: true

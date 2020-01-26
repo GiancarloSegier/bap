@@ -27,6 +27,7 @@ class InviteStore {
   };
 
   addInvite = data => {
+    console.log(data);
     const newInvite = new Invite();
     newInvite.updateFromServer(data);
     this.invites.push(newInvite);
@@ -54,6 +55,7 @@ class InviteStore {
   };
 
   deleteInvite = invite => {
+    console.log(invite);
     this.invites.remove(invite);
     this.api.delete(invite);
   };

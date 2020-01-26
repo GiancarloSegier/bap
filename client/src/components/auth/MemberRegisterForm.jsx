@@ -16,18 +16,17 @@ class RegisterForm extends Component {
       phone: ``,
       images: []
     };
-    console.log("memberregister");
   }
 
   componentDidMount = async () => {
-    await this.getRequestId();
+    await this.getinviteId();
   };
 
-  getRequestId = async () => {
+  getinviteId = async () => {
     const query = new URLSearchParams(this.props.location.search);
     const id = query.get("id");
-    this.setState({ requestId: id });
-    await this.props.requestStore.getOne(id);
+    this.setState({ inviteId: id });
+    await this.props.inviteStore.getOne(id);
   };
 
   handleChange = e => {
@@ -40,23 +39,22 @@ class RegisterForm extends Component {
 
   handleSubmit = async e => {
     e.preventDefault();
-    const { userStore, committeeStore, requestStore, history } = this.props;
+    const { userStore, inviteStore, history } = this.props;
 
     await this.uploadAvatar();
 
-    const { password, avatarUrl } = this.state;
+    const { password, avatarUrl, newPhone } = this.state;
     const {
-      id,
       email,
       name,
       surname,
-      phone,
-      organisation,
-      job
-    } = this.props.requestStore.currentRequest;
-    const committeeId = id;
-
-    console.log(avatarUrl);
+      committeeId,
+      job,
+      organisation
+    } = this.props.inviteStore.currentInvite;
+    const currentInvite = this.props.inviteStore.currentInvite;
+    currentInvite.id = this.state.inviteId;
+    console.log(currentInvite);
 
     await userStore
       .register(
@@ -65,7 +63,7 @@ class RegisterForm extends Component {
         email,
         password,
         job,
-        phone,
+        newPhone,
         organisation,
         committeeId,
         avatarUrl
@@ -74,20 +72,10 @@ class RegisterForm extends Component {
         userStore.login(email, password);
       })
       .then(() => {
-        committeeStore.addCommittee({
-          id: committeeId,
-          name: organisation,
-          raceday: new Date("2020-09-29"),
-          city: "",
-          country: "",
-          description: ""
-        });
+        inviteStore.deleteInvite(currentInvite);
       })
       .then(() => {
         history.push(ROUTES.dashboard);
-      })
-      .then(() => {
-        requestStore.deleteRequest(this.props.requestStore.currentRequest);
       });
   };
 
@@ -119,15 +107,10 @@ class RegisterForm extends Component {
   };
 
   render() {
-    const { password, password2, newPhone } = this.state;
-    const {
-      email,
-      name,
-      surname,
-      phone
-    } = this.props.requestStore.currentRequest;
+    const { password, password2, phone, newPhone } = this.state;
+    const { email, name, surname } = this.props.inviteStore.currentInvite;
 
-    if (email && name && surname && phone && this.state.requestId) {
+    if (email && name && surname && this.state.inviteId) {
       return (
         <>
           <div className={styles.container}>
@@ -168,14 +151,6 @@ class RegisterForm extends Component {
                   placeholder="Confirm password"
                 />
               </label>
-
-              {/* <select name="job" onChange={this.handleChange}>
-              {this.props.jobStore.jobs.map(job => (
-                <option value={`${job.assignment}|${job.privileges}`}>
-                  {job.assignment}
-                </option>
-              ))}
-            </select> */}
               {phone ? null : (
                 <label htmlFor="newPhone">
                   <input
@@ -192,13 +167,7 @@ class RegisterForm extends Component {
               <input
                 type="submit"
                 value="Register"
-                disabled={
-                  (password && password !== password2) ||
-                  !email ||
-                  !name ||
-                  !surname ||
-                  !password
-                }
+                disabled={(password && password !== password2) || !newPhone}
                 className={styles.button}
               />
               <p className={styles.subLink}>
@@ -224,7 +193,5 @@ class RegisterForm extends Component {
 
 export default inject(
   `userStore`,
-  `jobStore`,
-  `requestStore`,
-  `committeeStore`
+  `inviteStore`
 )(withRouter(observer(RegisterForm)));

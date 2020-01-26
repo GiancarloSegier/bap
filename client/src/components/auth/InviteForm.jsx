@@ -68,6 +68,7 @@ class InviteForm extends Component {
         surname: surname,
         email: email,
         committeeId: committeeId,
+        organisation: organisation,
         job: {
           assignment: assignment,
           privileges: "member"

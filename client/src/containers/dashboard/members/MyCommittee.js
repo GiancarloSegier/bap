@@ -11,13 +11,17 @@ class MyCommittee extends Component {
       committeeId: props.userStore.authUser.committeeId
     };
     this.props.committeeStore.getOne(props.userStore.authUser.committeeId);
+    this.props.committeeStore.getCommitteeMembers(
+      props.userStore.authUser.committeeId
+    );
   }
 
   render() {
     const { name } = this.props.committeeStore.currentCommittee;
     const invites = this.props.inviteStore.invites;
+    const committeeMembers = this.props.committeeStore.committeeMembers;
 
-    // console.log(invites);
+    console.log(committeeMembers);
     return (
       <>
         <div>
@@ -25,17 +29,38 @@ class MyCommittee extends Component {
           <p className={styles.heading1}>Team name: {name}</p>
           <br />
           <hr />
-          <p>Invite new member</p>
-          <InviteForm />
-          <br />
-          <hr />
-          {invites.length > 0 ? (
+          {this.props.userStore.authUser.job.privileges === "admin" ? (
             <>
-              <p className={styles.heading1}>Invites:</p>
-              {invites.map(invite => {
+              <p>Invite new member</p>
+              <InviteForm />
+              <br />
+              <hr />
+              {invites.length > 0 ? (
+                <>
+                  <p className={styles.heading1}>Invites:</p>
+                  {invites.map(invite => {
+                    return (
+                      <p>
+                        {invite.name} - {invite.surname} -{" "}
+                        {invite.job.assignment}
+                      </p>
+                    );
+                  })}
+                </>
+              ) : null}
+              <br />
+              <hr />
+            </>
+          ) : null}
+
+          {committeeMembers.length > 0 ? (
+            <>
+              <p className={styles.heading1}>CommitteeMembers:</p>
+              {committeeMembers.map(member => {
+                console.log(member);
                 return (
                   <p>
-                    {invite.name} - {invite.surname} - {invite.job.assignment}
+                    {member.name} - {member.surname} - {member.job.assignment}
                   </p>
                 );
               })}

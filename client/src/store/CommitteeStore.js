@@ -7,14 +7,30 @@ configure({ enforceActions: `observed` });
 class CommitteeStore {
   committees = [];
   currentCommittee = {};
+  committeeMembers = [];
   constructor(rootStore) {
     this.rootStore = rootStore;
     this.api = new Api(`committees`);
-    // this.getAll();
+    this.userApi = new Api(`users`);
+    this.getAll();
   }
 
   getAll = () => {
     this.api.getAll().then(d => d.forEach(this._addCommittee));
+  };
+
+  getCommitteeMembers = committeeId => {
+    // console.log(committeeId);
+    // console.log(this.committees);
+    // this.committees.forEach(committee => {
+    //   console.log(committee);
+    //   if (committee.id === committeeId) {
+    //     this.committeeMembers.push(committee);
+    //   }
+    // });
+    this.userApi.getAll().then(d => {
+      d.forEach(this._addCommitteeMember);
+    });
   };
 
   getOne = id => {
@@ -37,6 +53,14 @@ class CommitteeStore {
   _addCommittee = values => {
     console.log(values);
     const committee = new Committee();
+    committee.updateFromServer(values);
+    runInAction(() => {
+      this.committees.push(committee);
+    });
+  };
+  _addCommitteeMember = values => {
+    console.log(values);
+    const committeeMember = new CommitteeMember();
     committee.updateFromServer(values);
     runInAction(() => {
       this.committees.push(committee);
@@ -70,6 +94,8 @@ decorate(CommitteeStore, {
   addCommittee: action,
   deleteCommittee: action,
   getOne: action,
+  getCommitteeMembers: action,
+  committeeMembers: observable,
   currentCommittee: observable
 });
 
