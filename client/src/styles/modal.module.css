@@ -1,11 +1,14 @@
 .modal {
   background-color: white;
   border-radius: 0.6rem;
-  box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.013),
-    0px 2px 6px rgba(52, 24, 74, 0.04), 0px 16px 24px rgba(52, 24, 74, 0.06);
+  box-shadow: var(--dropshadow);
+  position: relative;
 }
 .modalContainer {
   padding: 4rem;
+}
+.divideBorder {
+  border-top: 0.1rem solid var(--purple-grey);
 }
 .grid {
   display: grid;

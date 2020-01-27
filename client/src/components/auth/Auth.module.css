@@ -3,9 +3,7 @@
   font-weight: bold;
   margin-bottom: 3rem;
 }
-.formNote {
-  border-top: 0.1rem solid var(--purple-grey);
-}
+
 .loginbuttonbox {
   margin-top: 4rem;
   display: flex;

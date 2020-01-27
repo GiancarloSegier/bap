@@ -125,8 +125,12 @@ class LoginForm extends Component {
               </p>
             </form>
           </div>
-          <section className={styles.formNote}>
-            <div className={modalStyles.modalContainer}>
+          <section>
+            <div
+              className={
+                modalStyles.modalContainer + " " + modalStyles.divideBorder
+              }
+            >
               <h3 className={styles.heading3}>No login details yet?</h3>
               <p className={styles.question}>
                 Organisation fighting against breast cancer and interested in

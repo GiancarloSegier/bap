@@ -9,7 +9,12 @@ const Register = props => {
 
   return (
     <>
-      <div className={styles.form}>
+      <div className={styles.divide + " mediumcontainer"}>
+        <h1 className="hidden">Loginpage</h1>
+        <div>
+          <h2 className={styles.subtitle}>Almost there...</h2>
+          <p className={styles.title}>Complete your profile</p>
+        </div>
         {type === "admin" ? <AdminRegisterForm /> : <MemberRegisterForm />}
       </div>
     </>

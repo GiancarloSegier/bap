@@ -4,8 +4,8 @@ import { Link } from "react-router-dom";
 import { withRouter } from "react-router-dom";
 import { ROUTES } from "../../constants";
 import styles from "./Auth.module.css";
-
-import ImageUploader from "react-images-upload";
+import modalStyles from "../../styles/modal.module.css";
+import formStyles from "../../styles/form.module.css";
 
 class RegisterForm extends Component {
   constructor(props) {
@@ -16,25 +16,25 @@ class RegisterForm extends Component {
       phone: ``,
       images: []
     };
+    this.avatarInput = React.createRef();
+    this.passwordInput = React.createRef();
+    this.password2Input = React.createRef();
+    this.newPhoneInput = React.createRef();
+    this.imgPreview = React.createRef();
   }
 
   componentDidMount = async () => {
-    await this.getinviteId();
+    await this.getInviteId();
+    if (this.props.inviteStore.currentInvite.phone) {
+      this.setState({ newPhone: this.props.inviteStore.currentInvite.phone });
+    }
   };
 
-  getinviteId = async () => {
+  getInviteId = async () => {
     const query = new URLSearchParams(this.props.location.search);
     const id = query.get("id");
     this.setState({ inviteId: id });
     await this.props.inviteStore.getOne(id);
-  };
-
-  handleChange = e => {
-    const input = e.currentTarget;
-    const state = { ...this.state };
-
-    state[input.name] = input.value;
-    this.setState(state);
   };
 
   handleSubmit = async e => {
@@ -54,7 +54,6 @@ class RegisterForm extends Component {
     } = this.props.inviteStore.currentInvite;
     const currentInvite = this.props.inviteStore.currentInvite;
     currentInvite.id = this.state.inviteId;
-    console.log(currentInvite);
 
     await userStore
       .register(
@@ -93,91 +92,164 @@ class RegisterForm extends Component {
   };
 
   changeFile = e => {
-    console.log(e);
-    const files = Array.from(e);
-    this.setState({ uploading: true });
+    const preview = this.imgPreview;
+    const img = this.avatarInput.current.files[0];
+    const reader = new FileReader();
 
+    reader.addEventListener(
+      "load",
+      function() {
+        preview.current.src = reader.result;
+      },
+      false
+    );
+
+    if (img) {
+      reader.readAsDataURL(img);
+    }
     const formData = new FormData();
-
-    files.forEach((file, i) => {
-      formData.append(i, file);
-    });
-
+    formData.append("avatar", img);
     this.setState({ formData: formData });
   };
 
+  handleChange = e => {
+    const input = e.currentTarget;
+    const state = { ...this.state };
+
+    state[input.name] = input.value;
+    this.setState(state);
+  };
+
   render() {
-    const { password, password2, phone, newPhone } = this.state;
-    const { email, name, surname } = this.props.inviteStore.currentInvite;
+    const { password, password2, newPhone, formData } = this.state;
+    const {
+      email,
+      name,
+      surname,
+      job,
+      organisation,
+      phone
+    } = this.props.inviteStore.currentInvite;
 
     if (email && name && surname && this.state.inviteId) {
       return (
         <>
-          <div className={styles.container}>
-            <p>Member register</p>
-            <h1 className={styles.heading1}>Hi {name}!</h1>
-            <p>Please pick your avatar and password to proceed.</p>
-            <hr />
-            <form onSubmit={this.handleSubmit} className={styles.form}>
-              <ImageUploader
-                withIcon={true}
-                buttonText="Choose images"
-                onChange={this.changeFile}
-                imgExtension={[".jpg", ".gif", ".png", ".gif"]}
-                maxFileSize={5242880}
-                withPreview={true}
-                singleImage={true}
-              />
+          <section className={modalStyles.modal}>
+            <form onSubmit={this.handleSubmit}>
+              <div className={modalStyles.modalContainer}>
+                <h2 className="hidden">Register</h2>
+                <p className={formStyles.form__title}>
+                  {name} {surname}
+                </p>
+                <p>
+                  {job.assignment} - {organisation}
+                </p>
+                <p>Something not right here?</p>
+                <p>Contact jurgen.vanpraet@thinkpinkeurope.be</p>
 
-              <label htmlFor="password">
-                <input
-                  type="password"
-                  name="password"
-                  id="password"
-                  value={password}
-                  onChange={this.handleChange}
-                  className={styles.input}
-                  placeholder="Password"
-                />
-              </label>
-              <label htmlFor="password2">
-                <input
-                  type="password"
-                  name="password2"
-                  id="password2"
-                  ref={password2}
-                  onChange={this.handleChange}
-                  className={styles.input}
-                  placeholder="Confirm password"
-                />
-              </label>
-              {phone ? null : (
-                <label htmlFor="newPhone">
+                <div className={formStyles.previewBox}>
+                  <label htmlFor="avatar" className={formStyles.avatarButton}>
+                    {!formData ? (
+                      <img src="../assets/icons/addAvatar.png" />
+                    ) : null}
+                  </label>
                   <input
-                    type="text"
-                    name="newPhone"
-                    id="newPhone"
-                    value={newPhone}
-                    onChange={this.handleChange}
-                    className={styles.input}
-                    placeholder="phone"
+                    type="file"
+                    name="file"
+                    id="avatar"
+                    accept="image/jpg, image/gif, image/png"
+                    ref={this.avatarInput}
+                    onChange={this.changeFile}
+                    className={formStyles.avatarInput}
                   />
-                </label>
-              )}
-              <input
-                type="submit"
-                value="Register"
-                disabled={(password && password !== password2) || !newPhone}
-                className={styles.button}
-              />
-              <p className={styles.subLink}>
-                Have an account?{` `}
-                <Link to={ROUTES.login} className={styles.link}>
-                  Login!
-                </Link>
-              </p>
+
+                  <img
+                    src="#"
+                    id="previewImg"
+                    ref={this.imgPreview}
+                    className={
+                      formData ? formStyles.previewImg : formStyles.noImg
+                    }
+                  />
+                </div>
+              </div>
+              <div
+                className={
+                  modalStyles.modalContainer + " " + modalStyles.divideBorder
+                }
+              >
+                <fieldset className={formStyles.form__group}>
+                  <label htmlFor="email" className={formStyles.form__label}>
+                    Choose your password
+                  </label>
+                  <input
+                    type="password"
+                    name="password"
+                    id="password"
+                    placeholder="New password"
+                    ref={this.passwordInput}
+                    className={formStyles.form__input}
+                    onChange={this.handleChange}
+                  />
+                </fieldset>
+                <fieldset className={formStyles.form__group}>
+                  <label htmlFor="email" className={formStyles.form__label}>
+                    Repeat your password
+                  </label>
+                  <input
+                    type="password"
+                    name="password2"
+                    id="password2"
+                    placeholder="Repeat password"
+                    ref={this.password2Input}
+                    className={formStyles.form__input}
+                    onChange={this.handleChange}
+                  />
+                </fieldset>
+
+                {phone ? null : (
+                  <fieldset className={formStyles.form__group}>
+                    <label
+                      htmlFor="newPhone"
+                      className={formStyles.form__label}
+                    >
+                      Phonenumber
+                    </label>
+                    <input
+                      type="text"
+                      name="newPhone"
+                      id="newPhone"
+                      placeholder="+42"
+                      ref={this.newPhoneInput}
+                      className={formStyles.form__input}
+                      onChange={this.handleChange}
+                    />
+                  </fieldset>
+                )}
+                <div className={styles.loginbuttonbox}>
+                  <p
+                    className={
+                      this.state.error
+                        ? formStyles.error
+                        : formStyles.errorHidden
+                    }
+                  >
+                    Please fill in all fields
+                  </p>
+                  <input
+                    type="submit"
+                    value="Login"
+                    className={formStyles.form__button}
+                    disabled={
+                      (password && password !== password2) ||
+                      !newPhone ||
+                      !formData
+                    }
+                  />
+                </div>
+              </div>
             </form>
-          </div>
+          </section>
         </>
       );
     } else {
