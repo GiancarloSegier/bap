@@ -4,6 +4,8 @@ import { Link } from "react-router-dom";
 import { withRouter } from "react-router-dom";
 import { ROUTES } from "../../constants";
 import styles from "./Auth.module.css";
+import modalStyles from "../../styles/modal.module.css";
+import formStyles from "../../styles/form.module.css";
 
 class LoginForm extends Component {
   constructor(props) {
@@ -16,7 +18,6 @@ class LoginForm extends Component {
       disabled: true,
       checkUser: false
     };
-    console.log(props);
 
     this.emailInput = React.createRef();
     this.passwordInput = React.createRef();
@@ -25,13 +26,15 @@ class LoginForm extends Component {
   handleSubmit = e => {
     e.preventDefault();
     if (this.state.email !== "" && this.state.password !== "") {
-      this.props.userStore.login(this.state.email, this.state.password).then(() => {
-        if (this.props.userStore.authUser) {
-          this.props.history.push(ROUTES.dashboard);
-        } else {
-          this.setState({ error: true, checkUser: true });
-        }
-      });
+      this.props.userStore
+        .login(this.state.email, this.state.password)
+        .then(() => {
+          if (this.props.userStore.authUser) {
+            this.props.history.push(ROUTES.dashboard);
+          } else {
+            this.setState({ error: true, checkUser: true });
+          }
+        });
     } else {
       this.setState({ error: true });
     }
@@ -50,69 +53,95 @@ class LoginForm extends Component {
     if (inputType === "password") {
       this.setState({ password: value });
     }
-    this.checkFilledForm();
   };
-
-  checkFilledForm() {
-    console.log(this.state);
-    if (
-      this.state.email !== "" &&
-      this.state.password !== "" &&
-      this.state.password.length > 1
-    ) {
-      this.setState({ disabled: false, error: false });
-    } else {
-      this.setState({ disabled: true });
-    }
-  }
 
   render() {
     return (
       <>
-        <div className={styles.container}>
-          <form onSubmit={this.handleSubmit} className={styles.form}>
-            <h2>Login</h2>
-            <input
-              name="email"
-              id="email="
-              placeholder="email"
-              ref={this.emailInput}
-              className={styles.input}
-              onChange={e => this.checkInput(e, "email")}
-            />
-            <p
-              className={
-                this.state.emailError ? styles.error : styles.errorHidden
-              }
-            >
-              You have to fill in a valid email
-            </p>
+        <section className={modalStyles.modal}>
+          <div className={modalStyles.modalContainer}>
+            <form onSubmit={this.handleSubmit} className={styles.form}>
+              <h2 className={formStyles.form__title}>Login</h2>
+              <fieldset className={formStyles.form__group}>
+                <label htmlFor="email" className={formStyles.form__label}>
+                  Email
+                </label>
+                <input
+                  name="email"
+                  id="email="
+                  placeholder="Email"
+                  ref={this.emailInput}
+                  className={
+                    formStyles.form__input +
+                    " " +
+                    (this.state.emailError ? formStyles.errorInput : null)
+                  }
+                  onChange={e => this.checkInput(e, "email")}
+                />
+                <p
+                  className={
+                    this.state.emailError
+                      ? formStyles.error
+                      : formStyles.errorHidden
+                  }
+                >
+                  No valid email
+                </p>
+              </fieldset>
+              <fieldset className={formStyles.form__group}>
+                <label htmlFor="email" className={formStyles.form__label}>
+                  Password
+                </label>
+                <input
+                  type="password"
+                  name="password"
+                  id="password"
+                  placeholder="Password"
+                  ref={this.passwordInput}
+                  className={formStyles.form__input}
+                  onChange={e => this.checkInput(e, "password")}
+                />
+              </fieldset>
+              <div className={styles.loginbuttonbox}>
+                <a href="#" className={styles.forgot}>
+                  forgot login details?
+                </a>
 
-            <input
-              type="password"
-              name="password"
-              id="password"
-              placeholder="password"
-              ref={this.passwordInput}
-              className={styles.input}
-              onChange={e => this.checkInput(e, "password")}
-            />
-
-            <input type="submit" value="login" className={styles.button} />
-            <p className={this.state.error ? styles.error : styles.errorHidden}>
-              {this.state.checkUser
-                ? "Incorrect email or password"
-                : "Please fill in all fields correctly"}
-            </p>
-
-            <p className={styles.subLink}>
-              No account?{` `}
-              <Link to={ROUTES.request} className={styles.link}>
-                Send a request!
-              </Link>
-            </p>
-          </form>
-        </div>
+                <input
+                  type="submit"
+                  value="Login"
+                  className={formStyles.form__button}
+                  disabled={
+                    !this.state.email || !this.passwordInput.current.value
+                  }
+                />
+              </div>
+              <p
+                className={
+                  this.state.error ? formStyles.error : formStyles.errorHidden
+                }
+              >
+                Incorrect email or password
+              </p>
+            </form>
+          </div>
+          <section className={styles.formNote}>
+            <div className={modalStyles.modalContainer}>
+              <h3 className={styles.heading3}>No login details yet?</h3>
+              <p className={styles.question}>
+                Organisation fighting against breast cancer and interested in
+                organising a race?{" "}
+                <Link to={ROUTES.request} className={styles.link}>
+                  Request acces first.
+                </Link>
+              </p>
+              <p className={styles.question}>
+                Committee member but no login yet? Ask your event manager for
+                login details
+              </p>
+            </div>
+          </section>
+        </section>
       </>
     );
   }

@@ -1,0 +1,20 @@
+@font-face {
+  font-family: "beatrice";
+  src: url("./Beatrice-Regular.woff") format("woff");
+  font-weight: normal;
+}
+@font-face {
+  font-family: "beatrice";
+  src: url("./Beatrice-Semibold.woff") format("woff");
+  font-weight: 500;
+}
+@font-face {
+  font-family: "beatrice";
+  src: url("./Beatrice-Bold.woff") format("woff");
+  font-weight: bold;
+}
+@font-face {
+  font-family: "beatrice";
+  src: url("./Beatrice-Extrabold.woff") format("woff");
+  font-weight: 900;
+}

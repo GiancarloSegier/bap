@@ -1,0 +1,74 @@
+.form__group {
+  display: flex;
+  margin-bottom: 2rem;
+}
+.form__label {
+  color: var(--purple-high);
+  font-weight: bold;
+  font-size: 1.4rem;
+  margin-bottom: 1rem;
+}
+
+.form__title {
+  font-size: 2.8rem;
+  margin-bottom: 4rem;
+  font-weight: bold;
+  font-family: "beatrice", sans-serif;
+}
+
+.form__input {
+  background: var(--grey-low);
+  padding: 1rem;
+  border-radius: 0.4rem;
+  border: 0.1rem solid var(--purple-grey);
+  width: 100%;
+  transition: 0.15s ease-in-out;
+  position: relative;
+  z-index: 1;
+  font-size: 1.4rem;
+}
+.form__input::placeholder {
+  color: #bbb;
+  font-size: 1.4rem;
+}
+.form__input:focus {
+  border-color: var(--purple-mid);
+}
+.form__textarea {
+  resize: none;
+}
+.errorInput {
+  border-color: var(--pink-mid);
+}
+.error,
+.errorHidden {
+  color: var(--pink-mid);
+  margin: 0.5rem 0 1.5rem;
+  position: relative;
+  font-size: 1.2rem;
+  margin-bottom: -2rem;
+  z-index: 0;
+  transition: all 0.25s ease-in-out;
+}
+.error {
+  visibility: visible;
+  opacity: 1;
+  transform: translateY(0);
+  margin-bottom: -1rem;
+}
+
+.errorHidden {
+  visibility: hidden;
+  transform: translateY(-2rem);
+}
+
+.form__button {
+  background-color: var(--pink-mid);
+  border: none;
+  padding: 1rem 4rem;
+  border-radius: 3rem;
+  color: white;
+  font-weight: bold;
+  font-size: 1.6rem;
+  font-family: "chivo", sans-serif;
+}

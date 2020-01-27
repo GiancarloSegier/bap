@@ -1,7 +1,7 @@
 .navbar {
   display: flex;
   flex-direction: row;
-  padding: 3rem 0;
+  padding: 4rem 0;
   justify-content: space-between;
 }
 .rightMenu {
@@ -9,25 +9,33 @@
   align-items: center;
 }
 .navLink {
-  padding: 1.5rem;
+  padding: 1rem;
   align-self: center;
   justify-self: center;
-  color: grey;
-  margin: 0 1rem;
+  color: var(--grey-high);
+  margin-left: 0.5rem;
 }
-.logo {
-  justify-self: flex-start;
-}
-.darkLink {
+.navButton {
+  padding: 0.75rem 2rem;
+  border-radius: 3rem;
   color: white;
-  background-color: rgb(62, 58, 58);
-  border-radius: 5rem;
-  padding: 1.5rem;
+  margin-left: 1.5rem;
+}
+.pinkLink {
+  composes: navButton;
+  background-color: var(--pink-mid);
+}
+.purpleLink {
+  composes: navButton;
+  background-color: var(--purple-mid);
+}
+.logo .navLink {
+  justify-self: flex-start;
+  margin-left: 0;
 }
 .active {
   font-weight: bold;
   color: black;
-  background-color: rgb(228, 228, 228);
 }
 .activeDark {
   font-weight: bold;

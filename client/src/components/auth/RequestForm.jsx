@@ -4,6 +4,8 @@ import { inject } from "mobx-react";
 import { withRouter } from "react-router-dom";
 
 import styles from "./Auth.module.css";
+import modalStyles from "../../styles/modal.module.css";
+import formStyles from "../../styles/form.module.css";
 
 class RequestForm extends Component {
   constructor(props) {
@@ -39,7 +41,7 @@ class RequestForm extends Component {
       message !== ""
     ) {
       fetch(
-        `http://127.0.0.1:4000/send-mail?type=request&sender=${email}&message=${message}&name=${name}&surname=${surname}&phone=${phone}&organisation=${organisation}&id=${requestId}`
+        `http://localhost:4000/send-mail?type=request&sender=${email}&message=${message}&name=${name}&surname=${surname}&phone=${phone}&organisation=${organisation}&id=${requestId}`
       ).catch(err => console.log(err));
 
       this.props.requestStore.addRequest({
@@ -88,16 +90,7 @@ class RequestForm extends Component {
         this.setState({ email: "", emailError: true });
       }
     }
-
-    this.checkFilledForm();
   };
-
-  checkFilledForm() {
-    console.log(this.state);
-    if (this.state.email !== "") {
-      this.setState({ error: false });
-    }
-  }
 
   handleChange = e => {
     const input = e.currentTarget;
@@ -112,89 +105,141 @@ class RequestForm extends Component {
 
     return (
       <>
-        <div className={styles.container}>
-          <form onSubmit={this.handleSubmit} className={styles.form}>
-            <h2>Request acces</h2>
-            <input
-              type="text"
-              name="name"
-              id="name"
-              placeholder="name"
-              ref={this.nameInput}
-              className={styles.input}
-              onChange={this.handleChange}
-            />
-            <input
-              type="text"
-              name="surname"
-              id="surname="
-              placeholder="surname"
-              ref={this.surnameInput}
-              className={styles.input}
-              onChange={this.handleChange}
-            />
-            <input
-              type="text"
-              name="organisation"
-              id="organisation"
-              placeholder="organisation"
-              ref={this.organisationInput}
-              className={styles.input}
-              onChange={this.handleChange}
-            />
-            <input
-              type="tel"
-              name="phone"
-              id="phone="
-              placeholder="phone"
-              ref={this.phoneInput}
-              className={styles.input}
-              onChange={this.handleChange}
-            />
-            <input
-              type="email"
-              name="email"
-              id="email="
-              placeholder="email"
-              ref={this.emailInput}
-              className={styles.input}
-              onChange={e => this.checkEmail(e, "email")}
-            />
-            <p
-              className={
-                this.state.emailError ? styles.error : styles.errorHidden
-              }
-            >
-              You have to fill in a valid email
-            </p>
+        <section className={modalStyles.modal}>
+          <div className={modalStyles.modalContainer}>
+            <form onSubmit={this.handleSubmit} className={styles.form}>
+              <h2 className="hidden">Request</h2>
+              <div className={modalStyles.grid}>
+                <fieldset className={formStyles.form__group}>
+                  <label htmlFor="name" className={formStyles.form__label}>
+                    First name
+                  </label>
+                  <input
+                    type="text"
+                    name="name"
+                    id="name"
+                    placeholder="First name"
+                    ref={this.nameInput}
+                    className={formStyles.form__input}
+                    onChange={this.handleChange}
+                  />
+                </fieldset>
+                <fieldset className={formStyles.form__group}>
+                  <label htmlFor="surname" className={formStyles.form__label}>
+                    Last name
+                  </label>
+                  <input
+                    type="text"
+                    name="surname"
+                    id="surname"
+                    placeholder="Last name"
+                    ref={this.surnameInput}
+                    className={formStyles.form__input}
+                    onChange={this.handleChange}
+                  />
+                </fieldset>
+                <fieldset className={formStyles.form__group}>
+                  <label
+                    htmlFor="organisation"
+                    className={formStyles.form__label}
+                  >
+                    Organisation
+                  </label>
+                  <input
+                    type="text"
+                    name="organisation"
+                    id="organisation"
+                    placeholder="Organisation"
+                    ref={this.organisationInput}
+                    className={formStyles.form__input}
+                    onChange={this.handleChange}
+                  />
+                </fieldset>
 
-            <textarea
-              name="message"
-              id="message"
-              placeholder="message"
-              ref={this.messageInput}
-              className={styles.input}
-              onChange={this.handleChange}
-            />
+                <fieldset className={formStyles.form__group}>
+                  <label htmlFor="phone" className={formStyles.form__label}>
+                    Phone number
+                  </label>
+                  <input
+                    type="tel"
+                    name="phone"
+                    id="phone"
+                    placeholder="Phone"
+                    ref={this.phoneInput}
+                    className={formStyles.form__input}
+                    onChange={this.handleChange}
+                  />
+                </fieldset>
+              </div>
 
-            <input
-              type="submit"
-              value="send request"
-              className={styles.button}
-              disabled={
-                !name ||
-                !surname ||
-                !email ||
-                !phone ||
-                !message ||
-                !organisation
-              }
-            />
-            <p className={this.state.error ? styles.error : styles.errorHidden}>
-              Please fill in all fields correctly
-            </p>
-          </form>
-        </div>
+              <fieldset className={formStyles.form__group}>
+                <label htmlFor="email" className={formStyles.form__label}>
+                  Email
+                </label>
+                <input
+                  name="email"
+                  id="email="
+                  placeholder="Email"
+                  ref={this.emailInput}
+                  className={
+                    formStyles.form__input +
+                    " " +
+                    (this.state.emailError ? formStyles.errorInput : null)
+                  }
+                  onChange={e => this.checkEmail(e, "email")}
+                />
+                <p
+                  className={
+                    this.state.emailError
+                      ? formStyles.error
+                      : formStyles.errorHidden
+                  }
+                >
+                  No valid email
+                </p>
+              </fieldset>
+
+              <fieldset className={formStyles.form__group}>
+                <label htmlFor="message" className={formStyles.form__label}>
+                  Message
+                </label>
+                <textarea
+                  name="message"
+                  id="message"
+                  placeholder="Message"
+                  rows="10"
+                  ref={this.messageInput}
+                  className={
+                    formStyles.form__input + " " + formStyles.form__textarea
+                  }
+                  onChange={this.handleChange}
+                />
+              </fieldset>
+              <div className={styles.loginbuttonbox}>
+                <p
+                  className={
+                    this.state.error ? formStyles.error : formStyles.errorHidden
+                  }
+                >
+                  Please fill in all fields
+                </p>
+                <input
+                  type="submit"
+                  value="Send"
+                  className={formStyles.form__button}
+                  disabled={
+                    !name ||
+                    !surname ||
+                    !email ||
+                    !phone ||
+                    !message ||
+                    !organisation
+                  }
+                />
+              </div>
+            </form>
+          </div>
+        </section>
       </>
     );
   }

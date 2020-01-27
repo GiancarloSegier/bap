@@ -3,12 +3,14 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@babel/core": "^7.8.3",
     "@sendgrid/mail": "^6.5.0",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
     "antd": "^3.26.7",
     "axios": "^0.19.2",
+    "babel-loader": "^8.0.6",
     "js-cookie": "^2.2.1",
     "mobx": "^5.15.2",
     "mobx-react": "^6.1.5",
@@ -25,7 +27,6 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {

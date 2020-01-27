@@ -1,0 +1,44 @@
+@font-face {
+  font-family: "chivo";
+  src: url("./Chivo-Regular.ttf") format("woff");
+  font-weight: normal;
+}
+@font-face {
+  font-family: "chivo";
+  src: url("./Chivo-Italic.ttf") format("woff");
+  font-weight: normal;
+  font-style: italic;
+}
+@font-face {
+  font-family: "chivo";
+  src: url("./Chivo-Light.ttf") format("woff");
+  font-weight: 300;
+}
+@font-face {
+  font-family: "chivo";
+  src: url("./Chivo-LightItalic.ttf") format("woff");
+  font-weight: 300;
+  font-style: italic;
+}
+@font-face {
+  font-family: "chivo";
+  src: url("./Chivo-Bold.ttf") format("woff");
+  font-weight: bold;
+}
+@font-face {
+  font-family: "chivo";
+  src: url("./Chivo-BoldItalic.ttf") format("woff");
+  font-weight: bold;
+  font-style: italic;
+}
+@font-face {
+  font-family: "chivo";
+  src: url("./Chivo-Black.ttf") format("woff");
+  font-weight: 900;
+}
+@font-face {
+  font-family: "chivo";
+  src: url("./Chivo-BlackItalic.ttf") format("woff");
+  font-weight: 900;
+  font-style: italic;
+}

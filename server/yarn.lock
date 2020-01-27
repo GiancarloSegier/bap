@@ -104,29 +104,29 @@
     lodash "^4.17.13"
     to-fast-properties "^2.0.0"
 
-"@sendgrid/client@^6.5.0":
-  version "6.5.0"
-  resolved "https://registry.yarnpkg.com/@sendgrid/client/-/client-6.5.0.tgz#d3c254738623fe43be8627e262ba698c5f3b9be7"
-  integrity sha512-gbA5GkZI5FWBJXgrtVPLHE2YV16WkjO0P2/jHt+m0CBQnfNV9FjGSXY/0r6ob+Ka9sw6Xj/N7gKtGLtrINCiBg==
+"@sendgrid/client@^6.5.1":
+  version "6.5.1"
+  resolved "https://registry.yarnpkg.com/@sendgrid/client/-/client-6.5.1.tgz#2f777519a5355f70538bf29917bfc4306ef043a2"
+  integrity sha512-OooZXSy8wWcUI5ppz7ugddfNdZC66baTHYF1Yz57O64cTjpfhw60+mNmPB0ISKxBchqnHcMiVNZ1SL70eAItlg==
   dependencies:
-    "@sendgrid/helpers" "^6.5.0"
+    "@sendgrid/helpers" "^6.5.1"
     request "^2.88.0"
 
-"@sendgrid/helpers@^6.5.0":
-  version "6.5.0"
-  resolved "https://registry.yarnpkg.com/@sendgrid/helpers/-/helpers-6.5.0.tgz#2143558011f31750fef075967a43052133d2d4ea"
-  integrity sha512-W5rgGDA6pz+XA5TTThNy/l0iV35zTFup+Y/u5hCGoFNZZy9oZLsSg0Ooumw/Kdc/wEVHuUyQesEnRyNrX+qyoQ==
+"@sendgrid/helpers@^6.5.1":
+  version "6.5.1"
+  resolved "https://registry.yarnpkg.com/@sendgrid/helpers/-/helpers-6.5.1.tgz#adb763570f383061da4627ff86217d3b819a4261"
+  integrity sha512-Bd05zxnKRAKtYCXMjDSlXKmlX/RceWMIHYVwU+auMFUk+C8Mx755hGhBl8IHLz0kYL03dF8cSQA0iXlnoMGIpQ==
   dependencies:
     chalk "^2.0.1"
     deepmerge "^2.1.1"
 
 "@sendgrid/mail@^6.5.0":
-  version "6.5.0"
-  resolved "https://registry.yarnpkg.com/@sendgrid/mail/-/mail-6.5.0.tgz#6630b9ed775725dec3b598d9719b4ddd6428c56d"
-  integrity sha512-KH8fh08gAWrEdY0XwOfRpjgf0vCj1vpzEfA2p0QRgMKbPyni6uZQm4oxuJasPdZVNmy2W16F33uG1mDRWLCJKw==
+  version "6.5.1"
+  resolved "https://registry.yarnpkg.com/@sendgrid/mail/-/mail-6.5.1.tgz#42e01829769407adc3b3290094bc0ce8c74683de"
+  integrity sha512-OVHOrMykAy6Zt1xeOT//RhH6ThdPr6nhvkdzwXrKzSu3Ctr7OihIeWrWOGIh7CjGBOTiBWoMgFgVC6Twgr/jHw==
   dependencies:
-    "@sendgrid/client" "^6.5.0"
-    "@sendgrid/helpers" "^6.5.0"
+    "@sendgrid/client" "^6.5.1"
+    "@sendgrid/helpers" "^6.5.1"
 
 abbrev@1:
   version "1.1.1"
@@ -1246,9 +1246,9 @@ error-stack-parser@^1.3.6:
     stackframe "^0.3.1"
 
 es-abstract@^1.17.0, es-abstract@^1.17.0-next.1:
-  version "1.17.3"
-  resolved "https://registry.yarnpkg.com/es-abstract/-/es-abstract-1.17.3.tgz#d921ff5889a3664921094bb13aaf0dfd11818578"
-  integrity sha512-AwiVPKf3sKGMoWtFw0J7Y4MTZ4Iek67k4COWOwHqS8B9TOZ71DCfcoBmdamy8Y6mj4MDz0+VNUpC2HKHFHA3pg==
+  version "1.17.4"
+  resolved "https://registry.yarnpkg.com/es-abstract/-/es-abstract-1.17.4.tgz#e3aedf19706b20e7c2594c35fc0d57605a79e184"
+  integrity sha512-Ae3um/gb8F0mui/jPL+QiqmglkUsaQf7FwBEHYIFkztkneosu9imhqHpBzQ3h1vit8t5iQ74t6PEVvphBZiuiQ==
   dependencies:
     es-to-primitive "^1.2.1"
     function-bind "^1.1.1"
@@ -2964,6 +2964,22 @@ node-fetch@^1.0.1:
     encoding "^0.1.11"
     is-stream "^1.0.1"
 
+node-pre-gyp@*:
+  version "0.14.0"
+  resolved "https://registry.yarnpkg.com/node-pre-gyp/-/node-pre-gyp-0.14.0.tgz#9a0596533b877289bcad4e143982ca3d904ddc83"
+  integrity sha512-+CvDC7ZttU/sSt9rFjix/P05iS43qHCOOGzcr3Ry99bXG7VX953+vFyEuph/tfqoYu8dttBkE86JSKBO2OzcxA==
+  dependencies:
+    detect-libc "^1.0.2"
+    mkdirp "^0.5.1"
+    needle "^2.2.1"
+    nopt "^4.0.1"
+    npm-packlist "^1.1.6"
+    npmlog "^4.0.2"
+    rc "^1.2.7"
+    rimraf "^2.6.1"
+    semver "^5.3.0"
+    tar "^4.4.2"
+
 node-pre-gyp@0.13.0:
   version "0.13.0"
   resolved "https://registry.yarnpkg.com/node-pre-gyp/-/node-pre-gyp-0.13.0.tgz#df9ab7b68dd6498137717838e4f92a33fc9daa42"
@@ -3043,15 +3059,16 @@ npm-bundled@^1.0.1:
 npm-normalize-package-bin@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/npm-normalize-package-bin/-/npm-normalize-package-bin-1.0.1.tgz#6e79a41f23fd235c0623218228da7d9c23b8f6e2"
-  integrity sha512-EPfafl6JL5/rU+ot6P3gRSCpPDW5VmIzX959Ob1+ySFUuuYHWHekXpasswordUZcKP5C+DS4GEtdJluwBjnsNDl+fSA==
+  integrity sha512-EPfafl6JL5/rU+ot6P3gRSCpPDW5VmIzX959Ob1+ySFUuuYHWHekXpwdUZcKP5C+DS4GEtdJluwBjnsNDl+fSA==
 
 npm-packlist@^1.1.6:
-  version "1.4.7"
-  resolved "https://registry.yarnpkg.com/npm-packlist/-/npm-packlist-1.4.7.tgz#9e954365a06b80b18111ea900945af4f88ed4848"
-  integrity sha512-vAj7dIkp5NhieaGZxBJB8fF4R0078rqsmhJcAfXZ6O7JJhjhPK96n5Ry1oZcfLXgfun0GWTZPOxaEyqv8GBykQ==
+  version "1.4.8"
+  resolved "https://registry.yarnpkg.com/npm-packlist/-/npm-packlist-1.4.8.tgz#56ee6cc135b9f98ad3d51c1c95da22bbb9b2ef3e"
+  integrity sha512-5+AZgwru5IevF5ZdnFglB5wNlHG1AOOuw28WhUq8/8emhBmLv6jX5by4WJCh7lW0uSYZYS6DXqIsyZVIXRZU9A==
   dependencies:
     ignore-walk "^3.0.1"
     npm-bundled "^1.0.1"
+    npm-normalize-package-bin "^1.0.1"
 
 npm-run-path@^2.0.0:
   version "2.0.2"
@@ -3752,9 +3769,9 @@ resolve-url@^0.2.1:
   integrity sha1-LGN/53yJOv0qZj/iGqkIAGjiBSo=
 
 resolve@^1.10.0, resolve@^1.12.0, resolve@^1.13.1, resolve@^1.14.2:
-  version "1.14.2"
-  resolved "https://registry.yarnpkg.com/resolve/-/resolve-1.14.2.tgz#dbf31d0fa98b1f29aa5169783b9c290cb865fea2"
-  integrity sha512-EjlOBLBO1kxsUxsKjLt7TAECyKW6fOh1VRkykQkKGzcBbjjPIxBqGh0jf7GJ3k/f5mxMqW3htMD3WdTUVtW8HQ==
+  version "1.15.0"
+  resolved "https://registry.yarnpkg.com/resolve/-/resolve-1.15.0.tgz#1b7ca96073ebb52e741ffd799f6b39ea462c67f5"
+  integrity sha512-+hTmAldEGE80U2wJJDC1lebb5jWqvTYAfm3YZ1ckk1gBr0MnCqUKlwK1e+anaFljIl+F5tR5IoZcm4ZDA1zMQw==
   dependencies:
     path-parse "^1.0.6"
 
@@ -4210,7 +4227,7 @@ table@^5.2.3:
     slice-ansi "^2.1.0"
     string-width "^3.0.0"
 
-tar@^4, tar@^4.0.2:
+tar@^4, tar@^4.0.2, tar@^4.4.2:
   version "4.4.13"
   resolved "https://registry.yarnpkg.com/tar/-/tar-4.4.13.tgz#43b364bc52888d555298637b10d60790254ab525"
   integrity sha512-w2VwSrBoHa5BsSyH+KxEqeQBAllHhccyMFVHtGtdMpF4W7IRWfZjFiQceJPChOeTsSDVUpER2T8FA93pr0L+QA==

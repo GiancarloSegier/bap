@@ -1,28 +1,52 @@
-.container {
-  margin: 5rem 0;
+.heading3 {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 3rem;
+}
+.formNote {
+  border-top: 0.1rem solid var(--purple-grey);
+}
+.loginbuttonbox {
+  margin-top: 4rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.forgot {
+  border-bottom: 0.1rem solid var(--grey-high);
+  color: var(--grey-high);
+  font-size: 1.4rem;
 }
 
-.error,
-.errorHidden {
-  color: red;
-  font-weight: bold;
-  font-style: italic;
-  margin: 0.5rem 0 1.5rem;
-  position: relative;
-  z-index: -1;
-  font-size: 1.2rem;
-  transition: all 0.25s ease-in-out;
-}
-.error {
-  margin-top: 1rem;
-  opacity: 1;
-}
-.errorHidden {
-  margin-top: -2rem;
-  opacity: 0;
-}
 .heading1 {
   font-size: 2rem;
   font-weight: bold;
   color: purple;
+}
+
+.link {
+  color: var(--pink-mid);
+  border-bottom: 0.1rem solid var(--pink-mid);
+}
+
+.question {
+  color: var(--grey-high);
+  margin-bottom: 2rem;
+  position: relative;
+  padding-left: 3rem;
+}
+
+.question:before {
+  display: block;
+  content: "";
+  border: 0.2rem solid var(--purple-low);
+  width: 0.8rem;
+  height: 0.8rem;
+  position: absolute;
+  left: 0;
+  top: 0.8rem;
+  transform: rotate(45deg);
+  border-left: none;
+  border-bottom: none;
+  border-radius: 0.15rem;
 }

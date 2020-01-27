@@ -2,3 +2,29 @@
   width: 20rem;
   margin: 0 auto;
 }
+
+.divide {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 8vw;
+}
+
+.fullContainer {
+  height: 100%;
+}
+.subtitle {
+  color: var(--pink-mid);
+  font-size: 2.4rem;
+  margin-bottom: 2rem;
+}
+.title {
+  font-size: 5.4rem;
+  line-height: 1.4;
+  font-family: "beatrice", sans-serif;
+  font-weight: 900;
+  margin-bottom: 4rem;
+}
+.intro {
+  font-size: 2rem;
+  color: var(--grey-high);
+}

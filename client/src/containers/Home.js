@@ -1,12 +1,12 @@
 import React from "react";
-// import styles from "./Home.module.css";
+import styles from "./Home.module.css";
 // import Form from "../components/Form";
 
 const Home = () => {
   return (
     <>
       <div>
-        <p>Hallo allemaalkes</p>
+        <p className={styles.heading1}>Hallo allemaalkes</p>
       </div>
     </>
   );

@@ -1,13 +1,19 @@
 import React from "react";
 import LoginForm from "../../components/auth/LoginForm";
-// import Topbar from "../components/Topbar";
 import styles from "./Auth.module.css";
-// import Form from "../components/Form";
 
 const Login = () => {
   return (
     <>
-      <div className={styles.form}>
+      <div className={styles.divide + " mediumcontainer"}>
+        <h1 className="hidden">Loginpage</h1>
+        <div>
+          <h2 className={styles.subtitle}>Think Pink Europe</h2>
+          <p className={styles.title}>
+            Keep your race
+            <br /> on track
+          </p>
+        </div>
         <LoginForm />
       </div>
     </>

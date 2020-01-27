@@ -1,6 +1,6 @@
 export const ROUTES = {
   home: `/`,
-  toolkit: "/toolkit",
+  toolbox: "/toolbox",
   designstudio: "/designstudio",
   login: "/login",
   request: "/request",

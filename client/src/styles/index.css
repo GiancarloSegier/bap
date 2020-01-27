@@ -1,12 +1,14 @@
 @import "./reset.css";
 @import "./colors.module.css";
+@import "./typo.module.css";
 
 html {
   box-sizing: border-box;
   font-size: 62.5%;
-  font-family: Arial, sans-serif;
+  font-family: "chivo", sans-serif;
+  color: var(--purple-high);
+  background-color: var(--grey-low);
   -webkit-font-smoothing: antialiased;
-  background-color: var(--dark-color);
 }
 
 /* stylelint-disable */
@@ -17,11 +19,21 @@ html {
   box-sizing: inherit;
   text-decoration: none;
 }
+*:focus {
+  outline: none;
+}
 body {
   font-size: 1.6rem;
+  line-height: 1.6;
 }
 
 .container {
+  width: 95%;
+  margin: 0 auto;
+  margin-bottom: 4rem;
+}
+.mediumcontainer {
+  width: 85%;
   margin: 0 auto;
 }
 
