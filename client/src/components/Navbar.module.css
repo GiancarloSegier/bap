@@ -3,6 +3,10 @@
   flex-direction: row;
   padding: 4rem 0;
   justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  z-index: 1;
+  top: 0;
 }
 .rightMenu {
   display: flex;
@@ -30,6 +34,7 @@
   background-color: var(--purple-mid);
 }
 .logo .navLink {
+  font-weight: bold;
   justify-self: flex-start;
   margin-left: 0;
 }

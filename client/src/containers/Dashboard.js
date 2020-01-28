@@ -1,5 +1,5 @@
 import React from "react";
-// import styles from "./Dashboard.module.css";
+import styles from "./Dashboard.module.css";
 // import Form from "../components/Form";
 import SideNav from "../components/SideNav";
 import { Route, Switch } from "react-router-dom";
@@ -19,20 +19,24 @@ const Dashboard = ({ userStore }) => {
 
   if (privileges === "supervisor") {
     return (
-      <>
-        <SideNav />
-        <Switch>
-          <Route
-            path={ROUTES.dashboardHome}
-            exact
-            strict
-            component={DashboardHome}
-          />
-          <Route path={ROUTES.committees} strict component={Committees} />
-          <Route path={ROUTES.requests} strict component={Requests} />
-          <Route path={ROUTES.updates} strict component={Updates} />
-        </Switch>
-      </>
+      <div className={styles.dashboardGrid}>
+        <div className={styles.dashboardNav}>
+          <SideNav />
+        </div>
+        <div className={styles.dashboardContent}>
+          <Switch>
+            <Route
+              path={ROUTES.dashboardHome}
+              exact
+              strict
+              component={DashboardHome}
+            />
+            <Route path={ROUTES.committees} strict component={Committees} />
+            <Route path={ROUTES.requests} strict component={Requests} />
+            <Route path={ROUTES.updates} strict component={Updates} />
+          </Switch>
+        </div>
+      </div>
     );
   } else if (privileges === "admin" || privileges === "member") {
     return (

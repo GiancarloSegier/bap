@@ -1,18 +1,38 @@
 .sideNav {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   padding: 3rem 0;
-  justify-content: space-between;
+  background-color: var(--purple-high);
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 30rem;
+  padding: 16rem 4rem 2rem;
 }
 .rightMenu {
   display: flex;
 }
 .navLink {
-  padding: 1.5rem;
-  align-self: center;
-  justify-self: center;
-  color: grey;
-  margin: 0 1rem;
+  display: flex;
+  padding: 1rem 2rem;
+  border-radius: 5rem;
+  width: max-content;
+  color: white;
+  margin-bottom: 1rem;
+  transition: 0.25s ease-in-out;
+}
+.navLink__active {
+  background-color: var(--purple-mid);
+  font-weight: bold;
+}
+.navLink:hover {
+  background-color: var(--purple-mid);
+  font-weight: bold;
+}
+
+.navLink__icon {
+  margin-right: 2rem;
 }
 .logo {
   justify-self: flex-start;
@@ -32,4 +52,9 @@
   font-weight: bold;
   color: white;
   background-color: rgb(114, 114, 114);
+}
+
+.purple {
+  color: var(--purple-low);
+  transition: 0.25s ease-in-out;
 }
