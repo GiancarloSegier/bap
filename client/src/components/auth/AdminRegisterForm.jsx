@@ -142,7 +142,7 @@ class AdminRegisterForm extends Component {
   };
 
   render() {
-    const { password, password2, newPhone, formData } = this.state;
+    const { password, password2, newPhone, formData, avatar } = this.state;
     const {
       email,
       name,
@@ -151,6 +151,7 @@ class AdminRegisterForm extends Component {
       organisation,
       phone
     } = this.props.requestStore.currentRequest;
+    console.log(this.checks);
 
     if (email && name && surname && this.state.requestId) {
       return (
@@ -252,7 +253,12 @@ class AdminRegisterForm extends Component {
                     type="submit"
                     value="Login"
                     className={formStyles.form__button}
-                    disabled={password || password !== password2 || !formData}
+                    disabled={
+                      !this.checks.avatar ||
+                      !this.checks.password ||
+                      !this.checks.password2 ||
+                      this.checks.password !== this.checks.password2
+                    }
                   />
                 </div>
               </div>

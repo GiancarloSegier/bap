@@ -272,10 +272,11 @@ class RegisterForm extends Component {
                     value="Login"
                     className={formStyles.form__button}
                     disabled={
-                      password ||
-                      password !== password2 ||
-                      !newPhone ||
-                      !formData
+                      !this.checks.avatar ||
+                      !this.checks.password ||
+                      !this.checks.password2 ||
+                      this.checks.password !== this.checks.password2 ||
+                      !this.checks.newPhone
                     }
                   />
                 </div>

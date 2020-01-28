@@ -42,20 +42,26 @@ const Dashboard = ({ userStore }) => {
     );
   } else if (privileges === "admin" || privileges === "member") {
     return (
-      <>
-        <SideNav />
-        <Switch>
-          <Route
-            path={ROUTES.dashboardHome}
-            exact
-            strict
-            component={DashboardHome}
-          />
-          <Route path={ROUTES.myCommittee} strict component={MyCommittee} />
-          <Route path={ROUTES.planner} strict component={Planner} />
-          <Route path={ROUTES.news} strict component={News} />
-        </Switch>
-      </>
+      <div className={styles.dashboardGrid}>
+        <div className={styles.dashboardNav}>
+          <SideNav />
+        </div>
+        <div className={styles.dashboardContent}>
+          <div className="container">
+            <Switch>
+              <Route
+                path={ROUTES.dashboardHome}
+                exact
+                strict
+                component={DashboardHome}
+              />
+              <Route path={ROUTES.myCommittee} strict component={MyCommittee} />
+              <Route path={ROUTES.planner} strict component={Planner} />
+              <Route path={ROUTES.news} strict component={News} />
+            </Switch>
+          </div>
+        </div>
+      </div>
     );
   }
 };
