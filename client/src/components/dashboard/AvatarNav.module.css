@@ -8,25 +8,35 @@
 
 .avatarGroup {
   background-color: var(--purple-very-low);
-  padding: 1rem;
+  padding: 1rem 2rem;
   border-radius: 3rem;
   display: flex;
   align-items: center;
   justify-content: space-around;
-  width: 14rem;
+  width: 13rem;
   position: relative;
 }
 .purple {
   color: var(--purple-low);
+  transition: 0.25s ease-in-out;
 }
 .dropDown {
   background-color: transparent;
   border: none;
   padding: 0.5rem;
+  min-width: 2.4rem;
+  min-height: 2.4rem;
+  transition: 0.25s ease-in-out;
+  border-radius: 5rem;
 }
 
-.racecoordinator {
-  border: 0.2rem solid var(--green);
+.dropDown:hover {
+  cursor: pointer;
+  background-color: white;
+}
+
+.dropDown:hover .purple {
+  color: var(--purple-mid);
 }
 
 .modal {
@@ -34,15 +44,24 @@
   top: calc(100% + 0.5rem);
   right: 0;
   composes: modal from "../../styles/modal.module.css";
-  padding: 1rem;
+  padding: 0rem;
 }
 .modalContainer {
   composes: modalContainer from "../../styles/modal.module.css";
-  padding: 1rem;
+  padding: 1.5rem;
   min-width: 14rem;
+  transition: 0.25s ease-in-out;
 }
 .divideBorder {
   composes: divideBorder from "../../styles/modal.module.css";
+}
+
+.modalContainer:hover {
+  background-color: #f5f5f5;
+}
+
+.modalContainer:hover .purple {
+  color: var(--purple-mid);
 }
 
 .dropDownLink {
@@ -50,4 +69,24 @@
   justify-content: space-between;
   align-items: baseline;
   color: black;
+}
+
+.dropDown__open {
+  transform: scaleY(1);
+  transform-origin: top;
+  transition: 0.25s ease-in-out;
+}
+
+.dropDown__close {
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: 0.25s ease-in-out;
+}
+.chevron__open {
+  transform: rotate(180deg);
+  transition: 0.25s ease-in-out;
+}
+.chevron__close {
+  transform: rotate(0deg);
+  transition: 0.25s ease-in-out;
 }

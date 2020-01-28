@@ -3,6 +3,7 @@
   border-radius: 0.6rem;
   box-shadow: var(--dropshadow);
   position: relative;
+  overflow: hidden;
 }
 .modalContainer {
   padding: 4rem;
