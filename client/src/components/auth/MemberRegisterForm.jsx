@@ -8,6 +8,7 @@ import modalStyles from "../../styles/modal.module.css";
 import formStyles from "../../styles/form.module.css";
 
 class RegisterForm extends Component {
+  checks = {};
   constructor(props) {
     super(props);
     this.state = {
@@ -110,6 +111,8 @@ class RegisterForm extends Component {
     const formData = new FormData();
     formData.append("avatar", img);
     this.setState({ formData: formData });
+    this.checks["avatar"] = true;
+    this.props.onUpdate(this.checks);
   };
 
   handleChange = e => {
@@ -118,6 +121,13 @@ class RegisterForm extends Component {
 
     state[input.name] = input.value;
     this.setState(state);
+
+    this.updateChecks(input);
+  };
+
+  updateChecks = input => {
+    this.checks[input.name] = input.value;
+    this.props.onUpdate(this.checks);
   };
 
   render() {
@@ -138,17 +148,28 @@ class RegisterForm extends Component {
             <form onSubmit={this.handleSubmit}>
               <div className={modalStyles.modalContainer}>
                 <h2 className="hidden">Register</h2>
-                <p className={formStyles.form__title}>
+                <p className={formStyles.form__title + " " + styles.borderBox}>
                   {name} {surname}
                 </p>
-                <p>
+                <p className={styles.job + " " + styles.borderBox}>
                   {job.assignment} - {organisation}
                 </p>
-                <p>Something not right here?</p>
-                <p>Contact jurgen.vanpraet@thinkpinkeurope.be</p>
+                <p className={styles.contact + " " + styles.borderBox}>
+                  Something not right here?
+                </p>
+                <p className={styles.contact + " " + styles.borderBox}>
+                  Contact jurgen.vanpraet@thinkpinkeurope.be
+                </p>
 
                 <div className={formStyles.previewBox}>
-                  <label htmlFor="avatar" className={formStyles.avatarButton}>
+                  <label
+                    htmlFor="avatar"
+                    className={
+                      formStyles.avatarButton +
+                      " " +
+                      (formData ? formStyles.picked : null)
+                    }
+                  >
                     {!formData ? (
                       <img src="../assets/icons/addAvatar.png" />
                     ) : null}
@@ -205,6 +226,15 @@ class RegisterForm extends Component {
                     className={formStyles.form__input}
                     onChange={this.handleChange}
                   />
+                  <p
+                    className={
+                      password !== password2
+                        ? formStyles.error
+                        : formStyles.errorHidden
+                    }
+                  >
+                    Passwords don't match
+                  </p>
                 </fieldset>
 
                 {phone ? null : (
@@ -241,8 +271,9 @@ class RegisterForm extends Component {
                     value="Login"
                     className={formStyles.form__button}
                     disabled={
-                      (password && password !== password2) ||
-                      !newPhone ||
+                      password &&
+                      password !== password2 &&
+                      !newPhone &&
                       !formData
                     }
                   />

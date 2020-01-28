@@ -26,5 +26,54 @@
 }
 .intro {
   font-size: 2rem;
-  color: var(--grey-high);
+  color: var(--grey-mid);
+}
+
+.checkListItem {
+  margin-bottom: 3rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  font-size: 2rem;
+}
+.checkListNumber {
+  padding-top: 0.2rem;
+  display: block;
+  background-color: var(--purple-low);
+  color: white;
+  font-size: 1.4rem;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 3rem;
+  text-align: center;
+  margin-right: 2rem;
+  transition: 0.25s ease-in-out;
+}
+
+.checked {
+  background-color: var(--green);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 0.6rem;
+}
+
+.checker {
+  width: 1.5rem;
+  height: 0.75rem;
+  border: 0.2rem solid white;
+  transform: rotate(-45deg);
+  display: block;
+  border-top: none;
+  border-right: none;
+  animation: checker 0.25s ease-in-out;
+}
+
+@keyframes checker {
+  0% {
+    transform: scale(0) rotate(-45deg);
+  }
+  100% {
+    transform: scale(1) rotate(-45deg);
+  }
 }

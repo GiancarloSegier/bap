@@ -72,10 +72,21 @@
   font-size: 1.6rem;
   font-family: "chivo", sans-serif;
   transition: 0.2s ease-in-out;
+  transition: 0.2s ease-in-out;
 }
 .form__button:disabled {
-  background-color: var(--grey-high);
+  background-color: var(--grey-mid);
   transition: 0.3s ease-in-out;
+}
+
+.form__button:hover {
+  cursor: pointer;
+  background-color: var(--pink-high);
+}
+
+.form__button:disabled:hover {
+  background-color: var(--grey-mid);
+  cursor: default;
 }
 
 .previewBox {
@@ -83,12 +94,12 @@
   height: 16.5rem;
   object-fit: cover;
   border-radius: 10rem;
-  background-color: var(--purple-low);
-  border: 0.6rem solid white;
   position: absolute;
   right: -4rem;
   top: 4rem;
   overflow: hidden;
+  border: 0.6rem solid white;
+
   box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.013),
     0px 2px 6px rgba(52, 24, 74, 0.04), 0px 10px 20px rgba(52, 24, 74, 0.06);
 }
@@ -102,12 +113,20 @@
   top: 0;
 }
 
+.previewImg {
+  background-color: transparent;
+}
+
 .noImg {
   visibility: hidden;
 }
 
 .avatarInput {
   display: none;
+}
+
+.avatarButton.picked {
+  background-color: transparent;
 }
 
 .avatarButton {
@@ -119,4 +138,16 @@
   align-items: center;
   position: relative;
   z-index: 1;
+  background-color: var(--purple-low);
+
+  border-radius: 10rem;
+  transition: 0.2s ease-in-out;
+}
+
+.avatarButton:hover {
+  cursor: pointer;
+  background-color: var(--purple-mid);
+}
+.avatarButton.picked:hover {
+  background-color: rgba(0, 0, 0, 0.4);
 }

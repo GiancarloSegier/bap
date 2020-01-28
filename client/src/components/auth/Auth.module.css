@@ -11,8 +11,8 @@
   align-items: center;
 }
 .forgot {
-  border-bottom: 0.1rem solid var(--grey-high);
-  color: var(--grey-high);
+  border-bottom: 0.1rem solid var(--grey-mid);
+  color: var(--grey-mid);
   font-size: 1.4rem;
 }
 
@@ -28,7 +28,7 @@
 }
 
 .question {
-  color: var(--grey-high);
+  color: var(--grey-mid);
   margin-bottom: 2rem;
   position: relative;
   padding-left: 3rem;
@@ -47,4 +47,20 @@
   border-left: none;
   border-bottom: none;
   border-radius: 0.15rem;
+}
+
+.borderBox {
+  max-width: calc(100% - 8rem);
+}
+
+.job {
+  color: var(--grey-high);
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  margin-top: -3rem;
+}
+
+.contact {
+  color: var(--grey-mid);
+  font-size: 1.4rem;
 }
