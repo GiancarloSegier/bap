@@ -3,12 +3,9 @@ import styles from "./Navbar.module.css";
 import { NavLink, Link } from "react-router-dom";
 import { ROUTES } from "../constants";
 import { inject, observer } from "mobx-react";
+import AvatarNav from "./dashboard/AvatarNav";
 
 const Navbar = ({ userStore }) => {
-  const handleLogout = e => {
-    userStore.logout();
-  };
-
   return (
     <div className="container">
       <ul className={styles.navbar}>
@@ -74,22 +71,10 @@ const Navbar = ({ userStore }) => {
               </li>
             </>
           ) : (
-            <>
-              <img
-                className={styles.avatar}
-                src={userStore.authUser.avatarUrl}
-                alt={`Avatar from ${userStore.authUser.name}`}
-              />
-              <p className={styles.navLink}>{userStore.authUser.name}</p>
-
-              <a
-                href="http://localhost:4000"
-                onClick={handleLogout}
-                className={styles.navLink + " " + styles.darkLink}
-              >
-                Log out
-              </a>
-            </>
+            <AvatarNav
+              currentUser={userStore.authUser}
+              onLogout={userStore.logout}
+            />
           )}
         </div>
       </ul>

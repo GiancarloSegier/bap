@@ -1,0 +1,53 @@
+.avatar {
+  width: 3.2rem;
+  height: 3.2rem;
+  object-fit: cover;
+  border-radius: 4rem;
+  margin: 0 1rem;
+}
+
+.avatarGroup {
+  background-color: var(--purple-very-low);
+  padding: 1rem;
+  border-radius: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 14rem;
+  position: relative;
+}
+.purple {
+  color: var(--purple-low);
+}
+.dropDown {
+  background-color: transparent;
+  border: none;
+  padding: 0.5rem;
+}
+
+.racecoordinator {
+  border: 0.2rem solid var(--green);
+}
+
+.modal {
+  position: absolute;
+  top: calc(100% + 0.5rem);
+  right: 0;
+  composes: modal from "../../styles/modal.module.css";
+  padding: 1rem;
+}
+.modalContainer {
+  composes: modalContainer from "../../styles/modal.module.css";
+  padding: 1rem;
+  min-width: 14rem;
+}
+.divideBorder {
+  composes: divideBorder from "../../styles/modal.module.css";
+}
+
+.dropDownLink {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  color: black;
+}
