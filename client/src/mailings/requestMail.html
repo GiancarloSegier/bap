@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Chivo:400,900|Open+Sans:800&display=swap"
+      rel="stylesheet"
+    />
+
+    <title>Request mail</title>
+    <style>
+      html {
+        background-color: #f1f0f2;
+        padding: 40px 0 80px;
+        color: #34184a;
+        font-family: "Chivo", Arial, Helvetica, sans-serif;
+      }
+      p {
+        margin: 0;
+      }
+      .container {
+        width: 100%;
+        max-width: 600px;
+        margin: 0 auto;
+        background-color: #f1f0f2;
+      }
+      .max-width {
+        background-color: #f1f0f2;
+        width: 100%;
+      }
+      .intro {
+        color: #ff3066;
+
+        font-size: 24px;
+        margin: -40px 0;
+      }
+      .title {
+        font-size: 60px;
+        font-family: "Open Sans", Arial, Helvetica, sans-serif;
+        font-weight: bold;
+      }
+      .modal {
+        background-color: white;
+        border-radius: 0.6rem;
+        box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.013),
+          0px 2px 6px rgba(52, 24, 74, 0.04),
+          0px 16px 24px rgba(52, 24, 74, 0.06);
+        position: relative;
+        margin-bottom: 80px;
+      }
+      .modalContainer {
+        padding: 4rem;
+        padding-bottom: 8rem;
+      }
+      .body {
+        font-size: 20px;
+        line-height: 32px;
+        margin-bottom: 30px;
+      }
+      .body:last-of-type {
+        margin-bottom: 60px;
+      }
+      .button {
+        background-color: #ff3066;
+        border: none;
+        padding: 1rem 4rem;
+        border-radius: 3rem;
+        color: white;
+
+        font-size: 20px;
+        font-family: "chivo", sans-serif;
+        transition: 0.2s ease-in-out;
+        text-decoration: none;
+      }
+      .button:hover {
+        cursor: pointer;
+        background-color: #ca315a;
+      }
+      .highlight {
+        color: #ff3066;
+      }
+      .mail {
+        color: #ff3066;
+        border-bottom: 2px solid #ff3066;
+        transition: 0.2s ease-in-out;
+        text-decoration: none;
+      }
+      .mail:hover {
+        color: #ca315a;
+        border-color: #ca315a;
+      }
+    </style>
+  </head>
+  <body>
+    <img
+      class="max-width"
+      data-proportionally-constrained="true"
+      data-responsive="true"
+      src="http://cdn.mcauto-images-production.sendgrid.net/15e7dece670b214e/c2895844-6f21-4471-9f49-d9e6dac30e54/796x364.png"
+    />
+    <div class="container">
+      <p class="intro">New request from {{organisation}}</p>
+      <h1 class="title">Request received</h1>
+      <div class="modal">
+        <div class="modalContainer">
+          <p class="body">Hi Jürgen</p>
+          <p class="body">
+            {{name}} {{surname}} has send you a request to join Race for the
+            Cure with his organisation:
+            <span class="highlight">{{organisation}}</span>.
+          </p>
+          <p class="body">
+            Get in touch with this organisation via: <br />
+            tel: <span class="highlight">{{phone}}</span>. -
+            <a class="mail" href="mailto: {{sender}}">{{sender}}</a>
+            <br />
+            Click on the link to see the full request.
+          </p>
+          <a href="http://localhost:4000/dashboard/requests" class="button">
+            Requests
+          </a>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

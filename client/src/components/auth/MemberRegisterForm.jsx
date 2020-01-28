@@ -25,6 +25,7 @@ class RegisterForm extends Component {
   }
 
   componentDidMount = async () => {
+    this.props.userStore.logout();
     await this.getInviteId();
     if (this.props.inviteStore.currentInvite.phone) {
       this.setState({ newPhone: this.props.inviteStore.currentInvite.phone });
@@ -271,9 +272,9 @@ class RegisterForm extends Component {
                     value="Login"
                     className={formStyles.form__button}
                     disabled={
-                      password &&
-                      password !== password2 &&
-                      !newPhone &&
+                      password ||
+                      password !== password2 ||
+                      !newPhone ||
                       !formData
                     }
                   />

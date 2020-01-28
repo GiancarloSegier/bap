@@ -24,6 +24,7 @@ class AdminRegisterForm extends Component {
   }
 
   componentDidMount = async () => {
+    this.props.userStore.logout();
     await this.getRequestId();
   };
 
@@ -251,7 +252,7 @@ class AdminRegisterForm extends Component {
                     type="submit"
                     value="Login"
                     className={formStyles.form__button}
-                    disabled={password && password !== password2 && !formData}
+                    disabled={password || password !== password2 || !formData}
                   />
                 </div>
               </div>
