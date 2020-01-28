@@ -1,0 +1,35 @@
+.card {
+  composes: modal from "../../styles/modal.module.css";
+}
+.modalContainer {
+  composes: modalContainer from "../../styles/modal.module.css";
+  padding: 2rem;
+}
+.status {
+  padding: 0.5rem 1rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 0.9rem;
+  letter-spacing: 0.1rem;
+  width: max-content;
+  border-radius: 0.4rem;
+  margin-bottom: 1.5rem;
+}
+.new {
+  background-color: var(--pink-light);
+  color: var(--pink-mid);
+}
+.pending {
+  background-color: var(--purple-light);
+  color: var(--purple-low);
+}
+.heading2 {
+  font-family: "beatrice", Arial, Helvetica, sans-serif;
+  font-weight: 500;
+  font-size: 1.8rem;
+}
+
+.organisation {
+  font-size: 1.4rem;
+  color: var(--grey-high);
+}

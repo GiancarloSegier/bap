@@ -6,8 +6,8 @@ html {
   box-sizing: border-box;
   font-size: 62.5%;
   font-family: "chivo", sans-serif;
-  color: var(--purple-high);
-  background-color: var(--grey-low);
+  color: var(--black);
+  background-color: var(--grey-lower);
   -webkit-font-smoothing: antialiased;
 }
 
@@ -29,7 +29,6 @@ body {
 
 .container {
   padding: 0 4rem;
-  margin-bottom: 4rem;
 }
 .mediumcontainer {
   width: 85%;

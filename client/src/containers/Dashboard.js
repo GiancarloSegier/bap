@@ -24,17 +24,19 @@ const Dashboard = ({ userStore }) => {
           <SideNav />
         </div>
         <div className={styles.dashboardContent}>
-          <Switch>
-            <Route
-              path={ROUTES.dashboardHome}
-              exact
-              strict
-              component={DashboardHome}
-            />
-            <Route path={ROUTES.committees} strict component={Committees} />
-            <Route path={ROUTES.requests} strict component={Requests} />
-            <Route path={ROUTES.updates} strict component={Updates} />
-          </Switch>
+          <div className="container">
+            <Switch>
+              <Route
+                path={ROUTES.dashboardHome}
+                exact
+                strict
+                component={DashboardHome}
+              />
+              <Route path={ROUTES.committees} strict component={Committees} />
+              <Route path={ROUTES.requests} strict component={Requests} />
+              <Route path={ROUTES.updates} strict component={Updates} />
+            </Switch>
+          </div>
         </div>
       </div>
     );

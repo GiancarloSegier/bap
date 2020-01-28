@@ -1,9 +1,9 @@
 import React from "react";
-// import styles from "./Requests.module.css";
+import styles from "../platform.module.css";
 // import Form from "../components/Form";
 
 import { inject, observer, PropTypes } from "mobx-react";
-import RequestDetail from "../../../components/dashboard/RequestDetail";
+import Request from "../../../components/dashboard/Request";
 
 const Requests = ({ requestStore }) => {
   const onUpdateRequest = async request => {
@@ -15,16 +15,20 @@ const Requests = ({ requestStore }) => {
   };
   return (
     <>
+      <h1 className={styles.heading1}>Requests</h1>
       {requestStore.requests.length > 0 ? (
-        <div>
-          <ul>
+        <div className={styles.headGrid}>
+          <div className={styles.borderRight + " " + styles.cardGrid}>
             {requestStore.requests.map(request => (
-              <RequestDetail
+              <Request
                 currentRequest={request}
                 onUpdateRequest={onUpdateRequest}
               />
             ))}
-          </ul>
+          </div>
+          <div>
+            <p>Detail card comes here</p>
+          </div>
         </div>
       ) : (
         <p>Add a new request, please.</p>
