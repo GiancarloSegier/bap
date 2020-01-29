@@ -10,6 +10,14 @@ class AvatarNav extends Component {
     };
   }
 
+  componentDidMount() {
+    document.addEventListener("mousedown", this.handleClickOutside);
+  }
+
+  handleClickOutside = e => {
+    this.setState({ dropDown: false });
+  };
+
   handleLogout = e => {
     this.props.onLogout();
   };

@@ -9,7 +9,8 @@ const RequestSchema = mongoose.Schema(
     email: String,
     message: String,
     job: Object,
-    pending: Boolean
+    pending: Boolean,
+    createdAt: Date
   },
   {
     timestamps: true

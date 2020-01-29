@@ -9,7 +9,8 @@ exports.create = (req, res) => {
     email: req.body.email,
     message: req.body.message,
     job: req.body.job,
-    pending: req.body.pending
+    pending: req.body.pending,
+    createdAt: req.body.createdAt
   });
 
   request
@@ -61,7 +62,8 @@ exports.update = async (req, res) => {
         email: req.body.email,
         message: req.body.message,
         job: req.body.job,
-        pending: req.body.pending
+        pending: req.body.pending,
+        createdAt: req.body.createdAt
       },
       {
         new: true

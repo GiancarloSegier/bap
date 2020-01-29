@@ -1,0 +1,72 @@
+.alertModal {
+  composes: modal from "../../styles/modal.module.css";
+  padding: 1rem;
+  position: absolute;
+  bottom: 3rem;
+  margin: 0 auto;
+  transform: translateY(0);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+  width: max-content;
+  opacity: 0;
+  bottom: 0;
+  transition: 0.25s ease-in-out;
+}
+.undo {
+  border: none;
+  padding: 0.5rem 1rem;
+  background-color: var(--purple-grey);
+  border-radius: 0.4rem;
+  font-weight: bold;
+  color: var(--grey-high);
+  font-size: 1.4rem;
+  transition: 0.25s ease-in-out;
+}
+.undo__check {
+  background-color: var(--purple-mid);
+  color: white;
+}
+.undo:hover {
+  cursor: pointer;
+  color: white;
+  background-color: var(--grey-high);
+}
+
+.fadeIn {
+  opacity: 1;
+  bottom: 4rem;
+}
+.undo.undo__check:hover {
+  background-color: var(--purple-mid);
+}
+
+.check {
+  margin-left: 1rem;
+  width: 1rem;
+  height: 0.5rem;
+  transform: rotate(-45deg);
+  display: block;
+  border: 0.2rem solid var(--green);
+  border-top: none;
+  border-right: none;
+  transition: 0.5s ease-in-out;
+}
+
+.message {
+  color: var(--purple-mid);
+  transition: 0.5s ease-in-out;
+  margin: 0 2rem;
+}
+
+.checkIcon {
+  border-color: var(--purple-very-low);
+}
+.checkMessage {
+  text-decoration: line-through;
+  color: var(--purple-very-low);
+}

@@ -11,7 +11,8 @@ class Request {
     email,
     message,
     job,
-    pending
+    pending,
+    createdAt
   ) {
     this.id = id;
     this.name = name;
@@ -22,6 +23,7 @@ class Request {
     this.message = message;
     this.job = job;
     this.pending = pending;
+    this.createdAt = createdAt;
   }
 
   get values() {
@@ -34,7 +36,8 @@ class Request {
       email: this.email,
       message: this.message,
       job: this.job,
-      pending: this.pending
+      pending: this.pending,
+      createdAt: this.createdAt
     };
   }
 
@@ -47,6 +50,7 @@ class Request {
   setMessage = message => (this.message = message);
   setJob = job => (this.job = job);
   setPending = pending => (this.pending = pending);
+  setDate = createdAt => (this.createdAt = createdAt);
 
   updateFromServer = values => {
     console.log(values);
@@ -59,6 +63,7 @@ class Request {
     this.setMessage(values.message);
     this.setJob(values.job);
     this.setPending(values.pending);
+    this.setDate(values.createdAt);
   };
 }
 
@@ -73,6 +78,7 @@ decorate(Request, {
   setMessage: action,
   setJob: action,
   setPending: action,
+  setDate: action,
   values: computed
 });
 
