@@ -68,13 +68,6 @@ class DashboardHome extends Component {
         <div className={styles.headGrid}>
           <div className={styles.subGrid}>
             <section className={styles.frame + " " + styles.borderRight}>
-              <h2 className={styles.heading2}>Committee invites</h2>
-            </section>
-            <section
-              className={
-                styles.frame + " " + styles.borderRight + " " + styles.borderTop
-              }
-            >
               <h2 className={styles.heading2}>Acces requests</h2>
               <div className={styles.cardGrid}>
                 {this.props.requestStore.requests.length > 0 ? (
@@ -90,6 +83,13 @@ class DashboardHome extends Component {
                   <p>No requests to show</p>
                 )}
               </div>
+            </section>
+            <section
+              className={
+                styles.frame + " " + styles.borderRight + " " + styles.borderTop
+              }
+            >
+              <h2 className={styles.heading2}>Committee invites</h2>
             </section>
           </div>
           <section className={styles.frame}>

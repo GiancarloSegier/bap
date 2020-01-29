@@ -36,6 +36,7 @@ class AdminRegisterForm extends Component {
   };
 
   handleSubmit = async e => {
+    const mongoose = require("mongoose");
     e.preventDefault();
     const { userStore, committeeStore, requestStore, history } = this.props;
 
@@ -51,7 +52,9 @@ class AdminRegisterForm extends Component {
       organisation,
       job
     } = this.props.requestStore.currentRequest;
-    const committeeId = id;
+
+    const randomId = this.randomStr(24, "12345abcde");
+    const committeeId = mongoose.Types.ObjectId(randomId);
 
     await userStore
       .register(
