@@ -53,7 +53,7 @@ app.post("/image-upload", (req, res) => {
   const values = Object.values(req.files);
   const promises = values.map(image => cloudinary.uploader.upload(image.path));
   values.map(image => {
-    // console.log(image);
+    console.log(image);
   });
 
   Promise.all(promises).then(results => res.json(results));
@@ -80,7 +80,6 @@ app.get("/send-mail", (req, res) => {
     committee
   } = req.query;
 
-  console.log(id);
   this.msg = {};
   if (type === "request") {
     console.log("request mail send");

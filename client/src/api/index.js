@@ -5,12 +5,11 @@ class Api {
 
   getAll = async () => {
     const r = await fetch(`/api/${this.entity}`);
-    console.log(r);
+
     return await r.json();
   };
 
   getOne = async id => {
-    console.log(id);
     if (id) {
       const r = await fetch(`/api/${this.entity}/${id}`);
 
@@ -33,7 +32,6 @@ class Api {
   };
 
   update = async entity => {
-    console.log(entity);
     const r = await fetch(
       `/api/${this.entity}/${entity.id}`,
       this.getOptions(`put`, entity.values)

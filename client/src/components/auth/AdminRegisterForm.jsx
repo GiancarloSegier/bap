@@ -154,7 +154,6 @@ class AdminRegisterForm extends Component {
       organisation,
       phone
     } = this.props.requestStore.currentRequest;
-    console.log(this.checks);
 
     if (email && name && surname && this.state.requestId) {
       return (

@@ -33,7 +33,6 @@ class Invite {
   setOrganisation = organisation => (this.organisation = organisation);
 
   updateFromServer = values => {
-    console.log(values);
     this.setId(values.id);
     this.setName(values.name);
     this.setSurname(values.surname);

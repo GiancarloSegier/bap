@@ -20,7 +20,7 @@ class DashboardHome extends Component {
   checkDate = () => {
     const day = new Date();
     const hour = day.getHours();
-    console.log(hour);
+
     let greeting;
 
     if (hour > 5 && hour < 11) {

@@ -11,7 +11,6 @@ class InviteStore {
     this.rootStore = rootStore;
     this.api = new Api(`invites`);
     this.getAll();
-    console.log(this.invites);
   }
 
   getAll = () => {
@@ -27,7 +26,6 @@ class InviteStore {
   };
 
   addInvite = data => {
-    console.log(data);
     const newInvite = new Invite();
     newInvite.updateFromServer(data);
     this.invites.push(newInvite);
@@ -51,11 +49,9 @@ class InviteStore {
     runInAction(() => {
       this.currentInvite = invite;
     });
-    console.log(values);
   };
 
   deleteInvite = invite => {
-    console.log(invite);
     this.invites.remove(invite);
     this.api.delete(invite);
   };

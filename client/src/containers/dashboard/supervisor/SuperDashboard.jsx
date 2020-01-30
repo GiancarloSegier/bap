@@ -53,6 +53,11 @@ class SuperDashboard extends Component {
     });
   };
 
+  onClickRequest = e => {
+    console.log("klik");
+    console.log(e);
+  };
+
   render() {
     const { greeting } = this.props;
     const { authUser } = this.props.userStore;
@@ -98,6 +103,7 @@ class SuperDashboard extends Component {
                         onUpdateRequest={this.onUpdateRequest}
                         alert={true}
                         setParams={this.setParams}
+                        onClick={this.onClickRequest}
                       />
                     ))}
                   </>

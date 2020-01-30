@@ -16,7 +16,6 @@ exports.findAll = async (req, res) => {
     const users = await User.find();
     res.send(users);
   } catch (err) {
-    console.log(err);
     res.status(500).send({ err: err.user || "Error" });
   }
 };
@@ -28,13 +27,11 @@ exports.login = async (req, res) => {
   }
   try {
     const user = await User.findOne({ email });
-    console.log(user);
     if (!user) {
       res.status(401).send({ error: "incorrect email or password" });
     } else {
-      console.log(password);
       const isPasswordCorrect = await user.validPassword(password);
-      console.log(isPasswordCorrect);
+
       if (isPasswordCorrect) {
         const {
           _id,

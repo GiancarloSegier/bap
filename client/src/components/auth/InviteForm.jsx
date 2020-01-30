@@ -16,8 +16,6 @@ class InviteForm extends Component {
       emailError: false,
       error: false
     };
-
-    console.log(this.randomStr(24, "12345abcde"));
   }
 
   randomStr = (len, arr) => {
@@ -36,7 +34,6 @@ class InviteForm extends Component {
     const randomId = this.randomStr(24, "12345abcde");
     const inviteId = mongoose.Types.ObjectId(randomId);
 
-    console.log(inviteId);
     let assignment = "";
     let memberJobs = [];
 
@@ -100,14 +97,12 @@ class InviteForm extends Component {
   };
 
   checkFilledForm() {
-    console.log(this.state);
     if (this.state.email !== "") {
       this.setState({ error: false });
     }
   }
 
   handleChangeJob = e => {
-    console.log(e.target.value);
     this.setState({ jobAssignment: e.target.value });
   };
 

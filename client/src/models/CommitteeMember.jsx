@@ -36,7 +36,6 @@ class CommitteeMember {
   setPhone = phone => (this.phone = phone);
 
   updateFromServer = values => {
-    console.log(values);
     this.setId(values._id);
     this.setName(values.name);
     this.setSurname(values.surname);

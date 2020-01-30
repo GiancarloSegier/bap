@@ -18,7 +18,6 @@ class Register extends Component {
   }
 
   onUpdate = props => {
-    console.log(props);
     this.setState({
       avatar: props.avatar,
       newPhone: props.newPhone,

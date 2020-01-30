@@ -20,8 +20,6 @@ class MyCommittee extends Component {
     const { name } = this.props.committeeStore.currentCommittee;
     const invites = this.props.inviteStore.invites;
     const committeeMembers = this.props.committeeStore.committeeMembers;
-
-    console.log(committeeMembers);
     return (
       <>
         <div>
@@ -57,7 +55,6 @@ class MyCommittee extends Component {
             <>
               <p className={styles.heading1}>CommitteeMembers:</p>
               {committeeMembers.map(member => {
-                console.log(member);
                 return (
                   <p>
                     {member.name} - {member.surname} - {member.job.assignment}

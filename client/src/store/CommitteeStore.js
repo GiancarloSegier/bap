@@ -39,7 +39,6 @@ class CommitteeStore {
     const newCommittee = new Committee();
     newCommittee.updateFromServer(data);
     this.committees.push(newCommittee);
-    console.log(newCommittee);
 
     this.api
       .create(newCommittee)
@@ -47,7 +46,6 @@ class CommitteeStore {
   };
 
   _addCommittee = values => {
-    console.log(values);
     const committee = new Committee();
     committee.updateFromServer(values);
     runInAction(() => {
@@ -55,7 +53,6 @@ class CommitteeStore {
     });
   };
   _addCommitteeMember = values => {
-    console.log(values);
     const member = new CommitteeMember();
     member.updateFromServer(values);
     runInAction(() => {
@@ -64,13 +61,11 @@ class CommitteeStore {
   };
 
   _getCurrentCommittee = values => {
-    console.log(values);
     const committee = new Committee();
     committee.updateFromServer(values);
     runInAction(() => {
       this.currentCommittee = committee;
     });
-    console.log(values);
   };
 
   updateCommittee = committee => {

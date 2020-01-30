@@ -11,8 +11,6 @@ class Request extends Component {
       currentRequest: props.currentRequest,
       undo: false
     };
-
-    console.log(props);
   }
 
   approveRequest = request => {
@@ -29,7 +27,7 @@ class Request extends Component {
 
   render() {
     const { currentRequest } = this.props;
-    console.log(currentRequest);
+
     const requestDate = new Date(currentRequest.createdAt);
     const day = requestDate.getDate();
     const month = requestDate.getMonth() + 1;
