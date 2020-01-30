@@ -1,7 +1,16 @@
+.alertContainer {
+  position: fixed;
+  height: 100vh;
+  top: 0;
+
+  left: 0;
+  right: 0;
+}
+
 .alertModal {
   composes: modal from "../../styles/modal.module.css";
   padding: 1rem;
-  position: absolute;
+  position: fixed;
   bottom: 3rem;
   margin: 0 auto;
   transform: translateY(0);

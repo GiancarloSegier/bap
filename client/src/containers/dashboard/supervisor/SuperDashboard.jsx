@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import styles from "../Dashboard.module.css";
 // import Form from "../components/Form";
+import Alert from "../../../components/ui/Alert";
 
 import Request from "../../../components/dashboard/Request";
 
@@ -9,15 +10,33 @@ import { inject, observer } from "mobx-react";
 class SuperDashboard extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      alert: false
+    };
   }
 
   onUpdateRequest = async request => {
+    console.log(request);
+    request.setPending(true);
     await this.props.requestStore.updateRequest(request);
     await this.props.requestStore.updatePendingRequests(request);
 
     await fetch(
       `http://localhost:4000/send-mail?type=invite&id=${request.id}&name=${request.name}&recipient=${request.email}&organisation=${request.organisation}`
     ).catch(err => console.log(err));
+  };
+
+  hideAlert = alertVisible => {
+    this.setState({ alert: alertVisible, pickedRequest: {} });
+  };
+
+  setParams = (alertVisible, request, message, icon) => {
+    this.setState({
+      pickedRequest: request,
+      message: message,
+      icon: icon,
+      alert: alertVisible
+    });
   };
 
   render() {
@@ -27,6 +46,15 @@ class SuperDashboard extends Component {
 
     return (
       <>
+        {this.state.alert ? (
+          <Alert
+            message={this.state.message}
+            icon={this.state.icon}
+            hideAlert={this.hideAlert}
+            onFinishAlert={this.onUpdateRequest}
+            params={this.state.pickedRequest}
+          />
+        ) : null}
         <div className={styles.oneLine}>
           <h1 className={styles.heading1}>
             {greeting} {authUser.name}.
@@ -54,6 +82,7 @@ class SuperDashboard extends Component {
                       <Request
                         currentRequest={request}
                         onUpdateRequest={this.onUpdateRequest}
+                        setParams={this.setParams}
                       />
                     ))}
                   </>
@@ -75,6 +104,7 @@ class SuperDashboard extends Component {
                       <Request
                         currentRequest={request}
                         onUpdateRequest={this.onUpdateRequest}
+                        setParams={this.setParams}
                       />
                     ))}
                   </>

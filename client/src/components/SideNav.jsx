@@ -8,6 +8,11 @@ import styles from "./SideNav.module.css";
 const SideNav = ({ userStore }) => {
   return (
     <ul className={styles.sideNav}>
+      <li className={styles.marginLogo}>
+        <NavLink exact={true} className={styles.logo} to={ROUTES.home}>
+          RFTC
+        </NavLink>
+      </li>
       <li>
         <NavLink
           className={styles.navLink}

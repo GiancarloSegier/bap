@@ -9,25 +9,12 @@ class Request extends Component {
     this.state = {
       edit: false,
       currentRequest: props.currentRequest,
-      undo: false,
-      alert: false
+      undo: false
     };
   }
 
   approveRequest = request => {
-    this.setState({ alert: true, undo: false });
-    setTimeout(() => {
-      if (this.state.undo === false) {
-        this.updateRequest(request);
-      }
-      this.setState({ alert: false });
-    }, 6000);
-  };
-
-  updateRequest = request => {
-    request.setPending(true);
-    this.setState({ currentRequest: request });
-    this.props.onUpdateRequest(request);
+    this.props.setParams(true, request, "Invite send", "check");
   };
 
   undoAction = () => {
@@ -36,6 +23,7 @@ class Request extends Component {
 
   render() {
     const { currentRequest } = this.props;
+    console.log(currentRequest);
     const requestDate = new Date(currentRequest.createdAt);
     const day = requestDate.getDate();
     const month = requestDate.getMonth() + 1;
@@ -47,13 +35,6 @@ class Request extends Component {
 
     return (
       <>
-        {this.state.alert ? (
-          <Alert
-            message="Request approved"
-            onClickUndo={this.undoAction}
-            icon="check"
-          />
-        ) : null}
         <article className={styles.card}>
           <div className={styles.modalContainer}>
             <div className={styles.metaData}>

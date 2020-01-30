@@ -28,10 +28,11 @@
 }
 .subGrid {
   display: grid;
-  grid-template-rows: 1fr 1fr;
+  grid-template-rows: auto;
 }
 .frame {
-  min-height: 30rem;
+  min-height: 35vh;
+  padding-bottom: 4rem;
 }
 
 .button {
@@ -65,11 +66,11 @@
 
 .borderRight {
   border-right: 0.1rem solid var(--grey-low);
-  padding-right: 2rem;
+  padding-right: 4rem;
 }
 .borderTop {
   border-top: 0.1rem solid var(--grey-low);
-  padding-top: 2rem;
+  padding-top: 4rem;
 }
 
 .cardGrid {

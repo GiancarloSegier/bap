@@ -8,10 +8,19 @@
   top: 0;
   left: 0;
   width: 29rem;
-  padding: 13rem 4rem 2rem;
+  padding: 4rem;
+  padding-top: 5.5rem;
+  z-index: 2;
 }
-.rightMenu {
-  display: flex;
+.logo {
+  font-weight: bold;
+  margin-bottom: 8rem;
+  color: white;
+  padding: 1rem;
+  padding-left: 2.4rem;
+}
+.marginLogo {
+  margin-bottom: 8rem;
 }
 .navLink {
   display: flex;

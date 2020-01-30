@@ -29,10 +29,14 @@ body {
 
 .container {
   padding: 0 4rem;
+  min-height: calc(100vh - 16rem);
+  margin-top: 16rem;
 }
 .mediumcontainer {
   width: 85%;
   margin: 0 auto;
+  min-height: calc(100vh - 16rem);
+  margin-top: 16rem;
 }
 
 .hidden {

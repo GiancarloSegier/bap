@@ -90,6 +90,7 @@ class RequestStore {
   };
 
   updateRequest = request => {
+    console.log(request);
     this.api
       .update(request)
       .then(requestValues => request.updateFromServer(requestValues));

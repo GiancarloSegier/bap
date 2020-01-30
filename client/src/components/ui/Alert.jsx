@@ -15,6 +15,12 @@ class Alert extends Component {
     }, 100);
     setTimeout(() => {
       this.setState({ fadeIn: false });
+    }, 4800);
+    setTimeout(() => {
+      this.props.hideAlert();
+      if (!this.state.undoCheck) {
+        this.onHandleFunction();
+      }
     }, 5000);
   }
   setIcon() {
@@ -23,7 +29,11 @@ class Alert extends Component {
 
   onClickUndo = e => {
     this.setState({ undoCheck: true });
-    this.props.onClickUndo();
+  };
+
+  onHandleFunction = () => {
+    console.log(this.props.params);
+    this.props.onFinishAlert(this.props.params);
   };
 
   render() {

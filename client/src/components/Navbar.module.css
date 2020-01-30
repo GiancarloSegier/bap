@@ -1,12 +1,14 @@
 .navbar {
   display: flex;
   flex-direction: row;
-  padding: 4rem 0;
+  padding: 4rem;
+  width: 100%;
   justify-content: space-between;
   align-items: center;
-  position: sticky;
+  position: fixed;
   z-index: 1;
   top: 0;
+  background-color: var(--grey-lower);
 }
 .rightMenu {
   display: flex;
