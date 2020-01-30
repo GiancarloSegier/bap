@@ -1,15 +1,13 @@
 .sideNav {
   display: flex;
   flex-direction: column;
-  padding: 3rem 0;
   background-color: var(--purple-high);
   height: 100vh;
   position: fixed;
   top: 0;
   left: 0;
-  width: 29rem;
-  padding: 4rem;
-  padding-top: 5.5rem;
+  min-width: 26rem;
+  padding: 3.5rem 2rem 4rem;
   z-index: 2;
 }
 .logo {
@@ -20,7 +18,7 @@
   padding-left: 2.4rem;
 }
 .marginLogo {
-  margin-bottom: 8rem;
+  margin-bottom: 6rem;
 }
 .navLink {
   display: flex;

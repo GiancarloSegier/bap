@@ -24,7 +24,7 @@ const Dashboard = ({ userStore }) => {
           <SideNav />
         </div>
         <div className={styles.dashboardContent}>
-          <div className="container">
+          <div className={"container" + " " + styles.extraMargin}>
             <Switch>
               <Route
                 path={ROUTES.dashboardHome}

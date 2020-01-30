@@ -11,15 +11,29 @@ class SuperDashboard extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      alert: false
+      alert: false,
+      pendingRequests: [],
+      newRequests: []
     };
   }
 
+  componentDidMount() {
+    const { pendingRequests, newRequests } = this.props.requestStore;
+    this.setState({
+      pendingRequests: pendingRequests,
+      newRequests: newRequests
+    });
+  }
+
   onUpdateRequest = async request => {
-    console.log(request);
     request.setPending(true);
-    await this.props.requestStore.updateRequest(request);
+
     await this.props.requestStore.updatePendingRequests(request);
+    const { pendingRequests, newRequests } = this.props.requestStore;
+    this.setState({
+      pendingRequests: pendingRequests,
+      newRequests: newRequests
+    });
 
     await fetch(
       `http://localhost:4000/send-mail?type=invite&id=${request.id}&name=${request.name}&recipient=${request.email}&organisation=${request.organisation}`
@@ -42,7 +56,7 @@ class SuperDashboard extends Component {
   render() {
     const { greeting } = this.props;
     const { authUser } = this.props.userStore;
-    const { pendingRequests, newRequests } = this.props.requestStore;
+    const { pendingRequests, newRequests } = this.state;
 
     return (
       <>
@@ -78,10 +92,11 @@ class SuperDashboard extends Component {
               <div className={styles.cardGrid}>
                 {newRequests.length > 0 ? (
                   <>
-                    {newRequests.map(request => (
+                    {newRequests.slice(0, 4).map(request => (
                       <Request
                         currentRequest={request}
                         onUpdateRequest={this.onUpdateRequest}
+                        alert={true}
                         setParams={this.setParams}
                       />
                     ))}
@@ -98,9 +113,9 @@ class SuperDashboard extends Component {
             >
               <h2 className={styles.heading2}>Committee invites</h2>
               <div className={styles.cardGrid}>
-                {this.props.requestStore.requests.length > 0 ? (
+                {pendingRequests.length > 0 ? (
                   <>
-                    {pendingRequests.map(request => (
+                    {pendingRequests.slice(0, 4).map(request => (
                       <Request
                         currentRequest={request}
                         onUpdateRequest={this.onUpdateRequest}

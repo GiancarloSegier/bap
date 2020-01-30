@@ -29,13 +29,13 @@ body {
 
 .container {
   padding: 0 4rem;
-  min-height: calc(100vh - 16rem);
-  margin-top: 16rem;
+  min-height: calc(100vh - 12rem);
+  margin-top: 12rem;
 }
 .mediumcontainer {
   width: 85%;
   margin: 0 auto;
-  min-height: calc(100vh - 16rem);
+  min-height: calc(100vh - 12rem);
   margin-top: 16rem;
 }
 

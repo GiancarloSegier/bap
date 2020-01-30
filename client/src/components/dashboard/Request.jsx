@@ -11,10 +11,16 @@ class Request extends Component {
       currentRequest: props.currentRequest,
       undo: false
     };
+
+    console.log(props);
   }
 
   approveRequest = request => {
-    this.props.setParams(true, request, "Invite send", "check");
+    if (this.props.alert) {
+      this.props.setParams(true, request, "Invite send", "check");
+    } else {
+      this.props.onUpdateRequest(request);
+    }
   };
 
   undoAction = () => {

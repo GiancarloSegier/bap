@@ -9,6 +9,7 @@
   font-family: "beatrice", Arial, Helvetica, sans-serif;
   font-weight: 500;
   font-size: 1.8rem;
+  margin-bottom: 2rem;
 }
 .avatar {
   width: 10rem;
@@ -23,8 +24,8 @@
 
 .headGrid {
   display: grid;
-  grid-template-columns: 2fr 1fr;
-  grid-gap: 4rem;
+  grid-template-columns: 1fr 19vmax;
+  grid-gap: 3rem;
 }
 .subGrid {
   display: grid;
@@ -32,7 +33,7 @@
 }
 .frame {
   min-height: 35vh;
-  padding-bottom: 4rem;
+  padding-bottom: 3rem;
 }
 
 .button {
@@ -66,11 +67,11 @@
 
 .borderRight {
   border-right: 0.1rem solid var(--grey-low);
-  padding-right: 4rem;
+  padding-right: 3rem;
 }
 .borderTop {
   border-top: 0.1rem solid var(--grey-low);
-  padding-top: 4rem;
+  padding-top: 3rem;
 }
 
 .cardGrid {

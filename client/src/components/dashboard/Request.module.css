@@ -3,7 +3,7 @@
 }
 .modalContainer {
   composes: modalContainer from "../../styles/modal.module.css";
-  padding: 2rem;
+  padding: 1.5rem 2rem;
 }
 .status {
   padding: 0.25rem 0.5rem;

@@ -32,7 +32,6 @@ class Alert extends Component {
   };
 
   onHandleFunction = () => {
-    console.log(this.props.params);
     this.props.onFinishAlert(this.props.params);
   };
 
@@ -41,28 +40,34 @@ class Alert extends Component {
     const { icon, fadeIn, undoCheck } = this.state;
     return (
       <div
-        className={styles.alertModal + " " + (fadeIn ? styles.fadeIn : null)}
+        className={
+          styles.alertBackground + " " + (fadeIn ? styles.fadeBackground : null)
+        }
       >
-        <span
-          className={
-            styles[icon] + " " + (!undoCheck ? null : styles.checkIcon)
-          }
-        ></span>
-        <p
-          className={
-            styles.message + " " + (!undoCheck ? null : styles.checkMessage)
-          }
+        <div
+          className={styles.alertModal + " " + (fadeIn ? styles.fadeIn : null)}
         >
-          {message}
-        </p>
-        <button
-          className={
-            styles.undo + " " + (undoCheck ? styles.undo__check : null)
-          }
-          onClick={this.onClickUndo}
-        >
-          UNDO
-        </button>
+          <span
+            className={
+              styles[icon] + " " + (!undoCheck ? null : styles.checkIcon)
+            }
+          ></span>
+          <p
+            className={
+              styles.message + " " + (!undoCheck ? null : styles.checkMessage)
+            }
+          >
+            {message}
+          </p>
+          <button
+            className={
+              styles.undo + " " + (undoCheck ? styles.undo__check : null)
+            }
+            onClick={this.onClickUndo}
+          >
+            UNDO
+          </button>
+        </div>
       </div>
     );
   }
