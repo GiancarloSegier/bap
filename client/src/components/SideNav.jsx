@@ -62,9 +62,9 @@ const SideNav = ({ userStore }) => {
             >
               <img
                 className={styles.navLink__icon}
-                src="../assets/icons/nav/anouncements.png"
+                src="../assets/icons/nav/announcements.png"
               />
-              Anouncements
+              Announcements
             </NavLink>
           </li>
         </>

@@ -12,5 +12,6 @@ export const ROUTES = {
   updates: "/dashboard/updates",
   myCommittee: "/dashboard/mycommittee",
   news: "/dashboard/news",
+  announcements: "/dashboard/announcements",
   planner: "/dashboard/planner"
 };

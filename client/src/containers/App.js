@@ -29,7 +29,7 @@ class App extends Component {
           {this.props.userStore.authUser ? (
             <Route path={ROUTES.dashboard} strict component={Dashboard} />
           ) : null}
-          {/* <Route path="*" component={NotFound} /> */}
+          <Route path="*" component={NotFound} />
         </Switch>
       </main>
     );

@@ -8,6 +8,7 @@ import Request from "../../../components/dashboard/Request";
 const Requests = ({ requestStore }) => {
   const onUpdateRequest = async request => {
     await requestStore.updateRequest(request);
+    await requestStore.updatePendingRequests(request);
 
     await fetch(
       `http://localhost:4000/send-mail?type=invite&id=${request.id}&name=${request.name}&recipient=${request.email}&organisation=${request.organisation}`
@@ -19,12 +20,16 @@ const Requests = ({ requestStore }) => {
       {requestStore.requests.length > 0 ? (
         <div className={styles.headGrid}>
           <div className={styles.borderRight + " " + styles.cardGrid}>
-            {requestStore.requests.map(request => (
-              <Request
-                currentRequest={request}
-                onUpdateRequest={onUpdateRequest}
-              />
-            ))}
+            {requestStore.requests
+              .slice()
+              .sort((a, b) => Number(b.pending) - Number(a.pending))
+              .reverse()
+              .map(request => (
+                <Request
+                  currentRequest={request}
+                  onUpdateRequest={onUpdateRequest}
+                />
+              ))}
           </div>
           <div>
             <p>Detail card comes here</p>
