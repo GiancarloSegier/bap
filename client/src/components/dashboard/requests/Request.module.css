@@ -25,6 +25,10 @@
   background-color: var(--purple-light);
   color: var(--purple-low);
 }
+.seen {
+  background-color: var(--green-light);
+  color: var(--green);
+}
 .heading2 {
   font-family: "beatrice", Arial, Helvetica, sans-serif;
   font-weight: 500;
@@ -145,7 +149,10 @@
 .purple {
   color: var(--purple-low);
 }
-
+.trashButton {
+  border: none;
+  background-color: none;
+}
 .trash {
   color: var(--grey-mid);
   font-size: 2rem;

@@ -10,6 +10,7 @@ const RequestSchema = mongoose.Schema(
     message: String,
     job: Object,
     pending: Boolean,
+    seen: Boolean,
     createdAt: Date
   },
   {

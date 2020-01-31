@@ -19,13 +19,11 @@ class RequestInfo extends Component {
   }
 
   approveRequest = request => {
-    console.log(request);
     this.props.onUpdateRequest(this.props.request);
   };
 
-  declineRequest = e => {
-    console.log(e);
-    console.log("decline");
+  declineRequest = currentRequest => {
+    this.props.onDeleteRequest(currentRequest);
   };
 
   render() {
@@ -38,12 +36,19 @@ class RequestInfo extends Component {
             <h2 className={styles.requestTitle}>
               {request.name} {request.surname}
             </h2>
-            <FontAwesome name="trash" className={styles.trash} />
+            <button
+              className={styles.trashButton}
+              onClick={() => this.declineRequest(request)}
+            >
+              <FontAwesome name="trash" className={styles.trash} />
+            </button>
           </div>
           <div className={styles.messageBlock}>
             <p className={styles.organisationBig}>{request.organisation}</p>
-            {messageParts.map(part => (
-              <p className={styles.body}>{part}</p>
+            {messageParts.map((part, i) => (
+              <p key={i} className={styles.body}>
+                {part}
+              </p>
             ))}
           </div>
           <div className={styles.contactBox}>

@@ -1,0 +1,38 @@
+.warningBackground {
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  bottom: 0;
+  z-index: 99;
+  left: 0;
+  background-color: rgba(26, 7, 41, 0.25);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: 0.25s ease-in-out;
+}
+
+.fadeBackground {
+  opacity: 1;
+  transition: 0.25 ease-in-out;
+}
+
+.warningModal {
+  composes: modal from "../../styles/modal.module.css";
+  padding: 1rem;
+  margin: 0 auto;
+  transform: translateY(5rem);
+  width: max-content;
+  opacity: 0;
+  transition: 0.25s ease-in-out;
+  z-index: 99;
+}
+
+.warningModal.fadeIn {
+  transform: translateY(0);
+  opacity: 1;
+}
+.warningBackground.fadeIn {
+  opacity: 1;
+}

@@ -12,6 +12,7 @@ class Request {
     message,
     job,
     pending,
+    seen,
     createdAt
   ) {
     this.id = id;
@@ -37,6 +38,7 @@ class Request {
       message: this.message,
       job: this.job,
       pending: this.pending,
+      seen: this.seen,
       createdAt: this.createdAt
     };
   }
@@ -50,6 +52,7 @@ class Request {
   setMessage = message => (this.message = message);
   setJob = job => (this.job = job);
   setPending = pending => (this.pending = pending);
+  setSeen = seen => (this.seen = seen);
   setDate = createdAt => (this.createdAt = createdAt);
 
   updateFromServer = values => {
@@ -62,6 +65,7 @@ class Request {
     this.setMessage(values.message);
     this.setJob(values.job);
     this.setPending(values.pending);
+    this.setSeen(values.seen);
     this.setDate(values.createdAt);
   };
 }
@@ -77,6 +81,7 @@ decorate(Request, {
   setMessage: action,
   setJob: action,
   setPending: action,
+  setSeen: action,
   setDate: action,
   values: computed
 });

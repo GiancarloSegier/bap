@@ -13,7 +13,6 @@ class Request extends Component {
       currentRequest: props.currentRequest,
       undo: false
     };
-    console.log(props);
   }
 
   approveRequest = request => {
@@ -24,12 +23,13 @@ class Request extends Component {
     }
   };
 
-  declineRequest = request => {
-    if (this.props.alert) {
-      this.props.setParams(true, request, "Request declined", "check");
-    } else {
-      this.props.onDeleteRequest(request);
-    }
+  declineRequest = currentRequest => {
+    this.props.onDeleteRequest(currentRequest);
+  };
+
+  setPickedRequest = request => {
+    request.setSeen(true);
+    this.props.requestStore.updateRequest(request);
   };
 
   render() {
@@ -48,8 +48,11 @@ class Request extends Component {
       <article className={styles.card}>
         <div>
           <div className={styles.metaData + " " + styles.modalContainer}>
-            {currentRequest.pending ? (
+            {(currentRequest.seen && currentRequest.pending) ||
+            currentRequest.pending ? (
               <p className={styles.status + " " + styles.pending}>Pending</p>
+            ) : currentRequest.seen ? (
+              <p className={styles.status + " " + styles.seen}>Seen</p>
             ) : (
               <p className={styles.status + " " + styles.new}>New</p>
             )}
@@ -76,6 +79,7 @@ class Request extends Component {
                 pathname: ROUTES.requests,
                 state: { requestId: currentRequest.id }
               }}
+              onClick={() => this.setPickedRequest(currentRequest)}
             >
               <div className={styles.modalContainer}>
                 <h2 className={styles.heading2}>

@@ -10,6 +10,7 @@ exports.create = (req, res) => {
     message: req.body.message,
     job: req.body.job,
     pending: req.body.pending,
+    seen: req.body.seen,
     createdAt: req.body.createdAt
   });
 
@@ -63,6 +64,7 @@ exports.update = async (req, res) => {
         message: req.body.message,
         job: req.body.job,
         pending: req.body.pending,
+        seen: req.body.seen,
         createdAt: req.body.createdAt
       },
       {

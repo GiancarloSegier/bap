@@ -12,21 +12,24 @@ class RequestStore {
   constructor(rootStore) {
     this.rootStore = rootStore;
     this.api = new Api(`requests`);
-    this.getAllNewRequests();
+
     this.getAll();
-    this.getPendingRequests();
   }
 
   getAll = () => {
     this.requests = [];
     this.api.getAll().then(d => d.forEach(this._addRequest));
+    this.getPendingRequests();
+    this.getAllNewRequests();
   };
   getAllNewRequests = () => {
     this.newRequests = [];
     this.api
       .getAll()
       .then(d =>
-        d.filter(item => item.pending === false).forEach(this._addNewRequest)
+        d
+          .filter(item => item.pending === false && item.seen === false)
+          .forEach(this._addNewRequest)
       );
   };
 
@@ -91,13 +94,13 @@ class RequestStore {
     this.newRequests.remove(request);
     this.pendingRequests.push(request);
 
-    await this.api
-      .update(request)
-      .then(requestValues => request.updateFromServer(requestValues));
+    await this.api.update(request).then(requestValues => {
+      request.updateFromServer(requestValues);
+      this.getAllNewRequests();
+      this.getPendingRequests();
+    });
 
-    this.getAll();
-    this.getAllNewRequests();
-    this.getPendingRequests();
+    // this.getAll();
   };
 
   updateRequest = request => {
@@ -109,7 +112,7 @@ class RequestStore {
   deleteRequest = async request => {
     this.requests.remove(request);
     await this.api.delete(request);
-    this.getAll();
+    // this.getAll();
     this.getAllNewRequests();
     this.getPendingRequests();
   };
@@ -125,6 +128,7 @@ decorate(RequestStore, {
   getOne: action,
   currentRequest: observable,
   pendingRequests: observable,
+  updateRequest: action,
   updatePendingRequests: action,
   newRequests: observable
 });

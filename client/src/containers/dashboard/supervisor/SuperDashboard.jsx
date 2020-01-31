@@ -6,11 +6,14 @@ import { inject, observer } from "mobx-react";
 
 import uiStyles from "../../../styles/ui.module.css";
 
+import Warning from "../../../components/ui/Warning";
+
 class SuperDashboard extends Component {
   constructor(props) {
     super(props);
     this.state = {
       alert: false,
+      warning: false,
       pendingRequests: [],
       newRequests: []
     };
@@ -22,6 +25,9 @@ class SuperDashboard extends Component {
       pendingRequests: pendingRequests,
       newRequests: newRequests
     });
+  }
+  componentWillUnmount() {
+    this.props.requestStore.getAll();
   }
 
   onUpdateRequest = async request => {
@@ -62,20 +68,48 @@ class SuperDashboard extends Component {
     });
   };
 
+  showWarning = request => {
+    this.setState({ requestToDelete: request, warning: true });
+  };
+
+  onContinue = () => {
+    this.onDeleteRequest(this.state.requestToDelete);
+    setTimeout(() => {
+      this.setState({ warning: false });
+    }, 200);
+  };
+
+  onCancel = () => {
+    setTimeout(() => {
+      this.setState({ warning: false });
+    }, 200);
+  };
+
   render() {
     const { greeting } = this.props;
     const { authUser } = this.props.userStore;
-    const { pendingRequests, newRequests } = this.state;
+    const {
+      pendingRequests,
+      newRequests,
+      warning,
+      alert,
+      message,
+      icon,
+      pickedRequest
+    } = this.state;
 
     return (
       <>
-        {this.state.alert ? (
+        {warning ? (
+          <Warning onContinue={this.onContinue} onCancel={this.onCancel} />
+        ) : null}
+        {alert ? (
           <Alert
-            message={this.state.message}
-            icon={this.state.icon}
+            message={message}
+            icon={icon}
             hideAlert={this.hideAlert}
             onFinishAlert={this.onUpdateRequest}
-            params={this.state.pickedRequest}
+            params={pickedRequest}
           />
         ) : null}
         <div className={styles.oneLine}>
@@ -101,11 +135,12 @@ class SuperDashboard extends Component {
               <div className={styles.cardGrid}>
                 {newRequests.length > 0 ? (
                   <>
-                    {newRequests.slice(0, 4).map(request => (
+                    {newRequests.slice(0, 4).map((request, i) => (
                       <Request
+                        key={i}
                         currentRequest={request}
                         onUpdateRequest={this.onUpdateRequest}
-                        onDeleteRequest={this.onDeleteRequest}
+                        onDeleteRequest={this.showWarning}
                         alert={true}
                         setParams={this.setParams}
                         link={true}
@@ -126,11 +161,12 @@ class SuperDashboard extends Component {
               <div className={styles.cardGrid}>
                 {pendingRequests.length > 0 ? (
                   <>
-                    {pendingRequests.slice(0, 4).map(request => (
+                    {pendingRequests.slice(0, 4).map((request, i) => (
                       <Request
+                        key={i}
                         currentRequest={request}
                         onUpdateRequest={this.onUpdateRequest}
-                        onDeleteRequest={this.onDeleteRequest}
+                        onDeleteRequest={this.showWarning}
                         alert={true}
                         setParams={this.setParams}
                         link={true}
