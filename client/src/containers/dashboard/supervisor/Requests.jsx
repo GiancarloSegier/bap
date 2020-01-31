@@ -9,20 +9,38 @@ class Requests extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      requests: []
+      requests: [],
+      pickedRequest: null
     };
   }
-  componentDidMount() {
+
+  componentDidMount = async () => {
     const { requests } = this.props.requestStore;
+
     this.setState({
       requests: requests
     });
-  }
+
+    if (this.props.location.state && this.props.location.state.requestId) {
+      const pickedRequest = await requests.filter(
+        request => request.id === this.props.location.state.requestId
+      )[0];
+      this.setState({ pickedRequest: pickedRequest });
+    } else {
+      this.setState({
+        pickedRequest: requests
+          .slice()
+          .sort((a, b) => Number(b.pending) - Number(a.pending))
+          .reverse()[0]
+      });
+    }
+  };
 
   onUpdateRequest = async request => {
     request.setPending(true);
     await this.props.requestStore.updatePendingRequests(request);
     const { requests } = this.props.requestStore;
+
     this.setState({
       requests: requests
     });
@@ -31,8 +49,13 @@ class Requests extends Component {
     ).catch(err => console.log(err));
   };
 
+  pickRequest = request => {
+    this.setState({ pickedRequest: request });
+  };
+
   render() {
-    const { requests } = this.state;
+    const { requests, pickedRequest } = this.state;
+
     return (
       <>
         <h1 className={styles.heading1}>Requests</h1>
@@ -44,14 +67,38 @@ class Requests extends Component {
                 .sort((a, b) => Number(b.pending) - Number(a.pending))
                 .reverse()
                 .map(request => (
-                  <Request
-                    currentRequest={request}
-                    onUpdateRequest={this.onUpdateRequest}
-                    alert={false}
-                  />
+                  <div onClick={() => this.pickRequest(request)}>
+                    <Request
+                      currentRequest={request}
+                      onUpdateRequest={this.onUpdateRequest}
+                      alert={false}
+                      onClick={this.getRequestInfo}
+                    />
+                  </div>
                 ))}
             </div>
             <div>
+              {pickedRequest ? (
+                <p>
+                  {pickedRequest.name} - {pickedRequest.surname}
+                </p>
+              ) : (
+                <p>
+                  {
+                    requests
+                      .slice()
+                      .sort((a, b) => Number(b.pending) - Number(a.pending))
+                      .reverse()[0].name
+                  }{" "}
+                  -{" "}
+                  {
+                    requests
+                      .slice()
+                      .sort((a, b) => Number(b.pending) - Number(a.pending))
+                      .reverse()[0].surname
+                  }
+                </p>
+              )}
               <p>Detail card comes here</p>
             </div>
           </div>
@@ -63,8 +110,8 @@ class Requests extends Component {
   }
 }
 
-Requests.propTypes = {
-  requestStore: PropTypes.observableObject.isRequired
-};
+// Requests.propTypes = {
+//   requestStore: PropTypes.observableObject.isRequired
+// };
 
 export default inject(`requestStore`)(observer(Requests));

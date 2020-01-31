@@ -7,6 +7,9 @@ import Request from "../../../components/dashboard/Request";
 
 import { inject, observer } from "mobx-react";
 
+import { ROUTES } from "../../../constants";
+import { Link } from "react-router-dom";
+
 class SuperDashboard extends Component {
   constructor(props) {
     super(props);
@@ -98,13 +101,19 @@ class SuperDashboard extends Component {
                 {newRequests.length > 0 ? (
                   <>
                     {newRequests.slice(0, 4).map(request => (
-                      <Request
-                        currentRequest={request}
-                        onUpdateRequest={this.onUpdateRequest}
-                        alert={true}
-                        setParams={this.setParams}
-                        onClick={this.onClickRequest}
-                      />
+                      <Link
+                        to={{
+                          pathname: ROUTES.requests,
+                          state: { requestId: request.id }
+                        }}
+                      >
+                        <Request
+                          currentRequest={request}
+                          onUpdateRequest={this.onUpdateRequest}
+                          alert={true}
+                          setParams={this.setParams}
+                        />
+                      </Link>
                     ))}
                   </>
                 ) : (

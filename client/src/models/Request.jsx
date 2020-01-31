@@ -52,7 +52,7 @@ class Request {
   setPending = pending => (this.pending = pending);
   setDate = createdAt => (this.createdAt = createdAt);
 
-
+  updateFromServer = values => {
     this.setId(values._id);
     this.setName(values.name);
     this.setSurname(values.surname);
