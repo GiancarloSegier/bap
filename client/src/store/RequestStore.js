@@ -106,9 +106,12 @@ class RequestStore {
       .then(requestValues => request.updateFromServer(requestValues));
   };
 
-  deleteRequest = request => {
+  deleteRequest = async request => {
     this.requests.remove(request);
-    this.api.delete(request);
+    await this.api.delete(request);
+    this.getAll();
+    this.getAllNewRequests();
+    this.getPendingRequests();
   };
 }
 

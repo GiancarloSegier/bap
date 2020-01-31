@@ -1,0 +1,41 @@
+.textButton {
+  composes: form__button from "./form.module.css";
+  margin-left: 2rem;
+  padding: 1rem 1.5rem;
+}
+
+.button__icon {
+  display: inline-block;
+  color: var(--pink-low);
+  transform: rotate(0deg);
+  transition: 0.35s ease-in-out;
+  margin-right: 1rem;
+  font-size: 2.4rem;
+  line-height: 0;
+}
+
+.buttons {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+.buttons .textButton:nth-child(1) {
+  margin-left: 0;
+}
+
+.purple .button__icon {
+  color: var(--purple-low);
+}
+
+.purple {
+  background-color: var(--purple-high);
+}
+.purpleIcon {
+  color: var(--purple-low);
+  margin-right: 1rem;
+}
+.purple:hover {
+  background-color: var(--purple-mid);
+}
+.textButton:hover .button__icon {
+  transform: rotate(360deg);
+}

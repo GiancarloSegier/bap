@@ -3,19 +3,63 @@
   font-weight: bold;
   color: var(--purple-high);
   font-family: "beatrice", Arial, Helvetica, sans-serif;
-  margin-bottom: 6rem;
+  margin-bottom: 4rem;
 }
 .headGrid {
   display: grid;
-  grid-template-columns: 1fr 2fr;
+  grid-template-columns: 1.5fr 2fr;
   grid-gap: 4rem;
+  align-items: flex-start;
 }
 .borderRight {
   border-right: 0.1rem solid var(--grey-low);
-  padding-right: 2rem;
+  padding-right: 4rem;
 }
 .cardGrid {
   display: grid;
   grid-template-columns: 1fr;
   grid-gap: 2rem;
+  height: calc(100vh - 20.5rem);
+  align-items: flex-start;
+  grid-template-rows: repeat(auto-fill, minmax(100px, max-content));
+  overflow: scroll;
+}
+/* .cardGrid::-webkit-scrollbar {
+  display: none;
+} */
+.requestBox {
+  border-radius: 0.6rem;
+  border-width: 0.1rem;
+  border-style: solid;
+  border-color: transparent;
+  transition: 0.25s ease-in-out;
+  height: max-content;
+}
+.requestBox:hover {
+  cursor: pointer;
+}
+.requestBox:last-of-type {
+  margin-bottom: 4rem;
+}
+
+.selected {
+  border-color: var(--pink-mid);
+}
+.activeRequest {
+  border: 0.1rem solid var(--pink-mid);
+}
+.centerLoader {
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.loaderLabel {
+  margin-top: 2rem;
+}
+
+.scrollRequest {
+  height: calc(100vh - 20.5rem);
+  overflow: scroll;
+  padding: 0 2rem;
 }

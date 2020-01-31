@@ -1,14 +1,10 @@
 import React, { Component } from "react";
 import styles from "../Dashboard.module.css";
-// import Form from "../components/Form";
 import Alert from "../../../components/ui/Alert";
-
-import Request from "../../../components/dashboard/Request";
-
+import Request from "../../../components/dashboard/requests/Request";
 import { inject, observer } from "mobx-react";
 
-import { ROUTES } from "../../../constants";
-import { Link } from "react-router-dom";
+import uiStyles from "../../../styles/ui.module.css";
 
 class SuperDashboard extends Component {
   constructor(props) {
@@ -43,6 +39,16 @@ class SuperDashboard extends Component {
     ).catch(err => console.log(err));
   };
 
+  onDeleteRequest = async request => {
+    await this.props.requestStore.deleteRequest(request);
+
+    const { pendingRequests, newRequests } = this.props.requestStore;
+    this.setState({
+      pendingRequests: pendingRequests,
+      newRequests: newRequests
+    });
+  };
+
   hideAlert = alertVisible => {
     this.setState({ alert: alertVisible, pickedRequest: {} });
   };
@@ -54,11 +60,6 @@ class SuperDashboard extends Component {
       icon: icon,
       alert: alertVisible
     });
-  };
-
-  onClickRequest = e => {
-    console.log("klik");
-    console.log(e);
   };
 
   render() {
@@ -84,12 +85,12 @@ class SuperDashboard extends Component {
           <div>
             <button
               type="button"
-              className={styles.button + " " + styles.purple}
+              className={uiStyles.textButton + " " + uiStyles.purple}
             >
-              <span className={styles.button__icon}>+</span>new announcement
+              <span className={uiStyles.button__icon}>+</span>new announcement
             </button>
-            <button type="button" className={styles.button}>
-              <span className={styles.button__icon}>+</span>invite committee
+            <button type="button" className={uiStyles.textButton}>
+              <span className={uiStyles.button__icon}>+</span>invite committee
             </button>
           </div>
         </div>
@@ -101,19 +102,14 @@ class SuperDashboard extends Component {
                 {newRequests.length > 0 ? (
                   <>
                     {newRequests.slice(0, 4).map(request => (
-                      <Link
-                        to={{
-                          pathname: ROUTES.requests,
-                          state: { requestId: request.id }
-                        }}
-                      >
-                        <Request
-                          currentRequest={request}
-                          onUpdateRequest={this.onUpdateRequest}
-                          alert={true}
-                          setParams={this.setParams}
-                        />
-                      </Link>
+                      <Request
+                        currentRequest={request}
+                        onUpdateRequest={this.onUpdateRequest}
+                        onDeleteRequest={this.onDeleteRequest}
+                        alert={true}
+                        setParams={this.setParams}
+                        link={true}
+                      />
                     ))}
                   </>
                 ) : (
@@ -134,7 +130,10 @@ class SuperDashboard extends Component {
                       <Request
                         currentRequest={request}
                         onUpdateRequest={this.onUpdateRequest}
+                        onDeleteRequest={this.onDeleteRequest}
+                        alert={true}
                         setParams={this.setParams}
+                        link={true}
                       />
                     ))}
                   </>

@@ -1,9 +1,12 @@
 .card {
-  composes: modal from "../../styles/modal.module.css";
+  composes: modal from "../../../styles/modal.module.css";
 }
 .modalContainer {
-  composes: modalContainer from "../../styles/modal.module.css";
-  padding: 1.5rem 2rem;
+  composes: modalContainer from "../../../styles/modal.module.css";
+  padding: 1rem 2rem;
+}
+.extraMargin {
+  margin-bottom: 4rem;
 }
 .status {
   padding: 0.25rem 0.5rem;
@@ -13,7 +16,6 @@
   letter-spacing: 0.1rem;
   width: max-content;
   border-radius: 0.4rem;
-  margin-bottom: 1.5rem;
 }
 .new {
   background-color: var(--pink-light);
@@ -27,6 +29,22 @@
   font-family: "beatrice", Arial, Helvetica, sans-serif;
   font-weight: 500;
   font-size: 1.8rem;
+}
+
+.body {
+  color: var(--body);
+  margin-bottom: 2rem;
+}
+
+.contact {
+  color: var(--black);
+}
+.contactBox {
+  margin-bottom: -4rem;
+}
+
+.messageBlock {
+  margin-bottom: 4rem;
 }
 
 .organisation {
@@ -93,6 +111,7 @@
   display: flex;
   justify-content: space-between;
   align-items: baseline;
+  padding-bottom: 0;
 }
 .buttons {
   display: flex;
@@ -107,4 +126,38 @@
 .date {
   font-size: 1.2rem;
   color: var(--grey-high);
+}
+
+.activeCard {
+  border: 0.2rem solid var(--pink-mid);
+}
+
+.requestTitle {
+  composes: heading2;
+  font-size: 1.8rem;
+}
+.organisationBig {
+  composes: organisation;
+  font-size: 1.8rem;
+  margin-bottom: 4rem;
+}
+
+.purple {
+  color: var(--purple-low);
+}
+
+.trash {
+  color: var(--grey-mid);
+  font-size: 2rem;
+  transition: 0.25s ease-in-out;
+}
+
+.trash:hover {
+  cursor: pointer;
+  color: var(--pink-mid);
+}
+
+.oneLine {
+  display: flex;
+  justify-content: space-between;
 }

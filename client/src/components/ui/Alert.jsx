@@ -41,7 +41,7 @@ class Alert extends Component {
     return (
       <div
         className={
-          styles.alertBackground + " " + (fadeIn ? styles.fadeBackground : null)
+          styles.alertBackground + " " + (fadeIn ? styles.fadeIn : null)
         }
       >
         <div

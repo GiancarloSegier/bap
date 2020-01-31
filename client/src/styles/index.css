@@ -27,6 +27,10 @@ body {
   line-height: 1.6;
 }
 
+a {
+  color: var(--black);
+}
+
 .container {
   padding: 0 4rem;
   min-height: calc(100vh - 12rem);

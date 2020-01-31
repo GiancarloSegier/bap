@@ -24,8 +24,8 @@
 
 .headGrid {
   display: grid;
-  grid-template-columns: 1fr 19vmax;
-  grid-gap: 3rem;
+  grid-template-columns: 3fr 1fr;
+  grid-gap: 4rem;
 }
 .subGrid {
   display: grid;
@@ -33,45 +33,16 @@
 }
 .frame {
   min-height: 35vh;
-  padding-bottom: 3rem;
-}
-
-.button {
-  composes: form__button from "../../styles/form.module.css";
-  margin-left: 2rem;
-  padding: 1rem 1.5rem;
-}
-
-.button__icon {
-  display: inline-block;
-  color: var(--pink-low);
-  transform: rotate(0deg);
-  transition: 0.35s ease-in-out;
-  margin-right: 1rem;
-  font-size: 2.4rem;
-  line-height: 0;
-}
-
-.purple {
-  background-color: var(--purple-high);
-}
-.purple:hover {
-  background-color: var(--purple-mid);
-}
-.purple .button__icon {
-  color: var(--purple-low);
-}
-.button:hover .button__icon {
-  transform: rotate(360deg);
+  padding-bottom: 4rem;
 }
 
 .borderRight {
   border-right: 0.1rem solid var(--grey-low);
-  padding-right: 3rem;
+  padding-right: 4rem;
 }
 .borderTop {
   border-top: 0.1rem solid var(--grey-low);
-  padding-top: 3rem;
+  padding-top: 4rem;
 }
 
 .cardGrid {

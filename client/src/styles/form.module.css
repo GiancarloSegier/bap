@@ -68,10 +68,8 @@
   padding: 1rem 4rem;
   border-radius: 3rem;
   color: white;
-  font-weight: bold;
   font-size: 1.6rem;
   font-family: "chivo", sans-serif;
-  transition: 0.2s ease-in-out;
   transition: 0.2s ease-in-out;
 }
 .form__button:disabled {

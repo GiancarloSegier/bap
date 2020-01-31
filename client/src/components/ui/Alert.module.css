@@ -6,12 +6,14 @@
   z-index: 99;
   left: 0;
   background: linear-gradient(0deg, rgba(26, 7, 41, 0.25), transparent);
+
   opacity: 0;
-  transition: 0.25 ease-in-out;
+  transition: 0.25s ease-in-out;
 }
 
 .fadeBackground {
   opacity: 1;
+  transition: 0.25 ease-in-out;
 }
 
 .alertModal {
@@ -29,7 +31,7 @@
   left: 0;
   right: 0;
   width: max-content;
-
+  opacity: 0;
   bottom: 0;
   transition: 0.25s ease-in-out;
   z-index: 99;
@@ -55,7 +57,11 @@
 }
 
 .fadeIn {
+  opacity: 1;
   bottom: 4rem;
+}
+.alertBackground.fadeIn {
+  bottom: 0;
 }
 .undo.undo__check:hover {
   background-color: var(--purple-mid);
