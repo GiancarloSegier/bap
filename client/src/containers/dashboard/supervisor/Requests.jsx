@@ -11,7 +11,6 @@ import Warning from "../../../components/ui/Warning";
 const nl2br = require("react-nl2br");
 
 class Requests extends Component {
-  fullPickedRequest;
   constructor(props) {
     super(props);
     this.state = {
@@ -52,53 +51,33 @@ class Requests extends Component {
           .slice()
           .sort(
             (a, b) =>
-              Number(b.pending) - Number(a.pending) ||
-              Number(b.seen) - Number(a.seen)
+              Number(b.seen) - Number(a.seen) ||
+              Number(b.pending) - Number(a.pending)
           )
           .reverse()
       )[0];
     }
-    this.fullPickedRequest = pickedRequest;
 
     this.getMessageParagraphs(pickedRequest);
   };
 
   onUpdateRequest = async request => {
-    let updateRequest;
+    request.setPending(true);
 
-    if (!request.setPending) {
-      updateRequest = this.fullPickedRequest;
-    } else {
-      updateRequest = request;
-    }
-
-    updateRequest.setPending(true);
-    updateRequest.setSeen(true);
-    await this.props.requestStore.updateRequest(updateRequest);
-
+    await this.props.requestStore.updateRequest(request);
     const { requests } = this.props.requestStore;
-
     this.setState({
       requests: requests
     });
 
     await fetch(
-      `http://localhost:4000/send-mail?type=invite&id=${updateRequest.id}&name=${updateRequest.name}&recipient=${updateRequest.email}&organisation=${updateRequest.organisation}`
+      `http://localhost:4000/send-mail?type=invite&id=${request.id}&name=${request.name}&recipient=${request.email}&organisation=${request.organisation}`
     ).catch(err => console.log(err));
   };
 
   onDeleteRequest = async request => {
-    let deleteRequest;
-
-    if (!request || !request.setPending) {
-      deleteRequest = this.fullPickedRequest;
-    } else {
-      deleteRequest = request;
-    }
-    await this.props.requestStore.deleteRequest(deleteRequest);
-
+    await this.props.requestStore.deleteRequest(request);
     const { requests } = this.props.requestStore;
-
     this.setState({
       requests: requests
     });
@@ -106,10 +85,13 @@ class Requests extends Component {
   };
 
   pickRequest = async request => {
-    this.fullPickedRequest = request;
+    request.setSeen(true);
+    await this.props.requestStore.updateRequest(request);
+    const { requests } = this.props.requestStore;
 
-    this.fullPickedRequest.setSeen(true);
-    await this.props.requestStore.updateRequest(this.fullPickedRequest);
+    this.setState({
+      requests: requests
+    });
 
     this.getMessageParagraphs(request);
   };
@@ -165,8 +147,8 @@ class Requests extends Component {
                   .slice()
                   .sort(
                     (a, b) =>
-                      Number(b.pending) - Number(a.pending) ||
-                      Number(b.seen) - Number(a.seen)
+                      Number(b.seen) - Number(a.seen) ||
+                      Number(b.pending) - Number(a.pending)
                   )
                   .reverse()
                   .map((request, i) => (
