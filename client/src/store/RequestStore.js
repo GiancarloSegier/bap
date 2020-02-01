@@ -14,13 +14,13 @@ class RequestStore {
     this.api = new Api(`requests`);
 
     this.getAll();
+    this.getPendingRequests();
+    this.getAllNewRequests();
   }
 
   getAll = () => {
     this.requests = [];
     this.api.getAll().then(d => d.forEach(this._addRequest));
-    this.getPendingRequests();
-    this.getAllNewRequests();
   };
   getAllNewRequests = () => {
     this.newRequests = [];

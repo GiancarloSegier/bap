@@ -3,19 +3,32 @@ import styles from "../Dashboard.module.css";
 import uiStyles from "../../../styles/ui.module.css";
 
 import { inject, observer } from "mobx-react";
+import InviteCommitteeForm from "../../../components/ui/InviteCommitteeForm";
 
 class Committees extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      invite: false
+    };
   }
 
   openInviteForm = e => {
     console.log("klik");
+    this.setState({ invite: true });
+  };
+  closeInviteForm = () => {
+    this.setState({ invite: false });
   };
 
   render() {
+    const { invite } = this.state;
     return (
       <>
+        {invite ? (
+          <InviteCommitteeForm onConfirm={this.closeInviteForm} />
+        ) : null}
+
         <div className={styles.oneLine}>
           <h1 className={styles.heading1}>Committees</h1>
           <div>

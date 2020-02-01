@@ -22,16 +22,16 @@ class Requests extends Component {
   }
 
   componentDidMount = async () => {
-    const { requests } = this.props.requestStore;
-    setTimeout(() => {
-      this.setState({
-        requests: requests
-      });
-      this.setPickedRequest();
-    }, 500);
-    setTimeout(() => {
+    await this.props.requestStore.requests;
+
+    this.setState({
+      requests: this.props.requestStore.requests
+    });
+
+    setTimeout(async () => {
+      await this.setPickedRequest();
       this.setState({ loading: false });
-    }, 800);
+    }, 200);
   };
 
   componentWillUnmount() {
@@ -39,7 +39,8 @@ class Requests extends Component {
   }
 
   setPickedRequest = async () => {
-    const { requests } = this.props.requestStore;
+    const { requests } = this.state;
+
     let pickedRequest;
     if (this.props.location.state && this.props.location.state.requestId) {
       pickedRequest = toJS(requests).filter(

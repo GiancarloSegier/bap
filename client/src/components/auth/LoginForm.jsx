@@ -15,7 +15,6 @@ class LoginForm extends Component {
       password: "",
       emailError: false,
       error: false,
-      disabled: true,
       checkUser: false
     };
 
