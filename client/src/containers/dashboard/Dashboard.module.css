@@ -11,6 +11,15 @@
   font-size: 1.8rem;
   margin-bottom: 2rem;
 }
+
+.body {
+  color: var(--grey-dark);
+  margin-bottom: 3rem;
+}
+.emptyContainer {
+  max-width: 45%;
+  font-size: 1.8rem;
+}
 .avatar {
   width: 10rem;
   height: 10rem;
@@ -49,4 +58,20 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-gap: 2rem;
+}
+
+.buttonInline {
+  font-size: 1.8rem;
+  padding: 0;
+  color: var(--pink-mid);
+  border: none;
+  border-bottom: 0.1rem solid var(--pink-mid);
+  background: none;
+  transition: 0.15s ease-in-out;
+}
+
+.buttonInline:hover {
+  cursor: pointer;
+  color: var(--pink-high);
+  border-bottom-color: var(--pink-high);
 }
