@@ -15,6 +15,7 @@
     "mobx": "^5.15.2",
     "mobx-react": "^6.1.5",
     "mongoose": "^5.8.9",
+    "randomstring": "^1.1.5",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-fontawesome": "^1.7.1",

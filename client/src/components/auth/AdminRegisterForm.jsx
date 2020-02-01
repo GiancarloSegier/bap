@@ -53,7 +53,9 @@ class AdminRegisterForm extends Component {
       job
     } = this.props.requestStore.currentRequest;
 
-    const randomId = this.randomStr(24, "12345abcde");
+    const randomstring = require("randomstring");
+
+    const randomId = randomstring.generate({ length: 24, charset: "hex" });
     const committeeId = mongoose.Types.ObjectId(randomId);
 
     await userStore
@@ -90,7 +92,7 @@ class AdminRegisterForm extends Component {
   };
 
   uploadAvatar = async () => {
-    await fetch(`http://localhost:4000/image-upload`, {
+    await fetch(`http://localhost:3000/image-upload`, {
       method: "POST",
       body: this.state.formData
     })
