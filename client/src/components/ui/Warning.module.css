@@ -1,0 +1,24 @@
+.buttons {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+}
+.modalContainer {
+  composes: modalContainer from "../../styles/modal.module.css";
+  padding: 1.5rem 2.5rem;
+}
+.button {
+  border: none;
+  font-size: 1.6rem;
+  font-family: "chivo";
+  cursor: pointer;
+}
+.decline {
+  color: var(--pink-mid);
+}
+.accept {
+  color: var(--grey-mid);
+}
+.trash {
+  margin-right: 1rem;
+}

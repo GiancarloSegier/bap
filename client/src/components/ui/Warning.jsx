@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import modalStyles from "../../styles/modal.module.css";
-
+import styles from "./Warning.module.css";
+import FontAwesome from "react-fontawesome";
 class Warning extends Component {
   constructor(props) {
     super(props);
@@ -44,9 +45,35 @@ class Warning extends Component {
             (fadeIn ? modalStyles.fadeIn : null)
           }
         >
-          <p>Are you sure you want to do this?</p>
-          <button onClick={this.onCancel}>Cancel</button>
-          <button onClick={this.onContinue}>Continue</button>
+          <div className={styles.modalContainer}>
+            <p>
+              <FontAwesome name="trash" className={styles.trash} />
+              delete the invitation?
+            </p>
+          </div>
+
+          <div
+            className={
+              modalStyles.modalContainer +
+              " " +
+              modalStyles.divideBorder +
+              " " +
+              styles.buttons
+            }
+          >
+            <button
+              className={styles.button + " " + styles.accept}
+              onClick={this.onCancel}
+            >
+              Cancel
+            </button>
+            <button
+              className={styles.button + " " + styles.decline}
+              onClick={this.onContinue}
+            >
+              Delete
+            </button>
+          </div>
         </div>
       </div>
     );
