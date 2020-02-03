@@ -24,6 +24,7 @@ class Request {
     this.message = message;
     this.job = job;
     this.pending = pending;
+    this.seen = seen;
     this.createdAt = createdAt;
   }
 

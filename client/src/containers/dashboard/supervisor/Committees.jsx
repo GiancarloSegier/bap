@@ -33,7 +33,11 @@ class Committees extends Component {
         <div className={styles.oneLine}>
           <h1 className={typoStyles.heading1}>Committees</h1>
           <div>
-            <button type="button" className={uiStyles.textButton}>
+            <button
+              type="button"
+              className={uiStyles.textButton}
+              onClick={this.openInviteForm}
+            >
               <span className={uiStyles.button__icon}>+</span>invite committee
             </button>
           </div>

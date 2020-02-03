@@ -32,7 +32,7 @@ class Requests extends Component {
     setTimeout(async () => {
       await this.setPickedRequest();
       this.setState({ loading: false });
-    }, 200);
+    }, 500);
   };
 
   componentWillUnmount() {
@@ -43,21 +43,23 @@ class Requests extends Component {
     const { requests } = this.state;
 
     let pickedRequest;
-    if (this.props.location.state && this.props.location.state.requestId) {
-      pickedRequest = toJS(requests).filter(
-        request => request.id === this.props.location.state.requestId
-      )[0];
-    } else {
-      pickedRequest = toJS(
-        requests
-          .slice()
-          .sort(
-            (a, b) =>
-              Number(b.seen) - Number(a.seen) ||
-              Number(b.pending) - Number(a.pending)
-          )
-          .reverse()
-      )[0];
+    if (requests.length > 0) {
+      if (this.props.location.state && this.props.location.state.requestId) {
+        pickedRequest = toJS(requests).filter(
+          request => request.id === this.props.location.state.requestId
+        )[0];
+      } else {
+        pickedRequest = toJS(
+          requests
+            .slice()
+            .sort(
+              (a, b) =>
+                Number(b.seen) - Number(a.seen) ||
+                Number(b.pending) - Number(a.pending)
+            )
+            .reverse()
+        )[0];
+      }
     }
 
     this.getMessageParagraphs(pickedRequest);
@@ -99,14 +101,18 @@ class Requests extends Component {
   };
 
   getMessageParagraphs = request => {
-    const messageParts = [];
-    nl2br(request.message).map(part => {
-      if (!part.type) {
-        messageParts.push(part);
-      }
-    });
+    if (request.message || request.message !== "") {
+      const messageParts = [];
+      nl2br(request.message).map(part => {
+        if (!part.type) {
+          messageParts.push(part);
+        }
+      });
 
-    this.setState({ pickedRequest: request, messageParts: messageParts });
+      this.setState({ pickedRequest: request, messageParts: messageParts });
+    } else {
+      this.setState({ pickedRequest: request });
+    }
   };
 
   showWarning = request => {
@@ -153,27 +159,30 @@ class Requests extends Component {
                       Number(b.pending) - Number(a.pending)
                   )
                   .reverse()
-                  .map((request, i) => (
-                    <div
-                      key={i}
-                      onClick={() => this.pickRequest(request)}
-                      className={
-                        styles.requestBox +
-                        " " +
-                        (request.id === pickedRequest.id
-                          ? styles.selected
-                          : null)
-                      }
-                    >
-                      <Request
-                        currentRequest={request}
-                        onUpdateRequest={this.onUpdateRequest}
-                        onDeleteRequest={this.showWarning}
-                        alert={false}
-                        link={false}
-                      />
-                    </div>
-                  ))}
+                  .map((request, i) => {
+                    console.log(request);
+                    return (
+                      <div
+                        key={i}
+                        onClick={() => this.pickRequest(request)}
+                        className={
+                          styles.requestBox +
+                          " " +
+                          (request.id === pickedRequest.id
+                            ? styles.selected
+                            : null)
+                        }
+                      >
+                        <Request
+                          currentRequest={request}
+                          onUpdateRequest={this.onUpdateRequest}
+                          onDeleteRequest={this.showWarning}
+                          alert={false}
+                          link={false}
+                        />
+                      </div>
+                    );
+                  })}
               </div>
               <div className={styles.scrollRequest}>
                 {pickedRequest ? (

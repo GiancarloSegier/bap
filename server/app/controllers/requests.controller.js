@@ -2,6 +2,7 @@ const Request = require("../models/request.model.js");
 
 exports.create = (req, res) => {
   const request = new Request({
+    _id: req.body.id,
     name: req.body.name,
     surname: req.body.surname,
     organisation: req.body.organisation,

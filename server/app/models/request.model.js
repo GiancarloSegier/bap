@@ -2,6 +2,7 @@ const mongoose = require("mongoose");
 
 const RequestSchema = mongoose.Schema(
   {
+    _id: mongoose.Schema.ObjectId,
     name: String,
     surname: String,
     organisation: String,
