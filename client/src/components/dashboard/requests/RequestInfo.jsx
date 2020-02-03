@@ -45,11 +45,15 @@ class RequestInfo extends Component {
           </div>
           <div className={styles.messageBlock}>
             <p className={styles.organisationBig}>{request.organisation}</p>
-            {messageParts.map((part, i) => (
-              <p key={i} className={styles.body}>
-                {part}
-              </p>
-            ))}
+            {messageParts ? (
+              <>
+                {messageParts.map((part, i) => (
+                  <p key={i} className={styles.body}>
+                    {part}
+                  </p>
+                ))}
+              </>
+            ) : null}
           </div>
           <div className={styles.contactBox}>
             <p className={styles.body + " " + styles.contact}>

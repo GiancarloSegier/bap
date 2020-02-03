@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import modalStyles from "../../styles/modal.module.css";
 import formStyles from "../../styles/form.module.css";
+import { inject, observer } from "mobx-react";
+import { withRouter } from "react-router-dom";
 // import styles from "./InviteCommitteeForm.module.css";
 
 class InviteCommitteeForm extends Component {
@@ -25,6 +27,9 @@ class InviteCommitteeForm extends Component {
       this.setState({ fadeIn: true });
     }, 100);
   };
+  componentWillUnmount() {
+    this.props.requestStore.getAll();
+  }
   handleChange = e => {
     const input = e.currentTarget;
     const state = { ...this.state };
@@ -44,13 +49,74 @@ class InviteCommitteeForm extends Component {
     }
   };
 
+  randomStr = (len, arr) => {
+    let ans = "";
+    for (let i = len; i > 0; i--) {
+      ans += arr[Math.floor(Math.random() * arr.length)];
+    }
+    return ans;
+  };
+
   handleSubmit = e => {
+    // const uuid = require("uuid");
+    // const requestId = uuid();
+    const mongoose = require("mongoose");
+    const randomId = this.randomStr(24, "12345abcde");
+    const requestId = mongoose.Types.ObjectId(randomId);
+
+    const { name, surname, email, organisation } = this.state;
+
     e.preventDefault();
+
+    if (name !== "" && surname !== "" && organisation !== "" && email !== "") {
+      fetch(
+        `http://localhost:4000/send-mail?type=invite&id=${requestId}&name=${name}&recipient=${email}&organisation=${organisation}`
+      ).catch(err => console.log(err));
+
+      this.props.requestStore.addRequest({
+        _id: requestId,
+        name: name,
+        surname: surname,
+        organisation: organisation,
+        phone: "",
+        email: email,
+        message: "",
+        job: {
+          assignment: "Event Manager",
+          privileges: "admin"
+        },
+        pending: false,
+        seen: false
+      });
+
+      this.setState({
+        name: "",
+        surname: "",
+        email: "",
+        organisation: ""
+      });
+
+      this.nameInput.current.value = "";
+      this.emailInput.current.value = "";
+      this.surnameInput.current.value = "";
+      this.organisationInput.current.value = "";
+    } else {
+      this.setState({ error: true });
+    }
+
     this.setState({ fadeIn: false });
     setTimeout(() => {
       this.props.onConfirm();
     }, 200);
   };
+
+  // handleSubmit = e => {
+  //   e.preventDefault();
+  //   this.setState({ fadeIn: false });
+  //   setTimeout(() => {
+  //     this.props.onConfirm();
+  //   }, 200);
+  // };
   render() {
     const { fadeIn, email, organisation, name, surname } = this.state;
     return (
@@ -166,4 +232,4 @@ class InviteCommitteeForm extends Component {
   }
 }
 
-export default InviteCommitteeForm;
+export default inject(`requestStore`)(withRouter(InviteCommitteeForm));

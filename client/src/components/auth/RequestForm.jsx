@@ -23,10 +23,18 @@ class RequestForm extends Component {
       error: false
     };
   }
+  randomStr = (len, arr) => {
+    let ans = "";
+    for (let i = len; i > 0; i--) {
+      ans += arr[Math.floor(Math.random() * arr.length)];
+    }
+    return ans;
+  };
 
   handleSubmit = e => {
-    const uuid = require("uuid");
-    const requestId = uuid();
+    const mongoose = require("mongoose");
+    const randomId = this.randomStr(24, "12345abcde");
+    const requestId = mongoose.Types.ObjectId(randomId);
 
     const { name, surname, email, message, phone, organisation } = this.state;
 
@@ -56,7 +64,8 @@ class RequestForm extends Component {
           assignment: "Event Manager",
           privileges: "admin"
         },
-        pending: false
+        pending: false,
+        seen: false
       });
 
       this.setState({
