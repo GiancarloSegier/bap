@@ -8,6 +8,8 @@ import uiStyles from "../../../styles/ui.module.css";
 import typoStyles from "../../../styles/typo.module.css";
 
 import Warning from "../../../components/ui/Warning";
+import Statistics from "../../../components/dashboard/Statistics";
+import RequestEmpty from "../../../components/dashboard/requests/RequestEmpty";
 
 class SuperDashboard extends Component {
   constructor(props) {
@@ -173,15 +175,16 @@ class SuperDashboard extends Component {
                         link={true}
                       />
                     ))}
+                    <RequestEmpty />
                   </>
                 ) : (
-                  <p>No invites to show</p>
+                  <RequestEmpty />
                 )}
               </div>
             </section>
           </div>
           <section className={styles.frame}>
-            <h2 className={typoStyles.heading2}>Race statistics</h2>
+            <Statistics />
           </section>
         </div>
       </>
