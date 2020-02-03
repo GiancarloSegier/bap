@@ -23,6 +23,7 @@ const SideNav = ({ userStore }) => {
           <img
             className={styles.navLink__icon}
             src="../assets/icons/nav/dashboard.png"
+            alt=""
           />
           Dashboard
         </NavLink>
@@ -40,6 +41,7 @@ const SideNav = ({ userStore }) => {
               <img
                 className={styles.navLink__icon}
                 src="../assets/icons/nav/committees.png"
+                alt=""
               />
               Committees
             </NavLink>
@@ -54,6 +56,7 @@ const SideNav = ({ userStore }) => {
               <img
                 className={styles.navLink__icon}
                 src="../assets/icons/nav/requests.png"
+                alt=""
               />
               Requests
             </NavLink>
@@ -68,6 +71,7 @@ const SideNav = ({ userStore }) => {
               <img
                 className={styles.navLink__icon}
                 src="../assets/icons/nav/announcements.png"
+                alt=""
               />
               Announcements
             </NavLink>
@@ -85,6 +89,7 @@ const SideNav = ({ userStore }) => {
               <img
                 className={styles.navLink__icon}
                 src="../assets/icons/nav/committees.png"
+                alt=""
               />
               Committee
             </NavLink>
@@ -99,6 +104,7 @@ const SideNav = ({ userStore }) => {
               <img
                 className={styles.navLink__icon}
                 src="../assets/icons/nav/planner.png"
+                alt=""
               />
               Planner
             </NavLink>
@@ -113,6 +119,7 @@ const SideNav = ({ userStore }) => {
               <img
                 className={styles.navLink__icon}
                 src="../assets/icons/nav/announcements.png"
+                alt=""
               />
               News
             </NavLink>

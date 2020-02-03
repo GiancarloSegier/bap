@@ -1,4 +1,3 @@
-import uuid from "uuid";
 import { decorate, observable, computed, action } from "mobx";
 
 class Invite {
