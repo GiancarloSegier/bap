@@ -5,6 +5,7 @@ import typoStyles from "../../../styles/typo.module.css";
 
 import { inject, observer } from "mobx-react";
 import InviteCommitteeForm from "../../../components/ui/InviteCommitteeForm";
+import CommitteesList from "./committees/CommitteesList";
 
 class Committees extends Component {
   constructor(props) {
@@ -24,6 +25,7 @@ class Committees extends Component {
 
   render() {
     const { invite } = this.state;
+    const { committees } = this.props.committeeStore;
     return (
       <>
         {invite ? (
@@ -42,25 +44,29 @@ class Committees extends Component {
             </button>
           </div>
         </div>
-        <div className={styles.emptyContainer}>
-          <p className={typoStyles.body}>
-            Here you can organise the committees that are responsible for all
-            the Races.
-          </p>
-          <p className={typoStyles.body}>
-            Authorise someone as the Event Manager so they can complete their
-            committee.
-          </p>
-          <p>
-            You haven’t made any invited committee yet. You can invite someone{" "}
-            <button
-              className={typoStyles.buttonInline}
-              onClick={this.openInviteForm}
-            >
-              here
-            </button>
-          </p>
-        </div>
+        {committees.length < 0 ? (
+          <div className={styles.emptyContainer}>
+            <p className={typoStyles.body}>
+              Here you can organise the committees that are responsible for all
+              the Races.
+            </p>
+            <p className={typoStyles.body}>
+              Authorise someone as the Event Manager so they can complete their
+              committee.
+            </p>
+            <p>
+              You haven’t made any invited committee yet. You can invite someone{" "}
+              <button
+                className={typoStyles.buttonInline}
+                onClick={this.openInviteForm}
+              >
+                here
+              </button>
+            </p>
+          </div>
+        ) : (
+          <CommitteesList />
+        )}
       </>
     );
   }

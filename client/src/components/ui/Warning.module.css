@@ -12,6 +12,7 @@
   font-size: 1.6rem;
   font-family: "chivo";
   cursor: pointer;
+  background: none;
 }
 .decline {
   color: var(--pink-mid);

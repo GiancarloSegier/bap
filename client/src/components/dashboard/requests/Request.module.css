@@ -151,7 +151,7 @@
 }
 .trashButton {
   border: none;
-  background-color: none;
+  background: none;
 }
 .trash {
   color: var(--grey-mid);
