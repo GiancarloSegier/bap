@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { inject, observer } from "mobx-react";
 import styles from "./MyCommittee.module.css";
 import InviteForm from "../../../components/auth/InviteForm";
+
+import typoStyles from "../../../styles/typo.module.css";
 // import Form from "../components/Form";
 
 class MyCommittee extends Component {
@@ -24,7 +26,7 @@ class MyCommittee extends Component {
       <>
         <div>
           <h1>MyCommittee</h1>
-          <p className={styles.heading1}>Team name: {name}</p>
+          <p className={typoStyles.heading1}>Team name: {name}</p>
           <br />
           <hr />
           {this.props.userStore.authUser.job.privileges === "admin" ? (
@@ -35,7 +37,7 @@ class MyCommittee extends Component {
               <hr />
               {invites.length > 0 ? (
                 <>
-                  <p className={styles.heading1}>Invites:</p>
+                  <p className={typoStyles.heading1}>Invites:</p>
                   {invites.map(invite => {
                     return (
                       <p>
@@ -53,7 +55,7 @@ class MyCommittee extends Component {
 
           {committeeMembers.length > 0 ? (
             <>
-              <p className={styles.heading1}>CommitteeMembers:</p>
+              <p className={typoStyles.heading1}>CommitteeMembers:</p>
               {committeeMembers.map(member => {
                 return (
                   <p>

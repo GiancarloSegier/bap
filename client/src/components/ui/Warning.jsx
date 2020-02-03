@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import styles from "./Warning.module.css";
+import modalStyles from "../../styles/modal.module.css";
 
 class Warning extends Component {
   constructor(props) {
@@ -32,12 +32,16 @@ class Warning extends Component {
     return (
       <div
         className={
-          styles.warningBackground + " " + (fadeIn ? styles.fadeIn : null)
+          modalStyles.modalBackground +
+          " " +
+          (fadeIn ? modalStyles.fadeIn : null)
         }
       >
         <div
           className={
-            styles.warningModal + " " + (fadeIn ? styles.fadeIn : null)
+            modalStyles.floatingModal +
+            " " +
+            (fadeIn ? modalStyles.fadeIn : null)
           }
         >
           <p>Are you sure you want to do this?</p>

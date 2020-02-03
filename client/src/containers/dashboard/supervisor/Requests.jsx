@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import styles from "../platform.module.css";
+import typoStyles from "../../../styles/typo.module.css";
 import { inject, observer, PropTypes } from "mobx-react";
 import Request from "../../../components/dashboard/requests/Request";
 
@@ -140,7 +141,7 @@ class Requests extends Component {
           {warning ? (
             <Warning onContinue={this.onContinue} onCancel={this.onCancel} />
           ) : null}
-          <h1 className={styles.heading1}>Requests</h1>
+          <h1 className={typoStyles.heading1}>Requests</h1>
           {requests.length > 0 ? (
             <div className={styles.headGrid}>
               <div className={styles.borderRight + " " + styles.cardGrid}>
@@ -193,7 +194,7 @@ class Requests extends Component {
     } else {
       return (
         <>
-          <h1 className={styles.heading1}>Requests</h1>
+          <h1 className={typoStyles.heading1}>Requests</h1>
           <div className={styles.centerLoader}>
             <Loader type="Grid" color="#ff3066" height={40} width={40} />
             <p className={styles.loaderLabel}>Loading requests</p>

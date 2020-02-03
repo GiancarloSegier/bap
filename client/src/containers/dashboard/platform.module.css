@@ -1,10 +1,3 @@
-.heading1 {
-  font-size: 2.8rem;
-  font-weight: bold;
-  color: var(--purple-high);
-  font-family: "beatrice", Arial, Helvetica, sans-serif;
-  margin-bottom: 4rem;
-}
 .headGrid {
   display: grid;
   grid-template-columns: 1.5fr 2fr;
@@ -23,6 +16,7 @@
   align-items: flex-start;
   grid-template-rows: repeat(auto-fill, minmax(100px, max-content));
   overflow: scroll;
+  grid-template-rows: repeat(auto-fill, minmax(10rem, auto));
 }
 /* .cardGrid::-webkit-scrollbar {
   display: none;

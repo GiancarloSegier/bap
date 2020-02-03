@@ -5,6 +5,7 @@ import Request from "../../../components/dashboard/requests/Request";
 import { inject, observer } from "mobx-react";
 
 import uiStyles from "../../../styles/ui.module.css";
+import typoStyles from "../../../styles/typo.module.css";
 
 import Warning from "../../../components/ui/Warning";
 
@@ -113,7 +114,7 @@ class SuperDashboard extends Component {
           />
         ) : null}
         <div className={styles.oneLine}>
-          <h1 className={styles.heading1}>
+          <h1 className={typoStyles.heading1}>
             {greeting} {authUser.name}.
           </h1>
           <div>
@@ -131,7 +132,7 @@ class SuperDashboard extends Component {
         <div className={styles.headGrid}>
           <div className={styles.subGrid}>
             <section className={styles.frame + " " + styles.borderRight}>
-              <h2 className={styles.heading2}>Acces requests</h2>
+              <h2 className={typoStyles.heading2}>Acces requests</h2>
               <div className={styles.cardGrid}>
                 {newRequests.length > 0 ? (
                   <>
@@ -157,7 +158,7 @@ class SuperDashboard extends Component {
                 styles.frame + " " + styles.borderRight + " " + styles.borderTop
               }
             >
-              <h2 className={styles.heading2}>Committee invites</h2>
+              <h2 className={typoStyles.heading2}>Committee invites</h2>
               <div className={styles.cardGrid}>
                 {pendingRequests.length > 0 ? (
                   <>
@@ -180,7 +181,7 @@ class SuperDashboard extends Component {
             </section>
           </div>
           <section className={styles.frame}>
-            <h2 className={styles.heading2}>Race statistics</h2>
+            <h2 className={typoStyles.heading2}>Race statistics</h2>
           </section>
         </div>
       </>

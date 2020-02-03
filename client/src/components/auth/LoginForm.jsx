@@ -6,6 +6,7 @@ import { ROUTES } from "../../constants";
 import styles from "./Auth.module.css";
 import modalStyles from "../../styles/modal.module.css";
 import formStyles from "../../styles/form.module.css";
+import typoStyles from "../../styles/typo.module.css";
 
 class LoginForm extends Component {
   constructor(props) {
@@ -130,11 +131,11 @@ class LoginForm extends Component {
                 modalStyles.modalContainer + " " + modalStyles.divideBorder
               }
             >
-              <h3 className={styles.heading3}>No login details yet?</h3>
+              <h3 className={typoStyles.heading3}>No login details yet?</h3>
               <p className={styles.question}>
                 Organisation fighting against breast cancer and interested in
                 organising a race?{" "}
-                <Link to={ROUTES.request} className={styles.link}>
+                <Link to={ROUTES.request} className={typoStyles.buttonInline}>
                   Request acces first.
                 </Link>
               </p>

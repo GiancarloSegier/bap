@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import modalStyles from "../../styles/modal.module.css";
 import formStyles from "../../styles/form.module.css";
-import styles from "./ui.module.css";
+// import styles from "./InviteCommitteeForm.module.css";
 
 class InviteCommitteeForm extends Component {
   constructor(props) {
@@ -56,11 +56,17 @@ class InviteCommitteeForm extends Component {
     return (
       <div
         className={
-          styles.formBackground + " " + (fadeIn ? styles.fadeIn : null)
+          modalStyles.modalBackground +
+          " " +
+          (fadeIn ? modalStyles.fadeIn : null)
         }
       >
         <div
-          className={styles.modalCard + " " + (fadeIn ? styles.fadeIn : null)}
+          className={
+            modalStyles.floatingModal +
+            " " +
+            (fadeIn ? modalStyles.fadeIn : null)
+          }
         >
           <div className={modalStyles.modalContainer}>
             <h3>Invite Event Manager</h3>
@@ -144,7 +150,7 @@ class InviteCommitteeForm extends Component {
                 </p>
               </fieldset>
 
-              <div className={styles.buttonBox}>
+              <div className={modalStyles.buttonBox}>
                 <input
                   type="submit"
                   value="Login"

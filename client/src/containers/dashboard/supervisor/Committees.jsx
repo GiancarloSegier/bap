@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import styles from "../Dashboard.module.css";
 import uiStyles from "../../../styles/ui.module.css";
+import typoStyles from "../../../styles/typo.module.css";
 
 import { inject, observer } from "mobx-react";
 import InviteCommitteeForm from "../../../components/ui/InviteCommitteeForm";
@@ -30,7 +31,7 @@ class Committees extends Component {
         ) : null}
 
         <div className={styles.oneLine}>
-          <h1 className={styles.heading1}>Committees</h1>
+          <h1 className={typoStyles.heading1}>Committees</h1>
           <div>
             <button type="button" className={uiStyles.textButton}>
               <span className={uiStyles.button__icon}>+</span>invite committee
@@ -38,18 +39,18 @@ class Committees extends Component {
           </div>
         </div>
         <div className={styles.emptyContainer}>
-          <p className={styles.body}>
+          <p className={typoStyles.body}>
             Here you can organise the committees that are responsible for all
             the Races.
           </p>
-          <p className={styles.body}>
+          <p className={typoStyles.body}>
             Authorise someone as the Event Manager so they can complete their
             committee.
           </p>
           <p>
             You haven’t made any invited committee yet. You can invite someone{" "}
             <button
-              className={styles.buttonInline}
+              className={typoStyles.buttonInline}
               onClick={this.openInviteForm}
             >
               here
