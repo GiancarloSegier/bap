@@ -1,0 +1,28 @@
+.description {
+  font-weight: bold;
+  color: var(--grey-high);
+  font-size: 1.6rem;
+}
+
+.stat {
+  display: flex;
+  align-items: center;
+  height: 8rem;
+  border-bottom: solid var(--grey-low) 0.1rem;
+}
+.stat:last-child {
+  border-bottom: none;
+}
+
+.icon {
+  width: 4rem;
+  height: 4rem;
+  background-color: red;
+  border-radius: 50%;
+  margin-right: 2.5rem;
+}
+
+.number {
+  font-size: 2.1rem;
+  color: var(--black);
+}
