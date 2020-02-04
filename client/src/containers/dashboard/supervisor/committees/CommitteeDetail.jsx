@@ -12,7 +12,6 @@ class CommitteeDetail extends Component {
       committeeMembers: [],
       loading: true
     };
-    console.log(this);
   }
   componentDidMount = async () => {
     await this.props.committeeStore.getOne(this.props.committeeId);

@@ -43,7 +43,6 @@ class AnnouncementForm extends Component {
     await this.uploadFiles();
 
     const { title, content, images, attachment } = this.state;
-    console.log(images);
     if (title !== "" && content !== "") {
       this.props.announcementStore.addAnnouncement({
         title: title,
@@ -90,16 +89,10 @@ class AnnouncementForm extends Component {
       .then(res => res.json())
 
       .then(files => {
-        console.log(files);
         this.setState({
           attachment: files[0].url
         });
       });
-  };
-
-  deleteImg = e => {
-    e.preventDefault();
-    console.log("klikske");
   };
 
   onImageChange = imageList => {
@@ -109,7 +102,6 @@ class AnnouncementForm extends Component {
     });
 
     this.setState({ formData: formData });
-    console.log(imageList);
   };
 
   onFileChange = e => {
@@ -124,7 +116,7 @@ class AnnouncementForm extends Component {
 
   render() {
     const { fadeIn, title, content, images } = this.state;
-    console.log(images);
+
     return (
       <div
         className={

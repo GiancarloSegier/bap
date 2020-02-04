@@ -21,15 +21,11 @@ class CommitteesListItem extends Component {
     const members = [];
     const { users } = this.props.userStore;
     users.forEach(user => {
-      console.log(user);
       if (user.committeeId === this.props.committee.id) {
-        console.log(user);
-        console.log(this.props.committee.id);
         members.push(user);
       }
     });
     this.setState({ members: members });
-    console.log(members);
   }
   getDate() {
     const requestDate = new Date(this.props.committee.raceday);

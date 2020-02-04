@@ -33,7 +33,7 @@ class AvatarNav extends Component {
       .split(" ")
       .join("")
       .toLowerCase();
-    console.log(job);
+
     return (
       <>
         <div className={styles.avatarGroup}>

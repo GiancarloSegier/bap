@@ -11,7 +11,7 @@ class Statistics extends Component {
 
   render() {
     const { committees } = this.props.committeeStore;
-    console.log(committees);
+
     return (
       <div>
         <h2 className={typoStyles.heading2}>Race statistics</h2>

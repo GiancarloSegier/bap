@@ -66,8 +66,6 @@ class Requests extends Component {
       }
     }
 
-    console.log(pickedRequest);
-
     this.getMessageParagraphs(pickedRequest);
   };
 
@@ -107,7 +105,6 @@ class Requests extends Component {
   };
 
   getMessageParagraphs = request => {
-    console.log(request);
     if (request.message.length > 0 || request.message !== "") {
       const messageParts = [];
       nl2br(request.message).map(part => {
@@ -167,8 +164,6 @@ class Requests extends Component {
                   )
                   .reverse()
                   .map((request, i) => {
-                    console.log(request);
-                    console.log(pickedRequest);
                     return (
                       <div
                         key={i}

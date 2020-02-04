@@ -17,7 +17,6 @@ class Committees extends Component {
   }
 
   openInviteForm = e => {
-    console.log("klik");
     this.setState({ invite: true });
   };
   closeInviteForm = () => {

@@ -11,7 +11,7 @@ class CommitteeDescription extends Component {
   }
   render() {
     const { committee, committeeMembers } = this.props;
-    console.log(committeeMembers);
+
     return (
       <>
         <div className={styles.flex}>

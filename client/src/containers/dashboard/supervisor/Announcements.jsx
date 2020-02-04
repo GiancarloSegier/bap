@@ -16,7 +16,6 @@ class Announcements extends Component {
   }
 
   openForm = e => {
-    console.log("klik");
     this.setState({ addNews: true });
   };
   closeForm = () => {
