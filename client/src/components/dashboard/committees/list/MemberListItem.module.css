@@ -1,6 +1,6 @@
 .listItem {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr) 1.5fr;
   grid-gap: 3rem;
   align-items: center;
   height: 5.3rem;
