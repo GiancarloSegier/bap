@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import styles from "../Dashboard.module.css";
 import typoStyles from "../../../styles/typo.module.css";
-// import Form from "../components/Form";
 
 import { inject, observer } from "mobx-react";
 

@@ -51,6 +51,7 @@ class RequestStore {
   };
 
   addRequest = data => {
+    console.log(data);
     const newRequest = new Request();
     newRequest.updateFromServer(data);
     this.requests.push(newRequest);

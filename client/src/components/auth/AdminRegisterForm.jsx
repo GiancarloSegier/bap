@@ -243,6 +243,25 @@ class AdminRegisterForm extends Component {
                     onChange={this.handleChange}
                   />
                 </fieldset>
+                {phone ? null : (
+                  <fieldset className={formStyles.form__group}>
+                    <label
+                      htmlFor="newPhone"
+                      className={formStyles.form__label}
+                    >
+                      Phonenumber
+                    </label>
+                    <input
+                      type="text"
+                      name="newPhone"
+                      id="newPhone"
+                      placeholder="+42"
+                      ref={this.newPhoneInput}
+                      className={formStyles.form__input}
+                      onChange={this.handleChange}
+                    />
+                  </fieldset>
+                )}
                 <div className={styles.loginbuttonbox}>
                   <p
                     className={
@@ -261,7 +280,8 @@ class AdminRegisterForm extends Component {
                       !this.checks.avatar ||
                       !this.checks.password ||
                       !this.checks.password2 ||
-                      this.checks.password !== this.checks.password2
+                      this.checks.password !== this.checks.password2 ||
+                      (this.props.phone ? null : !this.checks.newPhone)
                     }
                   />
                 </div>

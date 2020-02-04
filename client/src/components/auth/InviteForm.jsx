@@ -28,7 +28,6 @@ class InviteForm extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    const uuid = require("uuid");
     const mongoose = require("mongoose");
 
     const randomId = this.randomStr(24, "12345abcde");

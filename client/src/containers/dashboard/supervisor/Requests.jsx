@@ -29,10 +29,14 @@ class Requests extends Component {
       requests: this.props.requestStore.requests
     });
 
-    setTimeout(async () => {
-      await this.setPickedRequest();
+    if (this.props.requestStore.requests) {
+      setTimeout(async () => {
+        await this.setPickedRequest();
+        this.setState({ loading: false });
+      }, 500);
+    } else {
       this.setState({ loading: false });
-    }, 500);
+    }
   };
 
   componentWillUnmount() {
@@ -61,6 +65,8 @@ class Requests extends Component {
         )[0];
       }
     }
+
+    console.log(pickedRequest);
 
     this.getMessageParagraphs(pickedRequest);
   };
@@ -101,7 +107,8 @@ class Requests extends Component {
   };
 
   getMessageParagraphs = request => {
-    if (request.message || request.message !== "") {
+    console.log(request);
+    if (request.message.length > 0 || request.message !== "") {
       const messageParts = [];
       nl2br(request.message).map(part => {
         if (!part.type) {
@@ -161,6 +168,7 @@ class Requests extends Component {
                   .reverse()
                   .map((request, i) => {
                     console.log(request);
+                    console.log(pickedRequest);
                     return (
                       <div
                         key={i}

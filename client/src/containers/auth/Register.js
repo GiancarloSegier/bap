@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import styles from "./Auth.module.css";
 import MemberRegisterForm from "../../components/auth/MemberRegisterForm";
 import AdminRegisterForm from "../../components/auth/AdminRegisterForm";
+import { inject, observer } from "mobx-react";
 
 class Register extends Component {
   constructor(props) {
@@ -13,9 +14,22 @@ class Register extends Component {
       newPhone: "",
       password: "",
       password2: "",
+      phone: false,
       type: query.get("type")
     };
   }
+  componentDidMount = async () => {
+    if (this.state.type === "admin") {
+      await this.getRequestId();
+    }
+  };
+
+  getRequestId = async () => {
+    const query = new URLSearchParams(this.props.location.search);
+    const id = query.get("id");
+    this.setState({ requestId: id });
+    await this.props.requestStore.getOne(id);
+  };
 
   onUpdate = props => {
     this.setState({
@@ -25,8 +39,11 @@ class Register extends Component {
       password2: props.password2
     });
   };
+
   render() {
     const { type, avatar, newPhone, password, password2 } = this.state;
+    const { phone } = this.props.requestStore.currentRequest;
+
     return (
       <>
         <div className={styles.divide + " mediumcontainer"}>
@@ -65,7 +82,7 @@ class Register extends Component {
                 </span>
                 Choose your own password
               </li>
-              {type === "admin" ? null : (
+              {!phone || phone === "" ? (
                 <li className={styles.checkListItem}>
                   <span
                     className={
@@ -78,11 +95,14 @@ class Register extends Component {
                   </span>
                   Add phonenumber
                 </li>
-              )}
+              ) : null}
             </ul>
           </div>
           {type === "admin" ? (
-            <AdminRegisterForm onUpdate={this.onUpdate} />
+            <AdminRegisterForm
+              onUpdate={this.onUpdate}
+              checkPhone={this.checkPhone}
+            />
           ) : (
             <MemberRegisterForm onUpdate={this.onUpdate} />
           )}
@@ -92,4 +112,4 @@ class Register extends Component {
   }
 }
 
-export default Register;
+export default inject(`requestStore`)(observer(Register));

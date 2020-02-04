@@ -53,7 +53,7 @@ class RequestForm extends Component {
       ).catch(err => console.log(err));
 
       this.props.requestStore.addRequest({
-        id: requestId,
+        _id: requestId,
         name: name,
         surname: surname,
         organisation: organisation,
