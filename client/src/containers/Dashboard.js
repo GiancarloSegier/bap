@@ -6,13 +6,14 @@ import { Route, Switch } from "react-router-dom";
 import { ROUTES } from "../constants";
 import Committees from "./dashboard/supervisor/Committees";
 import Requests from "./dashboard/supervisor/Requests";
-import Updates from "./dashboard/supervisor/Updates";
+
 import DashboardHome from "./dashboard/DashboardHome";
 import MyCommittee from "./dashboard/members/MyCommittee";
 import News from "./dashboard/members/News";
 import Planner from "./dashboard/members/Planner";
 
 import { inject, observer } from "mobx-react";
+import Announcements from "./dashboard/supervisor/Announcements";
 
 const Dashboard = ({ userStore }) => {
   const { privileges } = userStore.authUser.job;
@@ -34,7 +35,11 @@ const Dashboard = ({ userStore }) => {
               />
               <Route path={ROUTES.committees} strict component={Committees} />
               <Route path={ROUTES.requests} strict component={Requests} />
-              <Route path={ROUTES.updates} strict component={Updates} />
+              <Route
+                path={ROUTES.announcements}
+                strict
+                component={Announcements}
+              />
             </Switch>
           </div>
         </div>

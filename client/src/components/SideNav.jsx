@@ -65,7 +65,7 @@ const SideNav = ({ userStore }) => {
             <NavLink
               className={styles.navLink}
               strict={true}
-              to={ROUTES.updates}
+              to={ROUTES.announcements}
               activeClassName={styles.navLink__active}
             >
               <img

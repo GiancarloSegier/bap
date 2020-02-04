@@ -1,0 +1,8 @@
+.imagesPreview img {
+  width: 10rem;
+}
+
+.previewBlock {
+  background-color: red;
+  width: 20rem;
+}

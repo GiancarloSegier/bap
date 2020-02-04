@@ -158,6 +158,11 @@ range-parser@^1.2.1:
   resolved "https://registry.yarnpkg.com/range-parser/-/range-parser-1.2.1.tgz#3cf37023d199e1c24d1a55b84800c2f3e6468031"
   integrity sha512-Hrgsx+orqoygnmhFbKaHE6c296J+HTAQXoxEF6gNupROmmGJRoyzfG3ccAveqCBrwr/2yxQ5BVd/GTl5agOwSg==
 
+react-images-uploading@^1.0.3:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/react-images-uploading/-/react-images-uploading-1.0.3.tgz#6dfabd8027e8a8c812582207f26180ed7073e9a7"
+  integrity sha512-jhqyfqUfCyHlN12d1GRbO3bvRMQZnY8t9WWCP8DZnERaSX4NQEmtE8lYovBqb7hARiY1Mo25Ii4uSJ0WGtEBYg==
+
 readable-stream@1.1.x:
   version "1.1.14"
   resolved "https://registry.yarnpkg.com/readable-stream/-/readable-stream-1.1.14.tgz#7cf4c54ef648e3813084c636dd2079e166c081d9"

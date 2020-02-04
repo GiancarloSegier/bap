@@ -22,13 +22,15 @@ class SuperDashboard extends Component {
     };
   }
 
-  componentDidMount() {
+  componentDidMount = () => {
+    this.props.requestStore.getAll();
     const { pendingRequests, newRequests } = this.props.requestStore;
     this.setState({
       pendingRequests: pendingRequests,
       newRequests: newRequests
     });
-  }
+  };
+
   componentWillUnmount() {
     this.props.requestStore.getAll();
   }

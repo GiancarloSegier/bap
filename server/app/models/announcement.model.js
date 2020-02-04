@@ -3,9 +3,9 @@ const mongoose = require("mongoose");
 const AnnouncementSchema = mongoose.Schema(
   {
     title: String,
-    text: String,
+    content: String,
     date: Date,
-    images: Object,
+    images: Array,
     attachment: String
   },
   {

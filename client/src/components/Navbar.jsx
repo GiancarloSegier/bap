@@ -70,10 +70,7 @@ const Navbar = ({ userStore }) => {
             </li>
           </>
         ) : (
-          <AvatarNav
-            currentUser={userStore.authUser}
-            onLogout={userStore.logout}
-          />
+          <AvatarNav currentUser={userStore.authUser} />
         )}
       </div>
     </ul>
