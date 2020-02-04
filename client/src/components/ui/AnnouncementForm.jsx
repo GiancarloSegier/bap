@@ -12,7 +12,7 @@ class AnnouncementForm extends Component {
     super(props);
     this.state = {
       title: "",
-      conten: "",
+      content: "",
       attachments: "",
       images: [],
       error: false

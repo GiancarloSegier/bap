@@ -14,7 +14,7 @@ class Committees extends Component {
     return (
       <>
         <CommitteesTop />
-        {committees.length >= 1 ? (
+        {committees.length < 1 ? (
           <>
             <CommitteeHeader />
             <CommitteeEmpty />

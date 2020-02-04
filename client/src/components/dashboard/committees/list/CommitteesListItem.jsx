@@ -59,13 +59,13 @@ class CommitteesListItem extends Component {
         <div className={styles.memberImages}>
           {members ? (
             <>
-              {members.map(member => {
+              {members.map((member, i) => {
                 let job = member.job.assignment
                   .split(" ")
                   .join("")
                   .toLowerCase();
                 return (
-                  <div className={styles.memberBlock}>
+                  <div key={i} className={styles.memberBlock}>
                     <img
                       src={member.avatarUrl}
                       className={

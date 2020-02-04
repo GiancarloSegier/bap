@@ -203,7 +203,7 @@ class SuperDashboard extends Component {
             >
               <div className={styles.oneLine}>
                 <h2 className={typoStyles.heading2}>Committee invites</h2>
-                <Link to={ROUTES.committees} className={typoStyles.smallLink}>
+                <Link to={ROUTES.invitations} className={typoStyles.smallLink}>
                   view all
                 </Link>
               </div>

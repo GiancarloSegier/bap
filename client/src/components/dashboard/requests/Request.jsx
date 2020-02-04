@@ -81,7 +81,7 @@ class Request extends Component {
                       pathname: ROUTES.requests,
                       state: { requestId: currentRequest.id }
                     }
-                  : ROUTES.committees
+                  : ROUTES.invitations
               }
               onClick={() => this.setPickedRequest(currentRequest)}
             >

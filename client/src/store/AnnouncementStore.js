@@ -40,11 +40,21 @@ class AnnouncementStore {
     this.announcements.remove(announcement);
     this.api.delete(announcement);
   };
+
+  updateAnnouncement = async announcement => {
+    console.log(announcement);
+    await this.api
+      .update(announcement)
+      .then(announcementValues =>
+        announcement.updateFromServer(announcementValues)
+      );
+  };
 }
 
 decorate(AnnouncementStore, {
   announcements: observable,
   addAnnouncement: action,
+  updateAnnouncement: action,
   deleteAnnouncement: action
 });
 

@@ -46,10 +46,11 @@ exports.findOne = async (req, res) => {
 };
 
 exports.update = async (req, res) => {
+  console.log(req);
   try {
     const announcement = await Announcement.findOneAndUpdate(
       {
-        _id: req.params.id
+        _id: req.params.announcementId
       },
       {
         title: req.body.title,
@@ -79,7 +80,7 @@ exports.update = async (req, res) => {
 exports.delete = async (req, res) => {
   try {
     const announcement = await Announcement.findOneAndRemove({
-      _id: req.params.id
+      _id: req.params.announcementId
     });
     if (!announcement) {
       return res.status(404).send("No announcement found");

@@ -1,6 +1,6 @@
 import { decorate, observable, computed, action } from "mobx";
 
-class Announceement {
+class Announcement {
   constructor(id, title, content, images, attachment, createdAt) {
     this.id = id;
     this.title = title;
@@ -29,7 +29,12 @@ class Announceement {
   setDate = createdAt => (this.createdAt = createdAt);
 
   updateFromServer = values => {
-    this.setId(values._id);
+    console.log(values._id);
+    if (values.id) {
+      this.setId(values.id);
+    } else {
+      this.setId(values._id);
+    }
     this.setTitle(values.title);
     this.setContent(values.content);
     this.setImages(values.images);
@@ -38,7 +43,7 @@ class Announceement {
   };
 }
 
-decorate(Announceement, {
+decorate(Announcement, {
   id: observable,
   setId: action,
   setTitle: action,
@@ -49,4 +54,4 @@ decorate(Announceement, {
   values: computed
 });
 
-export default Announceement;
+export default Announcement;

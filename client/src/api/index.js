@@ -32,6 +32,7 @@ class Api {
   };
 
   update = async entity => {
+    console.log(entity);
     const r = await fetch(
       `/api/${this.entity}/${entity.id}`,
       this.getOptions(`put`, entity.values)
