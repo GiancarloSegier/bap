@@ -34,7 +34,7 @@ const SideNav = ({ userStore }) => {
           <li>
             <NavLink
               className={styles.navLink}
-              exact={true}
+              strict={true}
               to={ROUTES.committees}
               activeClassName={styles.navLink__active}
             >

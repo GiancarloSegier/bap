@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import styles from "./AvatarNav.module.css";
+import memberStyles from "../../styles/members.module.css";
+
 import FontAwesome from "react-fontawesome";
 import { inject, observer } from "mobx-react";
 
@@ -27,16 +29,23 @@ class AvatarNav extends Component {
 
   render() {
     const { currentUser } = this.props;
-    // const job = currentUser.job.assignment
-    //   .split(" ")
-    //   .join("")
-    //   .toLowerCase();
+    const job = currentUser.job.assignment
+      .split(" ")
+      .join("")
+      .toLowerCase();
+    console.log(job);
     return (
       <>
         <div className={styles.avatarGroup}>
           <FontAwesome name="bell" className={styles.purple} />
           <img
-            className={styles.avatar}
+            className={
+              styles.avatar +
+              " " +
+              memberStyles.border +
+              " " +
+              memberStyles[job]
+            }
             src={currentUser.avatarUrl}
             alt={`Avatar from ${currentUser.name}`}
           />

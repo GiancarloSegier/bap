@@ -1,0 +1,41 @@
+.dot {
+  width: 1.3rem;
+  height: 1.3rem;
+  border-radius: 50%;
+  margin-right: 2rem;
+  border: none;
+}
+.border {
+  border: solid 0.2rem;
+}
+.supervisor,
+.racecoordinator {
+  background-color: var(--supervisor);
+  border-color: var(--supervisor);
+}
+
+.eventmanager {
+  background-color: var(--eventmanager);
+  border-color: var(--eventmanager);
+}
+.communicationpublicrelationsmanager {
+  background-color: var(--communicationpublicrelationsmanager);
+  border-color: var(--communicationpublicrelationsmanager);
+}
+.racetreasurer {
+  background-color: var(--racetreasurer);
+  border-color: var(--racetreasurer);
+}
+.fundraisingsponsorshipmanager {
+  background-color: var(--fundraisingsponsorshipmanager);
+  border-color: var(--fundraisingsponsorshipmanager);
+}
+.volunteermanager {
+  background-color: var(--volunteermanager);
+  border-color: var(--volunteermanager);
+}
+
+.logisticsmanager {
+  background-color: var(--logisticsmanager);
+  border-color: var(--logisticsmanager);
+}

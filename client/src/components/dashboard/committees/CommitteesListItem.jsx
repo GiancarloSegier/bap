@@ -7,11 +7,29 @@ class CommitteesListItem extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {};
+    this.state = {
+      committeeMembers: []
+    };
   }
 
   componentDidMount() {
     this.getDate();
+    this.getMember();
+  }
+
+  getMember() {
+    const members = [];
+    const { users } = this.props.userStore;
+    users.forEach(user => {
+      console.log(user);
+      if (user.committeeId === this.props.committee.id) {
+        console.log(user);
+        console.log(this.props.committee.id);
+        members.push(user);
+      }
+    });
+    this.setState({ members: members });
+    console.log(members);
   }
   getDate() {
     const requestDate = new Date(this.props.committee.raceday);
@@ -28,8 +46,8 @@ class CommitteesListItem extends Component {
 
   render() {
     const { committee } = this.props;
-    console.log(committee);
-    new Date(committee.raceday).getDate();
+    const { members } = this.state;
+
     return (
       <Link
         className={styles.listItem}
@@ -39,11 +57,11 @@ class CommitteesListItem extends Component {
         <p>{committee.city}</p>
         <p>{committee.country}</p>
         <p>{this.state.dateString}</p>
-        <p>10</p>
+        {members ? <p>{members.length}</p> : null}
         <FontAwesome name="chevron-right" className={styles.arrow} />
       </Link>
     );
   }
 }
 
-export default CommitteesListItem;
+export default inject(`userStore`)(observer(CommitteesListItem));

@@ -23,9 +23,9 @@ class CommitteeStore {
     });
   };
 
-  getCommitteeMembers = committeeId => {
+  getCommitteeMembers = async committeeId => {
     this.committeeMembers = [];
-    this.userApi.getAll().then(d => {
+    await this.userApi.getAll().then(d => {
       d.filter(user => user.committeeId === committeeId).forEach(
         this._addCommitteeMember
       );

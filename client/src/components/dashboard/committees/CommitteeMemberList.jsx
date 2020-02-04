@@ -6,7 +6,7 @@ class CommitteeMemberList extends Component {
     super(props);
   }
   render() {
-    const { committee } = this.props;
+    const { committee, committeeMembers } = this.props;
     return (
       <>
         <ul className={styles.topbar}>
@@ -15,10 +15,9 @@ class CommitteeMemberList extends Component {
           <li>phone number</li>
           <li>e-mail</li>
         </ul>
-        <MemberListItem />
-        <MemberListItem />
-        <MemberListItem />
-        <MemberListItem />
+        {committeeMembers.map((member, i) => {
+          return <MemberListItem key={i} member={member} />;
+        })}
       </>
     );
   }

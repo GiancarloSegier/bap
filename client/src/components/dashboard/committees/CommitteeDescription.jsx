@@ -1,26 +1,30 @@
 import React, { Component } from "react";
 import styles from "./CommitteeDescription.module.css";
 import FontAwesome from "react-fontawesome";
+import { Link } from "react-router-dom";
+
+import { ROUTES } from "../../../constants/index";
 
 class CommitteeDescription extends Component {
   constructor(props) {
     super(props);
   }
   render() {
-    const { committee } = this.props;
+    const { committee, committeeMembers } = this.props;
+    console.log(committeeMembers);
     return (
       <>
         <div className={styles.flex}>
-          <p className={styles.back}>
+          <Link to={ROUTES.committees} className={styles.back}>
             <FontAwesome name="chevron-left" className={styles.arrow} />
             back to overview
-          </p>
+          </Link>
           <button type="button" className={styles.textButton}>
             <FontAwesome name="trash" className={styles.trash} />
             Remove committee
           </button>
         </div>
-        <h1 className={styles.title}>Rosa vida</h1>
+        <h1 className={styles.title}>{committee.name}</h1>
         <div className={styles.flex}>
           <div>
             <div className={styles.info}>
@@ -60,17 +64,15 @@ class CommitteeDescription extends Component {
                 />
                 <div className={styles.stat_info}>
                   <p className={styles.subtitle}>Members</p>
-                  <p className={styles.data}>5</p>
+                  <p className={styles.data}>{committeeMembers.length}</p>
                 </div>
               </div>
             </div>
-            <p className={styles.description}>
-              {committee.description != "" ? (
-                committee.description
-              ) : (
-                <p>No description yet</p>
-              )}
-            </p>
+            {committee.description != "" ? (
+              <p className={styles.description}>committee.description</p>
+            ) : (
+              <p>No description yet</p>
+            )}
           </div>
           <img
             src="http://placekitten.com/200/200"
