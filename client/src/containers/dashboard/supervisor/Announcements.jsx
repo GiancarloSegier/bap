@@ -7,6 +7,7 @@ import uiStyles from "../../../styles/ui.module.css";
 import typoStyles from "../../../styles/typo.module.css";
 import AnnouncementForm from "../../../components/ui/AnnouncementForm";
 import Announcement from "../../../components/dashboard/announcements/Announcement";
+import AnnouncementEmpty from "../../../components/dashboard/announcements/AnnouncementEmpty";
 class Announcements extends Component {
   constructor(props) {
     super(props);
@@ -41,13 +42,15 @@ class Announcements extends Component {
             </button>
           </div>
         </div>
-        {announcements.length > 0 ? (
+        {announcements.length < 0 ? (
           <section className={styles.postGrid}>
             {announcements.map((announcement, i) => {
               return <Announcement announcement={announcement} />;
             })}
           </section>
-        ) : null}
+        ) : (
+          <AnnouncementEmpty />
+        )}
       </>
     );
   }
