@@ -18,8 +18,9 @@ class AnnouncementForm extends Component {
       error: false
     };
     this.imageInput = React.createRef();
-    this.imagesPreview = React.createRef();
+    this.fileInput = React.createRef();
     this.titleInput = React.createRef();
+    this.contentInput = React.createRef();
   }
 
   componentDidMount = () => {
@@ -39,21 +40,22 @@ class AnnouncementForm extends Component {
     e.preventDefault();
 
     await this.uploadImages();
+    await this.uploadFiles();
 
-    const { title, content, images, attachments } = this.state;
+    const { title, content, images, attachment } = this.state;
     console.log(images);
     if (title !== "" && content !== "") {
       this.props.announcementStore.addAnnouncement({
         title: title,
         content: content,
         images: images,
-        attachments: attachments
+        attachment: attachment
       });
       this.setState({
         title: "",
         content: "",
         images: [],
-        attachments: ""
+        attachment: ""
       });
     } else {
       this.setState({ error: true });
@@ -80,22 +82,44 @@ class AnnouncementForm extends Component {
         });
       });
   };
+  uploadFiles = async () => {
+    await fetch(`http://localhost:3000/image-upload`, {
+      method: "POST",
+      body: this.state.fileData
+    })
+      .then(res => res.json())
+
+      .then(files => {
+        console.log(files);
+        this.setState({
+          attachment: files[0].url
+        });
+      });
+  };
 
   deleteImg = e => {
     e.preventDefault();
     console.log("klikske");
   };
 
-  onChange = imageList => {
-    // const files = this.imageInput.current.files;
+  onImageChange = imageList => {
     const formData = new FormData();
-    // formData.append(imageList);
     imageList.forEach((image, i) => {
       formData.append(i, image.file);
     });
 
     this.setState({ formData: formData });
     console.log(imageList);
+  };
+
+  onFileChange = e => {
+    const files = this.fileInput.current.files;
+    const file = files[0];
+
+    const fileData = new FormData();
+    fileData.append("file", file);
+
+    this.setState({ fileData: fileData });
   };
 
   render() {
@@ -160,7 +184,7 @@ class AnnouncementForm extends Component {
 
               <ImageUploading
                 mode="multiple"
-                onChange={this.onChange}
+                onChange={this.onImageChange}
                 maxNumber="5"
               >
                 {({ imageList, onImageUpload, onImageRemoveAll }) => (
@@ -190,29 +214,21 @@ class AnnouncementForm extends Component {
                 )}
               </ImageUploading>
 
-              {/* <div
-                className={styles.imagesPreview}
-                ref={this.imagesPreview}
-              ></div>
-
-              {images.map(img => {
-                console.log(img);
-                return <img src={`/${img.result}`} />;
-              })}
-
-              <div>
-                <label htmlFor="image" className={styles.attachButton}></label>
+              <fieldset className={formStyles.form__group}>
+                <label htmlFor="attachments" className={formStyles.form__label}>
+                  Attachment
+                </label>
                 <input
                   type="file"
-                  name="file"
-                  id="image"
-                  accept="image/jpg, image/gif, image/png"
-                  multiple={true}
-                  ref={this.imageInput}
-                  onChange={this.changeImages}
-                  className={formStyles.imageInput}
+                  name="attachments"
+                  id="attachments"
+                  accept="application/pdf,application/vnd.ms-excel"
+                  placeholder="attachments"
+                  ref={this.fileInput}
+                  className={formStyles.form__input}
+                  onChange={this.onFileChange}
                 />
-              </div> */}
+              </fieldset>
 
               <div className={modalStyles.buttonBox}>
                 <input

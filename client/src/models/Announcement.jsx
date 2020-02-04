@@ -1,12 +1,12 @@
 import { decorate, observable, computed, action } from "mobx";
 
 class Announceement {
-  constructor(id, title, content, images, attachments) {
+  constructor(id, title, content, images, attachment) {
     this.id = id;
     this.title = title;
     this.content = content;
     this.images = images;
-    this.attachments = attachments;
+    this.attachment = attachment;
   }
 
   get values() {
@@ -15,7 +15,7 @@ class Announceement {
       title: this.title,
       content: this.content,
       images: this.images,
-      attachments: this.attachments
+      attachment: this.attachment
     };
   }
 
@@ -23,14 +23,14 @@ class Announceement {
   setTitle = title => (this.title = title);
   setContent = content => (this.content = content);
   setImages = images => (this.images = images);
-  setAttachments = attachments => (this.attachments = attachments);
+  setAttachment = attachment => (this.attachment = attachment);
 
   updateFromServer = values => {
     this.setId(values._id);
     this.setTitle(values.title);
     this.setContent(values.content);
     this.setImages(values.images);
-    this.setAttachments(values.attachments);
+    this.setAttachment(values.attachment);
   };
 }
 
@@ -40,7 +40,7 @@ decorate(Announceement, {
   setTitle: action,
   setContent: action,
   setImages: action,
-  setAttachments: action,
+  setAttachment: action,
 
   values: computed
 });
