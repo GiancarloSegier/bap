@@ -1,36 +1,36 @@
 import { decorate, observable, computed, action } from "mobx";
 
 class Announceement {
-  constructor(id, title, text, images, attachments) {
+  constructor(id, title, content, images, attachment) {
     this.id = id;
     this.title = title;
-    this.text = text;
+    this.content = content;
     this.images = images;
-    this.attachments = attachments;
+    this.attachment = attachment;
   }
 
   get values() {
     return {
       id: this.id,
       title: this.title,
-      text: this.text,
+      content: this.content,
       images: this.images,
-      attachments: this.attachments
+      attachment: this.attachment
     };
   }
 
   setId = id => (this.id = id);
   setTitle = title => (this.title = title);
-  setText = text => (this.text = text);
+  setContent = content => (this.content = content);
   setImages = images => (this.images = images);
-  setAttachments = attachments => (this.attachments = attachments);
+  setAttachment = attachment => (this.attachment = attachment);
 
   updateFromServer = values => {
     this.setId(values._id);
     this.setTitle(values.title);
-    this.setText(values.text);
+    this.setContent(values.content);
     this.setImages(values.images);
-    this.setAttachments(values.attachments);
+    this.setAttachment(values.attachment);
   };
 }
 
@@ -38,9 +38,9 @@ decorate(Announceement, {
   id: observable,
   setId: action,
   setTitle: action,
-  setText: action,
+  setContent: action,
   setImages: action,
-  setAttachments: action,
+  setAttachment: action,
 
   values: computed
 });

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import styles from "./AvatarNav.module.css";
 import FontAwesome from "react-fontawesome";
+import { inject, observer } from "mobx-react";
 
 class AvatarNav extends Component {
   constructor(props) {
@@ -19,7 +20,9 @@ class AvatarNav extends Component {
   };
 
   handleLogout = e => {
-    this.props.onLogout();
+    e.preventDefault();
+    this.props.userStore.logout();
+    window.location.href = "/";
   };
 
   render() {
@@ -102,4 +105,4 @@ class AvatarNav extends Component {
   }
 }
 
-export default AvatarNav;
+export default inject(`userStore`)(observer(AvatarNav));

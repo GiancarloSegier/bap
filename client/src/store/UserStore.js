@@ -56,8 +56,8 @@ class UserStore {
     );
   };
 
-  logout = () => {
-    this.authService.logout().then(() => this.setUser(null));
+  logout = async () => {
+    await this.authService.logout().then(() => this.setUser(null));
   };
 }
 

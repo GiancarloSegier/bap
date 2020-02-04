@@ -4,7 +4,7 @@ exports.create = (req, res) => {
   const announcement = new Announcement({
     title: req.body.title,
     date: req.body.date,
-    text: req.body.text,
+    content: req.body.content,
     images: req.body.images,
     attachment: req.body.attachment
   });
@@ -53,7 +53,7 @@ exports.update = async (req, res) => {
       {
         title: req.body.title,
         date: req.body.date,
-        text: req.body.text,
+        content: req.body.content,
         images: req.body.images,
         attachment: req.body.attachment
       },

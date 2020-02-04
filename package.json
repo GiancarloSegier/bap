@@ -15,6 +15,7 @@
   ],
   "dependencies": {
     "multer": "^1.4.1",
+    "react-images-uploading": "^1.0.3",
     "webpack-dev-middleware": "^3.7.2"
   }
 }

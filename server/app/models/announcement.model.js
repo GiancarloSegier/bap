@@ -3,10 +3,10 @@ const mongoose = require("mongoose");
 const AnnouncementSchema = mongoose.Schema(
   {
     title: String,
-    text: String,
+    content: String,
     date: Date,
-    images: Object,
-    attachment: String
+    images: Array,
+    attachment: Array
   },
   {
     timestamps: true
