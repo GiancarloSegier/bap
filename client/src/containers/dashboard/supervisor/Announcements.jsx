@@ -41,6 +41,13 @@ class Announcements extends Component {
             </button>
           </div>
         </div>
+        {announcements.length > 0 ? (
+          <>
+            {announcements.map(announcement => {
+              return <p>{announcement.title}</p>;
+            })}
+          </>
+        ) : null}
       </>
     );
   }
