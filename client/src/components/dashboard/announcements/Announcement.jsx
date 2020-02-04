@@ -13,7 +13,6 @@ class Announcement extends Component {
   }
 
   getDate() {
-    console.log(this.props.announcement);
     const requestDate = new Date(this.props.announcement.createdAt);
     const day = requestDate.getDate();
     const month = requestDate.getMonth() + 1;
@@ -25,10 +24,15 @@ class Announcement extends Component {
 
     this.setState({ dateString: dateString });
   }
+  onView = () => {
+    this.props.onView();
+  };
+  onEdit = () => {
+    this.props.onEdit();
+  };
 
   render() {
     const { announcement } = this.props;
-    console.log(announcement);
 
     return (
       <article className={styles.card}>
@@ -36,8 +40,16 @@ class Announcement extends Component {
           <div className={styles.gridHeader}>
             <h2 className={styles.title}>{announcement.title}</h2>
             <div className={styles.icons_top}>
-              <FontAwesome className={styles.icon} name="eye" />
-              <FontAwesome className={styles.icon} name="edit" />
+              <FontAwesome
+                className={styles.icon}
+                name="eye"
+                onClick={this.onView}
+              />
+              <FontAwesome
+                className={styles.icon}
+                name="edit"
+                onClick={this.onEdit}
+              />
             </div>
           </div>
           <p className={styles.date}>{this.state.dateString}</p>
