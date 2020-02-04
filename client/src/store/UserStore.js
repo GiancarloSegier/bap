@@ -8,6 +8,7 @@ class UserStore {
   authUser = null;
   privileges = "public";
   users = [];
+  memberUsers = [];
 
   constructor(rootStore) {
     this.rootStore = rootStore;
@@ -21,6 +22,29 @@ class UserStore {
     this.api.getAll().then(d => {
       d.forEach(this._addUser);
     });
+  };
+
+  deleteMemberUsers = members => {
+    members.forEach(member => {
+      this.api.getOne(member.id).then(d => {
+        console.log(d);
+        this._getMember(d);
+      });
+    });
+  };
+
+  _getMember = values => {
+    console.log(values);
+    const user = new User();
+    user.updateFromServer(values);
+    runInAction(() => {
+      this.deleteUser(user);
+    });
+  };
+
+  deleteUser = user => {
+    this.users.remove(user);
+    this.api.delete(user);
   };
 
   _addUser = values => {
@@ -84,6 +108,8 @@ class UserStore {
 decorate(UserStore, {
   users: observable,
   getAll: action,
+  deleteUser: action,
+  deleteMemberUsers: action,
   authUser: observable,
   setUser: action,
   privileges: observable

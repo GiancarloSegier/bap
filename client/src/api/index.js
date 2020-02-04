@@ -16,7 +16,7 @@ class Api {
       if (r.ok === true) {
         return await r.json();
       } else {
-        return null;
+        return r.json();
       }
     } else {
       return null;
@@ -40,6 +40,7 @@ class Api {
   };
 
   delete = async entity => {
+    console.log(entity);
     const r = await fetch(
       `/api/${this.entity}/${entity.id}`,
       this.getOptions(`delete`)

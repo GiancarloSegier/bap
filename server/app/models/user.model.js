@@ -2,15 +2,15 @@ const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
 
 const UserSchema = new mongoose.Schema({
-  email: { type: String, required: true, unique: true },
-  password: { type: String, required: true },
-  name: { type: String, required: true },
-  surname: { type: String, required: true },
-  job: { type: Object, required: true },
-  phone: { type: String, required: true },
+  email: { type: String, unique: true },
+  password: { type: String },
+  name: { type: String },
+  surname: { type: String },
+  job: { type: Object },
+  phone: { type: String },
   organisation: { type: String, required: false },
-  committeeId: { type: mongoose.Schema.ObjectId, required: true },
-  avatarUrl: { type: String, required: true }
+  committeeId: { type: mongoose.Schema.ObjectId },
+  avatarUrl: { type: String }
 });
 
 UserSchema.methods.validPassword = function(password) {

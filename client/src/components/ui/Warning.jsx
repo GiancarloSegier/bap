@@ -42,13 +42,15 @@ class Warning extends Component {
           className={
             modalStyles.floatingModal +
             " " +
+            styles.warning +
+            " " +
             (fadeIn ? modalStyles.fadeIn : null)
           }
         >
           <div className={styles.modalContainer}>
             <p>
               <FontAwesome name="trash" className={styles.trash} />
-              delete the invitation?
+              {message}
             </p>
           </div>
 

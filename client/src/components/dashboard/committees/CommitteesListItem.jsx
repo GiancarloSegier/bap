@@ -43,6 +43,7 @@ class CommitteesListItem extends Component {
   render() {
     const { committee } = this.props;
     const { members } = this.state;
+    console.log(committee);
 
     return (
       <Link

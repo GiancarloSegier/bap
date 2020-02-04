@@ -7,6 +7,9 @@
   composes: modalContainer from "../../styles/modal.module.css";
   padding: 1.5rem 2.5rem;
 }
+.warning {
+  max-width: 25rem;
+}
 .button {
   border: none;
   font-size: 1.6rem;
