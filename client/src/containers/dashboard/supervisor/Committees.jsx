@@ -44,7 +44,7 @@ class Committees extends Component {
             </button>
           </div>
         </div>
-        {committees.length < 0 ? (
+        {committees.length < 1 ? (
           <>
             <CommitteeHeader />
             <div className={styles.container}>
