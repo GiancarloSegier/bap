@@ -16,6 +16,7 @@
 }
 .heading3 {
   font-size: 2rem;
+  color: var(--purple-dark);
   font-weight: bold;
   margin-bottom: 3rem;
 }
@@ -31,10 +32,25 @@
   border-bottom: 0.1rem solid var(--pink-mid);
   background: none;
   transition: 0.15s ease-in-out;
+  height: max-content;
 }
 
 .buttonInline:hover {
   cursor: pointer;
   color: var(--pink-high);
   border-bottom-color: var(--pink-high);
+}
+
+.smallLink {
+  font-size: 1.4rem;
+  padding: 0;
+  color: var(--pink-mid);
+  border: none;
+  background: none;
+  transition: 0.15s ease-in-out;
+}
+
+.smallLink:hover {
+  cursor: pointer;
+  color: var(--pink-high);
 }

@@ -75,10 +75,14 @@ class Request extends Component {
           </div>
           {this.props.link ? (
             <Link
-              to={{
-                pathname: ROUTES.requests,
-                state: { requestId: currentRequest.id }
-              }}
+              to={
+                !currentRequest.pending
+                  ? {
+                      pathname: ROUTES.requests,
+                      state: { requestId: currentRequest.id }
+                    }
+                  : ROUTES.committees
+              }
               onClick={() => this.setPickedRequest(currentRequest)}
             >
               <div className={styles.modalContainer}>

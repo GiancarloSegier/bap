@@ -22,20 +22,18 @@ class RequestStore {
     this.requests = [];
     this.api.getAll().then(d => d.forEach(this._addRequest));
   };
-  getAllNewRequests = () => {
+  getAllNewRequests = async () => {
     this.newRequests = [];
-    this.api
+    await this.api
       .getAll()
       .then(d =>
-        d
-          .filter(item => item.pending === false && item.seen === false)
-          .forEach(this._addNewRequest)
+        d.filter(item => item.pending === false).forEach(this._addNewRequest)
       );
   };
 
-  getPendingRequests = () => {
+  getPendingRequests = async () => {
     this.pendingRequests = [];
-    this.api
+    await this.api
       .getAll()
       .then(d =>
         d.filter(item => item.pending === true).forEach(this._addPendingRequest)
@@ -96,15 +94,11 @@ class RequestStore {
 
     await this.api.update(request).then(requestValues => {
       request.updateFromServer(requestValues);
-      this.getAllNewRequests();
-      this.getPendingRequests();
     });
-
-    // this.getAll();
   };
 
-  updateRequest = request => {
-    this.api
+  updateRequest = async request => {
+    await this.api
       .update(request)
       .then(requestValues => request.updateFromServer(requestValues));
   };

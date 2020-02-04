@@ -43,7 +43,7 @@ class CommitteesList extends Component {
               className={styles.countrySelect}
               onChange={this.handleChangeCountry}
             >
-              <option value="">select a country</option>
+              <option value="">All countries</option>
               {countries.map((country, i) => (
                 <option key={i} value={country}>
                   {country}

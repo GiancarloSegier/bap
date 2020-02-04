@@ -8,6 +8,10 @@
 .modalContainer {
   padding: 4rem;
 }
+.heading3 {
+  composes: heading3 from "./typo.module.css";
+  margin-bottom: 0;
+}
 .divideBorder {
   border-top: 0.1rem solid var(--purple-grey);
 }
@@ -39,7 +43,7 @@
   opacity: 0;
   transition: 0.25s ease-in-out;
   z-index: 99;
-  max-width: 40rem;
+  max-width: 42rem;
 }
 .floatingModal.fadeIn {
   transform: translateY(0);
@@ -56,4 +60,49 @@
 .biggerModal {
   max-width: none;
   width: 60rem;
+}
+
+.close__button {
+  display: flex;
+  border-radius: 5rem;
+  width: 2.2rem;
+  height: 2.2rem;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  border: 0.2rem solid var(--grey-low);
+  transition: 0.25s ease-in-out;
+}
+
+.decliner {
+  width: 1rem;
+  -webkit-transform: rotate(-45deg);
+  transform: rotate(-45deg) translateY(-1px);
+  display: block;
+  border: 0.2rem solid var(--grey-low);
+  border-top: none;
+  border-right: none;
+  border-left: none;
+  transition: 0.25s ease-in-out;
+}
+.decliner:after {
+  content: "";
+  width: 1rem;
+  transform: rotate(90deg) translate(2px);
+  display: block;
+  border: 0.2rem solid var(--grey-low);
+  border-top: none;
+  border-right: none;
+  border-left: none;
+  transition: 0.25s ease-in-out;
+}
+
+.close__button:hover {
+  cursor: pointer;
+  border-color: var(--grey-high);
+}
+
+.close__button:hover .decliner,
+.close__button:hover .decliner::after {
+  border-color: var(--grey-high);
 }

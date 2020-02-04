@@ -10,6 +10,10 @@ import typoStyles from "../../../styles/typo.module.css";
 import Warning from "../../../components/ui/Warning";
 import Statistics from "../../../components/dashboard/Statistics";
 import RequestEmpty from "../../../components/dashboard/requests/RequestEmpty";
+import { Link } from "react-router-dom";
+import { ROUTES } from "../../../constants";
+import InviteCommitteeForm from "../../../components/ui/InviteCommitteeForm";
+import AnnouncementForm from "../../../components/ui/AnnouncementForm";
 
 class SuperDashboard extends Component {
   constructor(props) {
@@ -17,13 +21,14 @@ class SuperDashboard extends Component {
     this.state = {
       alert: false,
       warning: false,
+      invite: false,
+      announcement: false,
       pendingRequests: [],
       newRequests: []
     };
   }
 
   componentDidMount = () => {
-    this.props.requestStore.getAll();
     const { pendingRequests, newRequests } = this.props.requestStore;
     this.setState({
       pendingRequests: pendingRequests,
@@ -89,6 +94,18 @@ class SuperDashboard extends Component {
       this.setState({ warning: false });
     }, 200);
   };
+  openInviteForm = e => {
+    this.setState({ invite: true });
+  };
+  closeInviteForm = () => {
+    this.setState({ invite: false });
+  };
+  openAnnounceForm = e => {
+    this.setState({ announcement: true });
+  };
+  closeAnnounceForm = () => {
+    this.setState({ announcement: false });
+  };
 
   render() {
     const { greeting } = this.props;
@@ -100,13 +117,21 @@ class SuperDashboard extends Component {
       alert,
       message,
       icon,
-      pickedRequest
+      pickedRequest,
+      invite,
+      announcement
     } = this.state;
 
     return (
       <>
         {warning ? (
           <Warning onContinue={this.onContinue} onCancel={this.onCancel} />
+        ) : null}
+        {invite ? (
+          <InviteCommitteeForm onConfirm={this.closeInviteForm} />
+        ) : null}
+        {announcement ? (
+          <AnnouncementForm onConfirm={this.closeAnnounceForm} />
         ) : null}
         {alert ? (
           <Alert
@@ -125,10 +150,15 @@ class SuperDashboard extends Component {
             <button
               type="button"
               className={uiStyles.textButton + " " + uiStyles.purple}
+              onClick={this.openAnnounceForm}
             >
               <span className={uiStyles.button__icon}>+</span>new announcement
             </button>
-            <button type="button" className={uiStyles.textButton}>
+            <button
+              type="button"
+              className={uiStyles.textButton}
+              onClick={this.openInviteForm}
+            >
               <span className={uiStyles.button__icon}>+</span>invite committee
             </button>
           </div>
@@ -136,7 +166,12 @@ class SuperDashboard extends Component {
         <div className={styles.headGrid}>
           <div className={styles.subGrid}>
             <section className={styles.frame + " " + styles.borderRight}>
-              <h2 className={typoStyles.heading2}>Acces requests</h2>
+              <div className={styles.oneLine}>
+                <h2 className={typoStyles.heading2}>Acces requests</h2>
+                <Link to={ROUTES.requests} className={typoStyles.smallLink}>
+                  view all
+                </Link>
+              </div>
               <div className={styles.cardGrid}>
                 {newRequests.length > 0 ? (
                   <>
@@ -162,7 +197,12 @@ class SuperDashboard extends Component {
                 styles.frame + " " + styles.borderRight + " " + styles.borderTop
               }
             >
-              <h2 className={typoStyles.heading2}>Committee invites</h2>
+              <div className={styles.oneLine}>
+                <h2 className={typoStyles.heading2}>Committee invites</h2>
+                <Link to={ROUTES.committees} className={typoStyles.smallLink}>
+                  view all
+                </Link>
+              </div>
               <div className={styles.cardGrid}>
                 {pendingRequests.length > 0 ? (
                   <>
@@ -177,10 +217,12 @@ class SuperDashboard extends Component {
                         link={true}
                       />
                     ))}
-                    <RequestEmpty />
+                    {pendingRequests.length < 4 ? (
+                      <RequestEmpty openInviteForm={this.openInviteForm} />
+                    ) : null}
                   </>
                 ) : (
-                  <RequestEmpty />
+                  <RequestEmpty openInviteForm={this.openInviteForm} />
                 )}
               </div>
             </section>
