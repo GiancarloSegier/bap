@@ -4,4 +4,6 @@ module.exports = app => {
   app.post("/auth/login", controller.login);
   app.post("/auth/logout", controller.logout);
   app.post("/auth/register", controller.register);
+  app.get("/api/users/:userId", controller.findOne);
+  app.delete("/api/users/:userId", controller.delete);
 };

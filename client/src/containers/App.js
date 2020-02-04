@@ -21,17 +21,17 @@ class App extends Component {
       <main>
         <NavBar />
         <Switch>
-          <Route path={ROUTES.home} exact strict component={Home} />
-          <Route path={ROUTES.toolbox} strict component={Toolbox} />
-          <Route path={ROUTES.designstudio} strict component={DesignStudio} />
-          <Route path={ROUTES.login} strict component={Login} />
-          <Route path={ROUTES.request} strict component={Request} />
-          <Route path={ROUTES.register} strict component={Register} />
+          <Route path={ROUTES.home} exact component={Home} />
+          <Route path={ROUTES.toolbox} component={Toolbox} />
+          <Route path={ROUTES.designstudio} component={DesignStudio} />
+          <Route path={ROUTES.login} component={Login} />
+          <Route path={ROUTES.request} component={Request} />
+          <Route path={ROUTES.register} component={Register} />
           {this.props.userStore.authUser ? (
-            <Route path={ROUTES.dashboard} strict component={Dashboard} />
+            <Route path={ROUTES.dashboard} component={Dashboard} />
           ) : null}
 
-          <Route path="*" component={NotFound} />
+          {/* <Route path="*" component={NotFound} /> */}
         </Switch>
       </main>
     );

@@ -75,7 +75,7 @@ class AdminRegisterForm extends Component {
       })
       .then(() => {
         committeeStore.addCommittee({
-          id: committeeId,
+          _id: committeeId,
           name: organisation,
           raceday: new Date("2020-09-29"),
           city: "",
@@ -280,8 +280,7 @@ class AdminRegisterForm extends Component {
                       !this.checks.avatar ||
                       !this.checks.password ||
                       !this.checks.password2 ||
-                      this.checks.password !== this.checks.password2 ||
-                      (this.props.phone ? null : !this.checks.newPhone)
+                      this.checks.password !== this.checks.password2
                     }
                   />
                 </div>

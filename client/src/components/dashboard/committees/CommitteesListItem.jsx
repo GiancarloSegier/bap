@@ -43,11 +43,12 @@ class CommitteesListItem extends Component {
   render() {
     const { committee } = this.props;
     const { members } = this.state;
+    console.log(committee);
 
     return (
       <Link
         className={styles.listItem}
-        to={`/dashboard/committees/${committee.id}`}
+        to={`/dashboard/committees/detail/${committee.id}`}
       >
         <p className={styles.name}>{committee.name}</p>
         <p>{committee.city}</p>

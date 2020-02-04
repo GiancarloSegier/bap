@@ -121,3 +121,38 @@ exports.register = (req, res) => {
     }
   });
 };
+
+exports.delete = async (req, res) => {
+  try {
+    const user = await User.findOneAndRemove({
+      _id: req.params.userId
+    });
+    if (!user) {
+      return res.status(404).send("No user found");
+    }
+    res.send(user);
+  } catch (err) {
+    if (err.kind === "ObjectId") {
+      return res.status(417).send("Geen geldig ID");
+    }
+    return res.status(500).send(err);
+  }
+};
+
+exports.findOne = async (req, res) => {
+  try {
+    const user = await User.findOne({
+      _id: req.params.userId
+    });
+    if (user) {
+      res.send(user);
+    } else {
+      res.status(404).send("No user found");
+    }
+  } catch (err) {
+    if (err.kind === "ObjectId") {
+      return res.status(500).send("Geen geldig ID");
+    }
+    return res.status(500).send(err);
+  }
+};

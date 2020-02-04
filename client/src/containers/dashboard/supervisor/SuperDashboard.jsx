@@ -125,7 +125,11 @@ class SuperDashboard extends Component {
     return (
       <>
         {warning ? (
-          <Warning onContinue={this.onContinue} onCancel={this.onCancel} />
+          <Warning
+            onContinue={this.onContinue}
+            onCancel={this.onCancel}
+            message="Are you sure you want to delete this request?"
+          />
         ) : null}
         {invite ? (
           <InviteCommitteeForm onConfirm={this.closeInviteForm} />

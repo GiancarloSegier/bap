@@ -39,8 +39,12 @@ class AnnouncementForm extends Component {
   handleSubmit = async e => {
     e.preventDefault();
 
-    await this.uploadImages();
-    await this.uploadFiles();
+    if (this.state.formData) {
+      await this.uploadImages();
+    }
+    if (this.state.fileData) {
+      await this.uploadFiles();
+    }
 
     const { title, content, images, attachment } = this.state;
     if (title !== "" && content !== "") {

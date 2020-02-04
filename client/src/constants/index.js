@@ -13,5 +13,6 @@ export const ROUTES = {
   news: "/dashboard/news",
   announcements: "/dashboard/announcements",
   planner: "/dashboard/planner",
-  committeeDetail: "/dashboard/committees/:id"
+  committeeDetail: "/dashboard/committees/detail/:id",
+  invitations: "/dashboard/committees/invitations"
 };

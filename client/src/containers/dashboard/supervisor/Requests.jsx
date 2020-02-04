@@ -126,7 +126,11 @@ class Requests extends Component {
       return (
         <>
           {warning ? (
-            <Warning onContinue={this.onContinue} onCancel={this.onCancel} />
+            <Warning
+              onContinue={this.onContinue}
+              onCancel={this.onCancel}
+              message="Are you sure you want to delete this request?"
+            />
           ) : null}
           <h1 className={typoStyles.heading1}>Requests</h1>
           {newRequests.length > 0 ? (

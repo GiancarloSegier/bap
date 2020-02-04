@@ -4,22 +4,52 @@ import FontAwesome from "react-fontawesome";
 import { Link } from "react-router-dom";
 
 import { ROUTES } from "../../../constants/index";
+import Warning from "../../ui/Warning";
+import { inject, observer } from "mobx-react";
 
 class CommitteeDescription extends Component {
   constructor(props) {
     super(props);
+    this.state = { warning: false };
   }
+
+  showWarning = () => {
+    this.setState({ warning: true });
+  };
+
+  onDeleteCommittee = async () => {
+    const { committee, committeeMembers } = this.props;
+    await this.props.committeeStore.deleteCommittee(committee);
+    await this.props.userStore.deleteMemberUsers(committeeMembers);
+
+    setTimeout(() => {
+      window.location.href = ROUTES.committees;
+    }, 1000);
+  };
+
   render() {
     const { committee, committeeMembers } = this.props;
+    const { warning } = this.state;
 
     return (
       <>
+        {warning ? (
+          <Warning
+            onContinue={this.onDeleteCommittee}
+            onCancel={this.onCancel}
+            message="Are you sure you want to delete this committee?"
+          />
+        ) : null}
         <div className={styles.flex}>
           <Link to={ROUTES.committees} className={styles.back}>
             <FontAwesome name="chevron-left" className={styles.arrow} />
             back to overview
           </Link>
-          <button type="button" className={styles.textButton}>
+          <button
+            type="button"
+            className={styles.textButton}
+            onClick={this.showWarning}
+          >
             <FontAwesome name="trash" className={styles.trash} />
             Remove committee
           </button>
@@ -84,4 +114,7 @@ class CommitteeDescription extends Component {
     );
   }
 }
-export default CommitteeDescription;
+export default inject(
+  `committeeStore`,
+  `userStore`
+)(observer(CommitteeDescription));
