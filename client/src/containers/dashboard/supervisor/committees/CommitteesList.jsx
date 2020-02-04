@@ -7,10 +7,25 @@ import typoStyles from "../../../../styles/typo.module.css";
 class CommitteesList extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      country: "",
+      committees: this.props.committeeStore.committees
+    };
   }
 
+  handleChangeCountry = e => {
+    const filterCountry = e.target.value;
+    console.log(filterCountry);
+
+    if (filterCountry === "") {
+      this.setState({ country: "" });
+    } else {
+      this.setState({ country: filterCountry });
+    }
+  };
   render() {
-    const { committees, countries } = this.props.committeeStore;
+    const { countries, committees } = this.props.committeeStore;
+    const { country } = this.state;
 
     return (
       <>
@@ -24,18 +39,32 @@ class CommitteesList extends Component {
           <div className={styles.filter}>
             <p>Sort by:</p>
 
-            <select className={styles.countrySelect}>
-              {countries.map(country => (
-                <option value={country}>{country}</option>
+            <select
+              className={styles.countrySelect}
+              onChange={this.handleChangeCountry}
+            >
+              <option value="">select a country</option>
+              {countries.map((country, i) => (
+                <option key={i} value={country}>
+                  {country}
+                </option>
               ))}
             </select>
           </div>
         </div>
 
         <CommitteeHeader countries={countries} />
-        {committees.map((committee, i) => {
-          return <CommitteesListItem key={i} committee={committee} />;
-        })}
+        {committees
+          .filter(committee => {
+            if (country !== "") {
+              return committee.country === country;
+            } else {
+              return committee;
+            }
+          })
+          .map((committee, i) => {
+            return <CommitteesListItem key={i} committee={committee} />;
+          })}
       </>
     );
   }

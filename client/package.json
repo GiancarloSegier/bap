@@ -21,6 +21,7 @@
     "react-fontawesome": "^1.7.1",
     "react-images-upload": "^1.2.7",
     "react-images-uploader": "^1.2.0-rc1",
+    "react-images-uploading": "^1.0.3",
     "react-loader": "^2.4.6",
     "react-loader-spinner": "^3.1.5",
     "react-nl2br": "^0.6.0",
