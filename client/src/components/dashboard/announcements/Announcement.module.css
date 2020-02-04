@@ -34,6 +34,13 @@
   overflow: hidden;
   color: var(--grey-mid);
 }
+.content_max {
+  font-size: 1.4rem;
+  display: -webkit-box;
+  -webkit-line-clamp: none;
+
+  color: var(--grey-mid);
+}
 .readmore {
   color: var(--pink-mid);
   font-size: 1.4rem;
@@ -71,8 +78,29 @@
   justify-content: space-between;
   color: var(--grey-low);
 }
+.icons_bot {
+  width: 9rem;
+  display: flex;
+  justify-content: space-between;
+  float: right;
+  color: var(--grey-low);
+  padding: 2rem 0;
+}
 
 .icon:hover {
   color: var(--grey-mid);
   cursor: pointer;
+}
+
+.imageContainer {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.image_xs {
+  object-fit: cover;
+  width: 48%;
+  height: 100%;
+  border-radius: 0.6rem;
 }

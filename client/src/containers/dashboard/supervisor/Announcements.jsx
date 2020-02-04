@@ -16,7 +16,8 @@ class Announcements extends Component {
     this.state = {
       addNews: false,
       detail: false,
-      edit: false
+      edit: false,
+      current: {}
     };
   }
 
@@ -29,8 +30,8 @@ class Announcements extends Component {
   onEdit = () => {
     this.setState({ edit: true });
   };
-  onView = () => {
-    this.setState({ detail: true });
+  onView = announcement => {
+    this.setState({ detail: true, current: announcement });
   };
 
   render() {
@@ -40,7 +41,12 @@ class Announcements extends Component {
     return (
       <>
         {addNews ? <AnnouncementForm onConfirm={this.closeForm} /> : null}
-        {detail ? <AnnouncementDetail onClose={this.closeForm} /> : null}
+        {detail ? (
+          <AnnouncementDetail
+            announcement={this.state.current}
+            onClose={this.closeForm}
+          />
+        ) : null}
         {edit ? <AnnouncementEdit onConfirm={this.closeForm} /> : null}
         <div className={styles.oneLine}>
           <h1 className={typoStyles.heading1}>Announcements</h1>
@@ -60,7 +66,7 @@ class Announcements extends Component {
               return (
                 <Announcement
                   key={i}
-                  onView={this.onView}
+                  onView={() => this.onView(announcement)}
                   onEdit={this.onEdit}
                   announcement={announcement}
                 />
