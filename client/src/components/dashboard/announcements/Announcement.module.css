@@ -1,0 +1,78 @@
+.card {
+  composes: modal from "../../../styles/modal.module.css";
+  width: 100%;
+}
+.container {
+  composes: modalContainer from "../../../styles/modal.module.css";
+  padding: 2rem;
+  padding-bottom: 1rem;
+}
+
+.image {
+  object-fit: cover;
+  width: 100%;
+  border-radius: 0.6rem;
+  margin-top: 2rem;
+}
+
+.title {
+  font-size: 1.6rem;
+  font-weight: bold;
+}
+
+.date {
+  font-size: 1.2rem;
+  color: var(--grey-mid);
+  margin-bottom: 1.5rem;
+}
+
+.content {
+  font-size: 1.4rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  color: var(--grey-mid);
+}
+.readmore {
+  color: var(--pink-mid);
+  font-size: 1.4rem;
+}
+.readmore:hover {
+  border-bottom: solid var(--pink-mid) 0.1rem;
+}
+
+.paperclip_icon {
+  font-size: 1.8rem;
+  transform: rotate(45deg);
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+.attachment {
+  background-color: var(--grey-low);
+  padding: 0.8rem 1.1rem;
+  border-radius: 50%;
+}
+.attachment:hover {
+  background-color: var(--grey-mid);
+  color: white;
+}
+
+.gridHeader {
+  display: grid;
+  grid-template-columns: auto 4rem;
+  align-items: top;
+  height: 4rem;
+}
+
+.icons_top {
+  display: flex;
+  justify-content: space-between;
+  color: var(--grey-low);
+}
+
+.icon:hover {
+  color: var(--grey-mid);
+  cursor: pointer;
+}

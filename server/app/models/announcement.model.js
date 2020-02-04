@@ -6,7 +6,8 @@ const AnnouncementSchema = mongoose.Schema(
     content: String,
     date: Date,
     images: Array,
-    attachment: Array
+    attachment: Array,
+    updatedAt: Date
   },
   {
     timestamps: true
