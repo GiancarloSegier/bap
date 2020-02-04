@@ -9,7 +9,7 @@ class RequestEmpty extends Component {
 
   render() {
     return (
-      <div className={styles.emptyCard}>
+      <div className={styles.emptyCard} onClick={this.props.openInviteForm}>
         <div className={styles.icon}>
           <span className={styles.cross_line}></span>
           <span className={styles.cross_line}></span>

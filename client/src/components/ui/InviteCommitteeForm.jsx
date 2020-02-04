@@ -3,7 +3,7 @@ import modalStyles from "../../styles/modal.module.css";
 import formStyles from "../../styles/form.module.css";
 import { inject, observer } from "mobx-react";
 import { withRouter } from "react-router-dom";
-// import styles from "./InviteCommitteeForm.module.css";
+import styles from "./modalForm.module.css";
 
 class InviteCommitteeForm extends Component {
   constructor(props) {
@@ -85,8 +85,8 @@ class InviteCommitteeForm extends Component {
           assignment: "Event Manager",
           privileges: "admin"
         },
-        pending: false,
-        seen: false
+        pending: true,
+        seen: true
       });
 
       this.setState({
@@ -110,13 +110,13 @@ class InviteCommitteeForm extends Component {
     }, 200);
   };
 
-  // handleSubmit = e => {
-  //   e.preventDefault();
-  //   this.setState({ fadeIn: false });
-  //   setTimeout(() => {
-  //     this.props.onConfirm();
-  //   }, 200);
-  // };
+  closeForm = e => {
+    this.setState({ fadeIn: false });
+    setTimeout(() => {
+      this.props.onConfirm();
+    }, 200);
+  };
+
   render() {
     const { fadeIn, email, organisation, name, surname } = this.state;
     return (
@@ -135,11 +135,22 @@ class InviteCommitteeForm extends Component {
           }
         >
           <div className={modalStyles.modalContainer}>
-            <h3>Invite Event Manager</h3>
-            <p>
-              The committee manager will receive an invitation to setup their
-              committee.
-            </p>
+            <div className={styles.oneLine}>
+              <div className={styles.headerBlock}>
+                <h3 className={modalStyles.heading3}>Invite event manager</h3>
+                <p>
+                  The committee manager will receive an invitation to setup
+                  their committee.
+                </p>
+              </div>
+              <button
+                type="button"
+                className={modalStyles.close__button}
+                onClick={this.closeForm}
+              >
+                <span className={modalStyles.decliner}></span>
+              </button>
+            </div>
           </div>
           <div
             className={

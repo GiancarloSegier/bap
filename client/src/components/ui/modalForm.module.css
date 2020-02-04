@@ -1,0 +1,16 @@
+.imagesPreview img {
+  width: 10rem;
+}
+
+.previewBlock {
+  background-color: red;
+  width: 20rem;
+}
+
+.oneLine {
+  display: flex;
+  justify-content: space-between;
+}
+.headerBlock {
+  width: calc(100% - 4rem);
+}

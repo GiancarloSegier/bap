@@ -10,7 +10,7 @@ class Statistics extends Component {
   }
 
   render() {
-    const { committees } = this.props.committeeStore;
+    const { committees, countries } = this.props.committeeStore;
 
     return (
       <div>
@@ -38,7 +38,7 @@ class Statistics extends Component {
               alt="Different countries"
             />
             <div>
-              <div className={styles.number}>8</div>
+              <div className={styles.number}>{countries.length}</div>
               <p className={styles.description}>Different countries</p>
             </div>
           </li>
@@ -64,7 +64,13 @@ class Statistics extends Component {
               alt="Races on the same day"
             ></img>
             <div>
-              <div className={styles.number}>7</div>
+              <div className={styles.number}>
+                {
+                  committees.filter(committee => {
+                    return committee.raceday === "2020-09-29T00:00:00.000Z";
+                  }).length
+                }
+              </div>
               <p className={styles.description}>Races on the same day</p>
             </div>
           </li>
