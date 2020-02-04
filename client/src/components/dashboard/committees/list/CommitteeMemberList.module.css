@@ -1,6 +1,6 @@
 .topbar {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr) 1.5fr;
   align-items: center;
   grid-gap: 3rem;
   background-color: var(--purple-very-low);

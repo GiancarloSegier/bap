@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import styles from "./committeesList.module.css";
+import styles from "./committees.module.css";
 class CommitteeHeader extends Component {
   constructor(props) {
     super(props);

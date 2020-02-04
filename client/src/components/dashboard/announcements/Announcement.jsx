@@ -19,9 +19,9 @@ class Announcement extends Component {
     const month = requestDate.getMonth() + 1;
     const year = requestDate.getFullYear();
 
-    const dateString = `${day < 10 ? "0" + day : day}/${
+    const dateString = `${day < 10 ? "0" + day : day}-${
       month < 10 ? "0" + month : month
-    }/${year}`;
+    }-${year}`;
 
     this.setState({ dateString: dateString });
   }

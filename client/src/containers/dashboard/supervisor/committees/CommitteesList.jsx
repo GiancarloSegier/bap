@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { inject, observer } from "mobx-react";
-import CommitteesListItem from "../../../../components/dashboard/committees/CommitteesListItem";
-import CommitteeHeader from "../committees/CommitteeHeader";
+import CommitteesListItem from "../../../../components/dashboard/committees/list/CommitteesListItem";
+import CommitteeHeader from "../../../../components/dashboard/committees/CommitteeHeader";
 import styles from "./committeesList.module.css";
 import typoStyles from "../../../../styles/typo.module.css";
 class CommitteesList extends Component {
@@ -29,7 +29,7 @@ class CommitteesList extends Component {
 
     return (
       <>
-        <div className={styles.navbar}>
+        {countries.length > 0 ? (
           <div className={styles.filter}>
             <p>Sort by:</p>
 
@@ -45,7 +45,7 @@ class CommitteesList extends Component {
               ))}
             </select>
           </div>
-        </div>
+        ) : null}
 
         <CommitteeHeader countries={countries} />
         {committees

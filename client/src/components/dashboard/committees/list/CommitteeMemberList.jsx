@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import styles from "./CommitteeMemberList.module.css";
-import MemberListItem from "../committees/MemberListItem";
+import MemberListItem from "./MemberListItem";
 class CommitteeMemberList extends Component {
   constructor(props) {
     super(props);

@@ -3,7 +3,7 @@ import styles from "../Dashboard.module.css";
 import typoStyles from "../../../styles/typo.module.css";
 import { inject, observer } from "mobx-react";
 import CommitteesList from "./committees/CommitteesList";
-import CommitteeHeader from "./committees/CommitteeHeader";
+import CommitteeHeader from "../../../components/dashboard/committees/CommitteeHeader";
 import CommitteesTop from "../../../components/dashboard/committees/CommitteesTop";
 
 class Committees extends Component {

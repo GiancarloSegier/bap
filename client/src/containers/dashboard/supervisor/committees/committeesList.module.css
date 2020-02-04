@@ -36,7 +36,11 @@
   justify-content: flex-end;
   margin-bottom: 5rem;
   margin-left: auto;
+  margin-top: -5.75rem;
 }
 .filter:after {
   content: ;
+}
+.invitationGrid {
+  grid-template-columns: 1.5fr 1fr 1fr 2fr 1fr;
 }

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import styles from "./MemberListItem.module.css";
-import memberStyles from "../../../styles/members.module.css";
+import memberStyles from "../../../../styles/members.module.css";
 
 class MemberListItem extends Component {
   constructor(props) {

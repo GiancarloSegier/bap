@@ -1,0 +1,80 @@
+.listItem {
+  display: grid;
+  grid-template-columns: 2fr repeat(4, 1fr) 2rem;
+  grid-gap: 3rem;
+  align-items: center;
+  height: 8rem;
+  font-size: 1.4rem;
+  line-height: 1.8rem;
+  color: var(--grey-mid);
+}
+
+.name {
+  font-weight: bold;
+  color: var(--black);
+}
+
+.arrow {
+  margin-left: -2rem;
+  color: var(--purple-low);
+}
+.listItem:nth-last-child(odd) {
+  background-color: white;
+}
+
+.listItem p:first-child {
+  margin-left: 2rem;
+}
+
+.invitationGrid {
+  grid-template-columns: 1.5fr 1fr 1fr 2fr 1fr;
+}
+.icon {
+  width: 3rem;
+  height: 3rem;
+
+  border-radius: 50%;
+}
+
+.nameTag {
+  display: none;
+  position: absolute;
+  width: max-content;
+
+  top: -3.5rem;
+  background: white;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+
+  font-size: 1.2rem;
+  font-weight: normal;
+
+  box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.04),
+    0px 2px 8px rgba(52, 24, 74, 0.06), 0px 4px 7px rgba(52, 24, 74, 0.045);
+}
+
+.icon:hover + .nameTag {
+  display: block;
+}
+.memberImages {
+  display: flex;
+}
+.memberBlock {
+  position: relative;
+  margin-left: -1.5rem;
+  display: flex;
+  justify-content: center;
+}
+.memberBlock:first-child {
+  margin: 0;
+}
+.name {
+  margin: 0;
+}
+.mail {
+  color: var(--grey-mid);
+  transition: 0.15s ease-in-out;
+}
+.mail:hover {
+  color: var(--pink-mid);
+}
