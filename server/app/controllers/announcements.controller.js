@@ -6,7 +6,8 @@ exports.create = (req, res) => {
     date: req.body.date,
     content: req.body.content,
     images: req.body.images,
-    attachment: req.body.attachment
+    attachment: req.body.attachment,
+    updatedAt: req.body.updatedAt
   });
 
   announcement
@@ -55,7 +56,8 @@ exports.update = async (req, res) => {
         date: req.body.date,
         content: req.body.content,
         images: req.body.images,
-        attachment: req.body.attachment
+        attachment: req.body.attachment,
+        updatedAt: req.body.updatedAt
       },
       {
         new: true
