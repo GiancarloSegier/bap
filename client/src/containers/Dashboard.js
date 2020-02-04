@@ -15,6 +15,7 @@ import Planner from "./dashboard/members/Planner";
 import { inject, observer } from "mobx-react";
 import CommitteeDetail from "./dashboard/supervisor/committees/CommitteeDetail";
 import Announcements from "./dashboard/supervisor/Announcements";
+import Invitations from "./dashboard/supervisor/committees/Invitations";
 
 const Dashboard = ({ userStore }) => {
   const { privileges } = userStore.authUser.job;
@@ -31,31 +32,21 @@ const Dashboard = ({ userStore }) => {
               <Route
                 path={ROUTES.dashboardHome}
                 exact
-                strict
                 component={DashboardHome}
               />
-              <Route path={ROUTES.requests} exact strict component={Requests} />
+              <Route path={ROUTES.requests} exact component={Requests} />
 
-              <Route
-                path={ROUTES.committees}
-                exact
-                strict
-                component={Committees}
-              />
+              <Route path={ROUTES.committees} exact component={Committees} />
               <Route
                 path={ROUTES.committeeDetail}
                 exact
-                strict
                 render={({ match }) => (
                   <CommitteeDetail committeeId={match.params.id} />
                 )}
               />
+              <Route path={ROUTES.invitations} exact component={Invitations} />
 
-              <Route
-                path={ROUTES.announcements}
-                strict
-                component={Announcements}
-              />
+              <Route path={ROUTES.announcements} component={Announcements} />
             </Switch>
           </div>
         </div>
@@ -73,12 +64,11 @@ const Dashboard = ({ userStore }) => {
               <Route
                 path={ROUTES.dashboardHome}
                 exact
-                strict
                 component={DashboardHome}
               />
-              <Route path={ROUTES.myCommittee} strict component={MyCommittee} />
-              <Route path={ROUTES.planner} strict component={Planner} />
-              <Route path={ROUTES.news} strict component={News} />
+              <Route path={ROUTES.myCommittee} component={MyCommittee} />
+              <Route path={ROUTES.planner} component={Planner} />
+              <Route path={ROUTES.news} component={News} />
             </Switch>
           </div>
         </div>

@@ -1,49 +1,21 @@
 import React, { Component } from "react";
 import styles from "../Dashboard.module.css";
-import uiStyles from "../../../styles/ui.module.css";
 import typoStyles from "../../../styles/typo.module.css";
-
 import { inject, observer } from "mobx-react";
-import InviteCommitteeForm from "../../../components/ui/InviteCommitteeForm";
 import CommitteesList from "./committees/CommitteesList";
 import CommitteeHeader from "./committees/CommitteeHeader";
+import CommitteesTop from "../../../components/dashboard/committees/CommitteesTop";
 
 class Committees extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      invite: false
-    };
   }
 
-  openInviteForm = e => {
-    this.setState({ invite: true });
-  };
-  closeInviteForm = () => {
-    this.setState({ invite: false });
-  };
-
   render() {
-    const { invite } = this.state;
     const { committees } = this.props.committeeStore;
     return (
       <>
-        {invite ? (
-          <InviteCommitteeForm onConfirm={this.closeInviteForm} />
-        ) : null}
-
-        <div className={styles.oneLine}>
-          <h1 className={typoStyles.heading1}>Committees</h1>
-          <div>
-            <button
-              type="button"
-              className={uiStyles.textButton}
-              onClick={this.openInviteForm}
-            >
-              <span className={uiStyles.button__icon}>+</span>invite committee
-            </button>
-          </div>
-        </div>
+        <CommitteesTop />
         {committees.length < 0 ? (
           <>
             <CommitteeHeader />

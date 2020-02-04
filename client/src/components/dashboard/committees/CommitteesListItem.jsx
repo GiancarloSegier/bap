@@ -48,7 +48,7 @@ class CommitteesListItem extends Component {
     return (
       <Link
         className={styles.listItem}
-        to={`/dashboard/committees/${committee.id}`}
+        to={`/dashboard/committees/detail/${committee.id}`}
       >
         <p className={styles.name}>{committee.name}</p>
         <p>{committee.city}</p>

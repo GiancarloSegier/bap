@@ -30,12 +30,6 @@ class CommitteesList extends Component {
     return (
       <>
         <div className={styles.navbar}>
-          <h2 className={typoStyles.heading2 + " " + styles.navItem}>
-            Committees
-          </h2>
-          <h2 className={typoStyles.heading2 + " " + styles.navItem}>
-            invitations
-          </h2>
           <div className={styles.filter}>
             <p>Sort by:</p>
 
