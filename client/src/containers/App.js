@@ -13,6 +13,7 @@ import Register from "./auth/Register.js";
 import { inject, observer } from "mobx-react";
 import Dashboard from "./Dashboard.js";
 import NotFound from "./NotFound.js";
+import CommitteeDetail from "./dashboard/supervisor/committees/CommitteeDetail.jsx";
 
 class App extends Component {
   render() {
@@ -29,6 +30,7 @@ class App extends Component {
           {this.props.userStore.authUser ? (
             <Route path={ROUTES.dashboard} strict component={Dashboard} />
           ) : null}
+
           <Route path="*" component={NotFound} />
         </Switch>
       </main>

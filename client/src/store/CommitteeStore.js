@@ -7,6 +7,7 @@ configure({ enforceActions: `observed` });
 
 class CommitteeStore {
   committees = [];
+  countries = [];
   currentCommittee = {};
   committeeMembers = [];
   constructor(rootStore) {
@@ -17,7 +18,9 @@ class CommitteeStore {
   }
 
   getAll = () => {
-    this.api.getAll().then(d => d.forEach(this._addCommittee));
+    this.api.getAll().then(d => {
+      d.forEach(this._addCommittee);
+    });
   };
 
   getCommitteeMembers = committeeId => {
@@ -48,8 +51,12 @@ class CommitteeStore {
   _addCommittee = values => {
     const committee = new Committee();
     committee.updateFromServer(values);
+
     runInAction(() => {
       this.committees.push(committee);
+      if (!this.countries.includes(values.country) && values.country) {
+        this.countries.push(values.country);
+      }
     });
   };
   _addCommitteeMember = values => {
@@ -82,6 +89,7 @@ class CommitteeStore {
 
 decorate(CommitteeStore, {
   committees: observable,
+  countries: observable,
   addCommittee: action,
   deleteCommittee: action,
   getOne: action,

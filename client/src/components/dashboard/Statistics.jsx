@@ -36,7 +36,7 @@ class Statistics extends Component {
               width="40"
               height="40"
               alt="Different countries"
-            ></img>
+            />
             <div>
               <div className={styles.number}>8</div>
               <p className={styles.description}>Different countries</p>

@@ -1,0 +1,42 @@
+.topbar {
+  display: grid;
+  grid-template-columns: 2fr repeat(4, 1fr) 2rem;
+  align-items: center;
+  grid-gap: 3rem;
+  background-color: var(--purple-very-low);
+  height: 4.8rem;
+  font-size: 1.2rem;
+  color: var(--purple-low);
+  text-transform: uppercase;
+  font-weight: bold;
+
+  letter-spacing: 0.15em;
+  border-radius: 0.6rem;
+}
+
+.topbar li:first-child {
+  margin-left: 2rem;
+}
+
+.navbar {
+  display: flex;
+}
+.navItem {
+  padding-right: 3rem;
+}
+.countrySelect {
+  border: none;
+  font-size: 1.6rem;
+  font-weight: bold;
+  background: none;
+}
+
+.filter {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 5rem;
+  margin-left: auto;
+}
+.filter:after {
+  content: ;
+}

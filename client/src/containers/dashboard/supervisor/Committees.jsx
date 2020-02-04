@@ -6,6 +6,7 @@ import typoStyles from "../../../styles/typo.module.css";
 import { inject, observer } from "mobx-react";
 import InviteCommitteeForm from "../../../components/ui/InviteCommitteeForm";
 import CommitteesList from "./committees/CommitteesList";
+import CommitteeHeader from "./committees/CommitteeHeader";
 
 class Committees extends Component {
   constructor(props) {
@@ -45,25 +46,36 @@ class Committees extends Component {
           </div>
         </div>
         {committees.length < 0 ? (
-          <div className={styles.emptyContainer}>
-            <p className={typoStyles.body}>
-              Here you can organise the committees that are responsible for all
-              the Races.
-            </p>
-            <p className={typoStyles.body}>
-              Authorise someone as the Event Manager so they can complete their
-              committee.
-            </p>
-            <p>
-              You haven’t made any invited committee yet. You can invite someone{" "}
-              <button
-                className={typoStyles.buttonInline}
-                onClick={this.openInviteForm}
-              >
-                here
-              </button>
-            </p>
-          </div>
+          <>
+            <CommitteeHeader />
+            <div className={styles.container}>
+              <div className={styles.overlay}></div>
+              <div className={styles.backgroundEmpty}>
+                <div className={styles.stroke}></div>
+                <div className={styles.stroke}></div>
+                <div className={styles.stroke}></div>
+              </div>
+
+              <div className={styles.committeeEmptyContainer}>
+                <p className={typoStyles.body}>
+                  Here you can find an overview of all the race committees from
+                  every country. There are no committees added yet.
+                </p>
+
+                <button
+                  className={typoStyles.buttonInline}
+                  onClick={this.openInviteForm}
+                >
+                  Invite your first committee
+                </button>
+                <img
+                  src="http://placekitten.com/200/200"
+                  className={styles.emptyImage}
+                  alt="Location"
+                />
+              </div>
+            </div>
+          </>
         ) : (
           <CommitteesList />
         )}

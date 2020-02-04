@@ -1,0 +1,20 @@
+.topbar {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  align-items: center;
+  grid-gap: 3rem;
+  background-color: var(--purple-very-low);
+  height: 4.8rem;
+  font-size: 1.2rem;
+  color: var(--purple-low);
+  text-transform: uppercase;
+  font-weight: bold;
+
+  letter-spacing: 0.15em;
+  border-radius: 0.6rem;
+  margin-top: 5rem;
+}
+
+.topbar li:first-child {
+  margin-left: 2rem;
+}

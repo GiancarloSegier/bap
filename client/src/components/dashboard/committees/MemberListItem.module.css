@@ -1,0 +1,43 @@
+.listItem {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 3rem;
+  align-items: center;
+  height: 5.3rem;
+  font-size: 1.4rem;
+  line-height: 1.8rem;
+
+  color: var(--black);
+}
+
+.icon {
+  width: 3rem;
+  height: 3rem;
+  border: solid #6fcf97 0.2rem;
+  border-radius: 50%;
+  margin-right: 1rem;
+}
+.person {
+  display: flex;
+  align-items: center;
+  margin-left: 2rem;
+}
+.job {
+  display: flex;
+  align-items: center;
+}
+.green {
+  width: 1.3rem;
+  height: 1.3rem;
+  background-color: #6fcf97;
+  border-radius: 50%;
+  margin-right: 2rem;
+}
+
+.name {
+  font-weight: bold;
+}
+
+.listItem:nth-last-child(odd) {
+  background-color: white;
+}

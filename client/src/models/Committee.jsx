@@ -30,7 +30,7 @@ class Committee {
   setDescription = description => (this.description = description);
 
   updateFromServer = values => {
-    this.setId(values.id);
+    this.setId(values._id);
     this.setName(values.name);
     this.setRaceday(values.raceday);
     this.setCity(values.city);

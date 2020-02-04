@@ -13,6 +13,7 @@ import News from "./dashboard/members/News";
 import Planner from "./dashboard/members/Planner";
 
 import { inject, observer } from "mobx-react";
+import CommitteeDetail from "./dashboard/supervisor/committees/CommitteeDetail";
 
 const Dashboard = ({ userStore }) => {
   const { privileges } = userStore.authUser.job;
@@ -32,9 +33,22 @@ const Dashboard = ({ userStore }) => {
                 strict
                 component={DashboardHome}
               />
-              <Route path={ROUTES.committees} strict component={Committees} />
-              <Route path={ROUTES.requests} strict component={Requests} />
-              <Route path={ROUTES.updates} strict component={Updates} />
+              <Route path={ROUTES.requests} exact strict component={Requests} />
+              <Route path={ROUTES.updates} exact strict component={Updates} />
+              <Route
+                path={ROUTES.committees}
+                exact
+                strict
+                component={Committees}
+              />
+              <Route
+                path={ROUTES.committeeDetail}
+                exact
+                strict
+                render={({ match }) => (
+                  <CommitteeDetail committeeId={match.params.id} />
+                )}
+              />
             </Switch>
           </div>
         </div>

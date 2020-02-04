@@ -13,5 +13,6 @@ export const ROUTES = {
   myCommittee: "/dashboard/mycommittee",
   news: "/dashboard/news",
   announcements: "/dashboard/announcements",
-  planner: "/dashboard/planner"
+  planner: "/dashboard/planner",
+  committeeDetail: "/dashboard/committees/:id"
 };
