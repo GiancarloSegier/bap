@@ -48,14 +48,16 @@ class RequestStore {
     });
   };
 
-  addRequest = data => {
+  addRequest = async data => {
     const newRequest = new Request();
     newRequest.updateFromServer(data);
     this.requests.push(newRequest);
 
-    this.api
+    await this.api
       .create(newRequest)
       .then(requestValues => newRequest.updateFromServer(requestValues));
+    await this.getAllNewRequests();
+    await this.getPendingRequests();
   };
 
   _addRequest = values => {

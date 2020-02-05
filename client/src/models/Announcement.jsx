@@ -29,7 +29,6 @@ class Announcement {
   setDate = updatedAt => (this.updatedAt = updatedAt);
 
   updateFromServer = values => {
-    console.log(values._id);
     if (values.id) {
       this.setId(values.id);
     } else {

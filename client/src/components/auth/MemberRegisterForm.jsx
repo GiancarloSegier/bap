@@ -6,7 +6,7 @@ import styles from "./Auth.module.css";
 import modalStyles from "../../styles/modal.module.css";
 import formStyles from "../../styles/form.module.css";
 
-class RegisterForm extends Component {
+class MemberRegisterForm extends Component {
   checks = {};
   constructor(props) {
     super(props);
@@ -299,4 +299,4 @@ class RegisterForm extends Component {
 export default inject(
   `userStore`,
   `inviteStore`
-)(withRouter(observer(RegisterForm)));
+)(withRouter(observer(MemberRegisterForm)));

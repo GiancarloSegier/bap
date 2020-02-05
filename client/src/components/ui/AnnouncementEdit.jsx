@@ -1,11 +1,7 @@
 import React, { Component } from "react";
 import modalStyles from "../../styles/modal.module.css";
-// import formStyles from "../../styles/form.module.css";
-// import { inject, observer } from "mobx-react";
-// import { withRouter } from "react-router-dom";
 import styles from "./modalForm.module.css";
 
-// import ImageUploading from "react-images-uploading";
 import formStyles from "../../styles/form.module.css";
 import ImageUploading from "react-images-uploading";
 import { inject, observer } from "mobx-react";
@@ -26,7 +22,7 @@ class AnnouncementEdit extends Component {
 
   setValues = () => {
     const { announcement } = this.props;
-    console.log(announcement);
+
     this.setState({
       title: announcement.title,
       content: announcement.content,
@@ -56,8 +52,6 @@ class AnnouncementEdit extends Component {
     if (this.state.formData) {
       await this.uploadImages();
     }
-
-    console.log(this.state);
 
     if (this.state.fileData) {
       await this.uploadFiles();
@@ -143,7 +137,6 @@ class AnnouncementEdit extends Component {
   };
 
   onRemoveExistingImage = (image, i) => {
-    console.log(i);
     const { images } = this.state;
     images.splice(i, 1);
     images.filter(image => image !== null);
@@ -236,7 +229,6 @@ class AnnouncementEdit extends Component {
                       Remove all images
                     </button>
                     {imageList.map(image => {
-                      console.log(image);
                       return (
                         <div key={image.key} className="image-item">
                           <img src={image.dataURL} alt="" width="100" />

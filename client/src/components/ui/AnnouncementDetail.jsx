@@ -12,7 +12,6 @@ class AnnouncementDetail extends Component {
     this.state = {
       warning: false
     };
-    console.log(props);
   }
 
   componentDidMount = () => {
@@ -68,7 +67,6 @@ class AnnouncementDetail extends Component {
     this.setState({ dateString: dateString });
   }
   render() {
-    console.log(this.props.announcement);
     const { announcement } = this.props;
     const { fadeIn, warning } = this.state;
     return (

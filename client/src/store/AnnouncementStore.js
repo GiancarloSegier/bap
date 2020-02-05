@@ -42,7 +42,6 @@ class AnnouncementStore {
   };
 
   updateAnnouncement = async announcement => {
-    console.log(announcement);
     await this.api
       .update(announcement)
       .then(announcementValues =>

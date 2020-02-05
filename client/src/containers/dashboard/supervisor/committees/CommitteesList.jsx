@@ -15,7 +15,6 @@ class CommitteesList extends Component {
 
   handleChangeCountry = e => {
     const filterCountry = e.target.value;
-    console.log(filterCountry);
 
     if (filterCountry === "") {
       this.setState({ country: "" });
