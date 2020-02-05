@@ -113,7 +113,7 @@ const SideNav = ({ userStore }) => {
             <NavLink
               className={styles.navLink}
               strict={true}
-              to={ROUTES.news}
+              to={ROUTES.announcements}
               activeClassName={styles.navLink__active}
             >
               <img
@@ -121,7 +121,7 @@ const SideNav = ({ userStore }) => {
                 src="../assets/icons/nav/announcements.png"
                 alt=""
               />
-              News
+              Announcements
             </NavLink>
           </li>
         </>

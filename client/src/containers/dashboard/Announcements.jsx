@@ -2,14 +2,14 @@ import React, { Component } from "react";
 import { inject, observer } from "mobx-react";
 // import styles from "./Announcements.module.css";
 // import Form from "../components/Form";
-import styles from "../Dashboard.module.css";
-import uiStyles from "../../../styles/ui.module.css";
-import typoStyles from "../../../styles/typo.module.css";
-import AnnouncementForm from "../../../components/ui/AnnouncementForm";
-import Announcement from "../../../components/dashboard/announcements/Announcement";
-import AnnouncementEmpty from "../../../components/dashboard/announcements/AnnouncementEmpty";
-import AnnouncementDetail from "../../../components/ui/AnnouncementDetail";
-import AnnouncementEdit from "../../../components/ui/AnnouncementEdit";
+import styles from "./Dashboard.module.css";
+import uiStyles from "../../styles/ui.module.css";
+import typoStyles from "../../styles/typo.module.css";
+import AnnouncementForm from "../../components/ui/AnnouncementForm";
+import Announcement from "../../components/dashboard/announcements/Announcement";
+import AnnouncementEmpty from "../../components/dashboard/announcements/AnnouncementEmpty";
+import AnnouncementDetail from "../../components/ui/AnnouncementDetail";
+import AnnouncementEdit from "../../components/ui/AnnouncementEdit";
 class Announcements extends Component {
   constructor(props) {
     super(props);

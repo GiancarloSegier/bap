@@ -14,7 +14,7 @@ import Planner from "./dashboard/members/Planner";
 
 import { inject, observer } from "mobx-react";
 import CommitteeDetail from "./dashboard/supervisor/committees/CommitteeDetail";
-import Announcements from "./dashboard/supervisor/Announcements";
+import Announcements from "./dashboard/Announcements";
 import Invitations from "./dashboard/supervisor/committees/Invitations";
 
 const Dashboard = ({ userStore }) => {
@@ -68,7 +68,7 @@ const Dashboard = ({ userStore }) => {
               />
               <Route path={ROUTES.myCommittee} component={MyCommittee} />
               <Route path={ROUTES.planner} component={Planner} />
-              <Route path={ROUTES.news} component={News} />
+              <Route path={ROUTES.announcements} component={Announcements} />
             </Switch>
           </div>
         </div>
