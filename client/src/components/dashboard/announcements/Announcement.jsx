@@ -54,15 +54,20 @@ class Announcement extends Component {
           </div>
           <p className={styles.date}>{this.state.dateString}</p>
           <p className={styles.content}>{announcement.content}</p>
-          <a className={styles.readmore} href="">
+          <button
+            type="button"
+            className={styles.readmore}
+            onClick={this.onView}
+          >
             read more
-          </a>
+          </button>
           {announcement.images.length > 0 ? (
             <div className={styles.imageContainer}>
               <img
                 className={styles.image}
                 src={announcement.images[0]}
                 alt=""
+                onClick={this.onView}
               />
             </div>
           ) : (

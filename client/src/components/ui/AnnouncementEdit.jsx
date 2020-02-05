@@ -14,6 +14,7 @@ class AnnouncementEdit extends Component {
   constructor(props) {
     super(props);
     this.state = {};
+    this.fileInput = React.createRef();
   }
 
   componentDidMount = async () => {
@@ -145,7 +146,8 @@ class AnnouncementEdit extends Component {
   onRemoveExistingImage = (image, i) => {
     console.log(i);
     const { images } = this.state;
-    delete images[i];
+    images.splice(i, 1);
+    images.filter(image => image !== null);
     this.setState({ images: images });
   };
 
