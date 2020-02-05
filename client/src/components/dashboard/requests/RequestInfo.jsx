@@ -1,13 +1,6 @@
 import React, { Component } from "react";
 import styles from "./Request.module.css";
-import { observer, inject } from "mobx-react";
-import Alert from "../../ui/Alert";
-import { Link } from "react-router-dom";
-
-import { ROUTES } from "../../../constants";
-
 import modalStyles from "../../../styles/modal.module.css";
-
 import uiStyles from "../../../styles/ui.module.css";
 import FontAwesome from "react-fontawesome";
 

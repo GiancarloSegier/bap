@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./Navbar.module.css";
-import { NavLink, Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { ROUTES } from "../constants";
 import { inject, observer } from "mobx-react";
 import AvatarNav from "./dashboard/AvatarNav";

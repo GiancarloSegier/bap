@@ -17,7 +17,7 @@ class CommitteeDetail extends Component {
     await this.props.committeeStore.getOne(this.props.committeeId);
     await this.props.committeeStore.getCommitteeMembers(this.props.committeeId);
     const { currentCommittee, committeeMembers } = this.props.committeeStore;
-    console.log(this.props.committeeId);
+
     this.setState({
       currentCommittee: currentCommittee,
       committeeMembers: committeeMembers,

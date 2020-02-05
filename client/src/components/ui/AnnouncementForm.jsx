@@ -4,7 +4,7 @@ import requestStyles from "../../components/dashboard/requests/Request.module.cs
 import uiStyles from "../../styles/ui.module.css";
 import formStyles from "../../styles/form.module.css";
 import announceStyles from "../dashboard/announcements/Announcement.module.css";
-import { inject, observer } from "mobx-react";
+import { inject } from "mobx-react";
 import { withRouter } from "react-router-dom";
 import styles from "./modalForm.module.css";
 import FontAwesome from "react-fontawesome";
@@ -128,7 +128,7 @@ class AnnouncementForm extends Component {
   };
 
   render() {
-    const { fadeIn, title, content, images } = this.state;
+    const { fadeIn, title, content } = this.state;
 
     return (
       <div

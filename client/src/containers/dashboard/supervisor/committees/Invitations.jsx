@@ -6,55 +6,45 @@ import InvitationListItem from "../../../../components/dashboard/committees/list
 import styles from "../../Dashboard.module.css";
 import typoStyles from "../../../../styles/typo.module.css";
 import InvitationsHeader from "../../../../components/dashboard/committees/InvitationsHeader";
+import InviteCommitteeForm from "../../../../components/ui/InviteCommitteeForm";
+import InvitationsEmpty from "../../../../components/dashboard/committees/InvitationsEmpty";
 
 class Invitations extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      invite: false
+    };
   }
+
+  openInviteForm = e => {
+    this.setState({ invite: true });
+  };
+  closeInviteForm = () => {
+    this.setState({ invite: false });
+  };
 
   render() {
     const { pendingRequests } = this.props.requestStore;
+    const { invite } = this.state;
     return (
       <>
+        {invite ? (
+          <InviteCommitteeForm onConfirm={this.closeInviteForm} />
+        ) : null}
         <CommitteesTop />
         <InvitationsHeader />
 
         {pendingRequests.length < 1 ? (
-          <>
-            <div className={styles.container}>
-              <div className={styles.overlay}></div>
-              <div className={styles.backgroundEmpty}>
-                <div className={styles.stroke}></div>
-                <div className={styles.stroke}></div>
-                <div className={styles.stroke}></div>
-              </div>
-
-              <div className={styles.committeeEmptyContainer}>
-                <p className={typoStyles.body}>
-                  Here you can find an overview of all the race committees that
-                  you've accepted and waiting to be registered. Seems like all
-                  your invites have been registered.
-                </p>
-
-                <button
-                  className={typoStyles.buttonInline}
-                  onClick={this.openInviteForm}
-                >
-                  Invite a new committee
-                </button>
-                <img
-                  src="http://placekitten.com/200/200"
-                  className={styles.emptyImage}
-                  alt="Location"
-                />
-              </div>
-            </div>
-          </>
+          <InvitationsEmpty />
         ) : (
           <>
-            {pendingRequests.map((request, i) => {
-              return <InvitationListItem key={i} request={request} />;
-            })}
+            {pendingRequests
+
+              .sort((a, b) => new Date(b.updatedAt) - new Date(a.updatedAt))
+              .map((request, i) => {
+                return <InvitationListItem key={i} request={request} />;
+              })}
           </>
         )}
       </>

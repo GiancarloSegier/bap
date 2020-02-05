@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import styles from "../../../styles/empty.module.css";
 import typoStyles from "../../../styles/typo.module.css";
 
-class CommitteeEmpty extends Component {
+class RequestEmptyState extends Component {
   constructor(props) {
     super(props);
   }
@@ -36,4 +36,4 @@ class CommitteeEmpty extends Component {
   }
 }
 
-export default CommitteeEmpty;
+export default RequestEmptyState;

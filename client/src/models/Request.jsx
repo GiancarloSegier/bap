@@ -12,7 +12,8 @@ class Request {
     job,
     pending,
     seen,
-    createdAt
+    createdAt,
+    updatedAt
   ) {
     this.id = id;
     this.name = name;
@@ -25,6 +26,7 @@ class Request {
     this.pending = pending;
     this.seen = seen;
     this.createdAt = createdAt;
+    this.updatedAt = updatedAt;
   }
 
   get values() {
@@ -39,7 +41,8 @@ class Request {
       job: this.job,
       pending: this.pending,
       seen: this.seen,
-      createdAt: this.createdAt
+      createdAt: this.createdAt,
+      updatedAt: this.updatedAt
     };
   }
 
@@ -54,6 +57,7 @@ class Request {
   setPending = pending => (this.pending = pending);
   setSeen = seen => (this.seen = seen);
   setDate = createdAt => (this.createdAt = createdAt);
+  seteUpdateDate = updatedAt => (this.updatedAt = updatedAt);
 
   updateFromServer = values => {
     this.setId(values._id);
@@ -67,6 +71,7 @@ class Request {
     this.setPending(values.pending);
     this.setSeen(values.seen);
     this.setDate(values.createdAt);
+    this.seteUpdateDate(values.updatedAt);
   };
 }
 
@@ -83,6 +88,7 @@ decorate(Request, {
   setPending: action,
   setSeen: action,
   setDate: action,
+  seteUpdateDate: action,
   values: computed
 });
 

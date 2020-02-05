@@ -12,7 +12,8 @@ const RequestSchema = mongoose.Schema(
     job: Object,
     pending: Boolean,
     seen: Boolean,
-    createdAt: Date
+    createdAt: Date,
+    updatedAt: Date
   },
   {
     timestamps: true

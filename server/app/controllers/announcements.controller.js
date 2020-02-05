@@ -46,7 +46,6 @@ exports.findOne = async (req, res) => {
 };
 
 exports.update = async (req, res) => {
-  console.log(req);
   try {
     const announcement = await Announcement.findOneAndUpdate(
       {

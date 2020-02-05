@@ -25,7 +25,10 @@ class Announcements extends Component {
     this.setState({ addNews: true });
   };
   closeForm = () => {
-    this.setState({ addNews: false, detail: false, edit: false });
+    this.setState({ addNews: false, detail: false });
+  };
+  closeEdit = () => {
+    this.setState({ edit: false });
   };
   onEdit = announcement => {
     this.setState({ edit: true, currentAnncouncement: announcement });
@@ -44,7 +47,7 @@ class Announcements extends Component {
 
         {edit ? (
           <AnnouncementEdit
-            onConfirm={this.closeForm}
+            onConfirm={this.closeEdit}
             announcement={currentAnncouncement}
           />
         ) : null}
@@ -52,6 +55,7 @@ class Announcements extends Component {
           <AnnouncementDetail
             announcement={this.state.current}
             onClose={this.closeForm}
+            onEdit={this.onEdit}
           />
         ) : null}
 

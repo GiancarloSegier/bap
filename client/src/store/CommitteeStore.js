@@ -39,7 +39,6 @@ class CommitteeStore {
   };
 
   addCommittee = data => {
-    console.log(data);
     const newCommittee = new Committee();
     newCommittee.updateFromServer(data);
     this.committees.push(newCommittee);
@@ -50,7 +49,6 @@ class CommitteeStore {
   };
 
   _addCommittee = values => {
-    console.log(values);
     const committee = new Committee();
     committee.updateFromServer(values);
 

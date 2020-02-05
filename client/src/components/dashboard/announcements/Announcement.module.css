@@ -41,7 +41,7 @@
   color: var(--grey-mid);
 }
 .readmore {
-  color: var(--pink-mid);
+  composes: buttonInline from "../../../styles/typo.module.css";
   font-size: 1.4rem;
 }
 .readmore:hover {
@@ -97,7 +97,6 @@
   color: var(--grey-low);
 }
 .icons_bot {
-  width: 9rem;
   display: flex;
   justify-content: space-between;
   float: right;
@@ -118,4 +117,10 @@
   height: 100%;
   border-radius: 0.6rem;
   margin-bottom: 4%;
+}
+
+.masonryBlock {
+  margin-bottom: 2rem;
+  display: inline-block;
+  width: 100%;
 }

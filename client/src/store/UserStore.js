@@ -27,14 +27,12 @@ class UserStore {
   deleteMemberUsers = members => {
     members.forEach(member => {
       this.api.getOne(member.id).then(d => {
-        console.log(d);
         this._getMember(d);
       });
     });
   };
 
   _getMember = values => {
-    console.log(values);
     const user = new User();
     user.updateFromServer(values);
     runInAction(() => {

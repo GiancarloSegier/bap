@@ -98,7 +98,7 @@ class CommitteeDescription extends Component {
                 </div>
               </div>
             </div>
-            {committee.description != "" ? (
+            {committee.description !== "" ? (
               <p className={styles.description}>committee.description</p>
             ) : (
               <p>No description yet</p>
