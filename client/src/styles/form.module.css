@@ -149,3 +149,92 @@
 .avatarButton.picked:hover {
   background-color: rgba(0, 0, 0, 0.4);
 }
+
+.hidden {
+  display: none;
+}
+
+.upload_image_wrapper {
+  display: flex;
+  overflow-x: scroll;
+  margin-bottom: 2rem;
+}
+.uploaded_item {
+  object-fit: cover;
+  height: 10rem;
+  border-radius: 0.6rem;
+
+  width: 14rem;
+}
+.removeImage {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  display: flex;
+  background-color: white;
+  border-radius: 5rem;
+  width: 2.2rem;
+  height: 2.2rem;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  border: none;
+  transition: 0.25s ease-in-out;
+  box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.04),
+    0px 2px 8px rgba(52, 24, 74, 0.06), 0px 4px 7px rgba(52, 24, 74, 0.045);
+}
+
+.removeImage:hover {
+  cursor: pointer;
+  background-color: var(--pink-high);
+}
+.removeImage:hover .decliner,
+.removeImage:hover .decliner:after {
+  border-color: white;
+}
+.imageContainer {
+  position: relative;
+  margin-right: 1rem;
+}
+.announcement_buttons {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.checker {
+  width: 1rem;
+  height: 0.5rem;
+  transform: rotate(-45deg);
+  display: block;
+  border: 0.2rem solid #fff;
+  border-top: none;
+  border-right: none;
+}
+
+.decliner {
+  width: 1rem;
+  -webkit-transform: rotate(-45deg);
+  transform: rotate(-45deg) translateY(-1px);
+  display: block;
+  border: 0.2rem solid var(--grey-low);
+  border-top: none;
+  border-right: none;
+  border-left: none;
+}
+.decliner:after {
+  content: "";
+
+  width: 1rem;
+
+  transform: rotate(90deg) translate(2px);
+  display: block;
+  border: 0.2rem solid var(--grey-low);
+  border-top: none;
+  border-right: none;
+  border-left: none;
+}
+
+.margin {
+  margin-right: 1rem;
+}

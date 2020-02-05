@@ -68,8 +68,8 @@ class Announcement extends Component {
           ) : (
             <p></p>
           )}
-          {announcement.attachment.length > 0 ? (
-            <a className={styles.attachment} href={announcement.attachment}>
+          {announcement.attachment && announcement.attachment.length > 0 ? (
+            <a className={styles.icon_button} href={announcement.attachment}>
               <FontAwesome name="paperclip" className={styles.paperclip_icon} />
             </a>
           ) : (

@@ -14,3 +14,8 @@
 .headerBlock {
   width: calc(100% - 4rem);
 }
+
+.btn_group {
+  display: flex;
+  margin-top: -2rem;
+}

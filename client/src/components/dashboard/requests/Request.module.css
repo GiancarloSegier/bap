@@ -79,36 +79,15 @@
   background-color: var(--pink-high);
 }
 .checker {
-  width: 1rem;
-  height: 0.5rem;
-  transform: rotate(-45deg);
-  display: block;
-  border: 0.2rem solid #fff;
-  border-top: none;
-  border-right: none;
+  composes: checker from "../../../styles/form.module.css";
 }
 
 .decliner {
-  width: 1rem;
-  -webkit-transform: rotate(-45deg);
-  transform: rotate(-45deg) translateY(-1px);
-  display: block;
-  border: 0.2rem solid #fff;
-  border-top: none;
-  border-right: none;
-  border-left: none;
+  composes: decliner from "../../../styles/form.module.css";
+  border-color: white;
 }
 .decliner:after {
-  content: "";
-
-  width: 1rem;
-
-  transform: rotate(90deg) translate(2px);
-  display: block;
-  border: 0.2rem solid #fff;
-  border-top: none;
-  border-right: none;
-  border-left: none;
+  border-color: white;
 }
 
 .metaData {

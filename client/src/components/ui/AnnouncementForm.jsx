@@ -1,10 +1,13 @@
 import React, { Component } from "react";
 import modalStyles from "../../styles/modal.module.css";
+import requestStyles from "../../components/dashboard/requests/Request.module.css";
+import uiStyles from "../../styles/ui.module.css";
 import formStyles from "../../styles/form.module.css";
+import announceStyles from "../dashboard/announcements/Announcement.module.css";
 import { inject, observer } from "mobx-react";
 import { withRouter } from "react-router-dom";
 import styles from "./modalForm.module.css";
-
+import FontAwesome from "react-fontawesome";
 import ImageUploading from "react-images-uploading";
 
 class AnnouncementForm extends Component {
@@ -200,55 +203,90 @@ class AnnouncementForm extends Component {
               >
                 {({ imageList, onImageUpload, onImageRemoveAll }) => (
                   // write your building UI
-                  <div className="upload__image-wrapper">
-                    <button type="button" onClick={onImageUpload}>
-                      Upload images
-                    </button>
-                    &nbsp;
-                    <button type="button" onClick={onImageRemoveAll}>
-                      Remove all images
-                    </button>
-                    {imageList.map(image => (
-                      <div key={image.key} className="image-item">
-                        <img src={image.dataURL} alt="" width="100" />
-                        <div className="image-item__btn-wrapper">
-                          <button type="button" onClick={image.onUpdate}>
-                            Update
-                          </button>
-                          <button type="button" onClick={image.onRemove}>
-                            Remove
+                  <>
+                    <div className={formStyles.upload_image_wrapper}>
+                      {imageList.map(image => (
+                        <div
+                          className={formStyles.imageContainer}
+                          key={image.key}
+                        >
+                          <img
+                            className={formStyles.uploaded_item}
+                            src={image.dataURL}
+                            alt=""
+                            width="100"
+                          />
+
+                          <button
+                            type="button"
+                            className={formStyles.removeImage}
+                            onClick={image.onRemove}
+                          >
+                            <span className={formStyles.decliner}></span>
                           </button>
                         </div>
+                      ))}
+                    </div>
+
+                    <div className={formStyles.announcement_buttons}>
+                      <div className={styles.btn_group}>
+                        <button
+                          type="button"
+                          onClick={onImageUpload}
+                          className={announceStyles.icon_button}
+                        >
+                          <FontAwesome
+                            name="photo"
+                            className={announceStyles.photo}
+                          />
+                        </button>
+
+                        <label
+                          htmlFor="attachments"
+                          className={
+                            announceStyles.icon_button +
+                            " " +
+                            (this.state.fileData
+                              ? announceStyles.icon_select
+                              : null)
+                          }
+                        >
+                          <FontAwesome name="paperclip" />
+                        </label>
                       </div>
-                    ))}
-                  </div>
+
+                      <div className={modalStyles.buttonBox}>
+                        <button
+                          type="submit"
+                          className={uiStyles.textButton}
+                          disabled={!title || !content}
+                        >
+                          <span
+                            className={
+                              formStyles.checker + " " + formStyles.margin
+                            }
+                          >
+                            {" "}
+                          </span>{" "}
+                          Place announcement
+                        </button>
+                      </div>
+                      <input
+                        type="file"
+                        name="attachments"
+                        id="attachments"
+                        accept="application/pdf,application/vnd.ms-excel"
+                        placeholder="attachments"
+                        ref={this.fileInput}
+                        className={
+                          formStyles.form__input + " " + formStyles.hidden
+                        }
+                        onChange={this.onFileChange}
+                      />
+                    </div>
+                  </>
                 )}
               </ImageUploading>
-
-              <fieldset className={formStyles.form__group}>
-                <label htmlFor="attachments" className={formStyles.form__label}>
-                  Attachment
-                </label>
-                <input
-                  type="file"
-                  name="attachments"
-                  id="attachments"
-                  accept="application/pdf,application/vnd.ms-excel"
-                  placeholder="attachments"
-                  ref={this.fileInput}
-                  className={formStyles.form__input}
-                  onChange={this.onFileChange}
-                />
-              </fieldset>
-
-              <div className={modalStyles.buttonBox}>
-                <input
-                  type="submit"
-                  value="Login"
-                  className={formStyles.form__button}
-                  disabled={!title || !content}
-                />
-              </div>
             </form>
           </div>
         </div>

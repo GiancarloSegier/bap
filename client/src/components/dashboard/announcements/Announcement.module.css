@@ -49,19 +49,30 @@
 }
 
 .paperclip_icon {
-  font-size: 1.8rem;
   transform: rotate(45deg);
-  margin-top: 2rem;
-  margin-bottom: 1rem;
 }
 
-.attachment {
+.icon_button {
+  width: 4rem;
+  height: 4rem;
   background-color: var(--grey-low);
-  padding: 0.8rem 1.1rem;
+  display: flex;
+  justify-content: center;
   border-radius: 50%;
+  align-items: center;
+  margin-top: 2rem;
+  font-size: 1.8rem;
+  border: none;
+  margin-right: 1rem;
 }
-.attachment:hover {
+.icon_button:hover {
   background-color: var(--grey-mid);
+  color: white;
+  cursor: pointer;
+}
+
+.icon_select {
+  background-color: var(--pink-mid);
   color: white;
 }
 
@@ -70,6 +81,14 @@
   grid-template-columns: auto 4rem;
   align-items: top;
   height: 4rem;
+}
+
+.icon {
+  color: var(--grey-low);
+  height: max-content;
+}
+.icon:hover {
+  color: var(--grey-mid);
 }
 
 .icons_top {
@@ -84,11 +103,6 @@
   float: right;
   color: var(--grey-low);
   padding: 2rem 0;
-}
-
-.icon:hover {
-  color: var(--grey-mid);
-  cursor: pointer;
 }
 
 .imageContainer {
