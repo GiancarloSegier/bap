@@ -32,7 +32,7 @@ class Announcement extends Component {
   };
 
   render() {
-    const { announcement } = this.props;
+    const { announcement, privileges } = this.props;
 
     return (
       <div className={styles.masonryBlock}>
@@ -40,18 +40,20 @@ class Announcement extends Component {
           <div className={styles.container}>
             <div className={styles.gridHeader}>
               <h2 className={styles.title}>{announcement.title}</h2>
-              <div className={styles.icons_top}>
-                <FontAwesome
-                  className={styles.icon}
-                  name="eye"
-                  onClick={this.onView}
-                />
-                <FontAwesome
-                  className={styles.icon}
-                  name="edit"
-                  onClick={this.onEdit}
-                />
-              </div>
+              {privileges === "supervisor" ? (
+                <div className={styles.icons_top}>
+                  <FontAwesome
+                    className={styles.icon}
+                    name="eye"
+                    onClick={this.onView}
+                  />
+                  <FontAwesome
+                    className={styles.icon}
+                    name="edit"
+                    onClick={this.onEdit}
+                  />
+                </div>
+              ) : null}
             </div>
             <p className={styles.date}>{this.state.dateString}</p>
             <p className={styles.content}>{announcement.content}</p>

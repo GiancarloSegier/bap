@@ -38,9 +38,10 @@ class Announcements extends Component {
   };
 
   render() {
-    const { announcements } = this.props.announcementStore;
-
     const { addNews, detail, edit, currentAnncouncement } = this.state;
+    const { announcements } = this.props.announcementStore;
+    const { privileges } = this.props.userStore.authUser.job;
+
     return (
       <>
         {addNews ? <AnnouncementForm onConfirm={this.closeForm} /> : null}
@@ -53,6 +54,7 @@ class Announcements extends Component {
         ) : null}
         {detail ? (
           <AnnouncementDetail
+            privileges={privileges}
             announcement={this.state.current}
             onClose={this.closeForm}
             onEdit={this.onEdit}
@@ -61,21 +63,24 @@ class Announcements extends Component {
 
         <div className={styles.oneLine}>
           <h1 className={typoStyles.heading1}>Announcements</h1>
-          <div>
-            <button
-              type="button"
-              className={uiStyles.textButton + " " + uiStyles.purple}
-              onClick={this.openForm}
-            >
-              <span className={uiStyles.button__icon}>+</span>new announcement
-            </button>
-          </div>
+          {privileges === "supervisor" ? (
+            <div>
+              <button
+                type="button"
+                className={uiStyles.textButton + " " + uiStyles.purple}
+                onClick={this.openForm}
+              >
+                <span className={uiStyles.button__icon}>+</span>new announcement
+              </button>
+            </div>
+          ) : null}
         </div>
         {announcements.length > 0 ? (
           <section className={styles.postGrid}>
             {announcements.map((announcement, i) => {
               return (
                 <Announcement
+                  privileges={privileges}
                   key={i}
                   onEdit={() => this.onEdit(announcement)}
                   onView={() => this.onView(announcement)}
@@ -92,4 +97,7 @@ class Announcements extends Component {
   }
 }
 
-export default inject(`announcementStore`)(observer(Announcements));
+export default inject(
+  `announcementStore`,
+  `userStore`
+)(observer(Announcements));

@@ -68,7 +68,7 @@ class AnnouncementDetail extends Component {
     this.setState({ dateString: dateString });
   }
   render() {
-    const { announcement } = this.props;
+    const { announcement, privileges } = this.props;
     const { fadeIn, warning } = this.state;
     return (
       <>
@@ -135,18 +135,21 @@ class AnnouncementDetail extends Component {
                   />
                 </a>
               ) : null}
-              <div className={styles.icons_bot}>
-                <FontAwesome
-                  className={styles.icon}
-                  name="trash"
-                  onClick={this.onDelete}
-                />
-                <FontAwesome
-                  className={styles.icon}
-                  name="edit"
-                  onClick={this.onEdit}
-                />
-              </div>
+
+              {privileges === "supervisor" ? (
+                <div className={styles.icons_bot}>
+                  <FontAwesome
+                    className={styles.icon}
+                    name="trash"
+                    onClick={this.onDelete}
+                  />
+                  <FontAwesome
+                    className={styles.icon}
+                    name="edit"
+                    onClick={this.onEdit}
+                  />
+                </div>
+              ) : null}
             </div>
           </div>
           {warning ? (
