@@ -156,3 +156,37 @@ exports.findOne = async (req, res) => {
     return res.status(500).send(err);
   }
 };
+
+exports.update = async (req, res) => {
+  try {
+    const user = await User.findOneAndUpdate(
+      {
+        _id: req.params.userId
+      },
+      {
+        name: req.body.name,
+        surname: req.body.surname,
+        email: req.body.email,
+        password: req.body.password,
+        job: req.body.job,
+        phone: req.body.phone,
+        organisation: req.body.organisation,
+        committeeId: req.body.committeeId,
+        avatarUrl: req.body.avatarUrl
+      },
+      {
+        new: true
+      }
+    );
+
+    if (!user) {
+      return res.status(404).send("No user found");
+    }
+    res.send(user);
+  } catch (err) {
+    if (err.kind === "ObjectId") {
+      return res.status(417).send("Geen geldig ID");
+    }
+    return res.status(500).send(err);
+  }
+};
