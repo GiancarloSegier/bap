@@ -1,13 +1,13 @@
 import { decorate, observable, computed, action } from "mobx";
 
 class Announcement {
-  constructor(id, title, content, images, attachment, createdAt) {
+  constructor(id, title, content, images, attachment, updatedAt) {
     this.id = id;
     this.title = title;
     this.content = content;
     this.images = images;
     this.attachment = attachment;
-    this.createdAt = createdAt;
+    this.updatedAt = updatedAt;
   }
 
   get values() {
@@ -17,7 +17,7 @@ class Announcement {
       content: this.content,
       images: this.images,
       attachment: this.attachment,
-      createdAt: this.createdAt
+      updatedAt: this.updatedAt
     };
   }
 
@@ -26,7 +26,7 @@ class Announcement {
   setContent = content => (this.content = content);
   setImages = images => (this.images = images);
   setAttachment = attachment => (this.attachment = attachment);
-  setDate = createdAt => (this.createdAt = createdAt);
+  setDate = updatedAt => (this.updatedAt = updatedAt);
 
   updateFromServer = values => {
     console.log(values._id);
@@ -39,7 +39,7 @@ class Announcement {
     this.setContent(values.content);
     this.setImages(values.images);
     this.setAttachment(values.attachment);
-    this.setDate(values.createdAt);
+    this.setDate(values.updatedAt);
   };
 }
 

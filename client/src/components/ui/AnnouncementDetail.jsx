@@ -33,7 +33,7 @@ class AnnouncementDetail extends Component {
   }
 
   getDate() {
-    const requestDate = new Date(this.props.announcement.createdAt);
+    const requestDate = new Date(this.props.announcement.updatedAt);
     const day = requestDate.getDate();
     const month = requestDate.getMonth() + 1;
     const year = requestDate.getFullYear();
