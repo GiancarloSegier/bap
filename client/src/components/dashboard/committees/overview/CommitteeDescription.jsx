@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import styles from "./CommitteeDescription.module.css";
 import FontAwesome from "react-fontawesome";
 import { Link } from "react-router-dom";
-
+import uiStyles from "../../../../styles/ui.module.css";
 import { ROUTES } from "../../../../constants/index";
 import Warning from "../../../ui/Warning";
 import { inject, observer } from "mobx-react";
@@ -28,7 +28,7 @@ class CommitteeDescription extends Component {
   };
 
   render() {
-    const { committee, committeeMembers } = this.props;
+    const { committee, committeeMembers, privileges } = this.props;
     const { warning } = this.state;
 
     return (
@@ -41,18 +41,32 @@ class CommitteeDescription extends Component {
           />
         ) : null}
         <div className={styles.flex}>
-          <Link to={ROUTES.committees} className={styles.back}>
-            <FontAwesome name="chevron-left" className={styles.arrow} />
-            back to overview
-          </Link>
-          <button
-            type="button"
-            className={styles.textButton}
-            onClick={this.showWarning}
-          >
-            <FontAwesome name="trash" className={styles.trash} />
-            Remove committee
-          </button>
+          {privileges === "supervisor" ? (
+            <Link to={ROUTES.committees} className={styles.back}>
+              <FontAwesome name="chevron-left" className={styles.arrow} />
+              back to overview
+            </Link>
+          ) : (
+            <p>My Committee</p>
+          )}
+          {privileges === "supervisor" ? (
+            <button
+              type="button"
+              className={styles.textButton}
+              onClick={this.showWarning}
+            >
+              <FontAwesome name="trash" className={styles.trash} />
+              Remove committee
+            </button>
+          ) : (
+            <button
+              type="button"
+              className={uiStyles.textButton + " " + uiStyles.pink}
+              onClick={this.openInviteForm}
+            >
+              <span className={uiStyles.button__icon}>+</span>Invite member
+            </button>
+          )}
         </div>
         <h1 className={styles.title}>{committee.name}</h1>
         <div className={styles.flex}>
@@ -100,8 +114,16 @@ class CommitteeDescription extends Component {
             </div>
             {committee.description !== "" ? (
               <p className={styles.description}>committee.description</p>
-            ) : (
+            ) : privileges === "supervisor" ? (
               <p>No description yet</p>
+            ) : (
+              <p>
+                No descreption yet.
+                <br /> Write something about your organisation{" "}
+                <a className={styles.link} onClick={this.openInviteForm}>
+                  here.
+                </a>
+              </p>
             )}
           </div>
           <img

@@ -66,3 +66,11 @@
 .trash {
   margin-right: 1rem;
 }
+
+.link {
+  color: var(--pink-mid);
+}
+.link:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
