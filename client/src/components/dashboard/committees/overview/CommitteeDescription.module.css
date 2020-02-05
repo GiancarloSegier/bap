@@ -57,7 +57,7 @@
   justify-content: space-between;
 }
 .textButton {
-  composes: form__button from "../../../styles/form.module.css";
+  composes: form__button from "../../../../styles/form.module.css";
   margin-left: 2rem;
   padding: 1rem 1.5rem;
   background-color: var(--grey-high);

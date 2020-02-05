@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { inject, observer } from "mobx-react";
 import CommitteesListItem from "../../../../components/dashboard/committees/list/CommitteesListItem";
-import CommitteeHeader from "../../../../components/dashboard/committees/CommitteeHeader";
+import CommitteeHeader from "../../../../components/dashboard/committees/overview/CommitteeHeader";
 import styles from "./committeesList.module.css";
 
 class CommitteesList extends Component {

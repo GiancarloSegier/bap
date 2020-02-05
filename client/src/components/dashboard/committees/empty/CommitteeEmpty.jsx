@@ -1,9 +1,9 @@
 import React, { Component } from "react";
-import styles from "../../../styles/empty.module.css";
-import typoStyles from "../../../styles/typo.module.css";
-import InviteCommitteeForm from "../../ui/InviteCommitteeForm";
+import styles from "../../../../styles/empty.module.css";
+import typoStyles from "../../../../styles/typo.module.css";
+import InviteCommitteeForm from "../../../ui/InviteCommitteeForm";
 
-class InvitationsEmpty extends Component {
+class CommitteeEmpty extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -35,15 +35,15 @@ class InvitationsEmpty extends Component {
 
           <div className={styles.committeeEmptyContainer}>
             <p className={typoStyles.body}>
-              Seems like you don't have any invites pending or all your invites
-              are registered.
+              Here you can find an overview of all the race committees from
+              every country. There are no committees added yet.
             </p>
 
             <button
               className={typoStyles.buttonInline}
               onClick={this.openInviteForm}
             >
-              Invite a committee
+              Invite your first committee
             </button>
             <img
               src="http://placekitten.com/200/200"
@@ -57,4 +57,4 @@ class InvitationsEmpty extends Component {
   }
 }
 
-export default InvitationsEmpty;
+export default CommitteeEmpty;

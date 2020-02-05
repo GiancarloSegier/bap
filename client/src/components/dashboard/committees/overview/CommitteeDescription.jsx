@@ -3,8 +3,8 @@ import styles from "./CommitteeDescription.module.css";
 import FontAwesome from "react-fontawesome";
 import { Link } from "react-router-dom";
 
-import { ROUTES } from "../../../constants/index";
-import Warning from "../../ui/Warning";
+import { ROUTES } from "../../../../constants/index";
+import Warning from "../../../ui/Warning";
 import { inject, observer } from "mobx-react";
 
 class CommitteeDescription extends Component {

@@ -11,6 +11,7 @@ class AvatarNav extends Component {
     this.state = {
       dropDown: false
     };
+    this.navLink = React.createRef();
   }
 
   componentDidMount() {
@@ -18,7 +19,9 @@ class AvatarNav extends Component {
   }
 
   handleClickOutside = e => {
-    this.setState({ dropDown: false });
+    if (e.target !== this.navLink.current) {
+      this.setState({ dropDown: false });
+    }
   };
 
   handleLogout = e => {
@@ -36,7 +39,7 @@ class AvatarNav extends Component {
 
     return (
       <>
-        <div className={styles.avatarGroup}>
+        <div className={styles.avatarGroup} ref={this.navLink}>
           <FontAwesome name="bell" className={styles.purple} />
           <img
             className={
@@ -81,7 +84,7 @@ class AvatarNav extends Component {
           >
             <div>
               <a
-                href="http://localhost:4000"
+                href="http://localhost:3000"
                 onClick={this.handleLogout}
                 className={styles.dropDownLink + " " + styles.modalContainer}
               >
@@ -91,7 +94,7 @@ class AvatarNav extends Component {
             </div>
             <div className={styles.divideBorder}>
               <a
-                href="http://localhost:4000"
+                href="http://localhost:3000"
                 onClick={this.handleLogout}
                 className={styles.dropDownLink + " " + styles.modalContainer}
               >
@@ -101,14 +104,6 @@ class AvatarNav extends Component {
             </div>
           </div>
         </div>
-
-        {/* <a
-          href="http://localhost:4000"
-          onClick={this.handleLogout}
-          className={styles.navLink + " " + styles.darkLink}
-        >
-          Log out
-        </a> */}
       </>
     );
   }

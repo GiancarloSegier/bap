@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { inject, observer } from "mobx-react";
-import CommitteeDescription from "../../../../components/dashboard/committees/CommitteeDescription";
+import CommitteeDescription from "../../../../components/dashboard/committees/overview/CommitteeDescription";
 import CommitteeMemberList from "../../../../components/dashboard/committees/list/CommitteeMemberList";
 import styles from "../../platform.module.css";
 import Loader from "react-loader-spinner";

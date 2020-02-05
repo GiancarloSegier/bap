@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "./committees.module.css";
+import styles from "../committees.module.css";
 const CommitteeHeader = () => {
   return (
     <ul className={styles.topbar}>

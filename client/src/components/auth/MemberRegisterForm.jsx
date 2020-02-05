@@ -80,7 +80,7 @@ class MemberRegisterForm extends Component {
   };
 
   uploadAvatar = async () => {
-    await fetch(`http://localhost:4000/image-upload`, {
+    await fetch(`http://localhost:3000/image-upload`, {
       method: "POST",
       body: this.state.formData
     })

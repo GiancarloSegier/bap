@@ -3,7 +3,7 @@ import React from "react";
 import styles from "./CommitteesNav.module.css";
 
 import { NavLink } from "react-router-dom";
-import { ROUTES } from "../../../constants";
+import { ROUTES } from "../../../../constants";
 
 const CommitteesNav = () => {
   return (

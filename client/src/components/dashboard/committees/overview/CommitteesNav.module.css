@@ -2,7 +2,7 @@
   display: flex;
 }
 .navLink {
-  composes: heading3 from "../../../styles/typo.module.css";
+  composes: heading3 from "../../../../styles/typo.module.css";
   font-weight: 400;
   margin-right: 2rem;
   color: var(--grey-high);
