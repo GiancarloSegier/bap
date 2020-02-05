@@ -83,6 +83,12 @@
   align-items: top;
   height: 4rem;
 }
+.gridHeader2 {
+  display: grid;
+  grid-template-columns: auto 4rem;
+  align-items: center;
+  height: 4rem;
+}
 
 .icon {
   color: var(--grey-low);
