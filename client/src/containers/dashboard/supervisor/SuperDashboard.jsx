@@ -150,7 +150,7 @@ class SuperDashboard extends Component {
           <h1 className={typoStyles.heading1}>
             {greeting} {authUser.name}.
           </h1>
-          <div>
+          <div className={styles.buttonGroup}>
             <button
               type="button"
               className={uiStyles.textButton + " " + uiStyles.purple}

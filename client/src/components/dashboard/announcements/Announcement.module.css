@@ -64,6 +64,7 @@
   font-size: 1.8rem;
   border: none;
   margin-right: 1rem;
+  transition: 0.25s ease-in-out;
 }
 .icon_button:hover {
   background-color: var(--grey-mid);
@@ -86,8 +87,10 @@
 .icon {
   color: var(--grey-low);
   height: max-content;
+  margin-left: 1rem;
 }
 .icon:hover {
+  cursor: pointer;
   color: var(--grey-mid);
 }
 
@@ -123,4 +126,20 @@
   margin-bottom: 2rem;
   display: inline-block;
   width: 100%;
+}
+.icon_button:disabled {
+  background-color: var(--grey-low);
+  color: #d1d1d1;
+}
+
+.icon_button:disabled:hover {
+  pointer-events: none;
+  background-color: var(--grey-low);
+  color: #d1d1d1;
+}
+.counter {
+  color: var(--pink-mid);
+  font-size: 1.4rem;
+  font-weight: bold;
+  margin-bottom: 2rem;
 }

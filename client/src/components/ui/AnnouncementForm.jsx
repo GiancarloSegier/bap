@@ -1,11 +1,9 @@
 import React, { Component } from "react";
 import modalStyles from "../../styles/modal.module.css";
-import requestStyles from "../../components/dashboard/requests/Request.module.css";
 import uiStyles from "../../styles/ui.module.css";
 import formStyles from "../../styles/form.module.css";
 import announceStyles from "../dashboard/announcements/Announcement.module.css";
-import { inject } from "mobx-react";
-import { withRouter } from "react-router-dom";
+import { inject, observer } from "mobx-react";
 import styles from "./modalForm.module.css";
 import FontAwesome from "react-fontawesome";
 import ImageUploading from "react-images-uploading";
@@ -201,8 +199,7 @@ class AnnouncementForm extends Component {
                 onChange={this.onImageChange}
                 maxNumber="5"
               >
-                {({ imageList, onImageUpload, onImageRemoveAll }) => (
-                  // write your building UI
+                {({ imageList, onImageUpload }) => (
                   <>
                     <div className={formStyles.upload_image_wrapper}>
                       {imageList.map(image => (
@@ -227,6 +224,15 @@ class AnnouncementForm extends Component {
                         </div>
                       ))}
                     </div>
+                    {imageList.length !== 0 ? (
+                      <p className={announceStyles.counter}>
+                        {imageList.length}/5
+                      </p>
+                    ) : (
+                      <p className={announceStyles.counter}>
+                        No images selected
+                      </p>
+                    )}
 
                     <div className={formStyles.announcement_buttons}>
                       <div className={styles.btn_group}>
@@ -234,6 +240,7 @@ class AnnouncementForm extends Component {
                           type="button"
                           onClick={onImageUpload}
                           className={announceStyles.icon_button}
+                          disabled={imageList.length === 5}
                         >
                           <FontAwesome
                             name="photo"
@@ -251,7 +258,10 @@ class AnnouncementForm extends Component {
                               : null)
                           }
                         >
-                          <FontAwesome name="paperclip" />
+                          <FontAwesome
+                            name="paperclip"
+                            className={announceStyles.paperclip_icon}
+                          />
                         </label>
                       </div>
 
@@ -295,4 +305,4 @@ class AnnouncementForm extends Component {
   }
 }
 
-export default inject(`announcementStore`)(withRouter(AnnouncementForm));
+export default inject(`announcementStore`)(observer(AnnouncementForm));

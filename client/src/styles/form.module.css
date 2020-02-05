@@ -157,7 +157,6 @@
 .upload_image_wrapper {
   display: flex;
   overflow-x: scroll;
-  margin-bottom: 2rem;
 }
 .uploaded_item {
   object-fit: cover;

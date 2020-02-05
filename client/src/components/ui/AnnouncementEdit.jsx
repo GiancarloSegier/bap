@@ -1,10 +1,12 @@
 import React, { Component } from "react";
 import modalStyles from "../../styles/modal.module.css";
 import styles from "./modalForm.module.css";
-
+import uiStyles from "../../styles/ui.module.css";
+import announceStyles from "../dashboard/announcements/Announcement.module.css";
 import formStyles from "../../styles/form.module.css";
 import ImageUploading from "react-images-uploading";
 import { inject, observer } from "mobx-react";
+import FontAwesome from "react-fontawesome";
 
 class AnnouncementEdit extends Component {
   constructor(props) {
@@ -23,11 +25,15 @@ class AnnouncementEdit extends Component {
   setValues = () => {
     const { announcement } = this.props;
 
+    let localImages = [];
+    localImages = [...announcement.images];
+
     this.setState({
       title: announcement.title,
       content: announcement.content,
-      images: announcement.images,
-      attachment: announcement.attachment
+      images: localImages,
+      attachment: announcement.attachment,
+      existingImages: localImages.length
     });
   };
 
@@ -58,6 +64,7 @@ class AnnouncementEdit extends Component {
     }
 
     const { title, content, images, attachment } = this.state;
+    console.log(images);
     const { announcement } = this.props;
     if (title !== "" && content !== "") {
       announcement.setTitle(title);
@@ -137,14 +144,17 @@ class AnnouncementEdit extends Component {
   };
 
   onRemoveExistingImage = (image, i) => {
-    const { images } = this.state;
+    const { images, existingImages } = this.state;
     images.splice(i, 1);
     images.filter(image => image !== null);
-    this.setState({ images: images });
+
+    const newExisting = existingImages - 1;
+
+    this.setState({ images: images, existingImages: newExisting });
   };
 
   render() {
-    const { fadeIn, title, content, images, attachment } = this.state;
+    const { fadeIn, title, content, images, existingImages } = this.state;
     return (
       <div
         className={
@@ -164,7 +174,7 @@ class AnnouncementEdit extends Component {
         >
           <div className={modalStyles.modalContainer}>
             <div className={styles.oneLine}>
-              <h3 className={modalStyles.heading3}>New announcement</h3>
+              <h3 className={modalStyles.heading3}>Edit announcement</h3>
               <button
                 type="button"
                 className={modalStyles.close__button}
@@ -216,78 +226,128 @@ class AnnouncementEdit extends Component {
               <ImageUploading
                 mode="multiple"
                 onChange={this.onImageChange}
-                maxNumber="5"
+                maxNumber={5 - existingImages}
               >
-                {({ imageList, onImageUpload, onImageRemoveAll }) => (
-                  // write your building UI
-                  <div className="upload__image-wrapper">
-                    <button type="button" onClick={onImageUpload}>
-                      Upload images
-                    </button>
-                    &nbsp;
-                    <button type="button" onClick={onImageRemoveAll}>
-                      Remove all images
-                    </button>
-                    {imageList.map(image => {
-                      return (
-                        <div key={image.key} className="image-item">
-                          <img src={image.dataURL} alt="" width="100" />
-                          <div className="image-item__btn-wrapper">
-                            <button type="button" onClick={image.onRemove}>
-                              Remove
-                            </button>
-                          </div>
+                {({ imageList, onImageUpload }) => (
+                  <>
+                    <div className={formStyles.upload_image_wrapper}>
+                      {imageList.map(image => (
+                        <div
+                          className={formStyles.imageContainer}
+                          key={image.key}
+                        >
+                          <img
+                            className={formStyles.uploaded_item}
+                            src={image.dataURL}
+                            alt=""
+                            width="100"
+                          />
+
+                          <button
+                            type="button"
+                            className={formStyles.removeImage}
+                            onClick={image.onRemove}
+                          >
+                            <span className={formStyles.decliner}></span>
+                          </button>
                         </div>
-                      );
-                    })}
-                    {images ? (
-                      <>
-                        {images.map((image, i) => (
-                          <div key={i} className="image-item">
-                            <img src={image} alt="" width="100" />
-                            <div className="image-item__btn-wrapper">
+                      ))}
+                      {images ? (
+                        <>
+                          {images.map((image, i) => (
+                            <div className={formStyles.imageContainer} key={i}>
+                              <img
+                                className={formStyles.uploaded_item}
+                                src={image}
+                                alt=""
+                                width="100"
+                              />
+
                               <button
                                 type="button"
+                                className={formStyles.removeImage}
                                 onClick={() =>
                                   this.onRemoveExistingImage(image, i)
                                 }
                               >
-                                Remove
+                                <span className={formStyles.decliner}></span>
                               </button>
                             </div>
-                          </div>
-                        ))}
-                      </>
-                    ) : null}
-                  </div>
+                          ))}
+                        </>
+                      ) : null}
+                    </div>
+                    {existingImages + imageList.length !== 0 ? (
+                      <p className={announceStyles.counter}>
+                        {existingImages + imageList.length}/5
+                      </p>
+                    ) : (
+                      <p className={announceStyles.counter}>
+                        No images selected
+                      </p>
+                    )}
+                    <div className={formStyles.announcement_buttons}>
+                      <div className={styles.btn_group}>
+                        <button
+                          type="button"
+                          onClick={onImageUpload}
+                          className={announceStyles.icon_button}
+                          disabled={5 - existingImages - imageList.length === 0}
+                        >
+                          <FontAwesome
+                            name="photo"
+                            className={announceStyles.photo}
+                          />
+                        </button>
+
+                        <label
+                          htmlFor="attachments"
+                          className={
+                            announceStyles.icon_button +
+                            " " +
+                            (this.state.fileData || this.state.attachment
+                              ? announceStyles.icon_select
+                              : null)
+                          }
+                        >
+                          <FontAwesome
+                            name="paperclip"
+                            className={announceStyles.paperclip_icon}
+                          />
+                        </label>
+                      </div>
+                      <div className={modalStyles.buttonBox}>
+                        <button
+                          type="submit"
+                          className={uiStyles.textButton}
+                          disabled={!title || !content}
+                        >
+                          <span
+                            className={
+                              formStyles.checker + " " + formStyles.margin
+                            }
+                          >
+                            {" "}
+                          </span>{" "}
+                          Save changes
+                        </button>
+                      </div>
+                      <input
+                        type="file"
+                        name="attachments"
+                        id="attachments"
+                        accept="application/pdf,application/vnd.ms-excel"
+                        placeholder="attachments"
+                        ref={this.fileInput}
+                        className={
+                          formStyles.form__input + " " + formStyles.hidden
+                        }
+                        onChange={this.onFileChange}
+                      />
+                    </div>
+                  </>
                 )}
               </ImageUploading>
-
-              <fieldset className={formStyles.form__group}>
-                <label htmlFor="attachments" className={formStyles.form__label}>
-                  Attachment
-                </label>
-                <input
-                  type="file"
-                  name="attachments"
-                  id="attachments"
-                  accept="application/pdf,application/vnd.ms-excel"
-                  placeholder="attachments"
-                  ref={this.fileInput}
-                  className={formStyles.form__input}
-                  defaultValue={attachment}
-                  onChange={this.onFileChange}
-                />
-              </fieldset>
-
-              <div className={modalStyles.buttonBox}>
-                <input
-                  type="submit"
-                  value="Login"
-                  className={formStyles.form__button}
-                  disabled={!title || !content}
-                />
-              </div>
             </form>
           </div>
         </div>

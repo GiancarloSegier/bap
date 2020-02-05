@@ -5,6 +5,7 @@ import styles from "../dashboard/announcements/Announcement.module.css";
 import FontAwesome from "react-fontawesome";
 import Warning from "./Warning";
 import { inject, observer } from "mobx-react";
+import announceStyles from "../dashboard/announcements/Announcement.module.css";
 
 class AnnouncementDetail extends Component {
   constructor(props) {
@@ -124,7 +125,10 @@ class AnnouncementDetail extends Component {
                 </>
               ) : null}
               {announcement.attachment.length > 0 ? (
-                <a className={styles.attachment} href={announcement.attachment}>
+                <a
+                  className={announceStyles.icon_button}
+                  href={announcement.attachment}
+                >
                   <FontAwesome
                     name="paperclip"
                     className={styles.paperclip_icon}
@@ -137,31 +141,11 @@ class AnnouncementDetail extends Component {
                   name="trash"
                   onClick={this.onDelete}
                 />
-                <div className={styles.imageContainer}>
-                  {announcement.images.slice(1).map((image, i) => {
-                    return (
-                      <img
-                        key={i}
-                        className={styles.image_xs}
-                        src={image}
-                        alt=""
-                      />
-                    );
-                  })}
-                </div>
-
-                {announcement.attachment.length > 0 ? (
-                  <a
-                    className={styles.icon_button}
-                    href={announcement.attachment}
-                  >
-                    <FontAwesome
-                      className={styles.icon}
-                      name="edit"
-                      onClick={this.onEdit}
-                    />
-                  </a>
-                ) : null}
+                <FontAwesome
+                  className={styles.icon}
+                  name="edit"
+                  onClick={this.onEdit}
+                />
               </div>
             </div>
           </div>
