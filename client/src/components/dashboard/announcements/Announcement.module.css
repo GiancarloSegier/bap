@@ -108,3 +108,9 @@
   border-radius: 0.6rem;
   margin-bottom: 4%;
 }
+
+.masonryBlock {
+  margin-bottom: 2rem;
+  display: inline-block;
+  width: 100%;
+}

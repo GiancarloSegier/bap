@@ -13,7 +13,7 @@ class InvitationListItem extends Component {
     this.getAcceptDate();
   }
   getAcceptDate() {
-    const requestDate = new Date(this.props.request.createdAt);
+    const requestDate = new Date(this.props.request.updatedAt);
     const day = requestDate.getDate();
     const month = requestDate.getMonth() + 1;
     const year = requestDate.getFullYear();

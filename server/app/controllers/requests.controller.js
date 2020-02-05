@@ -12,7 +12,8 @@ exports.create = (req, res) => {
     job: req.body.job,
     pending: req.body.pending,
     seen: req.body.seen,
-    createdAt: req.body.createdAt
+    createdAt: req.body.createdAt,
+    updatedAt: req.body.updatedAt
   });
 
   request
@@ -66,7 +67,8 @@ exports.update = async (req, res) => {
         job: req.body.job,
         pending: req.body.pending,
         seen: req.body.seen,
-        createdAt: req.body.createdAt
+        createdAt: req.body.createdAt,
+        updatedAt: req.body.updatedAt
       },
       {
         new: true

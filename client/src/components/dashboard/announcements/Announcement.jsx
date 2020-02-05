@@ -35,53 +35,58 @@ class Announcement extends Component {
     const { announcement } = this.props;
 
     return (
-      <article className={styles.card}>
-        <div className={styles.container}>
-          <div className={styles.gridHeader}>
-            <h2 className={styles.title}>{announcement.title}</h2>
-            <div className={styles.icons_top}>
-              <FontAwesome
-                className={styles.icon}
-                name="eye"
-                onClick={this.onView}
-              />
-              <FontAwesome
-                className={styles.icon}
-                name="edit"
-                onClick={this.onEdit}
-              />
+      <div className={styles.masonryBlock}>
+        <article className={styles.card}>
+          <div className={styles.container}>
+            <div className={styles.gridHeader}>
+              <h2 className={styles.title}>{announcement.title}</h2>
+              <div className={styles.icons_top}>
+                <FontAwesome
+                  className={styles.icon}
+                  name="eye"
+                  onClick={this.onView}
+                />
+                <FontAwesome
+                  className={styles.icon}
+                  name="edit"
+                  onClick={this.onEdit}
+                />
+              </div>
             </div>
+            <p className={styles.date}>{this.state.dateString}</p>
+            <p className={styles.content}>{announcement.content}</p>
+            <button
+              type="button"
+              className={styles.readmore}
+              onClick={this.onView}
+            >
+              read more
+            </button>
+            {announcement.images.length > 0 ? (
+              <div className={styles.imageContainer}>
+                <img
+                  className={styles.image}
+                  src={announcement.images[0]}
+                  alt=""
+                  onClick={this.onView}
+                />
+              </div>
+            ) : (
+              <p></p>
+            )}
+            {announcement.attachment.length > 0 ? (
+              <a className={styles.attachment} href={announcement.attachment}>
+                <FontAwesome
+                  name="paperclip"
+                  className={styles.paperclip_icon}
+                />
+              </a>
+            ) : (
+              <p></p>
+            )}
           </div>
-          <p className={styles.date}>{this.state.dateString}</p>
-          <p className={styles.content}>{announcement.content}</p>
-          <button
-            type="button"
-            className={styles.readmore}
-            onClick={this.onView}
-          >
-            read more
-          </button>
-          {announcement.images.length > 0 ? (
-            <div className={styles.imageContainer}>
-              <img
-                className={styles.image}
-                src={announcement.images[0]}
-                alt=""
-                onClick={this.onView}
-              />
-            </div>
-          ) : (
-            <p></p>
-          )}
-          {announcement.attachment.length > 0 ? (
-            <a className={styles.attachment} href={announcement.attachment}>
-              <FontAwesome name="paperclip" className={styles.paperclip_icon} />
-            </a>
-          ) : (
-            <p></p>
-          )}
-        </div>
-      </article>
+        </article>
+      </div>
     );
   }
 }
