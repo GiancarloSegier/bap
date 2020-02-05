@@ -4,6 +4,7 @@ import uiStyles from "../../../styles/ui.module.css";
 import typoStyles from "../../../styles/typo.module.css";
 
 import { inject, observer } from "mobx-react";
+import InviteForm from "../../../components/ui/InviteForm";
 
 class MemberDashboard extends Component {
   constructor(props) {
@@ -21,10 +22,11 @@ class MemberDashboard extends Component {
   render() {
     const { authUser } = this.props.userStore;
     const { greeting } = this.props;
+    const { invite } = this.state;
 
     return (
       <>
-        {/* {invite ? <InviteForm onConfirm={this.closeInviteForm} /> : null} */}
+        {invite ? <InviteForm onConfirm={this.closeInviteForm} /> : null}
         <div className={styles.oneLine}>
           <h1 className={typoStyles.heading1}>
             {greeting} {authUser.name}.
