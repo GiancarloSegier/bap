@@ -2,9 +2,12 @@ import React, { Component } from "react";
 import styles from "../Dashboard.module.css";
 import uiStyles from "../../../styles/ui.module.css";
 import typoStyles from "../../../styles/typo.module.css";
-
+import { Link } from "react-router-dom";
+import { ROUTES } from "../../../constants";
 import { inject, observer } from "mobx-react";
 import InviteForm from "../../../components/ui/InviteForm";
+import TaskItem from "../../../components/dashboard/planner/TaskItem";
+import AnnouncementSmall from "../../../components/dashboard/announcements/AnnouncementSmall";
 
 class MemberDashboard extends Component {
   constructor(props) {
@@ -23,6 +26,7 @@ class MemberDashboard extends Component {
     const { authUser } = this.props.userStore;
     const { greeting } = this.props;
     const { invite } = this.state;
+    const { announcements } = this.props.announcementStore;
 
     return (
       <>
@@ -48,9 +52,46 @@ class MemberDashboard extends Component {
             </button>
           </div>
         </div>
+        <section>
+          <div className={styles.oneLine}>
+            <h2 className={typoStyles.heading2}>Upcoming tasks</h2>
+            <Link to={ROUTES.requests} className={typoStyles.smallLink}>
+              view all
+            </Link>
+          </div>
+          <div className={styles.taskList}>
+            <ul className={styles.topbar}>
+              <li>Done?</li>
+              <li>Task</li>
+              <li>Assigned to</li>
+              <li>Due date?</li>
+              <li>Priority</li>
+            </ul>
+            <TaskItem />
+            <TaskItem />
+            <TaskItem />
+            <TaskItem />
+          </div>
+        </section>
+        <section className={styles.borderTop}>
+          <div className={styles.oneLine}>
+            <h2 className={typoStyles.heading2}>Latest news</h2>
+            <Link to={ROUTES.requests} className={typoStyles.smallLink}>
+              view all
+            </Link>
+          </div>
+          <div className={styles.announcementGrid}>
+            {announcements.slice(0, 3).map((announcement, i) => {
+              return <AnnouncementSmall key={i} announcement={announcement} />;
+            })}
+          </div>
+        </section>
       </>
     );
   }
 }
 
-export default inject(`userStore`)(observer(MemberDashboard));
+export default inject(
+  `userStore`,
+  `announcementStore`
+)(observer(MemberDashboard));

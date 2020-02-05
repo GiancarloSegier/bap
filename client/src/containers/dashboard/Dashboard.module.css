@@ -55,3 +55,23 @@
   display: flex;
   height: max-content;
 }
+
+.topbar {
+  display: grid;
+  grid-template-columns: 10rem 2fr repeat(2, 1fr) 0.5fr;
+  font-size: 1.6rem;
+  color: var(--grey-mid);
+  margin-bottom: 1.5rem;
+  margin-top: 3rem;
+  padding: 0 1.5rem;
+}
+
+.tasks {
+  border-bottom: solid 0.1rem var(--purple-light);
+}
+
+.announcementGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 2rem;
+}

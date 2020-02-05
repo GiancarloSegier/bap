@@ -39,4 +39,8 @@
   --volunteermanager: var(--pink-mid);
   --logisticsmanager: #ff5d34;
   --survivorrecognitionmanager: var(--pink-low);
+
+  /* priority */
+  --yellow: #f2994a;
+  --yellow-light: #ffe79d;
 }

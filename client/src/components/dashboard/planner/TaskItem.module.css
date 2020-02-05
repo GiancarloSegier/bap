@@ -1,0 +1,50 @@
+.task {
+  background-color: white;
+  border-radius: 0.6rem;
+  display: grid;
+  grid-template-columns: 10rem 2fr repeat(2, 1fr) 0.5fr;
+  padding: 1.5rem 2rem;
+  margin-bottom: 1rem;
+  align-items: center;
+  box-shadow: var(--dropshadow);
+}
+.topbar {
+  display: grid;
+  grid-template-columns: 10rem 2fr repeat(2, 1fr) 0.5fr;
+}
+
+.dueDate {
+  font-size: 1.4rem;
+}
+.icon {
+  color: var(--grey-low);
+  height: max-content;
+  margin-left: 1rem;
+  font-size: 3rem;
+}
+.icon:hover {
+  cursor: pointer;
+  color: var(--grey-mid);
+}
+.priority {
+  padding: 0.25rem 0.5rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 1rem;
+  letter-spacing: 0.1rem;
+  width: max-content;
+  border-radius: 0.4rem;
+}
+
+.high {
+  background-color: var(--pink-light);
+  color: var(--pink-mid);
+}
+.low {
+  background-color: var(--green-light);
+  color: var(--green);
+}
+.medium {
+  background-color: var(--yellow-light);
+  color: var(--yellow);
+}
