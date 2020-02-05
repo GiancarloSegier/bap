@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import styles from "../platform.module.css";
 import typoStyles from "../../../styles/typo.module.css";
-import { inject, observer, PropTypes } from "mobx-react";
+import { inject, observer } from "mobx-react";
 import Request from "../../../components/dashboard/requests/Request";
 import RequestEmptyState from "../../../components/dashboard/requests/RequestEmptyState";
 import Loader from "react-loader-spinner";

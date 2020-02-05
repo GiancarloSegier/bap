@@ -101,7 +101,6 @@ class AnnouncementEdit extends Component {
     })
       .then(res => res.json())
       .then(resImages => {
-        const imgUrls = [];
         resImages.forEach(image => {
           images.push(image.url);
         });

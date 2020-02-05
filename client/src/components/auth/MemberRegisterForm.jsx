@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { inject, observer } from "mobx-react";
-import { Link } from "react-router-dom";
 import { withRouter } from "react-router-dom";
 import { ROUTES } from "../../constants";
 import styles from "./Auth.module.css";
@@ -132,7 +131,7 @@ class RegisterForm extends Component {
   };
 
   render() {
-    const { password, password2, newPhone, formData } = this.state;
+    const { password, password2, formData } = this.state;
     const {
       email,
       name,
@@ -172,7 +171,7 @@ class RegisterForm extends Component {
                     }
                   >
                     {!formData ? (
-                      <img src="../assets/icons/addAvatar.png" />
+                      <img src="../assets/icons/addAvatar.png" alt="" />
                     ) : null}
                   </label>
                   <input
@@ -189,6 +188,7 @@ class RegisterForm extends Component {
                     src="#"
                     id="previewImg"
                     ref={this.imgPreview}
+                    alt=""
                     className={
                       formData ? formStyles.previewImg : formStyles.noImg
                     }

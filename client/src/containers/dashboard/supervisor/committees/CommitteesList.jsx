@@ -3,7 +3,7 @@ import { inject, observer } from "mobx-react";
 import CommitteesListItem from "../../../../components/dashboard/committees/list/CommitteesListItem";
 import CommitteeHeader from "../../../../components/dashboard/committees/CommitteeHeader";
 import styles from "./committeesList.module.css";
-import typoStyles from "../../../../styles/typo.module.css";
+
 class CommitteesList extends Component {
   constructor(props) {
     super(props);

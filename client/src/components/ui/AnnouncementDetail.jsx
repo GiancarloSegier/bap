@@ -1,16 +1,10 @@
 import React, { Component } from "react";
 import modalStyles from "../../styles/modal.module.css";
-// import formStyles from "../../styles/form.module.css";
-// import { inject, observer } from "mobx-react";
-// import { withRouter } from "react-router-dom";
 import formStyles from "./modalForm.module.css";
 import styles from "../dashboard/announcements/Announcement.module.css";
 import FontAwesome from "react-fontawesome";
 import Warning from "./Warning";
 import { inject, observer } from "mobx-react";
-import { ROUTES } from "../../constants";
-
-// import ImageUploading from "react-images-uploading";
 
 class AnnouncementDetail extends Component {
   constructor(props) {

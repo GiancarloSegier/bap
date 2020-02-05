@@ -1,10 +1,9 @@
 import React, { Component } from "react";
 import { inject, observer } from "mobx-react";
-import styles from "./MyCommittee.module.css";
+
 import InviteForm from "../../../components/auth/InviteForm";
 
 import typoStyles from "../../../styles/typo.module.css";
-// import Form from "../components/Form";
 
 class MyCommittee extends Component {
   constructor(props) {

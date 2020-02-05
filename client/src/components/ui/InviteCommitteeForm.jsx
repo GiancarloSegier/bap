@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import modalStyles from "../../styles/modal.module.css";
 import formStyles from "../../styles/form.module.css";
-import { inject, observer } from "mobx-react";
+import { inject } from "mobx-react";
 import { withRouter } from "react-router-dom";
 import styles from "./modalForm.module.css";
 
