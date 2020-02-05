@@ -39,6 +39,7 @@ class CommitteeDetail extends Component {
           <CommitteeDescription
             committee={currentCommittee}
             committeeMembers={committeeMembers}
+            privileges="supervisor"
           />
           <CommitteeMemberList
             committee={currentCommittee}
