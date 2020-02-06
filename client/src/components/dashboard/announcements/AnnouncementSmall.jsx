@@ -27,25 +27,26 @@ class AnnouncementSmall extends Component {
   onView = () => {
     this.props.onView();
   };
-  onEdit = () => {
-    this.props.onEdit();
-  };
 
   render() {
     const { announcement, privileges } = this.props;
+    console.log(announcement);
 
     return (
-      <div className={styles.masonryBlock}>
+      <div
+        onClick={this.onView}
+        className={styles.masonryBlock + " " + styles.hover}
+      >
         <article className={styles.card}>
           <div className={styles.container}>
-            <div className={styles.gridHeader2}>
+            <div className={styles.gridHeader}>
               <h2 className={styles.title}>{announcement.title}</h2>
               <div className={styles.icons_top}>
                 {announcement.images.length > 0 ? (
-                  <FontAwesome className={styles.icon} name="photo" />
+                  <FontAwesome className={styles.icon_small} name="photo" />
                 ) : null}
-                {announcement.images.length > 0 ? (
-                  <FontAwesome className={styles.icon} name="attachement" />
+                {announcement.attachment.length === 1 ? (
+                  <FontAwesome className={styles.icon_small} name="paperclip" />
                 ) : null}
               </div>
             </div>

@@ -13,6 +13,10 @@
   border-radius: 0.6rem;
   margin-top: 2rem;
 }
+.image:hover,
+.hover:hover {
+  cursor: pointer;
+}
 
 .title {
   font-size: 1.6rem;
@@ -78,20 +82,18 @@
 }
 
 .gridHeader {
-  display: grid;
-  grid-template-columns: auto 4rem;
-  align-items: top;
-  height: 4rem;
-}
-.gridHeader2 {
-  display: grid;
-  grid-template-columns: auto 4rem;
-  align-items: center;
-  height: 4rem;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
 }
 
 .icon {
   color: var(--grey-low);
+  height: max-content;
+  margin-left: 1rem;
+}
+.icon_small {
+  color: var(--purple-low);
   height: max-content;
   margin-left: 1rem;
 }

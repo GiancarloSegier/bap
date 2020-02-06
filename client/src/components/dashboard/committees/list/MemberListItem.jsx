@@ -51,7 +51,7 @@ class MemberListItem extends Component {
         <p>{member.phone}</p>
         <p>{member.email}</p>
 
-        {privileges === "supervisor" ? null : (
+        {privileges === "supervisor" || privileges === "member" ? null : (
           <div className={styles.icons}>
             <FontAwesome
               className={styles.icon}

@@ -155,6 +155,7 @@ class AnnouncementEdit extends Component {
 
   render() {
     const { fadeIn, title, content, images, existingImages } = this.state;
+    console.log(this.state.attachment);
     return (
       <div
         className={
@@ -305,7 +306,9 @@ class AnnouncementEdit extends Component {
                           className={
                             announceStyles.icon_button +
                             " " +
-                            (this.state.fileData || this.state.attachment
+                            (this.state.fileData ||
+                            (this.state.attachment &&
+                              this.state.attachment.length > 0)
                               ? announceStyles.icon_select
                               : null)
                           }

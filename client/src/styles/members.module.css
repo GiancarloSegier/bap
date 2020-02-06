@@ -1,5 +1,5 @@
 .dot {
-  width: 1.3rem;
+  min-width: 1.3rem;
   height: 1.3rem;
   border-radius: 50%;
   margin-right: 2rem;
@@ -38,4 +38,9 @@
 .logisticsmanager {
   background-color: var(--logisticsmanager);
   border-color: var(--logisticsmanager);
+}
+
+.survivorrecognitionmanager {
+  background-color: var(--survivorrecognitionmanager);
+  border-color: var(--survivorrecognitionmanager);
 }

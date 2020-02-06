@@ -47,6 +47,7 @@ class MyCommittee extends Component {
         </div>
       );
     } else {
+      console.log(currentCommittee);
       return (
         <>
           <CommitteeDescription

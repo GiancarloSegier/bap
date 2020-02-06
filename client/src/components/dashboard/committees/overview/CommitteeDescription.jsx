@@ -69,7 +69,7 @@ class CommitteeDescription extends Component {
               <FontAwesome name="trash" className={styles.trash} />
               Remove committee
             </button>
-          ) : (
+          ) : privileges === "admin" ? (
             <button
               type="button"
               className={uiStyles.textButton + " " + uiStyles.pink}
@@ -77,7 +77,7 @@ class CommitteeDescription extends Component {
             >
               <span className={uiStyles.button__icon}>+</span>Invite member
             </button>
-          )}
+          ) : null}
         </div>
         <h1 className={styles.title}>{committee.name}</h1>
         <div className={styles.flex}>
@@ -92,8 +92,12 @@ class CommitteeDescription extends Component {
                   alt="Location"
                 />
                 <div className={styles.stat_info}>
-                  <p className={styles.subtitle}>{committee.country}</p>
-                  <p className={styles.data}>{committee.city}</p>
+                  <p className={styles.subtitle}>
+                    {committee.country ? committee.country : "location"}
+                  </p>
+                  <p className={styles.data}>
+                    {committee.city ? committee.city : "-"}
+                  </p>
                 </div>
               </div>
               <div className={styles.stat + " " + styles.raceday}>
@@ -124,8 +128,8 @@ class CommitteeDescription extends Component {
               </div>
             </div>
             {committee.description !== "" ? (
-              <p className={styles.description}>committee.description</p>
-            ) : privileges === "supervisor" ? (
+              <p className={styles.description}>{committee.description}</p>
+            ) : privileges === "supervisor" || privileges === "member" ? (
               <p>No description yet</p>
             ) : (
               <p>
