@@ -61,9 +61,11 @@ class CommitteesListItem extends Component {
             <>
               {members.map((member, i) => {
                 let job = member.job.assignment
+
                   .split(" ")
                   .join("")
-                  .toLowerCase();
+                  .toLowerCase()
+                  .replace("&", "");
                 return (
                   <div key={i} className={styles.memberBlock}>
                     <img

@@ -10,6 +10,8 @@ class UserStore {
   users = [];
   memberUsers = [];
 
+  committeeMembers = [];
+
   constructor(rootStore) {
     this.rootStore = rootStore;
     this.authService = new Auth();
@@ -19,9 +21,29 @@ class UserStore {
   }
 
   getAll = () => {
+    this.committeeMembers = [];
+    this.users = [];
     this.api.getAll().then(d => {
       d.forEach(this._addUser);
+      d.forEach(this._addCommitteeMembers);
     });
+  };
+
+  _addCommitteeMembers = values => {
+    console.log(values);
+
+    if (
+      this.authUser &&
+      this.authUser.committeeId &&
+      values.committeeId === this.authUser.committeeId
+    ) {
+      const user = new User();
+      user.updateFromServer(values);
+
+      runInAction(() => {
+        this.committeeMembers.push(user);
+      });
+    }
   };
 
   deleteMemberUsers = members => {
@@ -114,6 +136,7 @@ decorate(UserStore, {
   getAll: action,
   deleteUser: action,
   deleteMemberUsers: action,
+  committeeMembers: observable,
   updateUser: action,
   authUser: observable,
   setUser: action,

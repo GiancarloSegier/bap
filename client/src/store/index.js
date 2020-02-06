@@ -4,6 +4,7 @@ import JobStore from "./JobStore";
 import CommitteeStore from "./CommitteeStore";
 import InviteStore from "./InviteStore";
 import AnnouncementStore from "./AnnouncementStore";
+import TaskStore from "./TaskStore";
 
 class Store {
   constructor() {
@@ -13,6 +14,7 @@ class Store {
     this.committeeStore = new CommitteeStore(this);
     this.inviteStore = new InviteStore(this);
     this.announcementStore = new AnnouncementStore(this);
+    this.taskStore = new TaskStore(this);
   }
 }
 
