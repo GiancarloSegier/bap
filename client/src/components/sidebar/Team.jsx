@@ -9,19 +9,23 @@ class Team extends Component {
     this.state = {};
   }
 
-  componentDidMount = () => {
+  componentDidMount = async () => {
     const { committeeMembers } = this.props.userStore;
+    await this.props.committeeStore.getOne(
+      this.props.userStore.authUser.committeeId
+    );
 
     this.setState({ members: committeeMembers });
   };
 
   render() {
     const { members } = this.state;
+    const { currentCommittee } = this.props.committeeStore;
 
     return (
       <div className={styles.myTeam}>
         <div className={styles.team}>
-          <p className={styles.teamName}>Rosa vida</p>
+          <p className={styles.teamName}>{currentCommittee.name}</p>
           <FontAwesome
             className={styles.icon}
             name="edit"
@@ -30,7 +34,8 @@ class Team extends Component {
         </div>
 
         <p className={styles.location}>
-          <span className={styles.bold}>Braga</span> - portugal
+          <span className={styles.bold}>{currentCommittee.country}</span> -{" "}
+          {currentCommittee.city}
         </p>
         <div className={styles.memberImages}>
           {members ? (
@@ -66,4 +71,4 @@ class Team extends Component {
     );
   }
 }
-export default inject(`userStore`)(observer(Team));
+export default inject(`userStore`, `committeeStore`)(observer(Team));

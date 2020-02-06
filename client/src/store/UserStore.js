@@ -9,6 +9,7 @@ class UserStore {
   privileges = "public";
   users = [];
   memberUsers = [];
+  fetching = true;
 
   committeeMembers = [];
 
@@ -22,10 +23,21 @@ class UserStore {
   getAll = () => {
     this.committeeMembers = [];
     this.users = [];
-    this.api.getAll().then(d => {
-      d.forEach(this._addUser);
-      d.forEach(this._addCommitteeMembers);
-    });
+    this.api
+      .getAll()
+      .then(d => {
+        d.forEach(this._addUser);
+        d.forEach(this._addCommitteeMembers);
+      })
+      .then(() => {
+        setTimeout(() => {
+          this.setFetching();
+        }, 1000);
+      });
+  };
+
+  setFetching = () => {
+    this.fetching = false;
   };
 
   _addCommitteeMembers = values => {
@@ -137,10 +149,12 @@ class UserStore {
 decorate(UserStore, {
   users: observable,
   getAll: action,
+  fetching: observable,
   deleteUser: action,
   deleteMemberUsers: action,
   committeeMembers: observable,
   updateCommitteeMembers: action,
+  setFetching: action,
   updateUser: action,
   authUser: observable,
   setUser: action,

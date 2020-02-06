@@ -7,11 +7,11 @@
   font-family: "beatrice", Arial, Helvetica, sans-serif;
   font-weight: 500;
   font-size: 1.8rem;
+  margin-right: 1rem;
 }
 .team {
   display: flex;
   justify-content: space-between;
-  align-items: center;
 }
 
 .location {
@@ -23,6 +23,7 @@
 }
 .icon {
   border-radius: 50%;
+  object-fit: cover;
 }
 .memberImages {
   display: flex;

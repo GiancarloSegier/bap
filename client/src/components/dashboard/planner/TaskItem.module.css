@@ -2,7 +2,8 @@
   background-color: white;
   border-radius: 0.6rem;
   display: grid;
-  grid-template-columns: 10rem 2fr repeat(2, 1fr) 0.5fr;
+  grid-template-columns: max-content 2fr repeat(2, 1fr) 0.5fr;
+  grid-gap: 2rem;
   padding: 1.5rem 2rem;
   margin-bottom: 1rem;
   align-items: center;
@@ -10,7 +11,8 @@
 }
 .topbar {
   display: grid;
-  grid-template-columns: 10rem 2fr repeat(2, 1fr) 0.5fr;
+  grid-template-columns: max-content 2fr repeat(2, 1fr) 0.5fr;
+  grid-gap: 2rem;
 }
 
 .dueDate {
