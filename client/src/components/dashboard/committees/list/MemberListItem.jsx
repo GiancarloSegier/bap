@@ -4,10 +4,16 @@ import styles from "./MemberListItem.module.css";
 import memberStyles from "../../../../styles/members.module.css";
 import FontAwesome from "react-fontawesome";
 import { inject, observer } from "mobx-react";
+import Warning from "../../../ui/Warning";
+
 class MemberListItem extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      editJob: false,
+      warning: false
+    };
+    this.jobInput = React.createRef();
   }
   componentDidMount = () => {
     const job = this.props.member.job.assignment
@@ -18,38 +24,70 @@ class MemberListItem extends Component {
     this.setState({ job: job });
   };
 
+  onEditJob = () => {
+    this.setState({
+      editJob: true
+    });
+  };
+
+  cancelEdit = () => {
+    this.setState({
+      editJob: false
+    });
+  };
+  showWarning = () => {
+    this.setState({ warning: true });
+  };
+  onCancel = () => {
+    setTimeout(() => {
+      this.setState({ warning: false });
+    }, 200);
+  };
+
+  saveChanges = e => {
+    console.log(this.jobInput.current.value);
+    const job = {
+      assignment: this.jobInput.current.value,
+      privileges: "member"
+    };
+
+    const { member } = this.props;
+
+    member.setJob(job);
+
+    this.props.userStore.updateUser(member);
+
+    const newJobColor = job.assignment
+      .split(" ")
+      .join("")
+      .toLowerCase()
+      .replace("&", "");
+    this.setState({ job: job });
+
+    this.setState({
+      editJob: false,
+      job: newJobColor
+    });
+  };
+
+  onDeleteMember = async () => {
+    this.props.onDeleteMember(this.props.member);
+  };
+
   render() {
-    const { job } = this.state;
+    const { job, editJob, warning } = this.state;
     const { member } = this.props;
     const { privileges } = this.props.userStore.authUser.job;
 
     return (
-      <div className={styles.listItem}>
-        <div className={styles.person}>
-          <img
-            src={member.avatarUrl}
-            className={
-              styles.avatar +
-              " " +
-              memberStyles.border +
-              " " +
-              memberStyles[job]
-            }
-            width="40"
-            height="40"
-            alt="Different countries"
+      <>
+        {warning ? (
+          <Warning
+            onContinue={this.onDeleteMember}
+            onCancel={this.onCancel}
+            message="Are you sure you want to delete this member? This can not be undone!"
           />
-          <p className={styles.name}>
-            {member.name} {member.surname}
-          </p>
-        </div>
-        <div className={styles.job}>
-          <div className={memberStyles.dot + " " + memberStyles[job]}></div>
-          <p>{member.job.assignment}</p>
-        </div>
-
-        <p>{member.phone}</p>
-        <p>{member.email}</p>
+        ) : null}
 
         {privileges === "supervisor" || privileges === "member" ? null : (
           <div className={styles.icons}>
@@ -65,9 +103,103 @@ class MemberListItem extends Component {
             />
           </div>
         )}
-      </div>
+        <div className={styles.listItem}>
+          <div className={styles.person}>
+            <img
+              src={member.avatarUrl}
+              className={
+                styles.avatar +
+                " " +
+                memberStyles.border +
+                " " +
+                memberStyles[job]
+              }
+              width="40"
+              height="40"
+              alt="Different countries"
+            />
+            <p className={styles.name}>
+              {member.name} {member.surname}
+            </p>
+          </div>
+          <div className={styles.job}>
+            {!editJob ? (
+              <div className={styles.editableBlock}>
+                <div
+                  className={memberStyles.dot + " " + memberStyles[job]}
+                ></div>
+                <p>{member.job.assignment}</p>
+                {privileges === "admin" &&
+                member.job.assignment !== "Race coordinator" &&
+                member.job.assignment !== "Event manager" ? (
+                  <FontAwesome
+                    className={styles.icon}
+                    name="pencil"
+                    onClick={this.onEditJob}
+                  />
+                ) : null}
+              </div>
+            ) : (
+              <div className={styles.inlineEdit}>
+                <select
+                  name="job"
+                  id="job"
+                  ref={this.jobInput}
+                  // onChange={this.handleChangeJob}
+                  className={styles.job__input}
+                  defaultValue={member.job.assignment}
+                >
+                  {this.props.jobStore.jobs.map((job, i) => {
+                    if (job.privileges === "member") {
+                      return (
+                        <option key={i} value={`${job.assignment}`}>
+                          {job.assignment}
+                        </option>
+                      );
+                    }
+                  })}
+                </select>
+                <div className={styles.buttons}>
+                  <button
+                    className={styles.edit__button + " " + styles.decline}
+                    onClick={this.cancelEdit}
+                  >
+                    <span className={styles.decliner}></span>
+                  </button>
+
+                  <button
+                    className={styles.edit__button + " " + styles.approve}
+                    onClick={this.saveChanges}
+                  >
+                    <span className={styles.checker}></span>
+                  </button>
+                </div>
+              </div>
+            )}
+          </div>
+
+          <p>{member.phone}</p>
+          <p>{member.email}</p>
+
+          {privileges === "admin" &&
+          member.job.assignment !== "Race coordinator" &&
+          member.job.assignment !== "Event manager" ? (
+            <div className={styles.icons}>
+              <FontAwesome
+                className={styles.icon}
+                name="trash"
+                onClick={this.showWarning}
+              />
+            </div>
+          ) : null}
+        </div>
+      </>
     );
   }
 }
 
-export default inject(`userStore`)(observer(MemberListItem));
+export default inject(
+  `userStore`,
+  `jobStore`,
+  `committeeStore`
+)(observer(MemberListItem));

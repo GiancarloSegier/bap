@@ -85,6 +85,9 @@ class CommitteeStore {
     this.committees.remove(committee);
     this.api.delete(committee);
   };
+  deleteCommitteeMember = member => {
+    this.committeeMembers.remove(member);
+  };
 }
 
 decorate(CommitteeStore, {
@@ -92,6 +95,7 @@ decorate(CommitteeStore, {
   countries: observable,
   addCommittee: action,
   deleteCommittee: action,
+  deleteCommitteeMember: action,
   getOne: action,
   getCommitteeMembers: action,
   committeeMembers: observable,

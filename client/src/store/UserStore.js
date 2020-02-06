@@ -61,6 +61,12 @@ class UserStore {
     }
   };
 
+  updateUser = async user => {
+    await this.api
+      .update(user)
+      .then(userValues => user.updateFromServer(userValues));
+  };
+
   login = (email, password) => {
     return this.authService
       .login(email, password)
@@ -108,6 +114,7 @@ decorate(UserStore, {
   getAll: action,
   deleteUser: action,
   deleteMemberUsers: action,
+  updateUser: action,
   authUser: observable,
   setUser: action,
   privileges: observable
