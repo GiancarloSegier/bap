@@ -5,6 +5,7 @@ import { ROUTES } from "../constants";
 import { inject, observer } from "mobx-react";
 import styles from "./SideNav.module.css";
 
+import Team from "./sidebar/Team";
 const SideNav = ({ userStore }) => {
   return (
     <ul className={styles.sideNav}>
@@ -124,6 +125,7 @@ const SideNav = ({ userStore }) => {
               Announcements
             </NavLink>
           </li>
+          <Team />
         </>
       )}
     </ul>
