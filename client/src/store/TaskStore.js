@@ -7,6 +7,7 @@ configure({ enforceActions: `observed` });
 
 class TaskStore {
   tasks = [];
+  periodTasks = [];
   constructor(rootStore) {
     this.rootStore = rootStore;
     this.api = new Api(`tasks`);
@@ -15,6 +16,22 @@ class TaskStore {
 
   getAll = () => {
     this.api.getAll().then(d => d.forEach(this._addTask));
+  };
+
+  getPeriodTasks = pickedPeriod => {
+    this.periodTasks = [];
+    this.api
+      .getAll()
+      .then(d =>
+        d.filter(a => a.period === pickedPeriod).forEach(this._addPeriodTask)
+      );
+  };
+  _addPeriodTask = values => {
+    const task = new Task();
+    task.updateFromServer(values);
+    runInAction(() => {
+      this.periodTasks.push(task);
+    });
   };
 
   _addTask = values => {
@@ -27,7 +44,9 @@ class TaskStore {
 }
 
 decorate(TaskStore, {
-  tasks: observable
+  tasks: observable,
+  periodTasks: observable,
+  getPeriodTasks: action
 });
 
 export default TaskStore;
