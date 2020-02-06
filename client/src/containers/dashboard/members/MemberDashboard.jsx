@@ -83,10 +83,10 @@ class MemberDashboard extends Component {
               <li>Due date?</li>
               <li>Priority</li>
             </ul>
+            {/* <TaskItem />
             <TaskItem />
             <TaskItem />
-            <TaskItem />
-            <TaskItem />
+            <TaskItem /> */}
           </div>
         </section>
         <section className={styles.borderTop}>

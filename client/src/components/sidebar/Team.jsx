@@ -6,14 +6,17 @@ import { inject, observer } from "mobx-react";
 class Team extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      currentCommittee: {},
-      committeeMembers: []
-    };
+    this.state = {};
   }
 
+  componentDidMount = () => {
+    const { committeeMembers } = this.props.userStore;
+
+    this.setState({ members: committeeMembers });
+  };
+
   render() {
-    const members = this.props.committeeStore.committeeMembers;
+    const { members } = this.state;
 
     return (
       <div className={styles.myTeam}>
@@ -36,7 +39,8 @@ class Team extends Component {
                 let job = member.job.assignment
                   .split(" ")
                   .join("")
-                  .toLowerCase();
+                  .toLowerCase()
+                  .replace("&", "");
                 return (
                   <div key={i} className={styles.memberBlock}>
                     <img
@@ -62,4 +66,4 @@ class Team extends Component {
     );
   }
 }
-export default inject(`committeeStore`, `userStore`)(observer(Team));
+export default inject(`userStore`)(observer(Team));

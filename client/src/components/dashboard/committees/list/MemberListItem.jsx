@@ -15,14 +15,6 @@ class MemberListItem extends Component {
     };
     this.jobInput = React.createRef();
   }
-  componentDidMount = () => {
-    const job = this.props.member.job.assignment
-      .split(" ")
-      .join("")
-      .toLowerCase()
-      .replace("&", "");
-    this.setState({ job: job });
-  };
 
   onEditJob = () => {
     this.setState({
@@ -44,29 +36,21 @@ class MemberListItem extends Component {
     }, 200);
   };
 
-  saveChanges = e => {
-    console.log(this.jobInput.current.value);
+  saveChanges = async e => {
     const job = {
       assignment: this.jobInput.current.value,
       privileges: "member"
     };
 
-    const { member } = this.props;
+    const { member, index } = this.props;
 
     member.setJob(job);
 
-    this.props.userStore.updateUser(member);
-
-    const newJobColor = job.assignment
-      .split(" ")
-      .join("")
-      .toLowerCase()
-      .replace("&", "");
-    this.setState({ job: job });
+    await this.props.userStore.updateUser(member);
+    await this.props.userStore.updateCommitteeMembers(index, member);
 
     this.setState({
-      editJob: false,
-      job: newJobColor
+      editJob: false
     });
   };
 
@@ -75,7 +59,7 @@ class MemberListItem extends Component {
   };
 
   render() {
-    const { job, editJob, warning } = this.state;
+    const { editJob, warning } = this.state;
     const { member } = this.props;
     const { privileges } = this.props.userStore.authUser.job;
 
@@ -112,7 +96,13 @@ class MemberListItem extends Component {
                 " " +
                 memberStyles.border +
                 " " +
-                memberStyles[job]
+                memberStyles[
+                  member.job.assignment
+                    .split(" ")
+                    .join("")
+                    .toLowerCase()
+                    .replace("&", "")
+                ]
               }
               width="40"
               height="40"
@@ -126,7 +116,17 @@ class MemberListItem extends Component {
             {!editJob ? (
               <div className={styles.editableBlock}>
                 <div
-                  className={memberStyles.dot + " " + memberStyles[job]}
+                  className={
+                    memberStyles.dot +
+                    " " +
+                    memberStyles[
+                      member.job.assignment
+                        .split(" ")
+                        .join("")
+                        .toLowerCase()
+                        .replace("&", "")
+                    ]
+                  }
                 ></div>
                 <p>{member.job.assignment}</p>
                 {privileges === "admin" &&

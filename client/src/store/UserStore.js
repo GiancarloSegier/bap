@@ -17,7 +17,6 @@ class UserStore {
     this.authService = new Auth();
     this.api = new Api(`users`);
     this.setUser(getUserFromCookie());
-    this.getAll();
   }
 
   getAll = () => {
@@ -30,8 +29,6 @@ class UserStore {
   };
 
   _addCommitteeMembers = values => {
-    console.log(values);
-
     if (
       this.authUser &&
       this.authUser.committeeId &&
@@ -81,12 +78,18 @@ class UserStore {
     if (value !== null) {
       this.privileges = value.job.privileges;
     }
+    this.getAll();
   };
 
   updateUser = async user => {
+    console.log(user);
     await this.api
       .update(user)
       .then(userValues => user.updateFromServer(userValues));
+    // this.getAll();
+  };
+  updateCommitteeMembers = (index, user) => {
+    this.committeeMembers.splice(index, 1, user);
   };
 
   login = (email, password) => {
@@ -137,6 +140,7 @@ decorate(UserStore, {
   deleteUser: action,
   deleteMemberUsers: action,
   committeeMembers: observable,
+  updateCommitteeMembers: action,
   updateUser: action,
   authUser: observable,
   setUser: action,

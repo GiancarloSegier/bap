@@ -26,6 +26,7 @@ class CommitteeMemberList extends Component {
           return (
             <MemberListItem
               key={i}
+              index={i}
               member={member}
               onDeleteMember={this.onDeleteMember}
             />

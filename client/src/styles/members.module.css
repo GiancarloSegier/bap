@@ -14,6 +14,11 @@
   border-color: var(--supervisor);
 }
 
+.ambassador {
+  background-color: var(--ambassador);
+  border-color: var(--ambassador);
+}
+
 .eventmanager {
   background-color: var(--eventmanager);
   border-color: var(--eventmanager);

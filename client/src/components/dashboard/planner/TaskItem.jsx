@@ -46,7 +46,7 @@ class TaskItem extends Component {
                           }
                           width="40"
                           height="40"
-                          alt="Different countries"
+                          alt=""
                         />
                         <div className={memberStyles.nameTag}>
                           <span>
