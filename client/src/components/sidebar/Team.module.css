@@ -1,0 +1,38 @@
+.myTeam {
+  color: white;
+  padding: 2rem;
+  margin-top: auto;
+}
+.teamName {
+  font-family: "beatrice", Arial, Helvetica, sans-serif;
+  font-weight: 500;
+  font-size: 1.8rem;
+}
+.team {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.location {
+  color: var(--purple-low);
+  margin-bottom: 2rem;
+}
+.bold {
+  font-weight: bold;
+}
+.icon {
+  border-radius: 50%;
+}
+.memberImages {
+  display: flex;
+}
+.memberBlock {
+  position: relative;
+  margin-left: -1.5rem;
+  display: flex;
+  justify-content: center;
+}
+.memberBlock:first-child {
+  margin: 0;
+}
