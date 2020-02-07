@@ -3,6 +3,10 @@
   margin: 0 auto;
 }
 
+.float {
+  position: relative;
+  z-index: 10;
+}
 .margin_top {
   padding-top: 16rem;
 }
@@ -34,16 +38,14 @@
 }
 
 .button {
-  padding: 1rem 1.5rem;
-  display: inline-block;
-  align-items: center;
-  background-color: var(--pink-mid);
-  border-radius: 3rem;
-  color: white;
-  font-size: 1.6rem;
-  font-family: "chivo", sans-serif;
-  transition: 0.2s ease-in-out;
+  composes: textButton from "../styles/ui.module.css";
+  width: max-content;
+  margin: 0;
   margin-top: 3rem;
+}
+
+.margin_left {
+  margin-left: 2rem;
 }
 
 .spacer {
@@ -60,17 +62,20 @@
 }
 
 .card {
-  text-align: center;
-  width: 60%;
+  composes: modal from "../styles/modal.module.css";
+  width: 80%;
   margin: 0 auto;
-  background-color: white;
-  padding: 8rem;
-  border-radius: 0.6rem;
-  box-shadow: var(--dropshadow);
-  z-index: 10;
-  position: relative;
 }
-
+.modalContainer {
+  composes: modalContainer from "../styles/modal.module.css";
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 8rem;
+  width: 80%;
+  margin: 0 auto;
+}
 .bg_img {
   position: relative;
 }
