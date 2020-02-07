@@ -1,0 +1,53 @@
+.navItem {
+  background-color: var(--purple-mid);
+  border-radius: 0.6rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 1.5rem;
+  flex-direction: column;
+  height: 100%;
+}
+.navItem_active {
+  background-color: var(--purple-low);
+}
+.navItem:hover {
+  background-color: var(--purple-low);
+  cursor: pointer;
+}
+.sideNav {
+  composes: sideNav from "../SideNav.module.css";
+  width: 32rem;
+}
+.list {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(2, 50%);
+  grid-template-rows: repeat(5, 12.8rem);
+  margin-top: 5rem;
+}
+.list li {
+  padding: 1rem;
+}
+.navtitle {
+  color: white;
+  font-family: "beatrice";
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-align: center;
+  line-height: 1.3rem;
+}
+.small {
+  font-size: 1rem;
+}
+
+.icon {
+  width: 40%;
+}
+.menu {
+  color: white;
+  font-size: 1.8rem;
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
+}

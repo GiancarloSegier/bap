@@ -20,6 +20,7 @@ const NotFound = () => {
         <ul className={styles.list}>
           <li className={styles.link}>Home</li>
           <li className={styles.link}>Login</li>
+
           <li className={styles.link}>Designstudio</li>
           <li className={styles.link}>Toolbox</li>
         </ul>

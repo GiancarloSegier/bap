@@ -14,5 +14,7 @@ export const ROUTES = {
   announcements: "/dashboard/announcements",
   planner: "/dashboard/planner",
   committeeDetail: "/dashboard/committees/detail/:id",
-  invitations: "/dashboard/committees/invitations"
+  invitations: "/dashboard/committees/invitations",
+  start: "/toolbox/start",
+  people: "/toolbox/people"
 };
