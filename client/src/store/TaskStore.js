@@ -42,8 +42,11 @@ class TaskStore {
     task.updateFromServer(values);
     runInAction(() => {
       this.tasks.push(task);
-      if (!this.periods.includes(values.period.term) && values.period.term) {
-        this.periods.push(values.period.term);
+      if (
+        !this.periods.some(a => a.term === values.period.term) &&
+        values.period
+      ) {
+        this.periods.push(values.period);
       }
     });
   };
