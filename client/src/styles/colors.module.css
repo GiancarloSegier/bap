@@ -23,26 +23,28 @@
 
   --black: #141414;
 
+  /* priority */
+  --yellow: #ffc105;
+  --yellow-light: #feefc2;
   --green-light: #dffae2;
   --green: #6fcf97;
-  --lime: #aae62d;
 
   --dropshadow: 0px 0px 1px rgba(0, 0, 0, 0.013),
     0px 2px 6px rgba(52, 24, 74, 0.04), 0px 16px 24px rgba(52, 24, 74, 0.06);
 
   /* jobs color */
 
-  --supervisor: white;
-  --eventmanager: var(--green);
-  --communicationpublicrelationsmanager: var(--purple-low);
-  --racetreasurer: #ffad33;
-  --ambassador: var(--green-light);
-  --fundraisingsponsorshipmanager: #56ccf2;
-  --volunteermanager: var(--pink-mid);
-  --logisticsmanager: #ff5d34;
-  --survivorrecognitionmanager: var(--pink-mid);
+  --lime: #aae62d;
+  --blue: #56ccf2;
+  --orange: #ff5d34;
 
-  /* priority */
-  --yellow: #ffc105;
-  --yellow-light: #feefc2;
+  --eventmanager: var(--green);
+  --fundraisingsponsorshipmanager: var(--blue);
+  --volunteermanager: var(--pink-mid);
+  --communicationpublicrelationsmanager: var(--purple-low);
+  --ambassador: var(--orange);
+  --logisticsmanager: var(--lime);
+  --survivorrecognitionmanager: var(--yellow);
+  --racetreasurer: #ffad33;
+  --supervisor: white;
 }

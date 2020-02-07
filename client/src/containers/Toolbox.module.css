@@ -149,16 +149,16 @@
   border-bottom: solid 0.6rem var(--green);
 }
 .blue {
-  border-bottom: solid 0.6rem var(--fundraisingsponsorshipmanager);
+  border-bottom: solid 0.6rem var(--blue);
 }
 .pinq {
-  border-bottom: solid 0.6rem var(--survivorrecognitionmanager);
+  border-bottom: solid 0.6rem var(--yellow);
 }
 .purple {
-  border-bottom: solid 0.6rem var(--communicationpublicrelationsmanager);
+  border-bottom: solid 0.6rem var(--purple-low);
 }
 .orange {
-  border-bottom: solid 0.6rem var(--logisticsmanager);
+  border-bottom: solid 0.6rem var(--orange);
 }
 .lime {
   border-bottom: solid 0.6rem var(--lime);
