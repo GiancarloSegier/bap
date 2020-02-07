@@ -16,6 +16,23 @@ class TaskItem extends Component {
 
   getDueDate = () => {
     const { raceday, task } = this.props;
+
+    const minDays = task.period.min;
+
+    const currentRaceday = new Date(raceday);
+    const dueDate = new Date(
+      currentRaceday.setDate(currentRaceday.getDate() - minDays)
+    );
+
+    const day = dueDate.getDate();
+    const month = dueDate.getMonth() + 1;
+    const year = dueDate.getFullYear();
+
+    const dateString = `${day < 10 ? "0" + day : day}-${
+      month < 10 ? "0" + month : month
+    }-${year}`;
+
+    this.setState({ dueDate: dateString });
   };
 
   getPriority = () => {
@@ -33,7 +50,7 @@ class TaskItem extends Component {
   };
   render() {
     const { task, members } = this.props;
-    const { priority } = this.state;
+    const { priority, dueDate } = this.state;
     console.log(this.props);
     return (
       <>
@@ -86,7 +103,7 @@ class TaskItem extends Component {
               </>
             ))}
           </div>
-          <p className={styles.dueDate}>29-09-20</p>
+          <p className={styles.dueDate}>{dueDate}</p>
           <p className={styles.priority + " " + styles[priority]}>{priority}</p>
         </div>
       </>

@@ -4,7 +4,7 @@ const TaskSchema = mongoose.Schema(
   {
     title: String,
     priorityLevel: Number,
-    period: String,
+    period: Object,
     assignees: Array
   },
   {
