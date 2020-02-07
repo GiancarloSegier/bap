@@ -6,7 +6,7 @@
   position: fixed;
   top: 0;
   left: 0;
-  min-width: 26rem;
+  width: 26rem;
   padding: 3.5rem 2rem 4rem;
   z-index: 2;
 }

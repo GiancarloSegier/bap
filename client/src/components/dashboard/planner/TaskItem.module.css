@@ -2,15 +2,31 @@
   background-color: white;
   border-radius: 0.6rem;
   display: grid;
-  grid-template-columns: 10rem 2fr repeat(2, 1fr) 0.5fr;
+  grid-template-columns: 5rem 3fr repeat(2, 1fr) 0.5fr;
+  grid-gap: 2rem;
   padding: 1.5rem 2rem;
-  margin-bottom: 1rem;
+  margin-bottom: 2rem;
   align-items: center;
   box-shadow: var(--dropshadow);
+  margin-left: 8rem;
+  animation: fadeIn 0.5s ease-in-out;
+
+  line-height: 1.4;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 .topbar {
   display: grid;
-  grid-template-columns: 10rem 2fr repeat(2, 1fr) 0.5fr;
+  grid-template-columns: 5rem 3fr repeat(2, 1fr) 0.5fr;
+  grid-gap: 2rem;
+  margin-left: 8rem;
 }
 
 .dueDate {
@@ -47,4 +63,27 @@
 .medium {
   background-color: var(--yellow-light);
   color: var(--yellow);
+}
+
+.check__button {
+  display: flex;
+  background-color: var(--grey-low);
+  border-radius: 5rem;
+  width: 2.2rem;
+  height: 2.2rem;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  border: none;
+  transition: 0.25s ease-in-out;
+}
+.check__button:last-of-type {
+  margin-left: 1rem;
+}
+.check__button.approve:hover {
+  cursor: pointer;
+  background-color: var(--green);
+}
+.checker {
+  composes: checker from "../../../styles/form.module.css";
 }

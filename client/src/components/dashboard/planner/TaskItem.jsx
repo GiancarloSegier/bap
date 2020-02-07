@@ -6,19 +6,47 @@ import memberStyles from "../../../styles/members.module.css";
 class TaskItem extends Component {
   constructor(props) {
     super(props);
+    this.state = {};
   }
+
+  componentDidMount = () => {
+    this.getPriority();
+    this.getDueDate();
+  };
+
+  getDueDate = () => {
+    const { raceday, task } = this.props;
+  };
+
+  getPriority = () => {
+    const { priorityLevel } = this.props.task;
+    let priority = "";
+    if (priorityLevel === 1) {
+      priority = "high";
+    } else if (priorityLevel === 2) {
+      priority = "medium";
+    } else {
+      priority = "low";
+    }
+
+    this.setState({ priority: priority });
+  };
   render() {
     const { task, members } = this.props;
+    const { priority } = this.state;
+    console.log(this.props);
     return (
       <>
-        <div className={styles.task}>
-          <div>
-            <FontAwesome
-              className={styles.icon}
-              name="check-circle"
-              onClick={this.onView}
-            />
-          </div>
+        <div
+          className={styles.task}
+          style={{ animationDelay: this.props.delay }}
+        >
+          <button
+            className={styles.check__button + " " + styles.approve}
+            onClick={() => console.log("klik")}
+          >
+            <span className={styles.checker}></span>
+          </button>
           <p className={styles.taskname}>{task.title}</p>
           <div className={memberStyles.memberImages}>
             {task.assignees.map((assignee, i) => (
@@ -26,15 +54,14 @@ class TaskItem extends Component {
                 {members
                   .slice()
                   .filter(a => a.job.assignment === assignee.job)
-                  .map(member => {
+                  .map((member, index) => {
                     let job = member.job.assignment
                       .split(" ")
                       .join("")
                       .toLowerCase()
                       .replace("&", "");
-                    console.log(job);
                     return (
-                      <div key={i} className={memberStyles.memberBlock}>
+                      <div key={index} className={memberStyles.memberBlock}>
                         <img
                           src={member.avatarUrl}
                           className={
@@ -60,7 +87,7 @@ class TaskItem extends Component {
             ))}
           </div>
           <p className={styles.dueDate}>29-09-20</p>
-          <p className={styles.priority + " " + styles.medium}>medium</p>
+          <p className={styles.priority + " " + styles[priority]}>{priority}</p>
         </div>
       </>
     );

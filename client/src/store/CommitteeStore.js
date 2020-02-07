@@ -10,6 +10,7 @@ class CommitteeStore {
   countries = [];
   currentCommittee = {};
   committeeMembers = [];
+  raceday = "";
   constructor(rootStore) {
     this.rootStore = rootStore;
     this.api = new Api(`committees`);
@@ -93,6 +94,7 @@ class CommitteeStore {
 decorate(CommitteeStore, {
   committees: observable,
   countries: observable,
+  raceday: observable,
   addCommittee: action,
   deleteCommittee: action,
   deleteCommitteeMember: action,

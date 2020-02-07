@@ -63,50 +63,6 @@ class MyCommittee extends Component {
         </>
       );
     }
-    {
-      /* <div>
-          <h1>MyCommittee</h1>
-          <p className={typoStyles.heading1}>Team name: {name}</p>
-          <br />
-          <hr />
-          {this.props.userStore.authUser.job.privileges === "admin" ? (
-            <>
-              <p>Invite new member</p>
-              <InviteForm />
-              <br />
-              <hr />
-              {invites.length > 0 ? (
-                <>
-                  <p className={typoStyles.heading1}>Invites:</p>
-                  {invites.map(invite => {
-                    return (
-                      <p>
-                        {invite.name} - {invite.surname} -{" "}
-                        {invite.job.assignment}
-                      </p>
-                    );
-                  })}
-                </>
-              ) : null}
-              <br />
-              <hr />
-            </>
-          ) : null}
-
-          {committeeMembers.length > 0 ? (
-            <>
-              <p className={typoStyles.heading1}>CommitteeMembers:</p>
-              {committeeMembers.map(member => {
-                return (
-                  <p>
-                    {member.name} - {member.surname} - {member.job.assignment}
-                  </p>
-                );
-              })}
-            </>
-          ) : null}
-        </div> */
-    }
   }
 }
 

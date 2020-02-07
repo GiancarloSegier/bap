@@ -209,6 +209,7 @@
   border: 0.2rem solid #fff;
   border-top: none;
   border-right: none;
+  margin-top: -0.2rem;
 }
 
 .decliner {

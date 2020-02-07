@@ -3,40 +3,85 @@ import React, { Component } from "react";
 // import Form from "../components/Form";
 import { inject, observer } from "mobx-react";
 import TaskItem from "../../../components/dashboard/planner/TaskItem";
+import Loader from "react-loader-spinner";
+import styles from "../platform.module.css";
+import uiStyles from "../../../styles/ui.module.css";
+import typoStyles from "../../../styles/typo.module.css";
+import TaskList from "../../../components/dashboard/planner/TaskList";
+import { NavLink } from "react-router-dom";
+import { ROUTES } from "../../../constants";
 
 class Planner extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = { loading: true };
   }
 
   componentDidMount = async () => {
-    // await this.getMember();
-  };
-
-  getMember = async () => {
-    const { users, authUser, committeeMembers } = await this.props.userStore;
-
-    this.setState({ committeeMembers: committeeMembers });
+    await this.props.committeeStore.getOne(
+      this.props.userStore.authUser.committeeId
+    );
   };
 
   render() {
-    const { tasks } = this.props.taskStore;
-    const { committeeMembers } = this.props.userStore;
-    console.log(committeeMembers);
+    const { fetching, privileges } = this.props.userStore;
 
-    return (
-      <>
-        <div>
-          <p>Planner</p>
-
-          {tasks.map((task, i) => {
-            return <TaskItem key={i} task={task} members={committeeMembers} />;
-          })}
+    if (fetching) {
+      return (
+        <div className={styles.centerLoader}>
+          <Loader type="Grid" color="#ff3066" height={40} width={40} />
+          <p className={styles.loaderLabel}>Loading tasks</p>
         </div>
-      </>
-    );
+      );
+    } else {
+      return (
+        <>
+          <div className={styles.oneLine}>
+            <h1 className={typoStyles.heading1}>Planner</h1>
+            {privileges === "admin" ? (
+              <div className={styles.buttonGroup}>
+                <button
+                  type="button"
+                  className={uiStyles.textButton}
+                  // onClick={this.openInviteForm}
+                >
+                  <span className={uiStyles.button__icon}>+</span>Add task
+                </button>
+              </div>
+            ) : null}
+          </div>
+          <div className={styles.nav}>
+            <NavLink
+              exact={true}
+              className={styles.navLink}
+              to={ROUTES.planner}
+              activeClassName={styles.active}
+            >
+              Timeline
+            </NavLink>
+            <NavLink
+              exact={true}
+              className={styles.navLink}
+              to={ROUTES.invitations}
+              activeClassName={styles.active}
+            >
+              My tasks
+            </NavLink>
+            <NavLink
+              exact={true}
+              className={styles.navLink}
+              to={ROUTES.invitations}
+              activeClassName={styles.active}
+            >
+              Completed tasks
+            </NavLink>
+          </div>
+
+          <TaskList />
+        </>
+      );
+    }
   }
 }
 
-export default inject(`taskStore`, `userStore`)(observer(Planner));
+export default inject(`userStore`, `committeeStore`)(observer(Planner));

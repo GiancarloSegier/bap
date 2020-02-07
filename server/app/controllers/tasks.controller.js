@@ -3,6 +3,7 @@ const Task = require("../models/task.model.js");
 exports.create = (req, res) => {
   const task = new Task({
     title: req.body.title,
+    priorityLevel: req.body.priorityLevel,
     period: req.body.period,
     assignees: req.body.assignees
   });

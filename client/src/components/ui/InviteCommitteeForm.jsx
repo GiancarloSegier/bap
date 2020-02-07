@@ -82,7 +82,7 @@ class InviteCommitteeForm extends Component {
         email: email,
         message: "",
         job: {
-          assignment: "Event Manager",
+          assignment: "Event manager",
           privileges: "admin"
         },
         pending: true,
