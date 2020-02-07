@@ -36,7 +36,7 @@ const SideNav = () => {
             className={styles.navItem}
             exact={true}
             to={ROUTES.people}
-            activeClassName={styles.navLink__active}
+            activeClassName={styles.navItem_active}
           >
             <img
               className={styles.icon}
