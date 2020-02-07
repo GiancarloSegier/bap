@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import styles from "../planner/TaskItem.module.css";
 import FontAwesome from "react-fontawesome";
 import memberStyles from "../../../styles/members.module.css";
+import TaskDetail from "../../ui/TaskDetail";
+import { inject, observer } from "mobx-react";
 
 class TaskItem extends Component {
   constructor(props) {
@@ -48,15 +50,33 @@ class TaskItem extends Component {
 
     this.setState({ priority: priority });
   };
+
+  openDetail = e => {
+    this.setState({ detail: true });
+  };
+  closeDetail = () => {
+    this.setState({ detail: false });
+  };
   render() {
     const { task, members } = this.props;
-    const { priority, dueDate } = this.state;
+    const { priority, dueDate, detail } = this.state;
+    const { authUser } = this.props.userStore;
 
     return (
       <>
+        {detail ? (
+          <TaskDetail
+            onClose={this.closeDetail}
+            task={task}
+            priority={priority}
+            dueDate={dueDate}
+            members={members}
+          />
+        ) : null}
         <div
           className={styles.task}
           style={{ animationDelay: this.props.delay }}
+          onClick={this.openDetail}
         >
           <button
             className={styles.check__button + " " + styles.approve}
@@ -93,9 +113,14 @@ class TaskItem extends Component {
                           alt=""
                         />
                         <div className={memberStyles.nameTag}>
-                          <span>
-                            {member.name} {member.surname}
-                          </span>
+                          {member.name === authUser.name &&
+                          member.surname === authUser.surname ? (
+                            <p>me </p>
+                          ) : (
+                            <p>
+                              {member.name} {member.surname}
+                            </p>
+                          )}
                         </div>
                       </div>
                     );
@@ -110,4 +135,4 @@ class TaskItem extends Component {
     );
   }
 }
-export default TaskItem;
+export default inject(`userStore`)(observer(TaskItem));

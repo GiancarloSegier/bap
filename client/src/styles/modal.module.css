@@ -4,13 +4,15 @@
   box-shadow: var(--dropshadow);
   position: relative;
   height: max-content;
+  transition: 0.25s ease-in-out;
 }
 .modalContainer {
   padding: 4rem;
 }
 .heading3 {
   composes: heading3 from "./typo.module.css";
-  margin-bottom: 0;
+  margin-bottom: 2rem;
+  width: calc(100% - 4rem);
 }
 .divideBorder {
   border-top: 0.1rem solid var(--purple-grey);

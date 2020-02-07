@@ -1,0 +1,15 @@
+.topicBlock {
+  composes: modal from "../../../styles/modal.module.css";
+  padding: 2rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.infoBlock {
+  background-color: var(--grey-low);
+}
+.cardGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 4rem;
+}

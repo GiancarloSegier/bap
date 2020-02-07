@@ -2,6 +2,11 @@
   composes: modal from "../../../styles/modal.module.css";
   width: 100%;
 }
+.card:hover {
+  cursor: pointer;
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0), 0px 4px 6px rgba(52, 24, 74, 0.15),
+    0px 20px 47px rgba(52, 24, 74, 0.07);
+}
 .container {
   composes: modalContainer from "../../../styles/modal.module.css";
   padding: 2rem;

@@ -45,6 +45,7 @@ class CommitteesListItem extends Component {
 
   render() {
     const { committee } = this.props;
+    const { authUser } = this.props.userStore;
     const { members } = this.state;
 
     return (
@@ -82,9 +83,14 @@ class CommitteesListItem extends Component {
                       alt="Different countries"
                     />
                     <div className={styles.nameTag}>
-                      <span>
-                        {member.name} {member.surname}
-                      </span>
+                      {member.name === authUser.name &&
+                      member.surname === authUser.surname ? (
+                        <p>me </p>
+                      ) : (
+                        <p>
+                          {member.name} {member.surname}
+                        </p>
+                      )}
                     </div>
                   </div>
                 );

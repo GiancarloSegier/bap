@@ -35,6 +35,12 @@ class CommitteeDescription extends Component {
     this.setState({ invite: false });
   };
 
+  onCancel = () => {
+    setTimeout(() => {
+      this.setState({ warning: false });
+    }, 200);
+  };
+
   render() {
     const { committee, committeeMembers, privileges } = this.props;
     const { warning, invite } = this.state;
