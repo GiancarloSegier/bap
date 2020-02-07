@@ -1,0 +1,174 @@
+.toolboxContent {
+  width: calc(100vw - 32rem);
+  margin-left: auto;
+  margin-top: 16rem;
+}
+.toolboxContainer {
+  width: 80%;
+  margin: 0 auto;
+}
+.heading1 {
+  font-family: "beatrice";
+  font-size: 4.2rem;
+  font-weight: bold;
+  color: var(--purple-mid);
+}
+.pink,
+.smalltitle {
+  color: var(--pink-mid);
+}
+.intro {
+  font-family: "beatrice";
+  font-size: 2.1rem;
+  line-height: 3.8rem;
+  margin-top: 6rem;
+  font-weight: 500;
+}
+.largebody {
+  font-family: "beatrice";
+  font-size: 1.8rem;
+  line-height: 3.2rem;
+}
+.largebody:last-of-type {
+  margin-top: 6rem;
+}
+.highlight {
+  color: var(--purple-low);
+}
+.card {
+  box-shadow: var(--dropshadow);
+  background-color: white;
+  padding: 4rem;
+  border-radius: 0.6rem;
+  height: max-content;
+}
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: min-content min-content;
+  grid-gap: 4rem;
+  margin-top: 4rem;
+}
+.smalltitle {
+  margin-bottom: 2rem;
+}
+.body {
+  font-size: 1.8rem;
+}
+.heading2 {
+  font-size: 2.8rem;
+  font-family: "beatrice";
+  font-weight: bold;
+  color: var(--purple-mid);
+  margin-bottom: 2rem;
+}
+.spacer {
+  padding: 16rem 0;
+}
+.spacer_small {
+  padding: 8rem 0;
+}
+.purplebg {
+  background-color: var(--purple-very-low);
+}
+
+.tip {
+  background-color: var(--purple-low);
+  color: white;
+  font-weight: bold;
+  grid-column: 2;
+}
+.span_vertical {
+  grid-row: span 2;
+}
+.flex {
+  display: flex;
+  justify-content: space-between;
+}
+.chapter_card {
+  background-color: white;
+  border-radius: 0.6rem;
+  padding: 3rem;
+  margin: 1rem;
+  box-shadow: var(--dropshadow);
+  border-bottom: solid 0.6rem white;
+}
+.chapter_card:hover {
+  border-bottom: solid 0.6rem var(--pink-mid);
+  cursor: pointer;
+}
+.card_subtitle {
+  color: var(--grey-mid);
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+.card_title,
+.job_title {
+  font-family: "beatrice";
+  font-size: 2.1rem;
+  font-weight: bold;
+  line-height: 2.1rem;
+}
+.negative_margin {
+  margin-top: -24rem;
+}
+.next {
+  padding-right: 2rem;
+}
+
+.introjobs {
+  padding: 8rem;
+}
+.job_card {
+  max-width: 50rem;
+  padding: 3rem;
+  display: flex;
+  background-color: white;
+  border-radius: 0.6rem;
+  width: max-content;
+  align-items: center;
+  justify-content: space-between;
+
+  box-shadow: var(--dropshadow);
+  margin-bottom: 3rem;
+}
+.job_title {
+  color: var(--purple-mid);
+  margin-bottom: 1.5rem;
+}
+.job_img {
+  margin-right: 3rem;
+  height: 12rem;
+}
+.jobs {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 6rem;
+}
+.green {
+  border-bottom: solid 0.6rem var(--green);
+}
+.blue {
+  border-bottom: solid 0.6rem var(--fundraisingsponsorshipmanager);
+}
+.pinq {
+  border-bottom: solid 0.6rem var(--survivorrecognitionmanager);
+}
+.purple {
+  border-bottom: solid 0.6rem var(--communicationpublicrelationsmanager);
+}
+.orange {
+  border-bottom: solid 0.6rem var(--logisticsmanager);
+}
+.lime {
+  border-bottom: solid 0.6rem var(--lime);
+}
+.softpink {
+  border-bottom: solid 0.6rem var(--purple-very-low);
+}
+.yellow {
+  border-bottom: solid 0.6rem var(--yellow);
+}
+.jobdown {
+  margin-top: 8rem;
+}

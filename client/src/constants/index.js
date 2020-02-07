@@ -15,6 +15,8 @@ export const ROUTES = {
 
   committeeDetail: "/dashboard/committees/detail/:id",
   invitations: "/dashboard/committees/invitations",
+  start: "/toolbox/start",
+  people: "/toolbox/people",
 
   planner: "/dashboard/planner",
   myTasks: "/dashboard/planner/mytasks",
