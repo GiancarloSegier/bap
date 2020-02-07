@@ -23,6 +23,7 @@
 }
 .icon {
   border-radius: 50%;
+  object-fit: cover;
 }
 .memberImages {
   display: flex;

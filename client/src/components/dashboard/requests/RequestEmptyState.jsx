@@ -21,15 +21,16 @@ class RequestEmptyState extends Component {
         </div>
 
         <div className={styles.committeeEmptyContainer}>
-          <p className={typoStyles.body}>
-            Here you can find an overview of all the race committees from every
-            country. There are no committees added yet.
-          </p>
           <img
-            src="http://placekitten.com/200/200"
+            src="../../assets/empty_request.png"
             className={styles.emptyImage}
             alt="Location"
           />
+          <p className={typoStyles.body}>
+            Here you’ll find requests of organisations <br />
+            who might be interested in working together. <br />
+            <span className={styles.bold}>There are no current requests.</span>
+          </p>
         </div>
       </div>
     );

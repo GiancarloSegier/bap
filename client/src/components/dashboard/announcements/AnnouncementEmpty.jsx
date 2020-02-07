@@ -35,18 +35,19 @@ class AnnouncementEmpty extends Component {
           </div>
 
           <div className={styles.committeeEmptyContainer}>
+            <img
+              src="../../assets/empty_announcements.png"
+              className={styles.emptyImage}
+              alt="Location"
+            />
             <p className={typoStyles.body}>
-              Looks kind of empty here, you can create an anouncement to update
-              or inspire other committees.
+              Looks kind of empty
+              <br /> here, you can create an anouncement to <br />
+              update or inspire other committees.
             </p>
             <button className={typoStyles.buttonInline} onClick={this.openForm}>
               Create your first announcement
             </button>
-            <img
-              src="http://placekitten.com/200/200"
-              className={styles.emptyImage}
-              alt="Location"
-            />
           </div>
         </div>
       </>

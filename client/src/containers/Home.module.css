@@ -1,0 +1,89 @@
+.container {
+  max-width: 114rem;
+  margin: 0 auto;
+}
+
+.margin_top {
+  padding-top: 16rem;
+}
+
+.heading1 {
+  font-family: "beatrice";
+  font-size: 5.6rem;
+  line-height: 7.8rem;
+  font-weight: 800;
+}
+
+.heading2 {
+  font-family: "beatrice";
+  font-size: 3.2rem;
+
+  font-weight: 800;
+}
+
+.body {
+  font-family: "beatrice";
+  font-size: 1.8rem;
+  line-height: 170.5%;
+  margin-top: 5rem;
+}
+
+.purple_bg {
+  background-color: var(--purple-very-low);
+  padding: 16rem;
+}
+
+.button {
+  padding: 1rem 1.5rem;
+  display: inline-block;
+  align-items: center;
+  background-color: var(--pink-mid);
+  border-radius: 3rem;
+  color: white;
+  font-size: 1.6rem;
+  font-family: "chivo", sans-serif;
+  transition: 0.2s ease-in-out;
+  margin-top: 3rem;
+}
+
+.spacer {
+  padding-top: 16rem;
+  padding-bottom: 16rem;
+  max-width: 114rem;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 50% 50%;
+}
+
+.right .container {
+  grid-column-start: 2;
+}
+
+.card {
+  text-align: center;
+  width: 60%;
+  margin: 0 auto;
+  background-color: white;
+  padding: 8rem;
+  border-radius: 0.6rem;
+  box-shadow: var(--dropshadow);
+  z-index: 10;
+  position: relative;
+}
+
+.bg_img {
+  position: relative;
+}
+.bg_img:after {
+  background-image: url(../styles/assets/testbg.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center right;
+  content: "";
+  display: block;
+  height: 90%;
+  right: 0;
+  width: 100%;
+  top: -10rem;
+  position: absolute;
+}

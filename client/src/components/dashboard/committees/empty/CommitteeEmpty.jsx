@@ -34,6 +34,11 @@ class CommitteeEmpty extends Component {
           </div>
 
           <div className={styles.committeeEmptyContainer}>
+            <img
+              src="../../assets/empty_committee.png"
+              className={styles.emptyImage}
+              alt="Location"
+            />
             <p className={typoStyles.body}>
               Here you can find an overview of all the race committees from
               every country. There are no committees added yet.
@@ -45,11 +50,6 @@ class CommitteeEmpty extends Component {
             >
               Invite your first committee
             </button>
-            <img
-              src="http://placekitten.com/200/200"
-              className={styles.emptyImage}
-              alt="Location"
-            />
           </div>
         </div>
       </>
