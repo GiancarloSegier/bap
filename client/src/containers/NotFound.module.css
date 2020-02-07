@@ -1,0 +1,39 @@
+.container {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.align {
+  text-align: center;
+  width: 30%;
+}
+.large {
+  font-family: "beatrice";
+  font-size: 6rem;
+  font-weight: bolder;
+  color: var(--purple-mid);
+}
+.mid {
+  font-family: "beatrice";
+  font-size: 3rem;
+  font-weight: bolder;
+  color: var(--purple-mid);
+}
+.body {
+  margin-top: 6rem;
+  color: var(--grey-mid);
+  font-size: 2rem;
+  margin-bottom: 5rem;
+}
+
+.list {
+  display: flex;
+  justify-content: space-between;
+}
+
+.link {
+  color: var(--pink-mid);
+  border-bottom: solid 0.2rem var(--pink-mid);
+}

@@ -2,14 +2,21 @@ import React from "react";
 import styles from "./Home.module.css";
 import uiStyles from "../styles/ui.module.css";
 // import Form from "../components/Form";
+import FontAwesome from "react-fontawesome";
+import { Link } from "react-router-dom";
+import { ROUTES } from "../constants";
 
 const Home = () => {
   return (
     <>
       <div className={styles.bg_img}>
         <section className={styles.purple_bg + " " + styles.margin_top}>
-          <div className={styles.container}>
-            <img src="http://placekitten.com/120/48" alt="pink think logo" />
+          <div className={styles.container + " " + styles.float}>
+            <img
+              src="../../../assets/think-pink.png"
+              width="150"
+              alt="pink think logo"
+            />
             <h2 className={styles.heading1}>
               Organise your race <br /> from start to finish
             </h2>
@@ -19,12 +26,17 @@ const Home = () => {
               and tools to help you with the organisation <br />
               of a Race for the Cure
             </p>
-            <a className={styles.button} href="">
+
+            <a href="#scrollto" className={styles.button}>
               Learn more
+              <FontAwesome className={styles.margin_left} name="chevron-down" />
             </a>
           </div>
         </section>
-        <section className={styles.spacer + " " + styles.right}>
+        <section
+          id="scrollto"
+          className={styles.spacer + " " + styles.right + " " + styles.float}
+        >
           <div className={styles.container}>
             <h3 className={styles.heading2}>
               Let our guidelines lead <br />
@@ -35,12 +47,20 @@ const Home = () => {
               experiences from many organisations. Use it as a guide to collect
               ideas to make your Race a great one.
             </p>
-            <a className={styles.button} href="">
+            <Link
+              className={styles.button}
+              to={ROUTES.toolbox}
+              activeClassName={styles.active}
+            >
               Learn more
-            </a>
+              <FontAwesome
+                className={styles.margin_left}
+                name="chevron-right"
+              />
+            </Link>
           </div>
         </section>
-        <section className={styles.spacer}>
+        <section className={styles.spacer + " " + styles.float}>
           <div className={styles.container}>
             <h3 className={styles.heading2}>
               Get the right look &amp; feel with our designstudio
@@ -50,25 +70,37 @@ const Home = () => {
               With just a few clicks your fabulous posters and T-shirts will be
               ready for print!
             </p>
-            <a className={styles.button} href="">
-              Go to the designstudio
-            </a>
+            <Link
+              className={styles.button}
+              to={ROUTES.designstudio}
+              activeClassName={styles.active}
+            >
+              Learn more
+              <FontAwesome
+                className={styles.margin_left}
+                name="chevron-right"
+              />
+            </Link>
           </div>
         </section>
         <section className={styles.purple_bg}>
           <div className={styles.container}>
-            <div className={styles.card}>
-              <h3 className={styles.heading2}>
-                Want to team up with Think Pink Europe?
-              </h3>
-              <p className={styles.body}>
-                Is your organisation ready to take part in Europe’s biggest
-                sport event to fight against breast cancer? <br />
-                Get in touch and join the movement!
-              </p>
-              <a className={styles.button} href="">
-                Request access
-              </a>
+            <div className={styles.card + " " + styles.float}>
+              <div className={styles.modalContainer}>
+                <h3 className={styles.heading2}>
+                  Want to team up <br />
+                  with Think Pink Europe?
+                </h3>
+                <p className={styles.body}>
+                  Is your organisation ready to take part in Europe’s
+                  <br /> biggest sport event to fight against breast cancer?{" "}
+                  <br />
+                  Get in touch and join the movement!
+                </p>
+                <Link className={styles.button} to={ROUTES.request}>
+                  Learn more
+                </Link>
+              </div>
             </div>
           </div>
         </section>

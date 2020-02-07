@@ -5,9 +5,13 @@
   width: 100%;
   justify-content: space-between;
   position: fixed;
-  z-index: 1;
+  z-index: 99;
   top: 0;
   background-color: var(--grey-lower);
+  transition: 0.15s ease-in-out;
+}
+.background_hidden {
+  background-color: transparent;
 }
 .rightMenu {
   display: flex;

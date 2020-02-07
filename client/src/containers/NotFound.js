@@ -4,19 +4,27 @@ import styles from "./NotFound.module.css";
 
 const NotFound = () => {
   return (
-    <>
-      <div>
-        <h1>404</h1>
-        <p>Whoops, nothing to see here!</p>
-        <p>Feeling lost? Maybe you are looking for one of these pages:</p>
-        <ul>
-          <li>Home</li>
-          <li>Login</li>
-          <li>Designstudio</li>
-          <li>Toolbox</li>
+    <div className={styles.container}>
+      <div className={styles.align}>
+        <img
+          src="../../assets/404.png"
+          className={styles.emptyImage}
+          alt="Location"
+        />
+        <h1 className={styles.large}>404</h1>
+        <p className={styles.mid}>Whoops, nothing to see here!</p>
+        <p className={styles.body}>
+          Feeling lost? Maybe you are looking <br />
+          for one of these pages:
+        </p>
+        <ul className={styles.list}>
+          <li className={styles.link}>Home</li>
+          <li className={styles.link}>Login</li>
+          <li className={styles.link}>Designstudio</li>
+          <li className={styles.link}>Toolbox</li>
         </ul>
       </div>
-    </>
+    </div>
   );
 };
 
