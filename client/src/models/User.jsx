@@ -3,6 +3,7 @@ import { decorate, observable, computed, action } from "mobx";
 class Name {
   constructor(
     id,
+    password,
     name,
     surname,
     email,
@@ -13,6 +14,7 @@ class Name {
     avatarUrl
   ) {
     this.id = id;
+    this.password = password;
     this.name = name;
     this.surname = surname;
     this.email = email;
@@ -26,6 +28,7 @@ class Name {
   get values() {
     return {
       id: this.id,
+      password: this.password,
       name: this.name,
       surname: this.surname,
       email: this.email,
@@ -38,6 +41,7 @@ class Name {
   }
 
   setId = id => (this.id = id);
+  setPassword = password => (this.password = password);
   setName = name => (this.name = name);
   setSurname = surname => (this.surname = surname);
   setEmail = email => (this.email = email);
@@ -49,6 +53,7 @@ class Name {
 
   updateFromServer = values => {
     this.setId(values._id);
+    this.setPassword(values.password);
     this.setName(values.name);
     this.setSurname(values.surname);
     this.setEmail(values.email);
@@ -64,6 +69,7 @@ decorate(Name, {
   id: observable,
   setId: action,
   setName: action,
+  setPassword: action,
   setSurname: action,
   setEmail: action,
   setJob: action,

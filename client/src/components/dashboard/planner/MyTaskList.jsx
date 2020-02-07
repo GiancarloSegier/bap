@@ -6,24 +6,24 @@ import TaskItem from "./TaskItem";
 import { inject, observer } from "mobx-react";
 import Loader from "react-loader-spinner";
 
-class TaskList extends Component {
+class MyTaskList extends Component {
   constructor(props) {
     super(props);
     this.state = { loading: false };
   }
 
-  componentDidMount = () => {
+  componentDidMount = async () => {
     this.getDueDate();
   };
 
-  getPeriod = async term => {
+  getPeriod = term => {
     this.setState({ loading: true });
     const { opened } = this.state;
 
     if (opened === term) {
       this.setState({ opened: false });
     } else {
-      this.props.taskStore.getPeriodTasks(term);
+      this.props.taskStore.getUserPeriodTasks(term);
       this.setState({ opened: term });
       setTimeout(() => {
         this.setState({ loading: false });
@@ -32,12 +32,12 @@ class TaskList extends Component {
   };
 
   getDueDate = () => {
-    const { periods } = this.props.taskStore;
+    const { myPeriods } = this.props.taskStore;
 
     const { raceday } = this.props.committeeStore.currentCommittee;
 
-    for (let i = 0; i < periods.length; i++) {
-      const period = periods[i];
+    for (let i = 0; i < myPeriods.length; i++) {
+      const period = myPeriods[i];
       const oneDay = 24 * 60 * 60 * 1000;
       const min = period.min;
       const max = period.max;
@@ -55,14 +55,14 @@ class TaskList extends Component {
   };
 
   render() {
-    const { periodTasks, periods } = this.props.taskStore;
+    const { userPeriodTasks, myPeriods } = this.props.taskStore;
     const { committeeMembers } = this.props.userStore;
     const { raceday } = this.props.committeeStore.currentCommittee;
     const { loading } = this.state;
 
     return (
       <>
-        {periods.map((period, i) => {
+        {myPeriods.map((period, i) => {
           return (
             <div key={i} className={styles.periodBlock}>
               <div
@@ -102,7 +102,7 @@ class TaskList extends Component {
                   </ul>
                   {!loading ? (
                     <>
-                      {periodTasks
+                      {userPeriodTasks
                         .slice()
                         .sort((a, b) => a.priorityLevel - b.priorityLevel)
                         .map((task, i) => {
@@ -140,4 +140,4 @@ export default inject(
   `taskStore`,
   `userStore`,
   `committeeStore`
-)(observer(TaskList));
+)(observer(MyTaskList));

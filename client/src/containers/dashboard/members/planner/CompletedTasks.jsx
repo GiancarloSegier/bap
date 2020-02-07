@@ -2,16 +2,17 @@ import React, { Component } from "react";
 // import styles from "./Planner.module.css";
 // import Form from "../components/Form";
 import { inject, observer } from "mobx-react";
-import TaskItem from "../../../components/dashboard/planner/TaskItem";
+import TaskItem from "../../../../components/dashboard/planner/TaskItem";
 import Loader from "react-loader-spinner";
-import styles from "../platform.module.css";
-import uiStyles from "../../../styles/ui.module.css";
-import typoStyles from "../../../styles/typo.module.css";
-import TaskList from "../../../components/dashboard/planner/TaskList";
+import styles from "../../platform.module.css";
+import uiStyles from "../../../../styles/ui.module.css";
+import typoStyles from "../../../../styles/typo.module.css";
+import TaskList from "../../../../components/dashboard/planner/TaskList";
 import { NavLink } from "react-router-dom";
-import { ROUTES } from "../../../constants";
+import { ROUTES } from "../../../../constants";
+import PlannerNav from "./PlannerNav";
 
-class Planner extends Component {
+class CompletedTasks extends Component {
   constructor(props) {
     super(props);
     this.state = { loading: true };
@@ -37,7 +38,7 @@ class Planner extends Component {
       return (
         <>
           <div className={styles.oneLine}>
-            <h1 className={typoStyles.heading1}>Planner</h1>
+            <h1 className={typoStyles.heading1}>CompletedTasks</h1>
             {privileges === "admin" ? (
               <div className={styles.buttonGroup}>
                 <button
@@ -50,32 +51,7 @@ class Planner extends Component {
               </div>
             ) : null}
           </div>
-          <div className={styles.nav}>
-            <NavLink
-              exact={true}
-              className={styles.navLink}
-              to={ROUTES.planner}
-              activeClassName={styles.active}
-            >
-              Timeline
-            </NavLink>
-            <NavLink
-              exact={true}
-              className={styles.navLink}
-              to={ROUTES.invitations}
-              activeClassName={styles.active}
-            >
-              My tasks
-            </NavLink>
-            <NavLink
-              exact={true}
-              className={styles.navLink}
-              to={ROUTES.invitations}
-              activeClassName={styles.active}
-            >
-              Completed tasks
-            </NavLink>
-          </div>
+          <PlannerNav />
 
           <TaskList />
         </>
@@ -84,4 +60,4 @@ class Planner extends Component {
   }
 }
 
-export default inject(`userStore`, `committeeStore`)(observer(Planner));
+export default inject(`userStore`, `committeeStore`)(observer(CompletedTasks));

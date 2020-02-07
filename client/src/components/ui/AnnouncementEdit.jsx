@@ -64,7 +64,6 @@ class AnnouncementEdit extends Component {
     }
 
     const { title, content, images, attachment } = this.state;
-    console.log(images);
     const { announcement } = this.props;
     if (title !== "" && content !== "") {
       announcement.setTitle(title);
@@ -155,7 +154,7 @@ class AnnouncementEdit extends Component {
 
   render() {
     const { fadeIn, title, content, images, existingImages } = this.state;
-    console.log(this.state.attachment);
+
     return (
       <div
         className={

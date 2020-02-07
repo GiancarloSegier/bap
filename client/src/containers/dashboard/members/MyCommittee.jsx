@@ -31,7 +31,6 @@ class MyCommittee extends Component {
       committeeMembers: committeeMembers,
       loading: false
     });
-    console.log(this.props.committeeStore.committeeMembers);
   };
 
   render() {
@@ -47,7 +46,6 @@ class MyCommittee extends Component {
         </div>
       );
     } else {
-      console.log(currentCommittee);
       return (
         <>
           <CommitteeDescription

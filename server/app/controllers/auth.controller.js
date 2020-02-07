@@ -167,10 +167,8 @@ exports.update = async (req, res) => {
         name: req.body.name,
         surname: req.body.surname,
         email: req.body.email,
-        password: req.body.password,
         job: req.body.job,
         phone: req.body.phone,
-        organisation: req.body.organisation,
         committeeId: req.body.committeeId,
         avatarUrl: req.body.avatarUrl
       },
