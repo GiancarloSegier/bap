@@ -51,7 +51,7 @@ class TaskItem extends Component {
   render() {
     const { task, members } = this.props;
     const { priority, dueDate } = this.state;
-    console.log(this.props);
+
     return (
       <>
         <div

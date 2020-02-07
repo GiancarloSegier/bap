@@ -16,7 +16,6 @@ class Navbar extends Component {
   };
 
   getPageInfo = () => {
-    console.log(window.pageYOffset);
     if (window.pageYOffset > 50) {
       this.setState({ navBackground: true });
     } else {

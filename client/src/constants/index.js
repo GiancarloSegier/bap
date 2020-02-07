@@ -12,9 +12,13 @@ export const ROUTES = {
   myCommittee: "/dashboard/mycommittee",
 
   announcements: "/dashboard/announcements",
-  planner: "/dashboard/planner",
+
   committeeDetail: "/dashboard/committees/detail/:id",
   invitations: "/dashboard/committees/invitations",
   start: "/toolbox/start",
-  people: "/toolbox/people"
+  people: "/toolbox/people",
+
+  planner: "/dashboard/planner",
+  myTasks: "/dashboard/planner/mytasks",
+  completedTasks: "/dashboard/planner/completed"
 };

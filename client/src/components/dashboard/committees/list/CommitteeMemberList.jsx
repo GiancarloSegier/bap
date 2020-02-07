@@ -7,8 +7,6 @@ class CommitteeMemberList extends Component {
     super(props);
   }
   onDeleteMember = async member => {
-    console.log(member);
-
     await this.props.committeeStore.deleteCommitteeMember(member);
     await this.props.userStore.deleteUser(member);
   };

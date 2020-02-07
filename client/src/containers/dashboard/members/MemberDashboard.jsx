@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import styles from "../Dashboard.module.css";
 import uiStyles from "../../../styles/ui.module.css";
 import typoStyles from "../../../styles/typo.module.css";
+import taskStyles from "../../../components/dashboard/planner/TaskList.module.css";
 import { Link } from "react-router-dom";
 import { ROUTES } from "../../../constants";
 import { inject, observer } from "mobx-react";
@@ -14,6 +15,10 @@ class MemberDashboard extends Component {
     super(props);
     this.state = { invite: false, detail: false };
   }
+
+  componentDidMount = () => {
+    this.props.taskStore.getAllUserTasks(this.props.userStore.authUser);
+  };
 
   openInviteForm = e => {
     this.setState({ invite: true });
@@ -30,10 +35,13 @@ class MemberDashboard extends Component {
 
   render() {
     const { authUser, privileges } = this.props.userStore;
+    const { allUserTasks } = this.props.taskStore;
     const { greeting } = this.props;
     const { invite, detail } = this.state;
     const { announcements } = this.props.announcementStore;
-    console.log(privileges);
+    const { committeeMembers } = this.props.userStore;
+    const { raceday } = this.props.committeeStore.currentCommittee;
+
     return (
       <>
         {detail ? (
@@ -71,23 +79,35 @@ class MemberDashboard extends Component {
         <section>
           <div className={styles.oneLine}>
             <h2 className={typoStyles.heading2}>Upcoming tasks</h2>
-            <Link to={ROUTES.planner} className={typoStyles.smallLink}>
+            <Link to={ROUTES.myTasks} className={typoStyles.smallLink}>
               view all
             </Link>
           </div>
-          {/* <div className={styles.taskList}>
-            <ul className={styles.topbar}>
+          <div className={taskStyles.taskList + " " + taskStyles.noMargin}>
+            <ul className={taskStyles.topbar}>
               <li>Done?</li>
               <li>Task</li>
               <li>Assigned to</li>
               <li>Due date?</li>
               <li>Priority</li>
             </ul>
-            <TaskItem />
-            <TaskItem />
-            <TaskItem />
-            <TaskItem />
-          </div> */}
+
+            {allUserTasks
+
+              .sort((a, b) => a.priorityLevel - b.priorityLevel)
+              .slice(0, 4)
+              .map((task, i) => {
+                return (
+                  <TaskItem
+                    key={i}
+                    task={task}
+                    members={committeeMembers}
+                    raceday={raceday}
+                    delay={i * 2}
+                  />
+                );
+              })}
+          </div>
         </section>
         <section className={styles.borderTop}>
           <div className={styles.oneLine}>
@@ -115,5 +135,7 @@ class MemberDashboard extends Component {
 
 export default inject(
   `userStore`,
-  `announcementStore`
+  `announcementStore`,
+  `committeeStore`,
+  `taskStore`
 )(observer(MemberDashboard));

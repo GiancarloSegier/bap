@@ -10,7 +10,6 @@ class UserStore {
   users = [];
   memberUsers = [];
   fetching = true;
-
   committeeMembers = [];
 
   constructor(rootStore) {
@@ -94,11 +93,9 @@ class UserStore {
   };
 
   updateUser = async user => {
-    console.log(user);
     await this.api
       .update(user)
       .then(userValues => user.updateFromServer(userValues));
-    // this.getAll();
   };
   updateCommitteeMembers = (index, user) => {
     this.committeeMembers.splice(index, 1, user);

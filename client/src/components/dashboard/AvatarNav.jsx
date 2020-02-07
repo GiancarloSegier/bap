@@ -31,11 +31,12 @@ class AvatarNav extends Component {
   };
 
   render() {
-    const { currentUser } = this.props;
-    const job = currentUser.job.assignment
+    const { authUser } = this.props.userStore;
+    const job = authUser.job.assignment
       .split(" ")
       .join("")
-      .toLowerCase();
+      .toLowerCase()
+      .replace("&", "");
 
     return (
       <>
@@ -49,8 +50,8 @@ class AvatarNav extends Component {
               " " +
               memberStyles[job]
             }
-            src={currentUser.avatarUrl}
-            alt={`Avatar from ${currentUser.name}`}
+            src={authUser.avatarUrl}
+            alt={`Avatar from ${authUser.name}`}
           />
           <button
             type="button"

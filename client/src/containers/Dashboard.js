@@ -10,12 +10,14 @@ import Requests from "./dashboard/supervisor/Requests";
 import DashboardHome from "./dashboard/DashboardHome";
 import MyCommittee from "./dashboard/members/MyCommittee";
 import News from "./dashboard/members/News";
-import Planner from "./dashboard/members/Planner";
+import Planner from "./dashboard/members/planner/Planner";
 
 import { inject, observer } from "mobx-react";
 import CommitteeDetail from "./dashboard/supervisor/committees/CommitteeDetail";
 import Announcements from "./dashboard/Announcements";
 import Invitations from "./dashboard/supervisor/committees/Invitations";
+import MyTasks from "./dashboard/members/planner/MyTasks";
+import CompletedTasks from "./dashboard/members/planner/CompletedTasks";
 
 const Dashboard = ({ userStore }) => {
   const { privileges } = userStore.authUser.job;
@@ -66,9 +68,19 @@ const Dashboard = ({ userStore }) => {
                 exact
                 component={DashboardHome}
               />
-              <Route path={ROUTES.myCommittee} component={MyCommittee} />
-              <Route path={ROUTES.planner} component={Planner} />
-              <Route path={ROUTES.announcements} component={Announcements} />
+              <Route path={ROUTES.myCommittee} exact component={MyCommittee} />
+              <Route path={ROUTES.planner} exact component={Planner} />
+              <Route path={ROUTES.myTasks} exact component={MyTasks} />
+              <Route
+                path={ROUTES.completedTasks}
+                exact
+                component={CompletedTasks}
+              />
+              <Route
+                path={ROUTES.announcements}
+                exact
+                component={Announcements}
+              />
             </Switch>
           </div>
         </div>
