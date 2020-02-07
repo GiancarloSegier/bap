@@ -24,7 +24,9 @@ class TaskStore {
     this.api
       .getAll()
       .then(d =>
-        d.filter(a => a.period === pickedPeriod).forEach(this._addPeriodTask)
+        d
+          .filter(a => a.period.term === pickedPeriod)
+          .forEach(this._addPeriodTask)
       );
   };
   _addPeriodTask = values => {
@@ -40,8 +42,8 @@ class TaskStore {
     task.updateFromServer(values);
     runInAction(() => {
       this.tasks.push(task);
-      if (!this.periods.includes(values.period) && values.period) {
-        this.periods.push(values.period);
+      if (!this.periods.includes(values.period.term) && values.period.term) {
+        this.periods.push(values.period.term);
       }
     });
   };
