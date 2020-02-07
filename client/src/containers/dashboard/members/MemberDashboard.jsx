@@ -83,7 +83,7 @@ class MemberDashboard extends Component {
               view all
             </Link>
           </div>
-          <div className={taskStyles.taskList}>
+          <div className={taskStyles.taskList + " " + taskStyles.noMargin}>
             <ul className={taskStyles.topbar}>
               <li>Done?</li>
               <li>Task</li>

@@ -27,6 +27,7 @@
   z-index: 1;
   font-size: 1.4rem;
 }
+
 .form__input::placeholder {
   color: #bbb;
   font-size: 1.4rem;

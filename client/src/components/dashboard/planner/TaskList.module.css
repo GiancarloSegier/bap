@@ -10,6 +10,9 @@
   color: var(--grey-mid);
   animation: fadeIn 0.5s ease-in-out;
 }
+.noMargin {
+  margin-left: -8rem;
+}
 @keyframes fadeIn {
   0% {
     opacity: 0;

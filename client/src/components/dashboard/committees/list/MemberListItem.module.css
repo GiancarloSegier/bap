@@ -1,6 +1,6 @@
 .listItem {
   display: grid;
-  grid-template-columns: 1.5fr 2fr 1fr 1.5fr 5rem;
+  grid-template-columns: 1.5fr 2fr 1fr 2fr 5rem;
   grid-gap: 3rem;
   align-items: center;
   height: 5.3rem;
@@ -71,6 +71,7 @@
   composes: form__input from "../../../../styles/form.module.css";
   margin-right: 2rem;
   height: 3rem;
+  padding: 0 1rem;
 }
 .buttons {
   display: flex;
@@ -109,4 +110,8 @@
 }
 .decliner:after {
   border-color: white;
+}
+
+.jobName {
+  max-width: calc(100% - 6rem);
 }

@@ -128,7 +128,7 @@ class MemberListItem extends Component {
                     ]
                   }
                 ></div>
-                <p>{member.job.assignment}</p>
+                <p className={styles.jobName}>{member.job.assignment}</p>
                 {privileges === "admin" &&
                 member.job.assignment !== "Race coordinator" &&
                 member.job.assignment !== "Event manager" ? (
