@@ -34,16 +34,19 @@ class TaskItem extends Component {
   render() {
     const { task, members } = this.props;
     const { priority } = this.state;
+    console.log(this.props);
     return (
       <>
-        <div className={styles.task}>
-          <div>
-            <FontAwesome
-              className={styles.icon}
-              name="check-circle"
-              onClick={this.onView}
-            />
-          </div>
+        <div
+          className={styles.task}
+          style={{ animationDelay: this.props.delay }}
+        >
+          <button
+            className={styles.check__button + " " + styles.approve}
+            onClick={() => console.log("klik")}
+          >
+            <span className={styles.checker}></span>
+          </button>
           <p className={styles.taskname}>{task.title}</p>
           <div className={memberStyles.memberImages}>
             {task.assignees.map((assignee, i) => (

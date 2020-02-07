@@ -75,7 +75,7 @@ class MemberDashboard extends Component {
               view all
             </Link>
           </div>
-          <div className={styles.taskList}>
+          {/* <div className={styles.taskList}>
             <ul className={styles.topbar}>
               <li>Done?</li>
               <li>Task</li>
@@ -83,11 +83,11 @@ class MemberDashboard extends Component {
               <li>Due date?</li>
               <li>Priority</li>
             </ul>
-            {/* <TaskItem />
             <TaskItem />
             <TaskItem />
-            <TaskItem /> */}
-          </div>
+            <TaskItem />
+            <TaskItem />
+          </div> */}
         </section>
         <section className={styles.borderTop}>
           <div className={styles.oneLine}>

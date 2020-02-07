@@ -8,6 +8,7 @@ configure({ enforceActions: `observed` });
 class TaskStore {
   tasks = [];
   periodTasks = [];
+  periods = [];
   constructor(rootStore) {
     this.rootStore = rootStore;
     this.api = new Api(`tasks`);
@@ -39,12 +40,16 @@ class TaskStore {
     task.updateFromServer(values);
     runInAction(() => {
       this.tasks.push(task);
+      if (!this.periods.includes(values.period) && values.period) {
+        this.periods.push(values.period);
+      }
     });
   };
 }
 
 decorate(TaskStore, {
   tasks: observable,
+  periods: observable,
   periodTasks: observable,
   getPeriodTasks: action
 });

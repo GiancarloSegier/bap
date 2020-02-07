@@ -18,6 +18,10 @@
   overflow: scroll;
   grid-template-rows: repeat(auto-fill, minmax(10rem, auto));
 }
+.oneLine {
+  display: flex;
+  justify-content: space-between;
+}
 /* .cardGrid::-webkit-scrollbar {
   display: none;
 } */
@@ -56,4 +60,22 @@
   height: calc(100vh - 20.5rem);
   overflow: scroll;
   padding: 0 2rem;
+}
+
+.nav {
+  display: flex;
+}
+.navLink {
+  composes: heading3 from "../../styles/typo.module.css";
+  font-weight: 400;
+  margin-right: 2rem;
+  color: var(--grey-high);
+  transition: 0.15s ease-in-out;
+}
+.active {
+  font-weight: bold;
+  color: var(--purple-dark);
+}
+.navLink:hover {
+  color: var(--pink-mid);
 }

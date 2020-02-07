@@ -13,7 +13,7 @@ class AdminRegisterForm extends Component {
     this.state = {
       password: ``,
       password2: ``,
-      phone: ``,
+      newPhone: ``,
       images: []
     };
     this.avatarInput = React.createRef();
@@ -41,7 +41,7 @@ class AdminRegisterForm extends Component {
 
     await this.uploadAvatar();
 
-    const { password, avatarUrl } = this.state;
+    const { password, avatarUrl, newPhone } = this.state;
     const {
       email,
       name,
@@ -50,6 +50,13 @@ class AdminRegisterForm extends Component {
       organisation,
       job
     } = this.props.requestStore.currentRequest;
+
+    let correctPhone = "";
+    if (newPhone !== "") {
+      correctPhone = newPhone;
+    } else {
+      correctPhone = phone;
+    }
 
     const randomstring = require("randomstring");
 
@@ -63,7 +70,7 @@ class AdminRegisterForm extends Component {
         email,
         password,
         job,
-        phone,
+        correctPhone,
         organisation,
         committeeId,
         avatarUrl

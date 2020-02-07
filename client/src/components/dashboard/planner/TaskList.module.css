@@ -1,0 +1,74 @@
+.topbar {
+  display: grid;
+  grid-template-columns: 5rem 3fr repeat(2, 1fr) 0.5fr;
+  grid-gap: 2rem;
+  padding: 1.5rem 2rem;
+  margin-bottom: 2rem;
+  align-items: center;
+  margin-left: 8rem;
+  font-size: 1.6rem;
+  color: var(--grey-mid);
+  animation: fadeIn 0.5s ease-in-out;
+}
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.taskList {
+  margin-top: -2rem;
+  margin-bottom: 4rem;
+}
+
+.centerLoader {
+  justify-content: center;
+  display: flex;
+}
+
+.periodBlock {
+  border-bottom: solid 0.1rem var(--grey-low);
+}
+.periodHeader {
+  padding: 2rem;
+  margin: 2rem 0;
+  border-radius: 0.6rem;
+  transition: 0.25s ease-in-out;
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  align-items: center;
+  grid-gap: 4rem;
+}
+.periodTitle {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: var(--grey-high);
+
+  transition: 0.25s ease-in-out;
+}
+.periodHeader:hover {
+  background-color: var(--purple-grey);
+  cursor: pointer;
+}
+.periodHeader:hover .periodTitle,
+.periodActive {
+  color: var(--black);
+}
+
+.periodHeader:hover .chevron__close {
+  color: var(--pink-mid);
+}
+
+.chevron__open {
+  transform: rotate(-180deg);
+  transition: 0.25s ease-in-out;
+  color: var(--pink-mid);
+}
+.chevron__close {
+  transform: rotate(0deg);
+  transition: 0.25s ease-in-out;
+  color: var(--purple-low);
+}
