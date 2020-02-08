@@ -3,13 +3,50 @@
   padding: 2rem;
   display: flex;
   justify-content: space-between;
+  border-bottom: solid 0.6rem transparent;
+  transition: 0.25s ease-in-out;
+  height: 100%;
+}
+.topicBlock:hover {
+  border-color: var(--pink-mid);
 }
 
 .infoBlock {
-  background-color: var(--grey-low);
+  background-color: var(--grey-lower);
 }
 .cardGrid {
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-gap: 4rem;
+}
+
+.topicTitle {
+  /* color: var(--purple-mid); */
+  font-family: "beatrice";
+  font-size: 1.8rem;
+  font-weight: 900;
+  line-height: 2rem;
+  letter-spacing: 0.1rem;
+}
+.subTitle {
+  margin-bottom: 1rem;
+  color: var(--grey-mid);
+  font-size: 1.4rem;
+}
+.topicImage {
+  object-fit: contain;
+  margin-right: 2rem;
+}
+.infoText {
+  align-self: flex-end;
+}
+
+.topic .topicImage {
+  height: 4rem;
+  margin-right: 0;
+}
+.heading3 {
+  font-size: 1.4rem;
+  font-weight: bold;
+  margin-bottom: 4rem;
 }

@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import modalStyles from "../../styles/modal.module.css";
+import uiStyles from "../../styles/ui.module.css";
+import mainFormStyles from "../../styles/form.module.css";
 import formStyles from "./modalForm.module.css";
 import styles from "../dashboard/planner/TaskItem.module.css";
 import FontAwesome from "react-fontawesome";
@@ -166,6 +168,28 @@ class TaskDetail extends Component {
             </div>
 
             <TopicsBlock />
+
+            <div
+              className={
+                modalStyles.modalContainer + " " + modalStyles.divideBorder
+              }
+            >
+              <div className={modalStyles.buttonBox}>
+                <button
+                  type="submit"
+                  className={uiStyles.textButton + " " + uiStyles.green}
+                >
+                  <span
+                    className={
+                      mainFormStyles.checker + " " + mainFormStyles.margin
+                    }
+                  >
+                    {" "}
+                  </span>{" "}
+                  mark as done
+                </button>
+              </div>
+            </div>
           </div>
         </div>
       </>
