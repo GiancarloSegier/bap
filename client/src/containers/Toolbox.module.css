@@ -1,7 +1,7 @@
 .toolboxContent {
-  width: calc(100vw - 32rem);
   margin-left: auto;
   margin-top: 16rem;
+  margin-left: 32rem;
 }
 .toolboxContainer {
   width: 80%;
@@ -21,8 +21,9 @@
   font-family: "beatrice";
   font-size: 2.1rem;
   line-height: 3.8rem;
-  margin-top: 6rem;
+  margin-top: 3rem;
   font-weight: 500;
+  color: var(--grey-mid);
 }
 .largebody {
   font-family: "beatrice";
@@ -41,6 +42,7 @@
   padding: 4rem;
   border-radius: 0.6rem;
   height: max-content;
+  position: relative;
 }
 .grid {
   display: grid;
@@ -70,6 +72,7 @@
 }
 .purplebg {
   background-color: var(--purple-very-low);
+  padding: 8rem 0 10rem 0;
 }
 
 .tip {
@@ -85,11 +88,24 @@
   display: flex;
   justify-content: space-between;
 }
+.shrink {
+  width: 70%;
+}
+.grow {
+  transition: all 0.2s ease-in-out;
+}
+.grow:hover {
+  transform: scale(1.03);
+  box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.04), 0px 2px 6px rgba(0, 0, 0, 0.04),
+    0px 16px 24px rgba(0, 0, 0, 0.06);
+  cursor: pointer;
+}
 .chapter_card {
   background-color: white;
   border-radius: 0.6rem;
   padding: 3rem;
   margin: 1rem;
+  width: 25rem;
   box-shadow: var(--dropshadow);
   border-bottom: solid 0.6rem white;
 }
@@ -110,27 +126,28 @@
   line-height: 2.1rem;
 }
 .negative_margin {
-  margin-top: -24rem;
+  margin-top: -20rem;
 }
 .next {
-  padding-right: 2rem;
+  width: 30rem;
+  margin-top: 8rem;
+  margin-right: 4rem;
+  margin-bottom: 4rem;
 }
 
 .introjobs {
   padding: 8rem;
 }
 .job_card {
-  max-width: 50rem;
+  max-width: 100%;
   padding: 3rem;
   display: flex;
   background-color: white;
   border-radius: 0.6rem;
-  width: max-content;
+
   align-items: center;
   justify-content: space-between;
-
   box-shadow: var(--dropshadow);
-  margin-bottom: 3rem;
 }
 .job_title {
   color: var(--purple-mid);
@@ -141,9 +158,30 @@
   height: 12rem;
 }
 .jobs {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 6rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 0 4rem;
+  margin: 12rem 0;
+}
+
+.jobs .job_card:nth-child(even) {
+  margin-top: 4rem;
+}
+.jobs .job_card:nth-child(odd) {
+  margin-bottom: 4rem;
+}
+
+.container {
+  max-width: 110rem;
+  margin: 0 auto;
+  padding: 0 4rem;
+  min-height: calc(100vh - 12rem);
+  margin-top: 12rem;
+}
+.container_small {
+  max-width: 110rem;
+  margin: 0 auto;
+  padding: 0 4rem;
 }
 .green {
   border-bottom: solid 0.6rem var(--green);
@@ -171,4 +209,47 @@
 }
 .jobdown {
   margin-top: 8rem;
+}
+
+.cardgrid {
+  display: flex;
+  overflow-x: scroll;
+  padding: 2rem 0;
+}
+.cardgrid::-webkit-scrollbar {
+  display: none;
+}
+.purple_card {
+  background-color: var(--purple-low);
+  box-shadow: var(--dropshadow);
+  color: white;
+  padding: 8rem;
+  border-radius: 0.6rem;
+  height: max-content;
+  grid-gap: 2rem;
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  margin: 8rem auto;
+}
+.largeheader {
+  font-size: 3.6rem;
+  font-weight: bold;
+  font-family: "beatrice";
+  line-height: 4.2rem;
+}
+.helpbody {
+  margin-top: 5rem;
+}
+.smalltitle_white {
+  color: white;
+  margin-bottom: 3rem;
+}
+.button {
+  composes: textButton from "./../styles/ui.module.css";
+  width: max-content;
+  margin-left: 0;
+  margin-top: 4rem;
+}
+.multiply {
+  mix-blend-mode: multiply;
 }

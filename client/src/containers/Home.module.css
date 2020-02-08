@@ -86,9 +86,17 @@
   background-position: center right;
   content: "";
   display: block;
-  height: 90%;
+  height: 83%;
   right: 0;
   width: 100%;
-  top: -10rem;
+  top: -8rem;
   position: absolute;
+}
+
+.bg_end {
+  background-image: url(../styles/assets/bg_end.png);
+  background-repeat: no-repeat;
+  height: 100rem;
+  background-position: bottom center;
+  width: 100%;
 }

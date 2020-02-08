@@ -83,7 +83,7 @@ const Home = () => {
             </Link>
           </div>
         </section>
-        <section className={styles.purple_bg}>
+        <section className={styles.purple_bg + " " + styles.bg_end}>
           <div className={styles.container}>
             <div className={styles.card + " " + styles.float}>
               <div className={styles.modalContainer}>

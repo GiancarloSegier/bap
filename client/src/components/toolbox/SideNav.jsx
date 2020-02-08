@@ -20,6 +20,21 @@ const SideNav = () => {
           <NavLink
             className={styles.navItem}
             exact={true}
+            to={ROUTES.welcome}
+            activeClassName={styles.navItem_active}
+          >
+            <img
+              className={styles.icon}
+              src="../../assets/icons/toolbox/gettingstarted.png"
+              alt=""
+            />
+            <p className={styles.navtitle}>Welcome</p>
+          </NavLink>
+        </li>
+        <li>
+          <NavLink
+            className={styles.navItem}
+            exact={true}
             to={ROUTES.start}
             activeClassName={styles.navItem_active}
           >

@@ -1,6 +1,5 @@
 export const ROUTES = {
   home: `/`,
-  toolbox: "/toolbox",
   designstudio: "/designstudio",
   login: "/login",
   request: "/request",
@@ -15,6 +14,9 @@ export const ROUTES = {
 
   committeeDetail: "/dashboard/committees/detail/:id",
   invitations: "/dashboard/committees/invitations",
+
+  toolbox: "/toolbox",
+  welcome: "/toolbox",
   start: "/toolbox/start",
   people: "/toolbox/people",
 

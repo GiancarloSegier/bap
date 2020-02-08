@@ -4,8 +4,9 @@ import styles from "./Toolbox.module.css";
 import SideNav from "../components/toolbox/SideNav";
 import { Route, Switch } from "react-router-dom";
 import { ROUTES } from "../constants";
-import Chapter_People from "./toolbox/Chapter_People";
-import Chapter_Start from "./toolbox/Chapter_Start";
+import ChapterPeople from "./toolbox/ChapterPeople";
+import ChapterStart from "./toolbox/ChapterStart";
+import Welcome from "./toolbox/Welcome";
 
 const Toolbox = () => {
   return (
@@ -15,8 +16,9 @@ const Toolbox = () => {
       </div>
       <div className={styles.toolboxContent}>
         <Switch>
-          <Route path={ROUTES.start} exact component={Chapter_Start} />
-          <Route path={ROUTES.people} exact component={Chapter_People} />
+          <Route path={ROUTES.welcome} exact component={Welcome} />
+          <Route path={ROUTES.start} exact component={ChapterStart} />
+          <Route path={ROUTES.people} exact component={ChapterPeople} />
         </Switch>
       </div>
     </div>
