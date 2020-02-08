@@ -3,12 +3,14 @@
   padding: 2rem;
   display: flex;
   justify-content: space-between;
-  border-bottom: solid 0.6rem transparent;
+  border-bottom: solid 0.6rem var(--grey-low);
   transition: 0.25s ease-in-out;
   height: 100%;
 }
 .topicBlock:hover {
   border-color: var(--pink-mid);
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0), 0px 4px 6px rgba(52, 24, 74, 0.15),
+    0px 20px 47px rgba(52, 24, 74, 0.07);
 }
 
 .infoBlock {
