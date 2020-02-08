@@ -52,3 +52,12 @@
 .textButton:hover .button__icon {
   transform: rotate(360deg);
 }
+.lightGreen .button__icon {
+  color: var(--green);
+}
+.lightGreen {
+  background-color: var(--pink-light);
+}
+.lightGreen:hover {
+  background-color: var(--pink-high);
+}

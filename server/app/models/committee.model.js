@@ -7,7 +7,8 @@ const CommitteeSchema = mongoose.Schema(
     raceday: Date,
     city: String,
     country: String,
-    description: String
+    description: String,
+    completedTasks: Array
   },
   {
     timestamps: true

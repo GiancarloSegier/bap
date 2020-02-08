@@ -52,7 +52,7 @@ class TaskDetail extends Component {
   };
 
   render() {
-    const { task, priority, dueDate, members } = this.props;
+    const { task, priority, dueDate, members, checked } = this.props;
     const { authUser } = this.props.userStore;
 
     const { fadeIn, jobDescription } = this.state;
@@ -177,16 +177,24 @@ class TaskDetail extends Component {
               <div className={modalStyles.buttonBox}>
                 <button
                   type="submit"
-                  className={uiStyles.textButton + " " + uiStyles.green}
+                  className={
+                    uiStyles.textButton +
+                    " " +
+                    (checked ? uiStyles.lightGreen : uiStyles.green)
+                  }
                 >
                   <span
                     className={
-                      mainFormStyles.checker + " " + mainFormStyles.margin
+                      (checked
+                        ? mainFormStyles.decliner
+                        : mainFormStyles.checker) +
+                      " " +
+                      mainFormStyles.margin
                     }
                   >
                     {" "}
                   </span>{" "}
-                  mark as done
+                  {checked ? "uncheck task" : "mark as done"}
                 </button>
               </div>
             </div>

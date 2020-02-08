@@ -10,6 +10,7 @@ class CommitteeStore {
   countries = [];
   currentCommittee = {};
   committeeMembers = [];
+  completedTasks = [];
   raceday = "";
   constructor(rootStore) {
     this.rootStore = rootStore;
@@ -73,9 +74,18 @@ class CommitteeStore {
     committee.updateFromServer(values);
     runInAction(() => {
       this.currentCommittee = committee;
+      this.completedTasks = committee.completedTasks;
     });
   };
 
+  addCompletedTask = (committee, task) => {
+    this.updateCommittee(committee);
+    this.completedTasks.push(task);
+  };
+  deleteCompletedTask = (committee, task) => {
+    this.updateCommittee(committee);
+    this.completedTasks.remove(task);
+  };
   updateCommittee = committee => {
     this.api
       .update(committee)
@@ -94,6 +104,9 @@ class CommitteeStore {
 decorate(CommitteeStore, {
   committees: observable,
   countries: observable,
+  completedTasks: observable,
+  addCompletedTask: action,
+  deleteCompletedTask: action,
   raceday: observable,
   addCommittee: action,
   deleteCommittee: action,

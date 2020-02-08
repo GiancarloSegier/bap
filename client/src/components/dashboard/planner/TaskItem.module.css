@@ -111,3 +111,7 @@
   margin-left: 3rem;
   display: flex;
 }
+
+.checked {
+  background-color: var(--green);
+}
