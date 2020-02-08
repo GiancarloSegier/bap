@@ -81,12 +81,12 @@ class TaskItem extends Component {
       );
 
       currentCommittee.setCompletedTasks(deletedTaskArray);
+      this.props.committeeStore.addCompletedTask(currentCommittee, task);
     } else {
       updateTasks.push(task);
       currentCommittee.setCompletedTasks(updateTasks);
+      this.props.committeeStore.deleteCompletedTask(currentCommittee, task);
     }
-
-    this.props.committeeStore.addCompletedTask(currentCommittee, task);
 
     this.setState(prevState => ({
       checked: !prevState.checked
