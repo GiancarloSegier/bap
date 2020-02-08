@@ -11,23 +11,26 @@ class TaskItem extends Component {
     this.state = {};
   }
 
-  componentDidMount = () => {
-    this.getPriority();
-    this.getDueDate();
-    this.checkCompletedTask();
+  componentDidMount = async () => {
+    await this.getPriority();
+    await this.getDueDate();
+    await this.checkCompletedTask();
   };
 
-  checkCompletedTask = () => {
+  checkCompletedTask = async () => {
     const { completedTasks } = this.props.committeeStore;
+    console.log(completedTasks);
     for (let i = 0; i < completedTasks.length; i++) {
       const task = completedTasks[i];
+
       if (task.id === this.props.task.id) {
         this.setState({ checked: true });
+        console.log(task.id, this.props.task.id);
       }
     }
   };
 
-  getDueDate = () => {
+  getDueDate = async () => {
     const { raceday, task } = this.props;
 
     const minDays = task.period.min;
@@ -48,7 +51,7 @@ class TaskItem extends Component {
     this.setState({ dueDate: dateString });
   };
 
-  getPriority = () => {
+  getPriority = async () => {
     const { priorityLevel } = this.props.task;
     let priority = "";
     if (priorityLevel === 1) {

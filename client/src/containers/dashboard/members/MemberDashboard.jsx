@@ -25,7 +25,6 @@ class MemberDashboard extends Component {
   getTasks = () => {
     const { allUserTasks } = this.props.taskStore;
     const { completedTasks } = this.props.committeeStore;
-    console.log(completedTasks);
 
     // const found = allUserTasks.some(r => completedTasks.indexOf(r));
 
@@ -57,7 +56,6 @@ class MemberDashboard extends Component {
     const { committeeMembers } = this.props.userStore;
     const { raceday } = this.props.committeeStore.currentCommittee;
     const { completedTasks } = this.props.committeeStore;
-    console.log(completedTasks);
 
     return (
       <>

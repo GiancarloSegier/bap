@@ -51,6 +51,11 @@ class TaskDetail extends Component {
     }, 200);
   };
 
+  checkTask = e => {
+    const { task } = this.props;
+    this.props.onCheckTask(e, task);
+  };
+
   render() {
     const { task, priority, dueDate, members, checked } = this.props;
     const { authUser } = this.props.userStore;
@@ -182,6 +187,7 @@ class TaskDetail extends Component {
                     " " +
                     (checked ? uiStyles.lightGreen : uiStyles.green)
                   }
+                  onClick={this.checkTask}
                 >
                   <span
                     className={
