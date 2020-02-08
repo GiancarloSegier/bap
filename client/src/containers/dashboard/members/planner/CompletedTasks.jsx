@@ -11,6 +11,7 @@ import TaskList from "../../../../components/dashboard/planner/TaskList";
 import { NavLink } from "react-router-dom";
 import { ROUTES } from "../../../../constants";
 import PlannerNav from "./PlannerNav";
+import CompletedTaskList from "../../../../components/dashboard/planner/CompletedTaskList";
 
 class CompletedTasks extends Component {
   constructor(props) {
@@ -53,7 +54,7 @@ class CompletedTasks extends Component {
           </div>
           <PlannerNav />
 
-          <TaskList />
+          <CompletedTaskList />
         </>
       );
     }

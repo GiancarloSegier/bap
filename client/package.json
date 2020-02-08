@@ -11,6 +11,9 @@
     "antd": "^3.26.7",
     "axios": "^0.19.2",
     "babel-loader": "^8.0.6",
+    "canvas-to-image": "^2.1.1",
+    "html-to-image": "^0.1.1",
+    "html2canvas": "^1.0.0-rc.5",
     "js-cookie": "^2.2.1",
     "mobx": "^5.15.2",
     "mobx-react": "^6.1.5",
@@ -27,6 +30,7 @@
     "react-nl2br": "^0.6.0",
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.3.0",
+    "react-to-pdf": "^0.0.8",
     "styled-components": "^5.0.0",
     "uuid": "^3.4.0"
   },

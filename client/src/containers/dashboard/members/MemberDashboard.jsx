@@ -16,8 +16,22 @@ class MemberDashboard extends Component {
     this.state = { invite: false, detail: false };
   }
 
-  componentDidMount = () => {
-    this.props.taskStore.getAllUserTasks(this.props.userStore.authUser);
+  componentDidMount = async () => {
+    await this.props.taskStore.getAllUserTasks(this.props.userStore.authUser);
+
+    this.getTasks();
+  };
+
+  getTasks = () => {
+    const { allUserTasks } = this.props.taskStore;
+    const { completedTasks } = this.props.committeeStore;
+
+    // const found = allUserTasks.some(r => completedTasks.indexOf(r));
+
+    // console.log(found);
+
+    // console.lgo
+    // this.setState({ upcomingTasks: upcomingTasks });
   };
 
   openInviteForm = e => {
@@ -37,10 +51,11 @@ class MemberDashboard extends Component {
     const { authUser, privileges } = this.props.userStore;
     const { allUserTasks } = this.props.taskStore;
     const { greeting } = this.props;
-    const { invite, detail } = this.state;
+    const { invite, detail, upcomingTasks } = this.state;
     const { announcements } = this.props.announcementStore;
     const { committeeMembers } = this.props.userStore;
     const { raceday } = this.props.committeeStore.currentCommittee;
+    const { completedTasks } = this.props.committeeStore;
 
     return (
       <>

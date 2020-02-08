@@ -40,6 +40,24 @@
 .purple:hover {
   background-color: var(--purple-mid);
 }
+.green .button__icon {
+  color: var(--green-light);
+}
+.green {
+  background-color: var(--green);
+}
+.green:hover {
+  background-color: var(--green-dark);
+}
 .textButton:hover .button__icon {
   transform: rotate(360deg);
+}
+.lightGreen .button__icon {
+  color: var(--green);
+}
+.lightGreen {
+  background-color: var(--pink-light);
+}
+.lightGreen:hover {
+  background-color: var(--pink-high);
 }

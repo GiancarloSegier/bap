@@ -218,7 +218,7 @@
   -webkit-transform: rotate(-45deg);
   transform: rotate(-45deg) translateY(-1px);
   display: block;
-  border: 0.2rem solid var(--grey-low);
+  border: 0.2rem solid #fff;
   border-top: none;
   border-right: none;
   border-left: none;
@@ -230,7 +230,7 @@
 
   transform: rotate(90deg) translate(2px);
   display: block;
-  border: 0.2rem solid var(--grey-low);
+  border: 0.2rem solid #fff;
   border-top: none;
   border-right: none;
   border-left: none;

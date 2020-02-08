@@ -11,12 +11,26 @@ class TaskItem extends Component {
     this.state = {};
   }
 
-  componentDidMount = () => {
-    this.getPriority();
-    this.getDueDate();
+  componentDidMount = async () => {
+    await this.getPriority();
+    await this.getDueDate();
+    await this.checkCompletedTask();
   };
 
-  getDueDate = () => {
+  checkCompletedTask = async () => {
+    const { completedTasks } = this.props.committeeStore;
+    console.log(completedTasks);
+    for (let i = 0; i < completedTasks.length; i++) {
+      const task = completedTasks[i];
+
+      if (task.id === this.props.task.id) {
+        this.setState({ checked: true });
+        console.log(task.id, this.props.task.id);
+      }
+    }
+  };
+
+  getDueDate = async () => {
     const { raceday, task } = this.props;
 
     const minDays = task.period.min;
@@ -37,7 +51,7 @@ class TaskItem extends Component {
     this.setState({ dueDate: dateString });
   };
 
-  getPriority = () => {
+  getPriority = async () => {
     const { priorityLevel } = this.props.task;
     let priority = "";
     if (priorityLevel === 1) {
@@ -57,9 +71,33 @@ class TaskItem extends Component {
   closeDetail = () => {
     this.setState({ detail: false });
   };
+  checkTask = (e, task) => {
+    e.stopPropagation();
+    const { currentCommittee, completedTasks } = this.props.committeeStore;
+    const { checked } = this.state;
+
+    const updateTasks = [...completedTasks];
+
+    if (checked) {
+      const deletedTaskArray = updateTasks.filter(
+        completedTask => completedTask.id !== task.id
+      );
+
+      currentCommittee.setCompletedTasks(deletedTaskArray);
+      this.props.committeeStore.addCompletedTask(currentCommittee, task);
+    } else {
+      updateTasks.push(task);
+      currentCommittee.setCompletedTasks(updateTasks);
+      this.props.committeeStore.deleteCompletedTask(currentCommittee, task);
+    }
+
+    this.setState(prevState => ({
+      checked: !prevState.checked
+    }));
+  };
   render() {
     const { task, members } = this.props;
-    const { priority, dueDate, detail } = this.state;
+    const { priority, dueDate, detail, checked } = this.state;
     const { authUser } = this.props.userStore;
 
     return (
@@ -71,6 +109,8 @@ class TaskItem extends Component {
             priority={priority}
             dueDate={dueDate}
             members={members}
+            checked={checked}
+            onCheckTask={this.checkTask}
           />
         ) : null}
         <div
@@ -79,8 +119,15 @@ class TaskItem extends Component {
           onClick={this.openDetail}
         >
           <button
-            className={styles.check__button + " " + styles.approve}
-            onClick={() => console.log("klik")}
+            type="button"
+            className={
+              styles.check__button +
+              " " +
+              styles.approve +
+              " " +
+              (checked ? styles.checked : null)
+            }
+            onClick={e => this.checkTask(e, task)}
           >
             <span className={styles.checker}></span>
           </button>
@@ -135,4 +182,4 @@ class TaskItem extends Component {
     );
   }
 }
-export default inject(`userStore`)(observer(TaskItem));
+export default inject(`userStore`, `committeeStore`)(observer(TaskItem));

@@ -2,6 +2,7 @@ import { decorate, observable, configure, action, runInAction } from "mobx";
 import Committee from "../models/Committee";
 import CommitteeMember from "../models/CommitteeMember";
 import Api from "../api";
+import Task from "../models/Task";
 
 configure({ enforceActions: `observed` });
 
@@ -10,6 +11,9 @@ class CommitteeStore {
   countries = [];
   currentCommittee = {};
   committeeMembers = [];
+  completedTasks = [];
+  completedTasksPeriods = [];
+  periodCompletedTasks = [];
   raceday = "";
   constructor(rootStore) {
     this.rootStore = rootStore;
@@ -32,8 +36,26 @@ class CommitteeStore {
       );
     });
   };
+  getPeriodCompletedTasks = pickedPeriod => {
+    this.periodCompletedTasks = [];
+    this.completedTasks.filter(a => a.period.term === pickedPeriod);
+    // .forEach(this._addPeriodCompletedTask);
+    this.periodCompletedTasks = this.completedTasks.filter(
+      a => a.period.term === pickedPeriod
+    );
+  };
+
+  _addPeriodCompletedTask = values => {
+    const task = new Task();
+    task.updateFromServer(values);
+    runInAction(() => {
+      this.periodCompletedTasks.push(task);
+    });
+  };
 
   getOne = id => {
+    this.completedTasksPeriods = [];
+
     this.api.getOne(id).then(d => {
       this._getCurrentCommittee(d);
     });
@@ -73,9 +95,28 @@ class CommitteeStore {
     committee.updateFromServer(values);
     runInAction(() => {
       this.currentCommittee = committee;
+      this.completedTasks = committee.completedTasks;
+      committee.completedTasks.forEach(this._getCompletedPeriods);
     });
   };
 
+  _getCompletedPeriods = values => {
+    if (
+      !this.completedTasksPeriods.some(a => a.term === values.period.term) &&
+      values.period
+    ) {
+      this.completedTasksPeriods.push(values.period);
+    }
+  };
+
+  addCompletedTask = (committee, task) => {
+    this.updateCommittee(committee);
+    this.completedTasks.push(task);
+  };
+  deleteCompletedTask = (committee, task) => {
+    this.updateCommittee(committee);
+    this.completedTasks.remove(task);
+  };
   updateCommittee = committee => {
     this.api
       .update(committee)
@@ -94,6 +135,9 @@ class CommitteeStore {
 decorate(CommitteeStore, {
   committees: observable,
   countries: observable,
+  completedTasks: observable,
+  addCompletedTask: action,
+  deleteCompletedTask: action,
   raceday: observable,
   addCommittee: action,
   deleteCommittee: action,
@@ -101,7 +145,10 @@ decorate(CommitteeStore, {
   getOne: action,
   getCommitteeMembers: action,
   committeeMembers: observable,
-  currentCommittee: observable
+  currentCommittee: observable,
+  completedTasksPeriods: observable,
+  periodCompletedTasks: observable,
+  getPeriodCompletedTasks: action
 });
 
 export default CommitteeStore;

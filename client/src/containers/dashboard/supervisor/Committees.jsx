@@ -6,6 +6,7 @@ import CommitteesTop from "../../../components/dashboard/committees/overview/Com
 import CommitteeEmpty from "../../../components/dashboard/committees/empty/CommitteeEmpty";
 const Committees = ({ committeeStore }) => {
   const { committees } = committeeStore;
+
   return (
     <>
       <CommitteesTop />

@@ -7,7 +7,8 @@ exports.create = (req, res) => {
     raceday: req.body.raceday,
     city: req.body.city,
     country: req.body.country,
-    description: req.body.description
+    description: req.body.description,
+    completedTasks: req.body.completedTasks
   });
 
   committee
@@ -56,7 +57,8 @@ exports.update = async (req, res) => {
         raceday: req.body.raceday,
         city: req.body.city,
         country: req.body.country,
-        description: req.body.description
+        description: req.body.description,
+        completedTasks: req.body.completedTasks
       },
       {
         new: true

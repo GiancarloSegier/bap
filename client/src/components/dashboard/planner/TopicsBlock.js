@@ -3,6 +3,8 @@ import styles from "./TopicsBlock.module.css";
 import modalStyles from "../../../styles/modal.module.css";
 import typoStyles from "../../../styles/typo.module.css";
 
+import { Link } from "react-router-dom";
+
 const TopicsBlock = () => {
   return (
     <div
@@ -14,20 +16,30 @@ const TopicsBlock = () => {
         styles.infoBlock
       }
     >
-      <p>More information?</p>
+      <h3 className={styles.heading3}>More information?</h3>
       <div className={styles.cardGrid}>
-        <article className={styles.topicBlock}>
+        <Link to="" className={styles.topicBlock}>
           <img
-            src="http://placekitten.com/40/40" // className={styles.icon}
-            width="40"
-            height="40"
-            alt="Location"
+            src="/assets/icons/toolbox/people.png"
+            className={styles.topicImage}
+            alt="Info image"
           />
-          <div>
-            <p>Chapter 2</p>
-            <h2 className={typoStyles.heading3}>Managing people</h2>
+          <div className={styles.infoText}>
+            <p className={styles.subTitle}>Chapter 2</p>
+            <h4 className={styles.topicTitle}>Managing people</h4>
           </div>
-        </article>
+        </Link>
+        <Link to="" className={styles.topicBlock + " " + styles.topic}>
+          <div className={styles.infoText}>
+            <p className={styles.subTitle}>Topic</p>
+            <h4 className={styles.topicTitle}>Volunteers</h4>
+          </div>
+          <img
+            src="/assets/icons/toolbox/people.png"
+            className={styles.topicImage}
+            alt="Info image"
+          />
+        </Link>
       </div>
     </div>
   );
