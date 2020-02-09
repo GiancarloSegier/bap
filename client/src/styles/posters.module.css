@@ -8,6 +8,7 @@
   font-size: 9rem;
   font-family: "Beatrice", Arial, Helvetica, sans-serif;
   font-weight: 900;
+  line-height: 1.2;
 }
 
 .background {
@@ -30,8 +31,6 @@
   justify-content: space-between;
 }
 .purpleBlock {
-  left: 4rem;
-  top: 45rem;
   background: url("./assets/posters/purpleblock.png");
   width: 58rem;
   height: 58rem;
@@ -39,8 +38,6 @@
   background-size: cover;
 }
 .whiteBlock {
-  right: 4rem;
-  top: 87rem;
   background: url("./assets/posters/whiteblock.png");
   width: 44rem;
   height: 44rem;
@@ -79,13 +76,11 @@
   margin: 2rem 0;
 }
 .logoCircle {
-  width: 31rem;
-  height: 31rem;
+  width: 29rem;
+  height: 29rem;
   background: url("./assets/posters/pinkcircle.png");
   background-size: cover;
   position: absolute;
-  top: 107rem;
-  left: 30.5rem;
   padding: 4rem;
   border-radius: 30rem;
   display: flex;
@@ -94,7 +89,6 @@
 }
 .logo {
   width: 100%;
-  background-color: red;
 }
 .sponsorBlock {
   width: 100%;
@@ -113,4 +107,28 @@
   object-fit: contain;
   max-width: 14rem;
   margin-right: 1rem;
+}
+.krulA {
+  background: url("./assets/posters/lineA.png");
+  width: 102%;
+  height: 160rem;
+  position: absolute;
+  top: -7rem;
+  left: 0;
+}
+.krulB {
+  background: url("./assets/posters/lineB.png");
+  width: 102%;
+  height: 160rem;
+  position: absolute;
+  top: -7rem;
+  left: -0.5rem;
+}
+.krulC {
+  background: url("./assets/posters/lineC.png");
+  width: 102%;
+  height: 160rem;
+  position: absolute;
+  top: -7rem;
+  left: -0.5rem;
 }

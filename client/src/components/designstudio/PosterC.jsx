@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import positionStyles from "./PosterA.module.css";
+import positionStyles from "./PosterC.module.css";
 import styles from "../../styles/posters.module.css";
 
-class PosterA extends Component {
+class PosterC extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -25,7 +25,7 @@ class PosterA extends Component {
           className={styles.background}
         />
         <div className={styles.posterContent}>
-          <div className={styles.krulA}></div>
+          <div className={styles.krulC}></div>
           <div
             className={
               styles.blocks +
@@ -90,4 +90,4 @@ class PosterA extends Component {
   }
 }
 
-export default PosterA;
+export default PosterC;

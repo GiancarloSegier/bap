@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import positionStyles from "./PosterA.module.css";
+import positionStyles from "./PosterB.module.css";
 import styles from "../../styles/posters.module.css";
 
-class PosterA extends Component {
+class PosterB extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -20,12 +20,12 @@ class PosterA extends Component {
     return (
       <div className={styles.artboard}>
         <img
-          src="./assets/designstudio/posterBackground.jpg"
+          src="./assets/designstudio/posterb.jpg"
           alt="backgroundimage"
           className={styles.background}
         />
         <div className={styles.posterContent}>
-          <div className={styles.krulA}></div>
+          <div className={styles.krulB}></div>
           <div
             className={
               styles.blocks +
@@ -90,4 +90,4 @@ class PosterA extends Component {
   }
 }
 
-export default PosterA;
+export default PosterB;

@@ -26,6 +26,16 @@ class PosterForm extends Component {
           onChange={this.handleChange}
           placeholder="city"
         />
+        <select
+          name="poster"
+          id="poster"
+          onChange={this.handleChange}
+          defaultValue="posterA"
+        >
+          <option value="posterA">Poster A</option>
+          <option value="posterB">Poster B</option>
+          <option value="posterC">Poster C</option>
+        </select>
       </>
     );
   }

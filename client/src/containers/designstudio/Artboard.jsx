@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import PosterA from "../../components/designstudio/PosterA";
+import PosterB from "../../components/designstudio/PosterB";
+import PosterC from "../../components/designstudio/PosterC";
 
 class Artboard extends Component {
   constructor(props) {
@@ -7,6 +9,7 @@ class Artboard extends Component {
   }
 
   render() {
+    const { data } = this.props;
     return (
       <div
         style={{
@@ -15,7 +18,13 @@ class Artboard extends Component {
           backgroundColor: "white"
         }}
       >
-        <PosterA data={this.props.data} />
+        {data.poster === "posterA" ? (
+          <PosterA data={data} />
+        ) : data.poster === "posterB" ? (
+          <PosterB data={data} />
+        ) : (
+          <PosterC data={data} />
+        )}
       </div>
     );
   }

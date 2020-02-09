@@ -23,7 +23,8 @@ class DesignStudio extends Component {
         raceday: "29-09-2020",
         city: "Antwerpen",
         contentView: false,
-        loading: false
+        loading: false,
+        poster: "posterA"
       }
     };
     this.ref = React.createRef();
@@ -89,6 +90,7 @@ class DesignStudio extends Component {
     const state = { ...this.state };
 
     state.data[input.name] = input.value;
+
     this.setState(state);
   };
 
@@ -100,6 +102,7 @@ class DesignStudio extends Component {
 
   render() {
     const { contentView } = this.state;
+    console.log(this.state);
     return (
       <>
         {this.state.loading ? (
