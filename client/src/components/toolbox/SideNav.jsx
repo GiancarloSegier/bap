@@ -48,7 +48,8 @@ const SideNav = () => {
         <li>
           <NavLink
             className={styles.navItem}
-            exact={true}
+            // exact={true}
+            strict={true}
             to={ROUTES.people}
             activeClassName={styles.navItem_active}
           >

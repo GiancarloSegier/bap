@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import PosterA from "../../components/designstudio/PosterA";
 
 class Artboard extends Component {
   constructor(props) {
@@ -7,29 +8,14 @@ class Artboard extends Component {
 
   render() {
     return (
-      <div ref={this.props.ref} id="test" style={{ width: 1000, height: 1000 }}>
-        <div
-          style={{
-            width: 500,
-            height: 500,
-            background: "blue",
-            position: "relative"
-          }}
-        >
-          <h1 style={{ color: "white", fontSize: "25px" }}>
-            {this.props.data.title}
-          </h1>
-          <h1
-            style={{
-              color: "white",
-              fontSize: "32px",
-              position: "absolute",
-              bottom: "25px"
-            }}
-          >
-            {this.props.data.city}
-          </h1>
-        </div>
+      <div
+        style={{
+          width: "1123px",
+          height: "1588px",
+          backgroundColor: "white"
+        }}
+      >
+        <PosterA data={this.props.data} />
       </div>
     );
   }
