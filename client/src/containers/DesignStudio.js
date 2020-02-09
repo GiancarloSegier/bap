@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Component } from "react";
 // import Topbar from "../components/Topbar";
 import styles from "./DesignStudio.module.css";
 // import Form from "../components/Form";
@@ -6,13 +6,24 @@ import styles from "./DesignStudio.module.css";
 import ReactToPdf from "react-to-pdf";
 import canvasToImage from "canvas-to-image";
 import html2canvas from "html2canvas";
+import Artboard from "./designstudio/Artboard";
+import PosterForm from "../components/designstudio/PosterForm";
 
-const DesignStudio = () => {
-  const ref = React.createRef();
+class DesignStudio extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      data: {
+        title: "Title",
+        city: "City"
+      }
+    };
+    this.ref = React.createRef();
+  }
 
-  const getImage = e => {
+  getImage = e => {
     html2canvas(document.getElementById("test")).then(function(canvas) {
-      var link = document.createElement("a");
+      const link = document.createElement("a");
       document.body.appendChild(link);
       link.download = "manpower_efficiency.jpg";
       link.href = canvas.toDataURL();
@@ -21,26 +32,37 @@ const DesignStudio = () => {
     });
   };
 
-  return (
-    <>
-      <div className={styles.container}>
-        <p>Designstudio</p>
-        <div>
-          <ReactToPdf targetRef={ref} filename="div-blue.pdf">
-            {({ toPdf }) => <button onClick={toPdf}>Generate pdf</button>}
-          </ReactToPdf>
-          <button onClick={getImage}>Donwload jpg</button>
-          <div ref={ref} id="test" style={{ width: 1000, height: 1000 }}>
-            <div style={{ width: 500, height: 500, background: "blue" }}>
-              <h1 style={{ color: "white", fontSize: "25px" }}>
-                Hallo Laurens
-              </h1>
+  handleChange = e => {
+    const input = e.currentTarget;
+    const state = { ...this.state };
+
+    state.data[input.name] = input.value;
+    this.setState(state);
+  };
+  render() {
+    return (
+      <>
+        <div className={styles.container}>
+          <p>Designstudio</p>
+          <div>
+            <PosterForm onChangeData={this.handleChange} />
+
+            <ReactToPdf
+              targetRef={this.ref}
+              filename={`${this.state.data.title.split(" ").join("_")}.pdf`}
+            >
+              {({ toPdf }) => <button onClick={toPdf}>Generate pdf</button>}
+            </ReactToPdf>
+            <button onClick={this.getImage}>Donwload jpg</button>
+
+            <div ref={this.ref} id="test">
+              <Artboard data={this.state.data} />
             </div>
           </div>
         </div>
-      </div>
-    </>
-  );
-};
+      </>
+    );
+  }
+}
 
 export default DesignStudio;
