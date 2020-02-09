@@ -4,7 +4,7 @@ import styles from "./Auth.module.css";
 
 const Request = () => {
   return (
-    <>
+    <div className={styles.bg}>
       <div className={styles.divide + " mediumcontainer"}>
         <h1 className="hidden">Loginpage</h1>
         <div>
@@ -18,7 +18,7 @@ const Request = () => {
         </div>
         <RequestForm />
       </div>
-    </>
+    </div>
   );
 };
 

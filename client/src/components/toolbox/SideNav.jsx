@@ -7,12 +7,11 @@ import FontAwesome from "react-fontawesome";
 const SideNav = () => {
   return (
     <div className={styles.sideNav}>
+      <NavLink exact={true} className={styles.navLink} to={ROUTES.home}>
+        RFTC
+      </NavLink>
       <div className={styles.menu}>
         <p>toolbox</p>
-        <FontAwesome
-          name="bars"
-          // onClick={this.onEdit}
-        />
       </div>
 
       <ul className={styles.list}>

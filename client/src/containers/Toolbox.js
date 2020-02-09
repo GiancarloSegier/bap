@@ -7,6 +7,7 @@ import { ROUTES } from "../constants";
 import ChapterPeople from "./toolbox/ChapterPeople";
 import ChapterStart from "./toolbox/ChapterStart";
 import Welcome from "./toolbox/Welcome";
+import EventManager from "./toolbox/EventManager";
 
 const Toolbox = () => {
   return (
@@ -19,6 +20,7 @@ const Toolbox = () => {
           <Route path={ROUTES.welcome} exact component={Welcome} />
           <Route path={ROUTES.start} exact component={ChapterStart} />
           <Route path={ROUTES.people} exact component={ChapterPeople} />
+          <Route path={ROUTES.detail} exact component={EventManager} />
         </Switch>
       </div>
     </div>

@@ -19,6 +19,7 @@ export const ROUTES = {
   welcome: "/toolbox",
   start: "/toolbox/start",
   people: "/toolbox/people",
+  detail: "/toolbox/people/event",
 
   planner: "/dashboard/planner",
   myTasks: "/dashboard/planner/mytasks",

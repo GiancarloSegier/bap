@@ -18,16 +18,23 @@
 .sideNav {
   composes: sideNav from "../SideNav.module.css";
   width: 32rem;
+  justify-content: flex-end;
+  padding-top: 2rem;
 }
 .list {
   position: relative;
   display: grid;
   grid-template-columns: repeat(2, 50%);
   grid-template-rows: repeat(5, 12.8rem);
-  margin-top: 5rem;
 }
 .list li {
   padding: 1rem;
+}
+.navLink {
+  padding-left: 1rem;
+  color: white;
+  margin-bottom: auto;
+  font-weight: bold;
 }
 .navtitle {
   color: white;

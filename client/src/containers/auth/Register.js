@@ -45,7 +45,7 @@ class Register extends Component {
     const { phone } = this.props.requestStore.currentRequest;
 
     return (
-      <>
+      <div className={styles.bg}>
         <div className={styles.divide + " mediumcontainer"}>
           <h1 className="hidden">Loginpage</h1>
           <div>
@@ -107,7 +107,7 @@ class Register extends Component {
             <MemberRegisterForm onUpdate={this.onUpdate} />
           )}
         </div>
-      </>
+      </div>
     );
   }
 }
