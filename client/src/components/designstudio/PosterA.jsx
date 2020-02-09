@@ -9,7 +9,9 @@ class PosterA extends Component {
       basics: {
         title: "Race for the cure",
         raceday: "29-09-2020",
-        city: "Antwerpen"
+        city: "Antwerpen",
+        location: "Frederik van Eedenplein",
+        site: "raceforthecure.com"
       }
     };
   }
@@ -60,10 +62,16 @@ class PosterA extends Component {
               <p className={styles.info}>3 km wandelen</p>
               <p className={styles.info}>6 km lopen</p>
               <div className={styles.line}></div>
-              <p className={styles.smallInfo}>Frederik van Eedenplein</p>
+              <p className={styles.smallInfo}>
+                {" "}
+                {data.location !== "" ? data.location : basics.location}
+              </p>
               <p className={styles.smallInfo}>9:00 - 14:00</p>
             </div>
-            <p className={styles.site}>raceforthecure.com</p>
+            <p className={styles.site}>
+              {" "}
+              {data.site !== "" ? data.site : basics.site}
+            </p>
           </div>
           <div className={styles.logoCircle + " " + positionStyles.logoCircle}>
             <img
@@ -72,7 +80,14 @@ class PosterA extends Component {
               alt="logo organisation"
             />
           </div>
-          <div className={styles.sponsorBlock}>
+
+          <div
+            className={
+              styles.sponsorBlock +
+              " " +
+              (data.sponsorborder === "on" ? null : styles.noSponsors)
+            }
+          >
             <img
               className={styles.sponsor}
               src="./assets/designstudio/europcar.png"

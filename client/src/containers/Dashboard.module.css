@@ -13,7 +13,7 @@
   position: fixed;
   top: 0;
   left: 0;
-  width: 38rem;
+  width: 36rem;
   z-index: 100;
   border-radius: 0;
 }
@@ -23,10 +23,20 @@
 }
 
 .designStudioButtons {
-  background-color: none;
+  background: none;
   border: none;
   font-size: 2rem;
   font-weight: bold;
+  color: var(--grey-low);
+  margin-right: 4rem;
+  transition: 0.25s ease-in-out;
+}
+.designStudioButtons:hover {
+  color: var(--purple-low);
+  cursor: pointer;
+}
+.activeView {
+  color: var(--purple-low);
 }
 .navContainer {
   composes: modalContainer from "../styles/modal.module.css";

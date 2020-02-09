@@ -13,16 +13,20 @@ import PosterForm from "../components/designstudio/PosterForm";
 import htmlToImage from "html-to-image";
 import JSpdf from "jspdf";
 import { transform } from "html2canvas";
+import PosterFormat from "../components/designstudio/PosterFormat";
 
 class DesignStudio extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      contentView: "FORMAT",
       data: {
         title: "Race for the cure",
         raceday: "29-09-2020",
         city: "Antwerpen",
-        contentView: false,
+        location: "Frederik van Eedenplein",
+        site: "raceforthecure.com",
+        sponsorborder: "off",
         loading: false,
         poster: "posterA"
       }
@@ -89,15 +93,16 @@ class DesignStudio extends Component {
     const input = e.currentTarget;
     const state = { ...this.state };
 
-    state.data[input.name] = input.value;
-
+    if (input.name === "sponsorborder") {
+      if (this.state.data.sponsorborder === "on") {
+        state.data[input.name] = "off";
+      } else {
+        state.data[input.name] = input.value;
+      }
+    } else {
+      state.data[input.name] = input.value;
+    }
     this.setState(state);
-  };
-
-  changeView = e => {
-    this.setState(prevstate => ({
-      contentView: !prevstate.contentView
-    }));
   };
 
   render() {
@@ -114,24 +119,35 @@ class DesignStudio extends Component {
           <div className={styles.designStudioNav}>
             <div className={styles.navContainer}>
               <button
-                onClick={this.changeView}
-                className={styles.designStudioButtons}
+                onClick={() => this.setState({ contentView: "FORMAT" })}
+                className={
+                  styles.designStudioButtons +
+                  " " +
+                  (contentView === "FORMAT" ? styles.activeView : null)
+                }
               >
                 Format
               </button>
               <button
-                onClick={this.changeView}
-                className={styles.designStudioButtons}
+                onClick={() => this.setState({ contentView: "CONTENT" })}
+                className={
+                  styles.designStudioButtons +
+                  " " +
+                  (contentView === "CONTENT" ? styles.activeView : null)
+                }
               >
                 Content
               </button>
             </div>
+
+            {contentView === "FORMAT" ? (
+              <PosterFormat onChangeData={this.handleChange} />
+            ) : (
+              <PosterForm onChangeData={this.handleChange} />
+            )}
             <div
               className={styles.navContainer + " " + modalStyles.divideBorder}
             >
-              {contentView ? null : (
-                <PosterForm onChangeData={this.handleChange} />
-              )}
               <button
                 onClick={e => this.exportDesign(e, this.state.data, "jpg")}
               >

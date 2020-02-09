@@ -9,7 +9,9 @@ class PosterC extends Component {
       basics: {
         title: "Race for the cure",
         raceday: "29-09-2020",
-        city: "Antwerpen"
+        city: "Antwerpen",
+        location: "Frederik van Eedenplein",
+        site: "raceforthecure.com"
       }
     };
   }
@@ -72,7 +74,13 @@ class PosterC extends Component {
               alt="logo organisation"
             />
           </div>
-          <div className={styles.sponsorBlock}>
+          <div
+            className={
+              styles.sponsorBlock +
+              " " +
+              (data.sponsorborder === "on" ? null : styles.noSponsors)
+            }
+          >
             <img
               className={styles.sponsor}
               src="./assets/designstudio/europcar.png"

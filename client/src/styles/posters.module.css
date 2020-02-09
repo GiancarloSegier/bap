@@ -101,6 +101,11 @@
   display: flex;
   flex-wrap: wrap;
   padding: 2rem 4rem;
+  opacity: 1;
+  transition: 0.25s ease-in-out;
+}
+.noSponsors {
+  opacity: 0;
 }
 .sponsor {
   max-height: 10rem;
