@@ -52,7 +52,7 @@ const Home = () => {
               to={ROUTES.toolbox}
               activeClassName={styles.active}
             >
-              Learn more
+              Toolbox
               <FontAwesome
                 className={styles.margin_left}
                 name="chevron-right"
@@ -63,7 +63,7 @@ const Home = () => {
         <section className={styles.spacer + " " + styles.float}>
           <div className={styles.container}>
             <h3 className={styles.heading2}>
-              Get the right look &amp; feel with our designstudio
+              Get the right look and feel with our designstudio
             </h3>
             <p className={styles.body}>
               Our designtool helps you create promotional material in no time.
@@ -75,7 +75,7 @@ const Home = () => {
               to={ROUTES.designstudio}
               activeClassName={styles.active}
             >
-              Learn more
+              Designstudio
               <FontAwesome
                 className={styles.margin_left}
                 name="chevron-right"
@@ -98,7 +98,7 @@ const Home = () => {
                   Get in touch and join the movement!
                 </p>
                 <Link className={styles.button} to={ROUTES.request}>
-                  Learn more
+                  Request access
                 </Link>
               </div>
             </div>

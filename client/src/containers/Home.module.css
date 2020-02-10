@@ -16,12 +16,13 @@
   font-size: 5.6rem;
   line-height: 7.8rem;
   font-weight: 800;
+  color: var(--purple-high);
 }
 
 .heading2 {
   font-family: "beatrice";
   font-size: 3.2rem;
-
+  color: var(--purple-high);
   font-weight: 800;
 }
 
