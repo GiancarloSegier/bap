@@ -24,10 +24,11 @@ class AvatarNav extends Component {
     }
   };
 
-  handleLogout = e => {
+  handleLogout = async e => {
     e.preventDefault();
-    this.props.userStore.logout();
-    window.location.href = "/";
+    await this.props.userStore
+      .logout()
+      .then(() => (window.location.href = "/"));
   };
 
   render() {
