@@ -27,7 +27,7 @@ const SideNav = () => {
               src="../../assets/icons/toolbox/gettingstarted.png"
               alt=""
             />
-            <p className={styles.navtitle}>Welcome</p>
+            <p className={styles.navtitle}>Start here</p>
           </NavLink>
         </li>
         <li>

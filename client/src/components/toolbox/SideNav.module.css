@@ -18,7 +18,6 @@
 .sideNav {
   composes: sideNav from "../SideNav.module.css";
   width: 32rem;
-  justify-content: flex-end;
   padding-top: 2rem;
 }
 .list {

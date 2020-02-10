@@ -8,78 +8,113 @@ class Chapter_Start extends Component {
   render() {
     return (
       <>
-        <div className={styles.container}>
-          <section className={styles.flex}>
-            <div className={styles.shrink}>
-              <p className={styles.pink}>Chapter 1</p>
+        <section className={styles.header_bg}>
+          <div className={styles.container + " " + styles.header}>
+            <img src="../assets/headerscrabble.png" alt="" />
+            <div className={styles.header_text}>
+              <p className={styles.smalltitle}>Chapter 1</p>
               <h1 className={styles.heading1}>Starting your event</h1>
               <p className={styles.intro}>
-                Over the last years, Race for the Cure grew to be the world’s
-                largest sporting event in the fight against{" "}
-                <span className={styles.highlight}>breast cancer. </span>breast
-                cancer. But there is always room for growth.
+                Ready, set, go! Kickstart your the planning of your Race with
+                mapping out the most important structures.
               </p>
             </div>
-            <img src="../assets/headerscrabble.png" alt="" />
-          </section>
-          <section className={styles.spacer}>
+          </div>
+        </section>
+        <div className={styles.container}>
+          <section className={styles.whenwere}>
             <h2 className={styles.heading2}>when and were</h2>
             <div className={styles.grid}>
-              <div className={styles.card + " " + styles.span_vertical}>
+              <div>
+                <img height="250" src="../assets/when.png" alt="" />
                 <p className={styles.smalltitle}>when</p>
-                <p className={styles.body}>
+                <p className={styles.copy}>
                   Most of the Races for the Cure will take place on the same
-                  day, the last Sunday of September.
-                </p>
-                <p className={styles.body}>
-                  For 2020 this is the 27th of September. If you have, for all
-                  kinds of reasons, another date please be in contact with Think
-                  Pink Europe so we can adapt communication.
-                </p>
-              </div>
-              <div className={styles.card}>
-                <p className={styles.smalltitle}>where</p>
-                <p className={styles.body}>
-                  The decision regarding where the Race will take place depends
-                  on your organisation. First of all, it is important to decide
-                  where you will held the race: in which city or cities.
-                </p>
-              </div>
-              <div className={styles.card + " " + styles.tip}>
-                <p className={styles.body}>
+                  day, the last Sunday of September.{" "}
+                  <span className={styles.highlight}>
+                    For 2020 this is the 27th of September.
+                  </span>
                   The advantage of this last Sunday of September is that you can
                   claim the official kick-off of breast cancer month October.
-                  But off course you have to aline this with local situations
-                  and logistics.
+                </p>
+              </div>
+              <div>
+                <img height="250" src="../assets/were.png" alt="" />
+                <p className={styles.smalltitle}>where</p>
+                <p className={styles.copy}>
+                  The decision regarding where the Race will take place depends
+                  on your organisation. First of all, it is important to decide
+                  where you will held the race: in which city or cities. Off
+                  course you have to aline this with local situations and
+                  logistics
                 </p>
               </div>
             </div>
           </section>
+          <div className={styles.card + " " + styles.long_card}>
+            <h3 className={styles.heading3 + " " + styles.pink}>
+              One day, <br />
+              one race
+            </h3>
+            <p className={styles.copy}>
+              "One day, One Race" symbolises solidarity all across the
+              continent. Therefore we encourage your to pick the last Sunday of
+              September as race date to strenghten this idea.
+              <span className={styles.highlight}>
+                If you pick another date, please be in contact with Think Pink
+                Europe so we can adapt communication.
+              </span>
+            </p>
+          </div>
         </div>
-        <section className={styles.purplebg + " " + styles.negative_margin}>
-          <div className={styles.container_small}>
+        <section className={styles.purple_bg}>
+          <div className={styles.container}>
             <div className={styles.next}>
-              <h3 className={styles.heading2}>Getting Started</h3>
-              <p>
+              <h3 className={styles.heading2}>Next steps</h3>
+              <p className={styles.copy}>
                 Let’s start of with the basics. Practical information about the
                 event and job functions.
               </p>
             </div>
-            <div className={styles.cardgrid}>
-              <div className={styles.chapter_card}>
-                <img src="../assets/chapter3.png" alt="" />
-                <p className={styles.card_subtitle}>chapter1</p>
-                <h4 className={styles.card_title}>starting your event</h4>
+            <div className={styles.card_grid}>
+              <div className={styles.chapter_card + " " + styles.grow}>
+                <img
+                  className={styles.chapter_image}
+                  src="../assets/headerpeople.png"
+                  alt=""
+                />
+                <div>
+                  <p className={styles.card_subtitle}>chapter 2</p>
+                  <h4 className={styles.card_title}>Managing People</h4>
+                </div>
               </div>
-              <div className={styles.chapter_card}>
-                <img src="../assets/chaptercard.png" alt="" />
-                <p className={styles.card_subtitle}>chapter1</p>
-                <h4 className={styles.card_title}>Managing People</h4>
+              <div className={styles.chapter_card + " " + styles.grow}>
+                <img
+                  className={styles.chapter_image}
+                  src="../assets/headerfinancial.png"
+                  alt=""
+                />
+                <div>
+                  <p className={styles.card_subtitle}>chapter 3</p>
+                  <h4 className={styles.card_title}>Financial and Sponsors</h4>
+                </div>
               </div>
-              <div className={styles.chapter_card}>
-                <img src="../assets/chapter3.png" alt="" />
-                <p className={styles.card_subtitle}>chapter1</p>
-                <h4 className={styles.card_title}>starting your event</h4>
+              <div className={styles.chapter_card + " " + styles.grow}>
+                <img
+                  className={styles.chapter_image}
+                  src="../assets/headerlegal.png"
+                  alt=""
+                />
+                <div>
+                  <p className={styles.card_subtitle}>chapter 4</p>
+                  <h4
+                    className={
+                      styles.card_title + " " + styles.card_title_small
+                    }
+                  >
+                    Legal, Security and Medical Provision
+                  </h4>
+                </div>
               </div>
             </div>
           </div>

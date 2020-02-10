@@ -5,6 +5,11 @@
 }
 @font-face {
   font-family: "beatrice";
+  src: url("./Beatrice-Medium.woff") format("woff");
+  font-weight: 400;
+}
+@font-face {
+  font-family: "beatrice";
   src: url("./Beatrice-Semibold.woff") format("woff");
   font-weight: 500;
 }
