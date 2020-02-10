@@ -1,19 +1,16 @@
 import React, { Component } from "react";
-// import Topbar from "../components/Topbar";
 import styles from "./Dashboard.module.css";
 import modalStyles from "../styles/modal.module.css";
-// import Form from "../components/Form";
+import uiStyles from "../styles/ui.module.css";
 
-import ReactToPdf from "react-to-pdf";
-import canvasToImage from "canvas-to-image";
-import html2canvas from "html2canvas";
 import Artboard from "./designstudio/Artboard";
 import PosterForm from "../components/designstudio/PosterForm";
+import domtoimage from "dom-to-image";
 
-import htmlToImage from "html-to-image";
+import * as htmlToImage from "html-to-image";
 import JSpdf from "jspdf";
-import { transform } from "html2canvas";
 import PosterFormat from "../components/designstudio/PosterFormat";
+import FontAwesome from "react-fontawesome";
 
 class DesignStudio extends Component {
   constructor(props) {
@@ -21,14 +18,19 @@ class DesignStudio extends Component {
     this.state = {
       contentView: "FORMAT",
       data: {
-        title: "Race for the cure",
         raceday: "29-09-2020",
         city: "Antwerpen",
         location: "Frederik van Eedenplein",
         site: "raceforthecure.com",
+        hours: "9:00 - 14:00",
+
+        logo: "./assets/designstudio/logothinkpink.png",
+        walking: 3,
+        running: 6,
         sponsorborder: "off",
         loading: false,
-        poster: "posterA"
+        poster: "posterA",
+        export: "pdf"
       }
     };
     this.ref = React.createRef();
@@ -51,11 +53,11 @@ class DesignStudio extends Component {
     this.setState({ scale: scaleLevel, margin: margin });
   };
 
-  exportDesign = async (e, data, format) => {
+  exportDesign = async (e, data) => {
     this.setState({ loading: true });
-    const exportBlock = document.getElementById("test");
+    const exportBlock = document.getElementById("artboard");
     exportBlock.style.transform = "scale(1)";
-    if (format === "pdf") {
+    if (data.export === "pdf") {
       htmlToImage
         .toCanvas(exportBlock)
         .then(function(canvas) {
@@ -65,20 +67,18 @@ class DesignStudio extends Component {
           var width = pdf.internal.pageSize.getWidth();
           var height = pdf.internal.pageSize.getHeight();
           pdf.addImage(imgData, "JPG", 0, 0, width, height);
-          pdf.save(`${data.title}.pdf`);
+          pdf.save(`raceforthecure.pdf`);
         })
         .then(() => {
           exportBlock.style.transform = `scale(${this.state.scale})`;
           this.setState({ loading: false });
         });
     } else {
-      htmlToImage
-        .toJpeg(exportBlock, {
-          quality: 0.95
-        })
-        .then(dataUrl => {
+      domtoimage
+        .toJpeg(exportBlock, { quality: 0.95 })
+        .then(function(dataUrl) {
           var link = document.createElement("a");
-          link.download = `${data.title}.jpg`;
+          link.download = "raceforthecure.jpeg";
           link.href = dataUrl;
           link.click();
         })
@@ -99,10 +99,24 @@ class DesignStudio extends Component {
       } else {
         state.data[input.name] = input.value;
       }
+    } else if (input.name === "raceday") {
+      if (input.value) {
+        const dateParts = input.value.split("-");
+
+        const dateString = `${dateParts[2]}-${dateParts[1]}-${dateParts[0]}`;
+        state.data[input.name] = dateString;
+      } else {
+        state.data[input.name] = "";
+      }
+    } else if (input.type === "file") {
+      console.log("file uploaded");
+
+      state.data[input.name] = URL.createObjectURL(input.files[0]);
     } else {
       state.data[input.name] = input.value;
     }
     this.setState(state);
+    console.log(this.state);
   };
 
   render() {
@@ -117,7 +131,11 @@ class DesignStudio extends Component {
         ) : null}
         <div className={styles.dashboardGrid}>
           <div className={styles.designStudioNav}>
-            <div className={styles.navContainer}>
+            <div
+              className={
+                styles.navContainer + " " + modalStyles.divideBorderBottom
+              }
+            >
               <button
                 onClick={() => this.setState({ contentView: "FORMAT" })}
                 className={
@@ -145,26 +163,54 @@ class DesignStudio extends Component {
             ) : (
               <PosterForm onChangeData={this.handleChange} />
             )}
-            <div
-              className={styles.navContainer + " " + modalStyles.divideBorder}
+
+            <fieldset
+              className={
+                modalStyles.modalContainer + " " + modalStyles.divideBorder
+              }
             >
-              <button
-                onClick={e => this.exportDesign(e, this.state.data, "jpg")}
-              >
-                Donwload jpg
-              </button>
-              <button
-                onClick={e => this.exportDesign(e, this.state.data, "pdf")}
-              >
-                Donwload pdf
-              </button>
-            </div>
+              <div className={styles.exportBlock}>
+                <div className={styles.exportTypeButtons}>
+                  <input
+                    type="radio"
+                    name="export"
+                    value="pdf"
+                    id="pdf"
+                    onChange={this.handleChange}
+                    defaultChecked
+                  />
+                  <label htmlFor="pdf" className={styles.exportButton}>
+                    PDF
+                  </label>
+                  <input
+                    type="radio"
+                    name="export"
+                    value="jpg"
+                    id="jpg"
+                    onChange={this.handleChange}
+                  />
+                  <label htmlFor="jpg" className={styles.exportButton}>
+                    JPG
+                  </label>
+                </div>
+                <button
+                  onClick={e => this.exportDesign(e, this.state.data)}
+                  className={uiStyles.textButton}
+                >
+                  <FontAwesome
+                    name="download"
+                    className={styles.button__icon}
+                  />
+                  download
+                </button>
+              </div>
+            </fieldset>
           </div>
           <div className={styles.designStudioContent}>
             <div className={"container"}>
               <div className={styles.artboardFrame}>
                 <div
-                  id="test"
+                  id="artboard"
                   className={styles.scaledFrame}
                   style={{
                     transform: `scale(${this.state.scale}`,

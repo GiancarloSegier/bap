@@ -1,6 +1,9 @@
 .navContainer {
   composes: modalContainer from "../../styles/modal.module.css";
 }
+.scrollContainer {
+  overflow-y: scroll;
+}
 
 [type="radio"]:checked,
 [type="radio"]:not(:checked) {

@@ -85,3 +85,36 @@ canvas {
   justify-content: center;
   align-items: center;
 }
+[type="radio"]:checked,
+[type="radio"]:not(:checked) {
+  position: absolute;
+  left: -9999px;
+}
+[type="radio"]:checked + .exportButton {
+  border-color: var(--pink-mid);
+  opacity: 1;
+}
+.exportTypeButtons {
+  display: flex;
+  justify-content: space-between;
+  width: 12rem;
+}
+.exportButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--grey-lower);
+  width: 5rem;
+  height: 4rem;
+  border-radius: 0.4rem;
+  border: 0.3rem solid transparent;
+}
+.button__icon {
+  margin-right: 1rem;
+  color: var(--pink-low);
+}
+
+.exportBlock {
+  display: flex;
+  justify-content: space-between;
+}
