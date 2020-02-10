@@ -38,13 +38,20 @@ class InviteCommitteeForm extends Component {
     this.setState(state);
   };
   checkInput = (e, inputType) => {
+    /*eslint no-useless-escape: "off"*/
     const re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     const value = e.target.value;
     if (inputType === "email") {
       if (re.test(value)) {
-        this.setState({ email: value, emailError: false });
+        this.setState({
+          email: value,
+          emailError: false
+        });
       } else {
-        this.setState({ email: "", emailError: true });
+        this.setState({
+          email: "",
+          emailError: true
+        });
       }
     }
   };
@@ -58,8 +65,6 @@ class InviteCommitteeForm extends Component {
   };
 
   handleSubmit = e => {
-    // const uuid = require("uuid");
-    // const requestId = uuid();
     const mongoose = require("mongoose");
     const randomId = this.randomStr(24, "12345abcde");
     const requestId = mongoose.Types.ObjectId(randomId);

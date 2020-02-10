@@ -156,6 +156,8 @@ class MemberListItem extends Component {
                           {job.assignment}
                         </option>
                       );
+                    } else {
+                      return null;
                     }
                   })}
                 </select>

@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./Dashboard.module.css";
-// import Form from "../components/Form";
+
 import SideNav from "../components/SideNav";
 import { Route, Switch } from "react-router-dom";
 import { ROUTES } from "../constants";
@@ -9,7 +9,6 @@ import Requests from "./dashboard/supervisor/Requests";
 
 import DashboardHome from "./dashboard/DashboardHome";
 import MyCommittee from "./dashboard/members/MyCommittee";
-import News from "./dashboard/members/News";
 import Planner from "./dashboard/members/planner/Planner";
 
 import { inject, observer } from "mobx-react";

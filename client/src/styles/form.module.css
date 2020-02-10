@@ -130,7 +130,8 @@
   visibility: hidden;
 }
 
-.avatarInput {
+.avatarInput,
+.fileInput {
   display: none;
 }
 
@@ -197,6 +198,10 @@
 .removeImage:hover {
   cursor: pointer;
   background-color: var(--pink-high);
+}
+.removeImage .decliner,
+.removeImage .decliner:after {
+  border-color: var(--grey-low);
 }
 .removeImage:hover .decliner,
 .removeImage:hover .decliner:after {

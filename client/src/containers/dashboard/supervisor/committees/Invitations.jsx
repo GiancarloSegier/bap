@@ -2,9 +2,6 @@ import React, { Component } from "react";
 import CommitteesTop from "../../../../components/dashboard/committees/overview/CommitteesTop";
 import { inject, observer } from "mobx-react";
 import InvitationListItem from "../../../../components/dashboard/committees/list/InvitationListItem";
-
-import styles from "../../Dashboard.module.css";
-import typoStyles from "../../../../styles/typo.module.css";
 import InvitationsHeader from "../../../../components/dashboard/committees/overview/InvitationsHeader";
 import InviteCommitteeForm from "../../../../components/ui/InviteCommitteeForm";
 import InvitationsEmpty from "../../../../components/dashboard/committees/empty/InvitationsEmpty";

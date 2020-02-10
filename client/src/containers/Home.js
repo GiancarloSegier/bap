@@ -1,7 +1,5 @@
 import React from "react";
 import styles from "./Home.module.css";
-import uiStyles from "../styles/ui.module.css";
-// import Form from "../components/Form";
 import FontAwesome from "react-fontawesome";
 import { Link } from "react-router-dom";
 import { ROUTES } from "../constants";

@@ -4,12 +4,7 @@ import formStyles from "../../styles/form.module.css";
 import modalStyles from "../../styles/modal.module.css";
 
 class PosterFormat extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   handleChange = e => {
-    console.log(e.target.value);
     this.props.onChangeData(e);
   };
   render() {
@@ -135,6 +130,7 @@ class PosterFormat extends Component {
                 <img
                   src="/assets/designstudio/templateA.jpg"
                   className={styles.templateImg}
+                  alt="template A screenshot"
                 />
               </label>
               <input
@@ -149,6 +145,7 @@ class PosterFormat extends Component {
                 <img
                   src="/assets/designstudio/templateB.jpg"
                   className={styles.templateImg}
+                  alt="template B screenshot"
                 />
               </label>
               <input
@@ -163,6 +160,7 @@ class PosterFormat extends Component {
                 <img
                   src="/assets/designstudio/templateC.jpg"
                   className={styles.templateImg}
+                  alt="template C screenshot"
                 />
               </label>
             </div>

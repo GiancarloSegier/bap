@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import styles from "./TaskList.module.css";
 import FontAwesome from "react-fontawesome";
-import memberStyles from "../../../styles/members.module.css";
 import TaskItem from "./TaskItem";
 import { inject, observer } from "mobx-react";
 import Loader from "react-loader-spinner";

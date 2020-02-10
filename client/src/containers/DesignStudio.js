@@ -11,6 +11,7 @@ import * as htmlToImage from "html-to-image";
 import JSpdf from "jspdf";
 import PosterFormat from "../components/designstudio/PosterFormat";
 import FontAwesome from "react-fontawesome";
+import Loader from "react-loader-spinner";
 
 class DesignStudio extends Component {
   constructor(props) {
@@ -23,10 +24,10 @@ class DesignStudio extends Component {
         location: "Frederik van Eedenplein",
         site: "raceforthecure.com",
         hours: "9:00 - 14:00",
-
         logo: "./assets/designstudio/logothinkpink.png",
         walking: 3,
         running: 6,
+        sponsors: [],
         sponsorborder: "off",
         loading: false,
         poster: "posterA",
@@ -56,6 +57,8 @@ class DesignStudio extends Component {
   exportDesign = async (e, data) => {
     this.setState({ loading: true });
     const exportBlock = document.getElementById("artboard");
+    const uploadSponsor = document.getElementById("uploadSponsor");
+    uploadSponsor.style.display = "none";
     exportBlock.style.transform = "scale(1)";
     if (data.export === "pdf") {
       htmlToImage
@@ -71,6 +74,7 @@ class DesignStudio extends Component {
         })
         .then(() => {
           exportBlock.style.transform = `scale(${this.state.scale})`;
+          uploadSponsor.style.display = "block";
           this.setState({ loading: false });
         });
     } else {
@@ -84,6 +88,7 @@ class DesignStudio extends Component {
         })
         .then(() => {
           exportBlock.style.transform = `scale(${this.state.scale})`;
+          uploadSponsor.style.display = "block";
           this.setState({ loading: false });
         });
     }
@@ -109,24 +114,45 @@ class DesignStudio extends Component {
         state.data[input.name] = "";
       }
     } else if (input.type === "file") {
-      console.log("file uploaded");
-
       state.data[input.name] = URL.createObjectURL(input.files[0]);
     } else {
       state.data[input.name] = input.value;
     }
     this.setState(state);
-    console.log(this.state);
+  };
+
+  uploadSponsors = e => {
+    const { sponsors } = this.state.data;
+    const input = e.currentTarget;
+
+    Array.from(input.files).forEach(file => {
+      const sponsor = URL.createObjectURL(file);
+      sponsors.push(sponsor);
+    });
+    this.setState({ sponsors: sponsors });
+  };
+
+  removeSponsor = deleteSponsor => {
+    const { sponsors } = this.state.data;
+    const newSponsors = [...sponsors];
+
+    const updatedSponsors = newSponsors
+      .slice()
+      .filter(sponsor => sponsor !== deleteSponsor);
+
+    const state = { ...this.state };
+    state.data["sponsors"] = updatedSponsors;
   };
 
   render() {
     const { contentView } = this.state;
-    console.log(this.state);
+
     return (
       <>
         {this.state.loading ? (
           <div className={styles.loadingScreen}>
-            <p>loading</p>
+            <Loader type="Grid" color="#ff3066" height={40} width={40} />
+            <p className={styles.loaderLabel}>Preparing export</p>
           </div>
         ) : null}
         <div className={styles.dashboardGrid}>
@@ -217,7 +243,11 @@ class DesignStudio extends Component {
                     marginBottom: this.state.margin
                   }}
                 >
-                  <Artboard data={this.state.data} />
+                  <Artboard
+                    data={this.state.data}
+                    onUploadSponsors={this.uploadSponsors}
+                    onRemoveSponsor={this.removeSponsor}
+                  />
                 </div>
               </div>
             </div>

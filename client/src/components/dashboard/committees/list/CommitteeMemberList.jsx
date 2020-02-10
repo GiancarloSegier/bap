@@ -3,9 +3,6 @@ import styles from "./CommitteeMemberList.module.css";
 import MemberListItem from "./MemberListItem";
 import { inject, observer } from "mobx-react";
 class CommitteeMemberList extends Component {
-  constructor(props) {
-    super(props);
-  }
   onDeleteMember = async member => {
     await this.props.committeeStore.deleteCommitteeMember(member);
     await this.props.userStore.deleteUser(member);
