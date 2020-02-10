@@ -49,7 +49,7 @@ class RequestForm extends Component {
       message !== ""
     ) {
       fetch(
-        `http://localhost:4000/send-mail?type=request&sender=${email}&message=${message}&name=${name}&surname=${surname}&phone=${phone}&organisation=${organisation}&id=${requestId}`
+        `/send-mail?type=request&sender=${email}&message=${message}&name=${name}&surname=${surname}&phone=${phone}&organisation=${organisation}&id=${requestId}`
       ).catch(err => console.log(err));
 
       this.props.requestStore.addRequest({
