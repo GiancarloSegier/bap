@@ -97,7 +97,7 @@ class AdminRegisterForm extends Component {
   };
 
   uploadAvatar = async () => {
-    await fetch(`http://localhost:3000/image-upload`, {
+    await fetch(`/image-upload`, {
       method: "POST",
       body: this.state.formData
     })

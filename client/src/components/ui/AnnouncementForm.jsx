@@ -77,7 +77,7 @@ class AnnouncementForm extends Component {
   };
 
   uploadImages = async () => {
-    await fetch(`http://localhost:3000/image-upload`, {
+    await fetch(`/image-upload`, {
       method: "POST",
       body: this.state.formData
     })
@@ -93,7 +93,7 @@ class AnnouncementForm extends Component {
       });
   };
   uploadFiles = async () => {
-    await fetch(`http://localhost:3000/image-upload`, {
+    await fetch(`/image-upload`, {
       method: "POST",
       body: this.state.fileData
     })

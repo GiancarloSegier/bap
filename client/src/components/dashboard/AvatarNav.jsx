@@ -85,7 +85,7 @@ class AvatarNav extends Component {
           >
             <div>
               <a
-                href="http://localhost:3000"
+                href="/"
                 onClick={this.handleLogout}
                 className={styles.dropDownLink + " " + styles.modalContainer}
               >
@@ -95,7 +95,7 @@ class AvatarNav extends Component {
             </div>
             <div className={styles.divideBorder}>
               <a
-                href="http://localhost:3000"
+                href="/"
                 onClick={this.handleLogout}
                 className={styles.dropDownLink + " " + styles.modalContainer}
               >
