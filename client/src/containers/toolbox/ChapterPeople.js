@@ -1,16 +1,12 @@
-import React, { Component } from "react";
+import React from "react";
 import styles from "../Toolbox.module.css";
 import { Link } from "react-router-dom";
-const Chapter_People = () => {
+const ChapterPeople = () => {
   return (
     <>
       <section className={styles.header_bg}>
         <div className={styles.container + " " + styles.header}>
-          <img
-            className={styles.header_img}
-            src="../assets/people.png"
-            alt=""
-          />
+          <img className={styles.header_img} src="/assets/people.png" alt="" />
           <div className={styles.header_text}>
             <p className={styles.smalltitle}>Chapter 2</p>
             <h1 className={styles.heading1}>Managing people</h1>
@@ -59,7 +55,7 @@ const Chapter_People = () => {
                 }
               >
                 <img
-                  src="../assets/jobs/event.png"
+                  src="/assets/jobs/event.png"
                   className={styles.job_img}
                   alt=""
                 />
@@ -76,7 +72,7 @@ const Chapter_People = () => {
                 }
               >
                 <img
-                  src="../assets/jobs/sponsor.png"
+                  src="/assets/jobs/sponsor.png"
                   className={styles.job_img}
                   alt=""
                 />
@@ -93,7 +89,7 @@ const Chapter_People = () => {
                 }
               >
                 <img
-                  src="../assets/jobs/volunteer.png"
+                  src="/assets/jobs/volunteer.png"
                   className={styles.job_img}
                   alt=""
                 />
@@ -110,7 +106,7 @@ const Chapter_People = () => {
                 }
               >
                 <img
-                  src="../assets/jobs/prmanager.png"
+                  src="/assets/jobs/prmanager.png"
                   className={styles.job_img}
                   alt=""
                 />
@@ -127,7 +123,7 @@ const Chapter_People = () => {
                 }
               >
                 <img
-                  src="../assets/jobs/ambassador.png"
+                  src="/assets/jobs/ambassador.png"
                   className={styles.job_img}
                   alt=""
                 />
@@ -144,7 +140,7 @@ const Chapter_People = () => {
                 }
               >
                 <img
-                  src="../assets/jobs/logic.png"
+                  src="/assets/jobs/logic.png"
                   className={styles.job_img}
                   alt=""
                 />
@@ -161,7 +157,7 @@ const Chapter_People = () => {
                 }
               >
                 <img
-                  src="../assets/jobs/survivor.png"
+                  src="/assets/jobs/survivor.png"
                   className={styles.job_img}
                   alt=""
                 />
@@ -180,7 +176,7 @@ const Chapter_People = () => {
                 }
               >
                 <img
-                  src="../assets/jobs/racetreasurer.png"
+                  src="/assets/jobs/racetreasurer.png"
                   className={styles.job_img}
                   alt=""
                 />
@@ -208,7 +204,7 @@ const Chapter_People = () => {
               <div className={styles.image_container}>
                 <img
                   className={styles.chapter_image}
-                  src="../assets/financial.png"
+                  src="/assets/financial.png"
                   alt=""
                 />
               </div>
@@ -221,7 +217,7 @@ const Chapter_People = () => {
               <div className={styles.image_container}>
                 <img
                   className={styles.chapter_image}
-                  src="../assets/financial.png"
+                  src="/assets/financial.png"
                   alt=""
                 />
               </div>
@@ -234,7 +230,7 @@ const Chapter_People = () => {
               <div className={styles.image_container}>
                 <img
                   className={styles.chapter_image}
-                  src="../assets/financial.png"
+                  src="/assets/financial.png"
                   alt=""
                 />
               </div>
@@ -254,4 +250,4 @@ const Chapter_People = () => {
   );
 };
 
-export default Chapter_People;
+export default ChapterPeople;

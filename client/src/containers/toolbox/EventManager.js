@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import styles from "../Toolbox.module.css";
 import FontAwesome from "react-fontawesome";
 const EventManager = () => {
@@ -6,13 +6,13 @@ const EventManager = () => {
     <>
       <section className={styles.header_bg}>
         <div className={styles.container}>
-          <a className={styles.back} href="">
+          <a className={styles.back} href="/">
             <FontAwesome name="chevron-left" className={styles.arrow} />
             managing people
           </a>
         </div>
         <div className={styles.container + " " + styles.header}>
-          <img src="../../assets/headerscrabble.png" alt="" />
+          <img src="/assets/headerscrabble.png" alt="" />
           <div className={styles.header_text}>
             <h1 className={styles.heading1}>Event manager</h1>
             <p className={styles.intro}>
@@ -28,7 +28,7 @@ const EventManager = () => {
           <h2 className={styles.heading2}>Different types of event managers</h2>
           <div className={styles.grid}>
             <div>
-              <img height="250" src="../../assets/when.png" alt="" />
+              <img height="250" src="/assets/when.png" alt="" />
               <p className={styles.smalltitle}>Race Director</p>
               <p className={styles.copy}>
                 Most of the Races for the Cure will take place on the same day,
@@ -41,7 +41,7 @@ const EventManager = () => {
               </p>
             </div>
             <div>
-              <img height="250" src="../../assets/where.png" alt="" />
+              <img height="250" src="/assets/where.png" alt="" />
               <p className={styles.smalltitle}>The leader</p>
               <p className={styles.copy}>
                 The decision regarding where the Race will take place depends on
@@ -98,7 +98,7 @@ const EventManager = () => {
             <div className={styles.chapter_card + " " + styles.grow}>
               <img
                 className={styles.otherjob_image}
-                src="../../assets/jobs/logic.png"
+                src="/assets/jobs/logic.png"
                 alt=""
               />
               <div>
@@ -109,7 +109,7 @@ const EventManager = () => {
             <div className={styles.chapter_card + " " + styles.grow}>
               <img
                 className={styles.otherjob_image}
-                src="../../assets/jobs/event.png"
+                src="/assets/jobs/event.png"
                 alt=""
               />
               <div>
@@ -120,7 +120,7 @@ const EventManager = () => {
             <div className={styles.chapter_card + " " + styles.grow}>
               <img
                 className={styles.otherjob_image}
-                src="../../assets/jobs/prmanager.png"
+                src="/assets/jobs/prmanager.png"
                 alt=""
               />
               <div>
