@@ -1,0 +1,139 @@
+.artboard {
+  height: 100%;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+.heading1 {
+  font-size: 9rem;
+  font-family: "Beatrice", Arial, Helvetica, sans-serif;
+  font-weight: 900;
+  line-height: 1.2;
+}
+
+.background {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+.posterContent {
+  position: relative;
+  z-index: 2;
+  word-wrap: break-word;
+}
+.blocks {
+  position: absolute;
+  padding: 6rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.purpleBlock {
+  background: url("./assets/posters/purpleblock.png");
+  width: 58rem;
+  height: 58rem;
+  color: white;
+  background-size: cover;
+}
+.whiteBlock {
+  background: url("./assets/posters/whiteblock.png");
+  width: 44rem;
+  height: 44rem;
+  color: var(--black);
+  background-size: cover;
+}
+.raceday {
+  color: var(--pink-mid);
+  font-family: "Beatrice", Arial, Helvetica, sans-serif;
+  font-size: 4rem;
+  font-weight: bold;
+}
+
+.city {
+  font-size: 6rem;
+}
+.site {
+  font-size: 3rem;
+  width: 100%;
+  color: var(--pink-mid);
+  font-weight: bold;
+}
+
+.info {
+  font-size: 3rem;
+  font-weight: bold;
+}
+.smallInfo {
+  font-size: 2rem;
+}
+
+.line {
+  width: 4.5rem;
+  height: 0.2rem;
+  background-color: var(--pink-mid);
+  margin: 2rem 0;
+}
+.logoCircle {
+  width: 29rem;
+  height: 29rem;
+  background: url("./assets/posters/pinkcircle.png");
+  background-size: cover;
+  position: absolute;
+  padding: 4rem;
+  border-radius: 30rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.logo {
+  width: 100%;
+}
+.sponsorBlock {
+  width: 100%;
+  height: max-content;
+  position: absolute;
+  left: 0;
+
+  bottom: -159rem;
+  background-color: white;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 2rem 4rem;
+  opacity: 1;
+  transition: 0.25s ease-in-out;
+}
+.noSponsors {
+  opacity: 0;
+}
+.sponsor {
+  max-height: 10rem;
+  object-fit: contain;
+  max-width: 14rem;
+  margin-right: 1rem;
+}
+.krulA {
+  background: url("./assets/posters/lineA.png");
+  width: 102%;
+  height: 160rem;
+  position: absolute;
+  top: -7rem;
+  left: 0;
+}
+.krulB {
+  background: url("./assets/posters/lineB.png");
+  width: 102%;
+  height: 160rem;
+  position: absolute;
+  top: -7rem;
+  left: -0.5rem;
+}
+.krulC {
+  background: url("./assets/posters/lineC.png");
+  width: 102%;
+  height: 160rem;
+  position: absolute;
+  top: -7rem;
+  left: -0.5rem;
+}

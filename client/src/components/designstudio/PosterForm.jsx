@@ -26,6 +26,20 @@ class PosterForm extends Component {
           onChange={this.handleChange}
           placeholder="city"
         />
+        <input
+          type="text"
+          name="location"
+          id="location"
+          onChange={this.handleChange}
+          placeholder="location"
+        />
+        <input
+          type="text"
+          name="site"
+          id="site"
+          onChange={this.handleChange}
+          placeholder="site"
+        />
       </>
     );
   }

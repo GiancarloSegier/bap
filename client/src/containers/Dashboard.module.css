@@ -5,3 +5,83 @@
 .extraMargin {
   margin-right: 4rem;
 }
+.designStudioNav {
+  composes: modal from "../styles/modal.module.css";
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 36rem;
+  z-index: 100;
+  border-radius: 0;
+}
+.designStudioContent {
+  margin-left: 38rem;
+  overflow: hidden;
+}
+
+.designStudioButtons {
+  background: none;
+  border: none;
+  font-size: 2rem;
+  font-weight: bold;
+  color: var(--grey-low);
+  margin-right: 4rem;
+  transition: 0.25s ease-in-out;
+}
+.designStudioButtons:hover {
+  color: var(--purple-low);
+  cursor: pointer;
+}
+.activeView {
+  color: var(--purple-low);
+}
+.navContainer {
+  composes: modalContainer from "../styles/modal.module.css";
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
+.artboardFrame {
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+.scaledFrame {
+  /* transform: scale(0.5); */
+  transform-origin: top;
+}
+
+.outputArtboard {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+
+canvas {
+  display: none;
+}
+
+.layer {
+  background-color: red;
+  width: 100%;
+  max-height: 100vh;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.loadingScreen {
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  background-color: var(--grey-mid);
+  z-index: 80;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

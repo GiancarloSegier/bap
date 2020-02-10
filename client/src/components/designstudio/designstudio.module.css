@@ -1,0 +1,87 @@
+.navContainer {
+  composes: modalContainer from "../../styles/modal.module.css";
+}
+
+[type="radio"]:checked,
+[type="radio"]:not(:checked) {
+  position: absolute;
+  left: -9999px;
+}
+[type="radio"]:checked + .templateLabel {
+  border-color: var(--pink-mid);
+  opacity: 1;
+}
+
+.templateLabel {
+  opacity: 0.5;
+  transition: 0.25s ease-in-out;
+}
+
+.templateLabel:hover {
+  opacity: 1;
+  cursor: pointer;
+}
+
+[type="radio"] + .templateLabel {
+  border: 0.3rem solid transparent;
+  display: inline-block;
+  height: 12rem;
+  width: max-content;
+  border-radius: 0.4rem;
+}
+.templateImg {
+  height: 100%;
+}
+.oneLineForm,
+.centerForm {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+.marginBottom:not(:last-child) {
+  margin-bottom: 3rem;
+}
+
+.centerForm {
+  align-items: center;
+}
+
+.landscape,
+.portrait {
+  width: 6rem;
+  height: 5rem;
+  background-color: var(--grey-lower);
+  border-radius: 0.4rem;
+  position: relative;
+  border: 0.3rem solid transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+[type="radio"]:checked + .landscape,
+[type="radio"]:checked + .portrait {
+  border-color: var(--pink-mid);
+}
+
+.landscape:after,
+.portrait:after {
+  content: "";
+  display: block;
+  height: 50%;
+  width: 65%;
+  border: 0.3rem solid var(--black);
+  border-radius: 0.4rem;
+}
+.portrait:after {
+  height: 70%;
+  width: 40%;
+}
+
+.orientation {
+  display: flex;
+  justify-content: space-between;
+  width: 13rem;
+}
+.templatesBlock {
+  margin-top: 3rem;
+}
