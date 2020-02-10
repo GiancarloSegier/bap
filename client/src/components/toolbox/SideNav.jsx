@@ -23,7 +23,7 @@ const SideNav = () => {
           >
             <img
               className={styles.icon}
-              src="../../assets/icons/toolbox/gettingstarted.png"
+              src="../../assets/icons/toolbox/starthere.png"
               alt=""
             />
             <p className={styles.navtitle}>Start here</p>
