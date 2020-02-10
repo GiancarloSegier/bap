@@ -51,7 +51,7 @@ class SuperDashboard extends Component {
     });
 
     await fetch(
-      `http://localhost:4000/send-mail?type=invite&id=${request.id}&name=${request.name}&recipient=${request.email}&organisation=${request.organisation}`
+      `/send-mail?type=invite&id=${request.id}&name=${request.name}&recipient=${request.email}&organisation=${request.organisation}`
     ).catch(err => console.log(err));
   };
 

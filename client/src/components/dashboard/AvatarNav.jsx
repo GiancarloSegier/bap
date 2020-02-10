@@ -24,10 +24,11 @@ class AvatarNav extends Component {
     }
   };
 
-  handleLogout = e => {
+  handleLogout = async e => {
     e.preventDefault();
-    this.props.userStore.logout();
-    window.location.href = "/";
+    await this.props.userStore
+      .logout()
+      .then(() => (window.location.href = "/"));
   };
 
   render() {
@@ -85,7 +86,7 @@ class AvatarNav extends Component {
           >
             <div>
               <a
-                href="http://localhost:3000"
+                href="/"
                 onClick={this.handleLogout}
                 className={styles.dropDownLink + " " + styles.modalContainer}
               >
@@ -95,7 +96,7 @@ class AvatarNav extends Component {
             </div>
             <div className={styles.divideBorder}>
               <a
-                href="http://localhost:3000"
+                href="/"
                 onClick={this.handleLogout}
                 className={styles.dropDownLink + " " + styles.modalContainer}
               >

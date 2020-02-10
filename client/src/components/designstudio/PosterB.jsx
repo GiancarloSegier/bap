@@ -7,11 +7,15 @@ class PosterB extends Component {
     super(props);
     this.state = {
       basics: {
-        title: "Race for the cure",
         raceday: "29-09-2020",
         city: "Antwerpen",
         location: "Frederik van Eedenplein",
-        site: "raceforthecure.com"
+        site: "raceforthecure.com",
+        hours: "9:00 - 14:00",
+        background: "./assets/designstudio/posterb.jpg",
+        logo: "./assets/designstudio/logothinkpink.png",
+        walking: 3,
+        running: 6
       }
     };
   }
@@ -22,7 +26,7 @@ class PosterB extends Component {
     return (
       <div className={styles.artboard}>
         <img
-          src="./assets/designstudio/posterb.jpg"
+          src={data.background ? data.background : basics.background}
           alt="backgroundimage"
           className={styles.background}
         />
@@ -41,9 +45,7 @@ class PosterB extends Component {
               <p className={styles.raceday}>
                 {data.raceday !== "" ? data.raceday : basics.raceday}
               </p>
-              <h1 className={styles.heading1}>
-                {data.title !== "" ? data.title : basics.title}
-              </h1>
+              <h1 className={styles.heading1}>Race for the cure</h1>
             </div>
             <p className={styles.city}>
               {data.city !== "" ? data.city : basics.city}
@@ -59,21 +61,34 @@ class PosterB extends Component {
             }
           >
             <div>
-              <p className={styles.info}>3 km wandelen</p>
-              <p className={styles.info}>6 km lopen</p>
+              <p className={styles.info}>
+                {data.walking !== "" ? data.walking : basics.walking} km walking
+              </p>
+              <p className={styles.info}>
+                {data.running !== "" ? data.running : basics.running} km running
+              </p>
               <div className={styles.line}></div>
-              <p className={styles.smallInfo}>Frederik van Eedenplein</p>
-              <p className={styles.smallInfo}>9:00 - 14:00</p>
+              <p className={styles.smallInfo}>
+                {" "}
+                {data.location !== "" ? data.location : basics.location}
+              </p>
+              <p className={styles.smallInfo}>
+                {data.hours !== "" ? data.hours : basics.hours}
+              </p>
             </div>
-            <p className={styles.site}>raceforthecure.com</p>
+            <p className={styles.site}>
+              {" "}
+              {data.site !== "" ? data.site : basics.site}
+            </p>
           </div>
           <div className={styles.logoCircle + " " + positionStyles.logoCircle}>
             <img
               className={styles.logo}
-              src="./assets/designstudio/logothinkpink.png"
+              src={data.logo ? data.logo : basics.logo}
               alt="logo organisation"
             />
           </div>
+
           <div
             className={
               styles.sponsorBlock +

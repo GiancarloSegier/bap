@@ -15,7 +15,7 @@ class PosterFormat extends Component {
   render() {
     return (
       <>
-        <div className={styles.navContainer + " " + modalStyles.divideBorder}>
+        <div className={styles.navContainer}>
           <fieldset className={styles.marginBottom}>
             <div className={styles.oneLineForm}>
               <label

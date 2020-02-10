@@ -56,7 +56,7 @@ class InviteForm extends Component {
 
     if (name !== "" && surname !== "" && email !== "") {
       fetch(
-        `http://localhost:4000/send-mail?type=committeeinvite&sender=${email}&sendername=${this.props.userStore.authUser.name}&name=${name}&surname=${surname}&committee=${organisation}&id=${inviteId}`
+        `/send-mail?type=committeeinvite&sender=${email}&sendername=${this.props.userStore.authUser.name}&name=${name}&surname=${surname}&committee=${organisation}&id=${inviteId}`
       ).catch(err => console.log(err));
 
       this.props.inviteStore.addInvite({

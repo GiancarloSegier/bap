@@ -17,6 +17,9 @@
 .divideBorder {
   border-top: 0.1rem solid var(--purple-grey);
 }
+.divideBorderBottom {
+  border-bottom: 0.1rem solid var(--purple-grey);
+}
 .grid {
   display: grid;
   grid-template-columns: 1fr 1fr;

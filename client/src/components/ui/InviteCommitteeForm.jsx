@@ -70,7 +70,7 @@ class InviteCommitteeForm extends Component {
 
     if (name !== "" && surname !== "" && organisation !== "" && email !== "") {
       fetch(
-        `http://localhost:4000/send-mail?type=invite&id=${requestId}&name=${name}&recipient=${email}&organisation=${organisation}`
+        `/send-mail?type=invite&id=${requestId}&name=${name}&recipient=${email}&organisation=${organisation}`
       ).catch(err => console.log(err));
 
       this.props.requestStore.addRequest({
