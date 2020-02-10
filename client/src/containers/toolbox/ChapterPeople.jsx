@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import styles from "../Toolbox.module.css";
+import { Link } from "react-router-dom";
 class Chapter_People extends Component {
   constructor(props) {
     super(props);
@@ -8,53 +9,53 @@ class Chapter_People extends Component {
   render() {
     return (
       <>
-        <div className={styles.container}>
-          <section className={styles.flex}>
-            <div className={styles.shrink}>
-              <p className={styles.pink}>Chapter 2</p>
+        <section className={styles.header_bg}>
+          <div className={styles.container + " " + styles.header}>
+            <img src="../assets/headerpeople.png" alt="" />
+            <div className={styles.header_text}>
+              <p className={styles.smalltitle}>Chapter 2</p>
               <h1 className={styles.heading1}>Managing people</h1>
               <p className={styles.intro}>
                 Once you know when and when the race will take place, it is
-                important to think about who does what.
+                important to create a strong team and think about who does what.
               </p>
             </div>
-            <img src="../assets/headerscrabble.png" alt="" />
-          </section>
-          <section className={styles.spacer}>
-            <div>
-              <div className={styles.card + " " + styles.introjobs}>
-                <p className={styles.smalltitle}>Selecting a race committee</p>
-                <p className={styles.largebody}>
-                  Planning, implementing and evaluating a Race can be fun,
-                  rewarding and sometimes challenging.{" "}
+          </div>
+        </section>
+        <div className={styles.container}>
+          <section className={styles.whenwere}>
+            <h2 className={styles.heading2}>Selecting a race committee</h2>
+            <div className={styles.grid}>
+              <div>
+                <p className={styles.smalltitle}>Race Director</p>
+                <p className={styles.copy}>
                   <span className={styles.highlight}>
-                    The Race is a joint effort.
+                    Remember that the Race is a joint effort.
                   </span>
-                </p>
-                <p className={styles.largebody}>
                   When selecting your Race committee members, think carefully
                   about the number of people needed to hold a Race, so the Race
-                  chairs are not given too much work.{" "}
-                  <span className={styles.highlight}>
-                    Delegating work is very important to having a successful
-                    Race
-                  </span>{" "}
-                  because it allows you focus on your tasks while utilising
-                  their different talents and abilities.
+                  chairs are not given too much work. Delegating work is very
+                  important to having a successful Race because it allows you
+                  focus on your tasks while utilising their different talents
+                  and abilities.
                 </p>
               </div>
             </div>
           </section>
           <section>
             <div>
-              <h2 className={styles.heading2}>when and were</h2>
-              <p>
-                This guide includes several jobs descriptions to consider for
-                team members
-                <br /> who will plan, implement and evaluate a Race event.{" "}
-              </p>
+              <div className={styles.next}>
+                <h3 className={styles.heading2}>Key committee members</h3>
+                <p className={styles.copy}>
+                  This guide includes several jobs descriptions to consider for
+                  team members who will plan, implement and evaluate a Race
+                  event.
+                </p>
+              </div>
+
               <div className={styles.jobs}>
-                <div
+                <Link
+                  to={`/toolbox/people/event`}
                   className={
                     styles.job_card + " " + styles.green + " " + styles.grow
                   }
@@ -70,7 +71,7 @@ class Chapter_People extends Component {
                       This guide includes several jobs descriptions{" "}
                     </p>
                   </div>
-                </div>
+                </Link>
                 <div
                   className={
                     styles.job_card + " " + styles.blue + " " + styles.grow
@@ -196,60 +197,57 @@ class Chapter_People extends Component {
             </div>
           </section>
         </div>
-        <section className={styles.purplebg + " " + styles.negative_margin}>
-          <div className={styles.container_small}>
+        <section className={styles.purple_bg}>
+          <div className={styles.container}>
             <div className={styles.next}>
-              <h3 className={styles.heading2}>Getting Started</h3>
-              <p>
-                Let’s start of with the basics. Practical information about the
-                event and job functions.
+              <h3 className={styles.heading2}>In depth topics</h3>
+              <p className={styles.copy}>
+                More about working with people, communication, volunteers
               </p>
             </div>
-            <div className={styles.cardgrid}>
-              <div className={styles.chapter_card}>
-                <img src="../assets/chapter3.png" alt="" />
-                <p className={styles.card_subtitle}>chapter1</p>
-                <h4 className={styles.card_title}>starting your event</h4>
+            <div className={styles.card_grid}>
+              <div className={styles.chapter_card + " " + styles.grow}>
+                <img
+                  className={styles.chapter_image}
+                  src="../assets/headerpeople.png"
+                  alt=""
+                />
+                <div>
+                  <p className={styles.card_subtitle}>Topic</p>
+                  <h4 className={styles.card_title}>Volunteers</h4>
+                </div>
               </div>
-              <div className={styles.chapter_card}>
-                <img src="../assets/chaptercard.png" alt="" />
-                <p className={styles.card_subtitle}>chapter1</p>
-                <h4 className={styles.card_title}>Managing People</h4>
+              <div className={styles.chapter_card + " " + styles.grow}>
+                <img
+                  className={styles.chapter_image}
+                  src="../assets/chapter3.png"
+                  alt=""
+                />
+                <div>
+                  <p className={styles.card_subtitle}>Topic</p>
+                  <h4 className={styles.card_title}>Committee meetings</h4>
+                </div>
               </div>
-              <div className={styles.chapter_card}>
-                <img src="../assets/chapter3.png" alt="" />
-                <p className={styles.card_subtitle}>chapter1</p>
-                <h4 className={styles.card_title}>starting your event</h4>
+              <div className={styles.chapter_card + " " + styles.grow}>
+                <img
+                  className={styles.chapter_image}
+                  src="../assets/chapter3.png"
+                  alt=""
+                />
+                <div>
+                  <p className={styles.card_subtitle}>chapter 4</p>
+                  <h4
+                    className={
+                      styles.card_title + " " + styles.card_title_small
+                    }
+                  >
+                    Legal, Security &amp; Medical Provision
+                  </h4>
+                </div>
               </div>
             </div>
           </div>
         </section>
-        {/* <section className={styles.purplebg + " " + styles.spacer}>
-          <div className={styles.cardgrid}>
-            <div className={styles.next}>
-              <h3 className={styles.heading2}>Next steps</h3>
-              <p>
-                Let’s start of with the basics. Practical information about the
-                event and job functions.
-              </p>
-            </div>
-            <div className={styles.chapter_card}>
-              <img src="../assets/chapter3.png" alt="" />
-              <p className={styles.card_subtitle}>chapter1</p>
-              <h4 className={styles.card_title}>starting your event</h4>
-            </div>
-            <div className={styles.chapter_card}>
-              <img src="../assets/chaptercard.png" alt="" />
-              <p className={styles.card_subtitle}>chapter1</p>
-              <h4 className={styles.card_title}>Managing People</h4>
-            </div>
-            <div className={styles.chapter_card}>
-              <img src="../assets/chapter3.png" alt="" />
-              <p className={styles.card_subtitle}>chapter1</p>
-              <h4 className={styles.card_title}>starting your event</h4>
-            </div>
-          </div>
-        </section> */}
       </>
     );
   }

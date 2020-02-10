@@ -13,7 +13,7 @@ const Statistics = ({ committeeStore }) => {
       <ul className={styles.counter}>
         <li className={styles.stat}>
           <img
-            src="http://placekitten.com/40/40"
+            src="../../../assets/icons/stats/committees.png"
             className={styles.icon}
             width="40"
             height="40"
@@ -26,7 +26,7 @@ const Statistics = ({ committeeStore }) => {
         </li>
         <li className={styles.stat}>
           <img
-            src="http://placekitten.com/40/40"
+            src="../../../assets/icons/stats/countries.png"
             className={styles.icon}
             width="40"
             height="40"
@@ -39,7 +39,7 @@ const Statistics = ({ committeeStore }) => {
         </li>
         <li className={styles.stat}>
           <img
-            src="http://placekitten.com/40/40"
+            src="../../../assets/icons/stats/participants.png"
             className={styles.icon}
             width="40"
             height="40"
@@ -52,7 +52,7 @@ const Statistics = ({ committeeStore }) => {
         </li>
         <li className={styles.stat}>
           <img
-            src="http://placekitten.com/40/40"
+            src="../../../assets/icons/stats/date.png"
             className={styles.icon}
             width="40"
             height="40"
@@ -71,7 +71,7 @@ const Statistics = ({ committeeStore }) => {
         </li>
         <li className={styles.stat}>
           <img
-            src="http://placekitten.com/40/40"
+            src="../../../assets/icons/stats/survivors.png"
             className={styles.icon}
             width="40"
             height="40"
