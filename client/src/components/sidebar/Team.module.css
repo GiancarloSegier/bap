@@ -25,6 +25,14 @@
   border-radius: 50%;
   object-fit: cover;
 }
+.editIcon {
+  color: white;
+  transition: 0.25s ease-in-out;
+}
+.editIcon:hover {
+  cursor: pointer;
+  color: var(--purple-low);
+}
 .memberImages {
   display: flex;
 }

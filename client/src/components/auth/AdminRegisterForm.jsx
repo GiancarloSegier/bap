@@ -85,7 +85,8 @@ class AdminRegisterForm extends Component {
           raceday: new Date("2020-09-29"),
           city: "",
           country: "",
-          description: ""
+          description: "",
+          logo: ""
         });
       })
       .then(() => {

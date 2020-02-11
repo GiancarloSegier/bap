@@ -5,7 +5,7 @@ import FontAwesome from "react-fontawesome";
 import TaskItem from "./TaskItem";
 import { inject, observer } from "mobx-react";
 import Loader from "react-loader-spinner";
-import CompletedTasks from "../../../containers/dashboard/members/planner/CompletedTasks";
+
 import CompletedTasksEmpty from "./CompletedTasksEmpty";
 
 class CompletedTaskList extends Component {

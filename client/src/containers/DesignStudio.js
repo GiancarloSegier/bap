@@ -114,7 +114,9 @@ class DesignStudio extends Component {
         state.data[input.name] = "";
       }
     } else if (input.type === "file") {
-      state.data[input.name] = URL.createObjectURL(input.files[0]);
+      if (input.files.length !== 0) {
+        state.data[input.name] = URL.createObjectURL(input.files[0]);
+      }
     } else {
       state.data[input.name] = input.value;
     }

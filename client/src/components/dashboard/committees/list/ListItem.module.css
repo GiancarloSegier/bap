@@ -16,7 +16,13 @@
 
 .arrow {
   margin-left: -2rem;
+
   color: var(--purple-low);
+  transition: 0.25s ease-in-out;
+}
+.listItem:hover .arrow {
+  margin-left: -1rem;
+  color: var(--purple-mid);
 }
 .listItem:nth-last-child(odd) {
   background-color: white;

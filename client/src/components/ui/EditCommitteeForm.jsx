@@ -15,6 +15,8 @@ class EditCommitteeForm extends Component {
       emailError: false,
       error: false
     };
+
+    this.logoInput = React.createRef();
   }
 
   componentDidMount = () => {
@@ -33,7 +35,8 @@ class EditCommitteeForm extends Component {
       raceday: currentCommittee.raceday,
       city: currentCommittee.city,
       country: currentCommittee.country,
-      description: currentCommittee.description
+      description: currentCommittee.description,
+      logo: currentCommittee.logo
     });
   };
 
@@ -52,28 +55,28 @@ class EditCommitteeForm extends Component {
     this.setState({ dateString: dateString });
   }
 
-  handleSubmit = e => {
+  handleSubmit = async e => {
     e.preventDefault();
-
+    if (this.state.formData) {
+      await this.uploadAvatar();
+    }
     const { currentCommittee } = this.props.committeeStore;
-    const { name, raceday, city, country, description } = this.state;
-
-    console.log(currentCommittee);
-    currentCommittee.setName(name);
-    currentCommittee.setRaceday(raceday);
-    currentCommittee.setCity(city);
-    currentCommittee.setCountry(country);
-    currentCommittee.setDescription(description);
-
-    this.props.committeeStore.updateCommittee(currentCommittee);
-
+    const { name, raceday, city, country, description, logoUrl } = this.state;
+    await currentCommittee.setName(name);
+    await currentCommittee.setRaceday(raceday);
+    await currentCommittee.setCity(city);
+    await currentCommittee.setCountry(country);
+    await currentCommittee.setDescription(description);
+    if (logoUrl) {
+      await currentCommittee.setLogo(logoUrl);
+    }
+    await this.props.committeeStore.updateCommittee(currentCommittee);
     this.closeForm();
   };
 
   handleChange = e => {
     const input = e.currentTarget;
     const state = { ...this.state };
-    console.log(this.props.committeeStore.currentCommittee);
 
     if (input.name === "raceday") {
       const dateParts = input.value.split("-");
@@ -86,16 +89,52 @@ class EditCommitteeForm extends Component {
       state[input.name] = input.value;
     }
     this.setState(state);
-    console.log(state);
   };
+
+  changeFile = e => {
+    if (e.currentTarget.files.length !== 0) {
+      this.setState({ logo: URL.createObjectURL(e.currentTarget.files[0]) });
+    }
+    const files = e.currentTarget.files;
+
+    const formData = new FormData();
+    Array.from(files).forEach((file, i) => {
+      formData.append(i, file);
+    });
+
+    this.setState({ formData: formData });
+  };
+
+  uploadAvatar = async () => {
+    await fetch(`/image-upload`, {
+      method: "POST",
+      body: this.state.formData
+    })
+      .then(res => res.json())
+      .then(images => {
+        this.setState({
+          logoUrl: images[0].url
+        });
+      });
+  };
+
   closeForm = e => {
     this.setState({ fadeIn: false });
     setTimeout(() => {
       this.props.onConfirm();
     }, 200);
   };
+
   render() {
-    const { name, city, country, fadeIn, description, dateString } = this.state;
+    const {
+      name,
+      city,
+      country,
+      fadeIn,
+      description,
+      dateString,
+      logo
+    } = this.state;
 
     return (
       <div
@@ -161,6 +200,7 @@ class EditCommitteeForm extends Component {
                     type="date"
                     name="raceday"
                     id="raceday"
+                    ref={this.logoInput}
                     className={formStyles.form__input}
                     onChange={this.handleChange}
                     defaultValue={dateString}
@@ -204,7 +244,7 @@ class EditCommitteeForm extends Component {
                   name="description"
                   id="description"
                   placeholder="This is who we are!"
-                  rows="10"
+                  rows="6"
                   ref={this.messageInput}
                   className={
                     formStyles.form__input + " " + formStyles.form__textarea
@@ -213,6 +253,48 @@ class EditCommitteeForm extends Component {
                   defaultValue={description}
                 />
               </fieldset>
+
+              <fieldset className={styles.marginBottom}>
+                <div className={styles.oneLineForm}>
+                  <p htmlFor="logo" className={formStyles.form__label}>
+                    Organisation logo
+                  </p>
+                  <label htmlFor="logo" className={styles.imageUpload}>
+                    {logo ? (
+                      <img
+                        src={logo}
+                        alt="logo preview"
+                        className={styles.logoPreview}
+                      />
+                    ) : (
+                      <>
+                        <div className={styles.uploadCard}>
+                          <div className={styles.icon}>
+                            <span className={styles.cross_line}></span>
+                            <span className={styles.cross_line}></span>
+                          </div>
+                        </div>
+                        <p className={styles.imageUploadText}>
+                          PNG
+                          <br />
+                          or <br />
+                          JPG
+                        </p>
+                      </>
+                    )}
+                  </label>
+                  <input
+                    type="file"
+                    name="logo"
+                    id="logo"
+                    multiple={false}
+                    className={formStyles.fileInput}
+                    onChange={this.changeFile}
+                    accept="image/x-png,image/jpg"
+                  />
+                </div>
+              </fieldset>
+
               <div className={modalStyles.buttonBox}>
                 <button type="submit" className={uiStyles.textButton}>
                   <span

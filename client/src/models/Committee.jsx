@@ -1,7 +1,16 @@
 import { decorate, observable, computed, action } from "mobx";
 
 class Committee {
-  constructor(id, name, raceday, city, country, description, completedTasks) {
+  constructor(
+    id,
+    name,
+    raceday,
+    city,
+    country,
+    description,
+    completedTasks,
+    logo
+  ) {
     this.id = id;
     this.name = name;
     this.raceday = raceday;
@@ -9,6 +18,7 @@ class Committee {
     this.country = country;
     this.description = description;
     this.completedTasks = completedTasks;
+    this.logo = logo;
   }
 
   get values() {
@@ -19,7 +29,8 @@ class Committee {
       city: this.city,
       country: this.country,
       description: this.description,
-      completedTasks: this.completedTasks
+      completedTasks: this.completedTasks,
+      logo: this.logo
     };
   }
 
@@ -32,6 +43,7 @@ class Committee {
   setCompletedTasks = completedTasks => {
     this.completedTasks = completedTasks;
   };
+  setLogo = logo => (this.logo = logo);
 
   updateFromServer = values => {
     this.setId(values._id);
@@ -41,6 +53,7 @@ class Committee {
     this.setCountry(values.country);
     this.setDescription(values.description);
     this.setCompletedTasks(values.completedTasks);
+    this.setLogo(values.logo);
   };
 }
 
@@ -53,6 +66,7 @@ decorate(Committee, {
   setCountry: action,
   setDescription: action,
   setCompletedTasks: action,
+  setLogo: action,
   values: computed
 });
 

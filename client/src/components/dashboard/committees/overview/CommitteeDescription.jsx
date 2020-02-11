@@ -192,11 +192,13 @@ class CommitteeDescription extends Component {
               </p>
             )}
           </div>
-          <img
-            src="http://placekitten.com/200/200"
-            className={styles.teamlogo}
-            alt="Location"
-          />
+          {committee.logo ? (
+            <img
+              src={committee.logo}
+              className={styles.teamlogo}
+              alt="Logo organisation"
+            />
+          ) : null}
         </div>
       </>
     );

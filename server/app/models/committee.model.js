@@ -8,7 +8,8 @@ const CommitteeSchema = mongoose.Schema(
     city: String,
     country: String,
     description: String,
-    completedTasks: Array
+    completedTasks: Array,
+    logo: String
   },
   {
     timestamps: true

@@ -138,6 +138,7 @@
   justify-content: space-between;
   align-items: center;
   min-height: 7rem;
+  border-radius: 0.4rem;
 }
 
 .imageUploadText {
