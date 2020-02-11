@@ -79,7 +79,6 @@ class Navbar extends Component {
                   strict={true}
                   className={styles.navLink + " " + styles.purpleLink}
                   to={ROUTES.request}
-                  // activeClassName={styles.activeDark}
                 >
                   Request acces
                 </NavLink>
@@ -89,7 +88,6 @@ class Navbar extends Component {
                   strict={true}
                   className={styles.navLink + " " + styles.pinkLink}
                   to={ROUTES.login}
-                  // activeClassName={styles.activeDark}
                 >
                   Member login
                 </NavLink>

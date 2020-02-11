@@ -76,7 +76,7 @@ class RequestInfo extends Component {
             <button
               type="button"
               className={uiStyles.textButton}
-              onClick={() => this.approveRequest(request)}
+              onClick={this.approveRequest}
             >
               <span className={uiStyles.button__icon}>+</span>invite committee
             </button>

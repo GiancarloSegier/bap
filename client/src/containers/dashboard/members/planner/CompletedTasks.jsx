@@ -36,7 +36,7 @@ class CompletedTasks extends Component {
       return (
         <>
           <div className={styles.oneLine}>
-            <h1 className={typoStyles.heading1}>CompletedTasks</h1>
+            <h1 className={typoStyles.heading1}>Completed tasks</h1>
             {privileges === "admin" ? (
               <div className={styles.buttonGroup}>
                 <button

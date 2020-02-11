@@ -29,7 +29,7 @@ class Requests extends Component {
       setTimeout(async () => {
         await this.setPickedRequest();
         this.setState({ loading: false });
-      }, 500);
+      }, 1000);
     } else {
       this.setState({ loading: false });
     }
