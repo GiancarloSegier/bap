@@ -91,7 +91,9 @@ class Requests extends Component {
       const messageParts = [];
       nl2br(request.message).map(part => {
         if (!part.type) {
-          messageParts.push(part);
+          return messageParts.push(part);
+        } else {
+          return null;
         }
       });
 

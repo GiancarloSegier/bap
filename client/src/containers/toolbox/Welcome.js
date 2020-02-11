@@ -45,7 +45,7 @@ const Welcome = () => {
               <div className={styles.image_container}>
                 <img
                   className={styles.chapter_image}
-                  src="../assets/starting.png"
+                  src="/assets/starting.png"
                   alt=""
                 />
               </div>
@@ -58,7 +58,7 @@ const Welcome = () => {
               <div className={styles.image_container}>
                 <img
                   className={styles.chapter_image}
-                  src="../assets/people.png"
+                  src="/assets/people.png"
                   alt=""
                 />
               </div>
@@ -71,7 +71,7 @@ const Welcome = () => {
               <div className={styles.image_container}>
                 <img
                   className={styles.chapter_image}
-                  src="../assets/financial.png"
+                  src="/assets/financial.png"
                   alt=""
                 />
               </div>
@@ -93,7 +93,7 @@ const Welcome = () => {
               <p className={styles.heading3}>
                 Share your knowledge to expand our toolbox.
               </p>
-              <a className={styles.button} href="">
+              <a className={styles.button} href="/">
                 Get in touch
               </a>
             </div>

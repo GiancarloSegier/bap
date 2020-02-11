@@ -22,18 +22,6 @@ class MemberDashboard extends Component {
     this.getTasks();
   };
 
-  getTasks = () => {
-    const { allUserTasks } = this.props.taskStore;
-    const { completedTasks } = this.props.committeeStore;
-
-    // const found = allUserTasks.some(r => completedTasks.indexOf(r));
-
-    // console.log(found);
-
-    // console.lgo
-    // this.setState({ upcomingTasks: upcomingTasks });
-  };
-
   openInviteForm = e => {
     this.setState({ invite: true });
   };
@@ -51,11 +39,10 @@ class MemberDashboard extends Component {
     const { authUser, privileges } = this.props.userStore;
     const { allUserTasks } = this.props.taskStore;
     const { greeting } = this.props;
-    const { invite, detail, upcomingTasks } = this.state;
+    const { invite, detail } = this.state;
     const { announcements } = this.props.announcementStore;
     const { committeeMembers } = this.props.userStore;
     const { raceday } = this.props.committeeStore.currentCommittee;
-    const { completedTasks } = this.props.committeeStore;
 
     return (
       <>

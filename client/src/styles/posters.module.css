@@ -95,13 +95,15 @@
   height: max-content;
   position: absolute;
   left: 0;
-
+  align-items: center;
   bottom: -159rem;
   background-color: white;
-  display: flex;
-  flex-wrap: wrap;
-  padding: 2rem 4rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(10rem, 12rem));
+  justify-content: center;
+  padding: 4rem 4rem;
   opacity: 1;
+  grid-gap: 2rem;
   transition: 0.25s ease-in-out;
 }
 .noSponsors {
@@ -113,27 +115,111 @@
   max-width: 14rem;
   margin-right: 1rem;
 }
+
 .krulA {
   background: url("./assets/posters/lineA.png");
-  width: 102%;
-  height: 160rem;
-  position: absolute;
-  top: -7rem;
-  left: 0;
 }
 .krulB {
   background: url("./assets/posters/lineB.png");
-  width: 102%;
-  height: 160rem;
-  position: absolute;
-  top: -7rem;
-  left: -0.5rem;
 }
 .krulC {
   background: url("./assets/posters/lineC.png");
-  width: 102%;
+}
+
+.krulA,
+.krulB,
+.krulC {
+  width: 100%;
   height: 160rem;
   position: absolute;
-  top: -7rem;
-  left: -0.5rem;
+  top: 0;
+  left: 0;
+  background-size: contain;
+}
+
+.sponsorInput {
+  display: none;
+}
+
+.uploadCard {
+  border: dashed var(--grey-low) 0.4rem;
+  border-radius: 0.6rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+
+  padding: 0 2rem;
+  max-width: 24rem;
+  height: 10rem;
+  transition: 0.25s ease-in-out;
+}
+
+.uploadCard:hover .icon {
+  border: solid var(--pink-mid) 0.4rem;
+}
+.uploadCard:hover .cross_line {
+  background-color: var(--pink-mid);
+}
+.icon {
+  flex-shrink: 0;
+  width: 6rem;
+  height: 6rem;
+  border: solid var(--grey-low) 0.4rem;
+  border-radius: 50%;
+  position: relative;
+  transition: 0.25s ease-in-out;
+}
+
+.cross_line {
+  width: 3.5rem;
+  height: 0.4rem;
+  background-color: var(--grey-low);
+  display: block;
+  position: absolute;
+  top: 2.4rem;
+  left: 0.9rem;
+  transition: 0.25s ease-in-out;
+}
+.cross_line:last-child {
+  -webkit-transform: rotate(-90deg);
+}
+
+.imageUpload {
+  background-color: var(--grey-lower);
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 7rem;
+}
+
+.imageUploadText {
+  font-size: 2.4rem;
+  color: var(--grey-low);
+  line-height: 1.2;
+  margin-left: 2rem;
+}
+.sponsorLogo {
+  max-height: 10rem;
+  max-width: 100%;
+  object-fit: contain;
+}
+.removeImage {
+  transform: scale(2);
+  opacity: 0;
+}
+
+.imageContainer {
+  position: relative;
+  margin-right: 1rem;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.25s ease-in-out;
+}
+
+.imageContainer:hover .removeImage {
+  opacity: 1;
 }

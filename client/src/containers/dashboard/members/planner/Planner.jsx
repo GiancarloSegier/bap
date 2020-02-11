@@ -1,8 +1,7 @@
 import React, { Component } from "react";
-// import styles from "./Planner.module.css";
-// import Form from "../components/Form";
+
 import { inject, observer } from "mobx-react";
-import TaskItem from "../../../../components/dashboard/planner/TaskItem";
+
 import Loader from "react-loader-spinner";
 import styles from "../../platform.module.css";
 import uiStyles from "../../../../styles/ui.module.css";

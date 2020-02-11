@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import positionStyles from "./PosterB.module.css";
 import styles from "../../styles/posters.module.css";
+import formStyles from "../../styles/form.module.css";
 
 class PosterB extends Component {
   constructor(props) {
@@ -14,15 +15,29 @@ class PosterB extends Component {
         hours: "9:00 - 14:00",
         background: "./assets/designstudio/posterb.jpg",
         logo: "./assets/designstudio/logothinkpink.png",
+        sponsors: props.data.sponsors,
         walking: 3,
         running: 6
       }
     };
   }
+  componentDidMount = () => {
+    this.setState({ sponsors: this.props.data.sponsors });
+  };
+
+  handleChange = e => {
+    this.props.onUploadSponsors(e);
+    this.setState({ sponsors: this.props.data.sponsors });
+  };
+  onRemoveSponsor = sponsor => {
+    this.props.onRemoveSponsor(sponsor);
+
+    this.setState({ sponsors: this.props.data.sponsors });
+  };
 
   render() {
     const { data } = this.props;
-    const { basics } = this.state;
+    const { basics, sponsors } = this.state;
     return (
       <div className={styles.artboard}>
         <img
@@ -96,16 +111,51 @@ class PosterB extends Component {
               (data.sponsorborder === "on" ? null : styles.noSponsors)
             }
           >
-            <img
-              className={styles.sponsor}
-              src="./assets/designstudio/europcar.png"
-              alt="logo organisation"
-            />
-            <img
-              className={styles.sponsor}
-              src="./assets/designstudio/skoda.png"
-              alt="logo organisation"
-            />
+            {sponsors ? (
+              <>
+                {sponsors.map((sponsor, i) => {
+                  return (
+                    <div className={formStyles.imageContainer} key={i}>
+                      <img
+                        className={styles.sponsorLogo}
+                        src={sponsor}
+                        alt="sponsorlogo"
+                      />
+
+                      <button
+                        type="button"
+                        className={
+                          formStyles.removeImage + " " + styles.removeImage
+                        }
+                        onClick={() => this.onRemoveSponsor(sponsor)}
+                      >
+                        <span className={formStyles.decliner}></span>
+                      </button>
+                    </div>
+                  );
+                })}
+              </>
+            ) : null}
+            {data.sponsors.length < 7 ? (
+              <fieldset id="uploadSponsor">
+                <label htmlFor="sponsors" className={styles.uploadCard}>
+                  <div className={styles.icon}>
+                    <span className={styles.cross_line}></span>
+                    <span className={styles.cross_line}></span>
+                  </div>
+                  <p className={styles.imageUploadText}>Add new sponsor</p>
+                </label>
+                <input
+                  type="file"
+                  name="sponsors"
+                  id="sponsors"
+                  multiple={true}
+                  className={styles.sponsorInput}
+                  onChange={this.handleChange}
+                  accept="image/x-png,image/svg,image/jpeg"
+                />
+              </fieldset>
+            ) : null}
           </div>
         </div>
       </div>

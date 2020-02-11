@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import styles from "../planner/TaskItem.module.css";
-import FontAwesome from "react-fontawesome";
+
 import memberStyles from "../../../styles/members.module.css";
 import TaskDetail from "../../ui/TaskDetail";
 import { inject, observer } from "mobx-react";
@@ -19,13 +19,11 @@ class TaskItem extends Component {
 
   checkCompletedTask = async () => {
     const { completedTasks } = this.props.committeeStore;
-    console.log(completedTasks);
     for (let i = 0; i < completedTasks.length; i++) {
       const task = completedTasks[i];
 
       if (task.id === this.props.task.id) {
         this.setState({ checked: true });
-        console.log(task.id, this.props.task.id);
       }
     }
   };

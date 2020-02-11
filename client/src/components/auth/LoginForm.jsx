@@ -40,14 +40,21 @@ class LoginForm extends Component {
     }
   };
   checkInput = (e, inputType) => {
+    /*eslint no-useless-escape: "off"*/
     const re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     const value = e.target.value;
     this.setState({ checkUser: false });
     if (inputType === "email") {
       if (re.test(value)) {
-        this.setState({ email: value, emailError: false });
+        this.setState({
+          email: value,
+          emailError: false
+        });
       } else {
-        this.setState({ email: "", emailError: true });
+        this.setState({
+          email: "",
+          emailError: true
+        });
       }
     }
     if (inputType === "password") {
@@ -103,7 +110,7 @@ class LoginForm extends Component {
                 />
               </fieldset>
               <div className={styles.loginbuttonbox}>
-                <a href="#" className={styles.forgot}>
+                <a href="/" className={styles.forgot}>
                   forgot login details?
                 </a>
 

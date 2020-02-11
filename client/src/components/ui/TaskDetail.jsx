@@ -5,10 +5,10 @@ import mainFormStyles from "../../styles/form.module.css";
 import formStyles from "./modalForm.module.css";
 import styles from "../dashboard/planner/TaskItem.module.css";
 import FontAwesome from "react-fontawesome";
-import Warning from "./Warning";
+
 import { inject, observer } from "mobx-react";
 import memberStyles from "../../styles/members.module.css";
-import announceStyles from "../dashboard/announcements/Announcement.module.css";
+
 import TopicsBlock from "../dashboard/planner/TopicsBlock";
 
 class TaskDetail extends Component {
@@ -27,14 +27,6 @@ class TaskDetail extends Component {
     const { task } = this.props;
     const { authUser } = this.props.userStore;
     let description = "";
-    // task.assignees.forEach(assignee => {
-    //   console.log(assignee.job, authUser.job.assignment);
-    //   if (assignee.job === authUser.job.assignment) {
-    //     description = assignee.description.split(";");
-    //   } else {
-    //     description = ["Seems like this isn't your job"];
-    //   }
-    // });
 
     task.assignees.forEach(assignee => {
       if (assignee.job === authUser.job.assignment) {
@@ -61,8 +53,6 @@ class TaskDetail extends Component {
     const { authUser } = this.props.userStore;
 
     const { fadeIn, jobDescription } = this.state;
-
-    console.log(jobDescription);
 
     return (
       <>
@@ -151,7 +141,7 @@ class TaskDetail extends Component {
                                 }
                                 width="40"
                                 height="40"
-                                alt=""
+                                alt="member avatar"
                               />
                               <div className={memberStyles.nameTag}>
                                 {member.name === authUser.name &&

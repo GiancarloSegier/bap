@@ -2,28 +2,31 @@ import React, { Component } from "react";
 import PosterA from "../../components/designstudio/PosterA";
 import PosterB from "../../components/designstudio/PosterB";
 import PosterC from "../../components/designstudio/PosterC";
+import styles from "../Dashboard.module.css";
 
 class Artboard extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
-    const { data } = this.props;
+    const { data, onUploadSponsors, onRemoveSponsor } = this.props;
     return (
-      <div
-        style={{
-          width: "1123px",
-          height: "1588px",
-          backgroundColor: "white"
-        }}
-      >
+      <div className={styles.artboard}>
         {data.poster === "posterA" ? (
-          <PosterA data={data} />
+          <PosterA
+            data={data}
+            onUploadSponsors={onUploadSponsors}
+            onRemoveSponsor={onRemoveSponsor}
+          />
         ) : data.poster === "posterB" ? (
-          <PosterB data={data} />
+          <PosterB
+            data={data}
+            onUploadSponsors={onUploadSponsors}
+            onRemoveSponsor={onRemoveSponsor}
+          />
         ) : (
-          <PosterC data={data} />
+          <PosterC
+            data={data}
+            onUploadSponsors={onUploadSponsors}
+            onRemoveSponsor={onRemoveSponsor}
+          />
         )}
       </div>
     );

@@ -141,9 +141,9 @@ class CommitteeDescription extends Component {
               <p>
                 No descreption yet.
                 <br /> Write something about your organisation{" "}
-                <a className={styles.link} onClick={this.openInviteForm}>
+                <span className={styles.link} onClick={this.openInviteForm}>
                   here.
-                </a>
+                </span>
               </p>
             )}
           </div>

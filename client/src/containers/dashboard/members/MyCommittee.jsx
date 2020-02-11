@@ -35,7 +35,6 @@ class MyCommittee extends Component {
 
   render() {
     const { currentCommittee, committeeMembers, loading } = this.state;
-    const invites = this.props.inviteStore.invites;
 
     const { authUser } = this.props.userStore;
     if (loading) {

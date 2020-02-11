@@ -1,13 +1,13 @@
-import React, { Component } from "react";
+import React from "react";
 import styles from "../Toolbox.module.css";
-const Chapter_Start = () => {
+const ChapterStart = () => {
   return (
     <>
       <section className={styles.header_bg}>
         <div className={styles.container + " " + styles.header}>
           <img
             className={styles.header_img}
-            src="../assets/starting.png"
+            src="/assets/starting.png"
             alt=""
           />
           <div className={styles.header_text}>
@@ -25,7 +25,7 @@ const Chapter_Start = () => {
           <h2 className={styles.heading2}>when and where</h2>
           <div className={styles.grid}>
             <div>
-              <img height="250" src="../assets/when.png" alt="" />
+              <img height="250" src="/assets/when.png" alt="" />
               <p className={styles.smalltitle}>when</p>
               <p className={styles.copy}>
                 Most of the Races for the Cure will take place on the same day,
@@ -39,7 +39,7 @@ const Chapter_Start = () => {
               </p>
             </div>
             <div>
-              <img height="250" src="../assets/where.png" alt="" />
+              <img height="250" src="/assets/where.png" alt="" />
               <p className={styles.smalltitle}>where</p>
               <p className={styles.copy}>
                 The decision regarding where the Race will take place depends on
@@ -81,7 +81,7 @@ const Chapter_Start = () => {
               <div className={styles.image_container}>
                 <img
                   className={styles.chapter_image}
-                  src="../assets/people.png"
+                  src="/assets/people.png"
                   alt=""
                 />
               </div>
@@ -95,7 +95,7 @@ const Chapter_Start = () => {
               <div className={styles.image_container}>
                 <img
                   className={styles.chapter_image}
-                  src="../assets/financial.png"
+                  src="/assets/financial.png"
                   alt=""
                 />
               </div>
@@ -108,7 +108,7 @@ const Chapter_Start = () => {
               <div className={styles.image_container}>
                 <img
                   className={styles.chapter_image}
-                  src="../assets/legal.png"
+                  src="/assets/legal.png"
                   alt=""
                 />
               </div>
@@ -128,4 +128,4 @@ const Chapter_Start = () => {
   );
 };
 
-export default Chapter_Start;
+export default ChapterStart;

@@ -1,15 +1,12 @@
 import React, { Component } from "react";
-// import styles from "./Planner.module.css";
-// import Form from "../components/Form";
+
 import { inject, observer } from "mobx-react";
-import TaskItem from "../../../../components/dashboard/planner/TaskItem";
+
 import Loader from "react-loader-spinner";
 import styles from "../../platform.module.css";
 import uiStyles from "../../../../styles/ui.module.css";
 import typoStyles from "../../../../styles/typo.module.css";
-import TaskList from "../../../../components/dashboard/planner/TaskList";
-import { NavLink } from "react-router-dom";
-import { ROUTES } from "../../../../constants";
+
 import PlannerNav from "./PlannerNav";
 import MyTaskList from "../../../../components/dashboard/planner/MyTaskList";
 

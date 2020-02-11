@@ -88,3 +88,61 @@
 .templatesBlock {
   margin-top: 3rem;
 }
+
+.uploadCard {
+  border: dashed var(--grey-low) 0.2rem;
+  border-radius: 0.6rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  width: 12rem;
+  height: 5rem;
+  transition: 0.25s ease-in-out;
+}
+
+.uploadCard:hover .icon {
+  border: solid var(--pink-mid) 0.2rem;
+}
+.uploadCard:hover .cross_line {
+  background-color: var(--pink-mid);
+}
+.icon {
+  flex-shrink: 0;
+  width: 3rem;
+  height: 3rem;
+  border: solid var(--grey-low) 0.2rem;
+  border-radius: 50%;
+  position: relative;
+  transition: 0.25s ease-in-out;
+}
+
+.cross_line {
+  width: 1.5rem;
+  height: 0.2rem;
+  background-color: var(--grey-low);
+  display: block;
+  position: absolute;
+  top: 1.2rem;
+  left: 0.5rem;
+  transition: 0.25s ease-in-out;
+}
+.cross_line:last-child {
+  -webkit-transform: rotate(-90deg);
+}
+
+.imageUpload {
+  background-color: var(--grey-lower);
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 7rem;
+}
+
+.imageUploadText {
+  width: 42%;
+  font-size: 1.4rem;
+  color: var(--grey-low);
+  line-height: 1.2;
+}

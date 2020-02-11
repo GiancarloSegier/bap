@@ -2,16 +2,9 @@ import React, { Component } from "react";
 
 import styles from "./designstudio.module.css";
 import formStyles from "../../styles/form.module.css";
-import modalStyles from "../../styles/modal.module.css";
 
 class PosterForm extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   handleChange = e => {
-    console.log(e.target.value);
-
     this.props.onChangeData(e);
   };
 
@@ -122,35 +115,60 @@ class PosterForm extends Component {
             </div>
           </fieldset>
           <fieldset className={formStyles.form__group}>
-            <label
+            <p
               htmlFor="logo"
               className={formStyles.form__label + " " + formStyles.labelBig}
             >
               Organisation logo
+            </p>
+            <label htmlFor="logo" className={styles.imageUpload}>
+              <div className={styles.uploadCard}>
+                <div className={styles.icon}>
+                  <span className={styles.cross_line}></span>
+                  <span className={styles.cross_line}></span>
+                </div>
+              </div>
+              <p className={styles.imageUploadText}>
+                PNG or SVG
+                <br />
+                No background <br />
+                White logo
+              </p>
             </label>
             <input
               type="file"
               name="logo"
               id="logo"
               multiple={false}
-              className={formStyles.form__input}
+              className={formStyles.fileInput}
               onChange={this.handleChange}
+              accept="image/x-png,image/svg,image/jpeg"
             />
           </fieldset>
           <fieldset className={formStyles.form__group}>
-            <label
-              htmlFor="background"
+            <p
+              htmlFor="logo"
               className={formStyles.form__label + " " + formStyles.labelBig}
             >
               Background image
+            </p>
+            <label htmlFor="background" className={styles.imageUpload}>
+              <div className={styles.uploadCard}>
+                <div className={styles.icon}>
+                  <span className={styles.cross_line}></span>
+                  <span className={styles.cross_line}></span>
+                </div>
+              </div>
+              <p className={styles.imageUploadText}>PNG, SVG or JPEG</p>
             </label>
             <input
               type="file"
               name="background"
               id="background"
               multiple={false}
-              className={formStyles.form__input}
+              className={formStyles.fileInput}
               onChange={this.handleChange}
+              accept="image/x-png,image/svg,image/jpeg"
             />
           </fieldset>
         </div>

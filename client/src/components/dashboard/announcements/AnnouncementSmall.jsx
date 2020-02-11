@@ -29,7 +29,7 @@ class AnnouncementSmall extends Component {
   };
 
   render() {
-    const { announcement, privileges } = this.props;
+    const { announcement } = this.props;
 
     return (
       <div
