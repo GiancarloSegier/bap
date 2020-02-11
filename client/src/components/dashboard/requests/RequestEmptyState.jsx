@@ -21,11 +21,13 @@ class RequestEmptyState extends Component {
         </div>
 
         <div className={styles.committeeEmptyContainer}>
-          <img
-            src="../../assets/empty_request.png"
-            className={styles.emptyImage}
-            alt="Location"
-          />
+          <div className={styles.emptyImageContainer}>
+            <img
+              src="../../assets/empty_request.png"
+              className={styles.emptyImage}
+              alt="Location"
+            />
+          </div>
           <p className={typoStyles.body}>
             Here you’ll find requests of organisations <br />
             who might be interested in working together. <br />

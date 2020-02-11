@@ -1,7 +1,7 @@
 .committeeEmptyContainer {
   text-align: center;
   width: 45%;
-  padding: 5rem;
+  padding: 2rem;
   margin: 0 auto;
   position: absolute;
   left: 0;
@@ -13,9 +13,13 @@
 
 .emptyImage {
   display: block;
-  margin: auto;
+  height: 30rem;
+  background-size: contain;
 }
-
+.emptyImageContainer {
+  display: flex;
+  justify-content: center;
+}
 .backgroundEmpty {
   height: 50rem;
   background-color: none;

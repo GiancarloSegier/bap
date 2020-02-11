@@ -34,11 +34,13 @@ class CommitteeEmpty extends Component {
           </div>
 
           <div className={styles.committeeEmptyContainer}>
-            <img
-              src="../../assets/empty_committee.png"
-              className={styles.emptyImage}
-              alt="Location"
-            />
+            <div className={styles.emptyImageContainer}>
+              <img
+                src="../../assets/empty_committee.png"
+                className={styles.emptyImage}
+                alt="Location"
+              />
+            </div>
             <p className={typoStyles.body}>
               Here you can find an overview of all the race committees from
               every country. There are no committees added yet.
