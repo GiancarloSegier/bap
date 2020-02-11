@@ -142,7 +142,7 @@ class PosterForm extends Component {
               multiple={false}
               className={formStyles.fileInput}
               onChange={this.handleChange}
-              accept="image/x-png,image/svg,image/jpeg"
+              accept="image/x-png,image/svg"
             />
           </fieldset>
           <fieldset className={formStyles.form__group}>
