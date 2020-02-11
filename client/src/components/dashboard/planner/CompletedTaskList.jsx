@@ -5,6 +5,8 @@ import FontAwesome from "react-fontawesome";
 import TaskItem from "./TaskItem";
 import { inject, observer } from "mobx-react";
 import Loader from "react-loader-spinner";
+import CompletedTasks from "../../../containers/dashboard/members/planner/CompletedTasks";
+import CompletedTasksEmpty from "./CompletedTasksEmpty";
 
 class CompletedTaskList extends Component {
   constructor(props) {
@@ -65,79 +67,83 @@ class CompletedTaskList extends Component {
 
     return (
       <>
-        {completedTasksPeriods
-          .slice()
-          .sort((a, b) => b.max - a.max)
-          .map((period, i) => {
-            return (
-              <div key={i} className={styles.periodBlock}>
-                <div
-                  onClick={() => this.getPeriod(period.term)}
-                  className={styles.periodHeader}
-                >
-                  <FontAwesome
-                    name="chevron-down"
-                    className={
-                      styles.purple +
-                      " " +
-                      (this.state.opened === period.term
-                        ? styles.chevron__open
-                        : styles.chevron__close)
-                    }
-                  />
-                  <h2
-                    className={
-                      styles.periodTitle +
-                      " " +
-                      (this.state.opened === period.term
-                        ? styles.periodActive
-                        : null)
-                    }
+        {completedTasksPeriods.length >= 1 ? (
+          completedTasksPeriods
+            .slice()
+            .sort((a, b) => b.max - a.max)
+            .map((period, i) => {
+              return (
+                <div key={i} className={styles.periodBlock}>
+                  <div
+                    onClick={() => this.getPeriod(period.term)}
+                    className={styles.periodHeader}
                   >
-                    {period.term}
-                  </h2>
-                </div>
-                {this.state.opened === period.term ? (
-                  <div className={styles.taskList}>
-                    <ul className={styles.topbar}>
-                      <li>Done?</li>
-                      <li>Task</li>
-                      <li>Assigned to</li>
-                      <li>Due date?</li>
-                      <li>Priority</li>
-                    </ul>
-                    {!loading ? (
-                      <>
-                        {periodCompletedTasks
-                          .slice()
-                          .sort((a, b) => a.priorityLevel - b.priorityLevel)
-                          .map((task, i) => {
-                            return (
-                              <TaskItem
-                                key={i}
-                                task={task}
-                                members={committeeMembers}
-                                raceday={raceday}
-                                delay={i * 2}
-                              />
-                            );
-                          })}
-                      </>
-                    ) : (
-                      <div className={styles.centerLoader}>
-                        <Loader
-                          type="Grid"
-                          color="#ff3066"
-                          height={30}
-                          width={30}
-                        />
-                      </div>
-                    )}
+                    <FontAwesome
+                      name="chevron-down"
+                      className={
+                        styles.purple +
+                        " " +
+                        (this.state.opened === period.term
+                          ? styles.chevron__open
+                          : styles.chevron__close)
+                      }
+                    />
+                    <h2
+                      className={
+                        styles.periodTitle +
+                        " " +
+                        (this.state.opened === period.term
+                          ? styles.periodActive
+                          : null)
+                      }
+                    >
+                      {period.term}
+                    </h2>
                   </div>
-                ) : null}
-              </div>
-            );
-          })}
+                  {this.state.opened === period.term ? (
+                    <div className={styles.taskList}>
+                      <ul className={styles.topbar}>
+                        <li>Done?</li>
+                        <li>Task</li>
+                        <li>Assigned to</li>
+                        <li>Due date?</li>
+                        <li>Priority</li>
+                      </ul>
+                      {!loading ? (
+                        <>
+                          {periodCompletedTasks
+                            .slice()
+                            .sort((a, b) => a.priorityLevel - b.priorityLevel)
+                            .map((task, i) => {
+                              return (
+                                <TaskItem
+                                  key={i}
+                                  task={task}
+                                  members={committeeMembers}
+                                  raceday={raceday}
+                                  delay={i * 2}
+                                />
+                              );
+                            })}
+                        </>
+                      ) : (
+                        <div className={styles.centerLoader}>
+                          <Loader
+                            type="Grid"
+                            color="#ff3066"
+                            height={30}
+                            width={30}
+                          />
+                        </div>
+                      )}
+                    </div>
+                  ) : null}
+                </div>
+              );
+            })
+        ) : (
+          <CompletedTasksEmpty />
+        )}
       </>
     );
   }

@@ -35,11 +35,13 @@ class AnnouncementEmpty extends Component {
           </div>
 
           <div className={styles.committeeEmptyContainer}>
-            <img
-              src="../../assets/empty_announcements.png"
-              className={styles.emptyImage}
-              alt="Location"
-            />
+            <div className={styles.emptyImageContainer}>
+              <img
+                src="../../assets/empty_announcements.png"
+                className={styles.emptyImage}
+                alt="Location"
+              />
+            </div>
             <p className={typoStyles.body}>
               Looks kind of empty
               <br /> here, you can create an anouncement to <br />

@@ -34,22 +34,24 @@ class InvitationsEmpty extends Component {
           </div>
 
           <div className={styles.committeeEmptyContainer}>
+            <div className={styles.emptyImageContainer}>
+              <img
+                src="../../assets/empty_committee.png"
+                className={styles.emptyImage}
+                alt="Location"
+              />
+            </div>
             <p className={typoStyles.body}>
-              Seems like you don't have any invites pending or all your invites
-              are registered.
+              Here you can find an overview of all the race committees from
+              every country. There are no committees added yet.
             </p>
 
             <button
               className={typoStyles.buttonInline}
               onClick={this.openInviteForm}
             >
-              Invite a committee
+              Invite your first committee
             </button>
-            <img
-              src="http://placekitten.com/200/200"
-              className={styles.emptyImage}
-              alt="Location"
-            />
           </div>
         </div>
       </>
