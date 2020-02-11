@@ -6,11 +6,13 @@ const NotFound = () => {
   return (
     <div className={styles.container}>
       <div className={styles.align}>
-        <img
-          src="../../assets/404.png"
-          className={styles.emptyImage}
-          alt="Location"
-        />
+        <div className={styles.imageContainer}>
+          <img
+            src="../../assets/404.png"
+            className={styles.emptyImage}
+            alt="Location"
+          />
+        </div>
         <h1 className={styles.large}>404</h1>
         <p className={styles.mid}>Whoops, nothing to see here!</p>
         <p className={styles.body}>

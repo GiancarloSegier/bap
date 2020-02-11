@@ -27,7 +27,15 @@
   font-size: 2rem;
   margin-bottom: 5rem;
 }
-
+.imageContainer {
+  display: flex;
+  justify-content: center;
+}
+.emptyImage {
+  display: block;
+  height: 30rem;
+  background-size: contain;
+}
 .list {
   display: flex;
   justify-content: space-between;
