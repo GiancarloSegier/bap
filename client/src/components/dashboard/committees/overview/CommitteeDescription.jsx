@@ -91,7 +91,7 @@ class CommitteeDescription extends Component {
             <div className={styles.info}>
               <div className={styles.stat + " " + styles.city}>
                 <img
-                  src="http://placekitten.com/40/40"
+                  src="../../../assets/icons/stats/countries.png"
                   className={styles.icon}
                   width="40"
                   height="40"
@@ -108,7 +108,7 @@ class CommitteeDescription extends Component {
               </div>
               <div className={styles.stat + " " + styles.raceday}>
                 <img
-                  src="http://placekitten.com/40/40"
+                  src="../../../assets/icons/stats/date.png"
                   className={styles.icon}
                   width="40"
                   height="40"
@@ -121,7 +121,7 @@ class CommitteeDescription extends Component {
               </div>
               <div className={styles.stat + " " + styles.members}>
                 <img
-                  src="http://placekitten.com/40/40"
+                  src="../../../assets/icons/stats/committees.png"
                   className={styles.icon}
                   width="40"
                   height="40"

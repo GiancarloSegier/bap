@@ -22,18 +22,25 @@ const ChapterPeople = () => {
           <h2 className={styles.heading2}>Selecting a race committee</h2>
           <div className={styles.grid}>
             <div>
-              <p className={styles.smalltitle}>Race Director</p>
               <p className={styles.copy}>
                 <span className={styles.highlight}>
                   Remember that the Race is a joint effort.
                 </span>
-                When selecting your Race committee members, think carefully
-                about the number of people needed to hold a Race, so the Race
-                chairs are not given too much work. Delegating work is very
-                important to having a successful Race because it allows you
-                focus on your tasks while utilising their different talents and
-                abilities.
+                Depending on your organisation and your means, you can decide to
+                put into place some committees, which will coordinate one or
+                several specific aspects of the race. However, it is quite
+                important to have a Race Committee. This latter will be in
+                charge of the overall organisation. Then, you can create smaller
+                committee, such as a volunteer committee or a logistic
+                committee.
               </p>
+            </div>
+            <div>
+              <img
+                src="/assets/empty_request.png"
+                className={styles.header_img}
+                alt=""
+              />
             </div>
           </div>
         </section>
