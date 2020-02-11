@@ -18,8 +18,6 @@ class MemberDashboard extends Component {
 
   componentDidMount = async () => {
     await this.props.taskStore.getAllUserTasks(this.props.userStore.authUser);
-
-    this.getTasks();
   };
 
   openInviteForm = e => {
