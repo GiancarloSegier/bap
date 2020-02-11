@@ -118,9 +118,10 @@ class CommitteeStore {
     this.completedTasks.remove(task);
   };
   updateCommittee = committee => {
-    this.api
-      .update(committee)
-      .then(committeeValues => committee.updateFromServer(committeeValues));
+    this.api.update(committee).then(committeeValues => {
+      committee.updateFromServer(committeeValues);
+      this._getCurrentCommittee(committeeValues);
+    });
   };
 
   deleteCommittee = committee => {
