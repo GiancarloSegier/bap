@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 
-// import styles from "../../Dashboard.module.css";
 import styles from "../committees.module.css";
 import uiStyles from "../../../../styles/ui.module.css";
 import typoStyles from "../../../../styles/typo.module.css";

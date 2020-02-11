@@ -36,14 +36,10 @@ class MyTasks extends Component {
       return (
         <>
           <div className={styles.oneLine}>
-            <h1 className={typoStyles.heading1}>MyTasks</h1>
+            <h1 className={typoStyles.heading1}>My tasks</h1>
             {privileges === "admin" ? (
               <div className={styles.buttonGroup}>
-                <button
-                  type="button"
-                  className={uiStyles.textButton}
-                  // onClick={this.openInviteForm}
-                >
+                <button type="button" className={uiStyles.textButton}>
                   <span className={uiStyles.button__icon}>+</span>Add task
                 </button>
               </div>
@@ -52,7 +48,6 @@ class MyTasks extends Component {
           <PlannerNav />
 
           <MyTaskList />
-          {/* <TaskList /> */}
         </>
       );
     }

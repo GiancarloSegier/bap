@@ -75,16 +75,8 @@ class MemberListItem extends Component {
 
         {privileges === "supervisor" || privileges === "member" ? null : (
           <div className={styles.icons}>
-            <FontAwesome
-              className={styles.icon}
-              name="trash"
-              //onClick={this.onView}
-            />
-            <FontAwesome
-              className={styles.icon}
-              name="edit"
-              // onClick={this.onEdit}
-            />
+            <FontAwesome className={styles.icon} name="trash" />
+            <FontAwesome className={styles.icon} name="edit" />
           </div>
         )}
         <div className={styles.listItem}>
@@ -145,7 +137,6 @@ class MemberListItem extends Component {
                   name="job"
                   id="job"
                   ref={this.jobInput}
-                  // onChange={this.handleChangeJob}
                   className={styles.job__input}
                   defaultValue={member.job.assignment}
                 >
