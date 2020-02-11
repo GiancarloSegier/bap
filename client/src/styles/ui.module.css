@@ -6,6 +6,11 @@
   align-items: center;
 }
 
+.iconLight {
+  color: var(--pink-low);
+  margin-right: 1rem;
+}
+
 .button__icon {
   display: inline-block;
   color: var(--pink-low);

@@ -53,6 +53,10 @@
   max-width: 42rem;
   margin: auto;
 }
+.bigModal {
+  max-width: none;
+  width: 54rem;
+}
 .floatingModal.fadeIn {
   transform: translateY(0);
   opacity: 1;

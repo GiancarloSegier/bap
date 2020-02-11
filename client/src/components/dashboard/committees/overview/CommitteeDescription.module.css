@@ -2,7 +2,7 @@
   font-size: 4.8rem;
   font-family: "beatrice";
   font-weight: bold;
-  color: var(--purple-dark);
+  color: var(--purple-high);
 }
 .back {
   color: var(--pink-mid);
@@ -52,9 +52,14 @@
 .teamlogo {
   display: block;
 }
-.flex {
+
+.oneLine {
   display: flex;
   justify-content: space-between;
+}
+.buttonGroup {
+  display: flex;
+  height: max-content;
 }
 .textButton {
   composes: form__button from "../../../../styles/form.module.css";

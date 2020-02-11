@@ -33,6 +33,10 @@
   font-family: "chivo", Arial, Helvetica, sans-serif;
 }
 
+select {
+  height: 4rem;
+}
+
 .smallInput {
   width: 13rem;
   height: 4rem;
