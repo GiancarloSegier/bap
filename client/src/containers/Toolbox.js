@@ -10,6 +10,7 @@ import Welcome from "./toolbox/Welcome";
 import EventManager from "./toolbox/EventManager";
 
 const Toolbox = () => {
+  window.scrollTo(0, 0);
   return (
     <div className={styles.Toolbox}>
       <div className={styles.sideNav}>

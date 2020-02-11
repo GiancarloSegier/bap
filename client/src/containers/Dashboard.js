@@ -20,6 +20,7 @@ import CompletedTasks from "./dashboard/members/planner/CompletedTasks";
 
 const Dashboard = ({ userStore }) => {
   const { privileges } = userStore.authUser.job;
+  window.scrollTo(0, 0);
 
   if (privileges === "supervisor") {
     return (
