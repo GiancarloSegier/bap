@@ -67,8 +67,14 @@ class CommitteeDescription extends Component {
   }
 
   render() {
-    const { committee, committeeMembers, privileges } = this.props;
+    const { committeeMembers, privileges } = this.props;
     const { warning, invite, edit, dateString } = this.state;
+    let committee = {};
+    if (privileges === "admin") {
+      committee = this.props.committeeStore.currentCommittee;
+    } else {
+      committee = this.props.committee;
+    }
 
     return (
       <>

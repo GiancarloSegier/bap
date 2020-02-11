@@ -94,15 +94,16 @@ class EditCommitteeForm extends Component {
   changeFile = e => {
     if (e.currentTarget.files.length !== 0) {
       this.setState({ logo: URL.createObjectURL(e.currentTarget.files[0]) });
+
+      const files = e.currentTarget.files;
+
+      const formData = new FormData();
+      Array.from(files).forEach((file, i) => {
+        formData.append(i, file);
+      });
+
+      this.setState({ formData: formData });
     }
-    const files = e.currentTarget.files;
-
-    const formData = new FormData();
-    Array.from(files).forEach((file, i) => {
-      formData.append(i, file);
-    });
-
-    this.setState({ formData: formData });
   };
 
   uploadAvatar = async () => {
@@ -296,7 +297,11 @@ class EditCommitteeForm extends Component {
               </fieldset>
 
               <div className={modalStyles.buttonBox}>
-                <button type="submit" className={uiStyles.textButton}>
+                <button
+                  type="submit"
+                  className={uiStyles.textButton}
+                  disabled={!name}
+                >
                   <span
                     className={formStyles.checker + " " + formStyles.margin}
                   ></span>
