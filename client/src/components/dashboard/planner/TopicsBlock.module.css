@@ -37,15 +37,18 @@
 }
 .topicImage {
   object-fit: contain;
-  margin-right: 2rem;
+  margin-right: 1rem;
+  max-width: 9rem;
+  margin-left: -1rem;
 }
 .infoText {
   align-self: flex-end;
 }
 
 .topic .topicImage {
-  height: 4rem;
-  margin-right: 0;
+  height: 7rem;
+  margin-top: -1rem;
+  margin-right: -1rem;
 }
 .heading3 {
   font-size: 1.4rem;

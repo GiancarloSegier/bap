@@ -3,6 +3,7 @@ import styles from "./TopicsBlock.module.css";
 import modalStyles from "../../../styles/modal.module.css";
 
 import { Link } from "react-router-dom";
+import { ROUTES } from "../../../constants";
 
 const TopicsBlock = () => {
   return (
@@ -17,9 +18,9 @@ const TopicsBlock = () => {
     >
       <h3 className={styles.heading3}>More information?</h3>
       <div className={styles.cardGrid}>
-        <Link to="/" className={styles.topicBlock}>
+        <Link to={ROUTES.people} className={styles.topicBlock}>
           <img
-            src="/assets/icons/toolbox/people.png"
+            src="/assets/people.png"
             className={styles.topicImage}
             alt="illustration"
           />
@@ -28,13 +29,16 @@ const TopicsBlock = () => {
             <h4 className={styles.topicTitle}>Managing people</h4>
           </div>
         </Link>
-        <Link to="/" className={styles.topicBlock + " " + styles.topic}>
+        <Link
+          to={ROUTES.detail}
+          className={styles.topicBlock + " " + styles.topic}
+        >
           <div className={styles.infoText}>
             <p className={styles.subTitle}>Topic</p>
             <h4 className={styles.topicTitle}>Volunteers</h4>
           </div>
           <img
-            src="/assets/icons/toolbox/people.png"
+            src="/assets/chaptercard.png"
             className={styles.topicImage}
             alt="illustration"
           />
