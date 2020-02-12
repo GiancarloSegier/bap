@@ -44,17 +44,41 @@ const ChapterPeople = () => {
             </div>
           </div>
         </section>
+        <div className={styles.quote + " " + styles.card}>
+          <p>
+            A succesful Race is a joint effort. Planning, implementing and
+            evaluating a Race together can be fun or challenging, but almost
+            always rewarding.
+          </p>
+        </div>
         <section>
           <div>
             <div className={styles.next}>
-              <h3 className={styles.heading2}>Key committee members</h3>
+              <h3 className={styles.heading2}>Jobs to be done</h3>
               <p className={styles.copy}>
-                This guide includes several jobs descriptions to consider for
-                team members who will plan, implement and evaluate a Race event.
+                We advise you to assign the following roles to seperate
+                individuals in your Race Committee
               </p>
             </div>
 
             <div className={styles.jobs}>
+              <div
+                className={
+                  styles.job_card + " " + styles.orange + " " + styles.grow
+                }
+              >
+                <img
+                  src="/assets/jobs/ambassador.png"
+                  className={styles.job_img}
+                  alt=""
+                />
+                <div>
+                  <h4 className={styles.job_title}>Ambassador</h4>
+                  <p className={styles.job_desc}>
+                    Helps generate media attention and coverage
+                  </p>
+                </div>
+              </div>
               <Link
                 to={`/toolbox/people/event`}
                 className={
@@ -69,7 +93,7 @@ const ChapterPeople = () => {
                 <div>
                   <h4 className={styles.job_title}>Event manager</h4>
                   <p className={styles.job_desc}>
-                    This guide includes several jobs descriptions{" "}
+                    Responsible for the overall planning and implementation
                   </p>
                 </div>
               </Link>
@@ -86,58 +110,7 @@ const ChapterPeople = () => {
                 <div>
                   <h4 className={styles.job_title}>Sponsor manager</h4>
                   <p className={styles.job_desc}>
-                    This guide includes several jobs descriptions{" "}
-                  </p>
-                </div>
-              </div>
-              <div
-                className={
-                  styles.job_card + " " + styles.pinq + " " + styles.grow
-                }
-              >
-                <img
-                  src="/assets/jobs/volunteer.png"
-                  className={styles.job_img}
-                  alt=""
-                />
-                <div>
-                  <h4 className={styles.job_title}>Volunteer manager</h4>
-                  <p className={styles.job_desc}>
-                    This guide includes several jobs descriptions{" "}
-                  </p>
-                </div>
-              </div>
-              <div
-                className={
-                  styles.job_card + " " + styles.purple + " " + styles.grow
-                }
-              >
-                <img
-                  src="/assets/jobs/prmanager.png"
-                  className={styles.job_img}
-                  alt=""
-                />
-                <div>
-                  <h4 className={styles.job_title}>PR manager</h4>
-                  <p className={styles.job_desc}>
-                    This guide includes several jobs descriptions{" "}
-                  </p>
-                </div>
-              </div>
-              <div
-                className={
-                  styles.job_card + " " + styles.orange + " " + styles.grow
-                }
-              >
-                <img
-                  src="/assets/jobs/ambassador.png"
-                  className={styles.job_img}
-                  alt=""
-                />
-                <div>
-                  <h4 className={styles.job_title}>Ambassador</h4>
-                  <p className={styles.job_desc}>
-                    This guide includes several jobs descriptions{" "}
+                    Responsible for identifying and securing sponsors
                   </p>
                 </div>
               </div>
@@ -154,7 +127,24 @@ const ChapterPeople = () => {
                 <div>
                   <h4 className={styles.job_title}>Logistics manager</h4>
                   <p className={styles.job_desc}>
-                    This guide includes several jobs descriptions{" "}
+                    Responsibility for identifying and securing logistics
+                  </p>
+                </div>
+              </div>
+              <div
+                className={
+                  styles.job_card + " " + styles.pinq + " " + styles.grow
+                }
+              >
+                <img
+                  src="/assets/jobs/volunteer.png"
+                  className={styles.job_img}
+                  alt=""
+                />
+                <div>
+                  <h4 className={styles.job_title}>Volunteer manager</h4>
+                  <p className={styles.job_desc}>
+                    Responsible for covering all things related to volunteers
                   </p>
                 </div>
               </div>
@@ -173,10 +163,28 @@ const ChapterPeople = () => {
                     Survivor recognition <br /> manager
                   </h4>
                   <p className={styles.job_desc}>
-                    This guide includes several jobs descriptions{" "}
+                    responsible for the most inspiring part of Race day
                   </p>
                 </div>
               </div>
+              <div
+                className={
+                  styles.job_card + " " + styles.purple + " " + styles.grow
+                }
+              >
+                <img
+                  src="/assets/jobs/prmanager.png"
+                  className={styles.job_img}
+                  alt=""
+                />
+                <div>
+                  <h4 className={styles.job_title}>PR manager</h4>
+                  <p className={styles.job_desc}>
+                    Oversees the public relations committee
+                  </p>
+                </div>
+              </div>
+
               <div
                 className={
                   styles.job_card + " " + styles.yellow + " " + styles.grow
@@ -190,7 +198,7 @@ const ChapterPeople = () => {
                 <div>
                   <h4 className={styles.job_title}>Race Treasurer</h4>
                   <p className={styles.job_desc}>
-                    This guide includes several jobs descriptions{" "}
+                    Responsible for managing the race budget
                   </p>
                 </div>
               </div>
@@ -201,9 +209,10 @@ const ChapterPeople = () => {
       <section className={styles.purple_bg}>
         <div className={styles.container}>
           <div className={styles.next}>
-            <h3 className={styles.heading2}>In depth topics</h3>
+            <h3 className={styles.heading2}>What's next</h3>
             <p className={styles.copy}>
-              More about working with people, communication, volunteers
+              Got your Race Committee up and running? Time to take a look at
+              more practical things then.
             </p>
           </div>
           <div className={styles.card_grid}>
@@ -216,38 +225,38 @@ const ChapterPeople = () => {
                 />
               </div>
               <div>
-                <p className={styles.card_subtitle}>Topic</p>
-                <h4 className={styles.card_title}>Volunteers</h4>
+                <p className={styles.card_subtitle}>Chapter 3</p>
+                <h4 className={styles.card_title}>Financials and sponsors</h4>
               </div>
             </div>
             <div className={styles.chapter_card + " " + styles.grow}>
               <div className={styles.image_container}>
                 <img
                   className={styles.chapter_image}
-                  src="/assets/financial.png"
+                  src="/assets/legal.png"
                   alt=""
                 />
               </div>
               <div>
-                <p className={styles.card_subtitle}>Topic</p>
-                <h4 className={styles.card_title}>Committee meetings</h4>
-              </div>
-            </div>
-            <div className={styles.chapter_card + " " + styles.grow}>
-              <div className={styles.image_container}>
-                <img
-                  className={styles.chapter_image}
-                  src="/assets/financial.png"
-                  alt=""
-                />
-              </div>
-              <div>
-                <p className={styles.card_subtitle}>chapter 4</p>
+                <p className={styles.card_subtitle}>Chapter 4</p>
                 <h4
                   className={styles.card_title + " " + styles.card_title_small}
                 >
-                  Legal, Security &amp; Medical Provision
+                  Legal, security and medical provision
                 </h4>
+              </div>
+            </div>
+            <div className={styles.chapter_card + " " + styles.grow}>
+              <div className={styles.image_container}>
+                <img
+                  className={styles.chapter_image}
+                  src="/assets/empty_request.png"
+                  alt=""
+                />
+              </div>
+              <div>
+                <p className={styles.card_subtitle}>chapter 5</p>
+                <h4 className={styles.card_title}>Public relations</h4>
               </div>
             </div>
           </div>
