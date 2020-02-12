@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 const Welcome = () => {
   return (
     <>
-      <img className={styles.welcome_img} src="/assets/welcome.png" />
+      <img className={styles.welcome_img} src="/assets/welcome.png" alt="" />
       <div className={styles.container + " " + styles.margincontainer}>
         <section className={styles.introduction}>
           <div className={styles.content}>
@@ -88,6 +88,7 @@ const Welcome = () => {
           <img
             className={styles.shareImage}
             src="/assets/empty_announcements.png"
+            alt=""
           />
           <div className={styles.shareContent}>
             <p className={styles.heading3}>
