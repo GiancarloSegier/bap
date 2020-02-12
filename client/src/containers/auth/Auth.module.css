@@ -28,6 +28,7 @@
   font-family: "beatrice", sans-serif;
   font-weight: 900;
   margin-bottom: 4rem;
+  color: var(--purple-mid);
 }
 .intro {
   font-size: 2rem;

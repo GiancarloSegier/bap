@@ -28,7 +28,9 @@ class AvatarNav extends Component {
     e.preventDefault();
 
     await this.props.userStore.logout();
-    window.location.href = "/";
+    setTimeout(() => {
+      window.location.href = "/";
+    }, 200);
   };
 
   render() {

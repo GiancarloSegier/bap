@@ -17,6 +17,7 @@
   margin-bottom: 4rem;
   font-weight: bold;
   font-family: "beatrice", sans-serif;
+  color: var(--purple-mid);
 }
 
 .form__input,
