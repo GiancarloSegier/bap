@@ -112,7 +112,7 @@ class TaskItem extends Component {
           />
         ) : null}
         <div
-          className={styles.task}
+          className={styles.task + " " + styles.grow}
           style={{ animationDelay: this.props.delay }}
           onClick={this.openDetail}
         >
