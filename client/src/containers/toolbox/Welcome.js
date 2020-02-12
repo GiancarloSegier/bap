@@ -3,7 +3,7 @@ import styles from "../Toolbox.module.css";
 const Welcome = () => {
   return (
     <>
-      <div className={styles.container}>
+      <div className={styles.container + " " + styles.margincontainer}>
         <section className>
           <p className={styles.smalltitle}>Welcome</p>
           <h1 className={styles.heading1}>

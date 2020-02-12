@@ -3,6 +3,7 @@
 
   margin-left: 32rem;
 }
+
 .toolboxContainer {
   width: 80%;
   margin: 0 auto;
@@ -13,7 +14,9 @@
   margin: 0 auto;
   padding: 0 4rem;
 }
-
+.margincontainer {
+  margin-top: 16rem;
+}
 .grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -46,7 +49,26 @@
   font-weight: bold;
   color: var(--purple-mid);
 }
+.quote {
+  color: var(--purple-low);
+  font-size: 2.7rem;
+  line-height: 4.5rem;
+  font-family: "beatrice";
+  font-weight: 500;
+  position: relative;
+  margin-bottom: 12rem;
+}
+.quote::before {
+  content: "";
+  background-image: url(../../src/styles/assets/quotes.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 7rem;
+  height: 6rem;
 
+  position: absolute;
+  margin-top: -7rem;
+}
 .smalltitle {
   margin-bottom: 2rem;
   font-size: 2.1rem;
@@ -121,6 +143,12 @@
   padding: 8rem;
   margin-top: 12rem;
   margin-bottom: 12rem;
+}
+.job_desc {
+  color: var(--grey-mid);
+}
+.jobs {
+  padding-bottom: 12rem;
 }
 /**/
 .purple_bg {
@@ -263,14 +291,14 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-gap: 0 4rem;
-  margin: 12rem 0;
+  margin: 2rem 0;
 }
 
 .jobs .job_card:nth-child(even) {
-  margin-top: 4rem;
+  margin-bottom: 4rem;
 }
 .jobs .job_card:nth-child(odd) {
-  margin-bottom: 4rem;
+  margin-top: 4rem;
 }
 
 /*colors*/
