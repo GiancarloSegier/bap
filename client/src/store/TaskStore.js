@@ -38,6 +38,7 @@ class TaskStore {
     this.allUserTasks = [];
     this.api.getAll().then(d =>
       d
+        .slice()
         .filter(a => a.assignees.some(b => b.job === user.job.assignment))
         .sort((a, b) => b.period.max - a.period.max)
         .forEach(this._addAllUserTask)

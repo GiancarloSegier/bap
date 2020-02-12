@@ -8,6 +8,11 @@ import Loader from "react-loader-spinner";
 
 import CompletedTasksEmpty from "./CompletedTasksEmpty";
 
+import * as Scroll from "react-scroll";
+
+const scroller = Scroll.scroller;
+const animatedScroll = Scroll.animateScroll;
+
 class CompletedTaskList extends Component {
   constructor(props) {
     super(props);
@@ -24,11 +29,18 @@ class CompletedTaskList extends Component {
 
     if (opened === term) {
       this.setState({ opened: false });
+      animatedScroll.scrollToTop();
     } else {
       this.props.committeeStore.getPeriodCompletedTasks(term);
       this.setState({ opened: term });
       setTimeout(() => {
         this.setState({ loading: false });
+        scroller.scrollTo(term, {
+          duration: 1500,
+          delay: 100,
+          smooth: true,
+          offset: -200
+        });
       }, 500);
     }
   };
@@ -75,6 +87,7 @@ class CompletedTaskList extends Component {
               return (
                 <div key={i} className={styles.periodBlock}>
                   <div
+                    name={period.term}
                     onClick={() => this.getPeriod(period.term)}
                     className={styles.periodHeader}
                   >

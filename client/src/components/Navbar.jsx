@@ -65,7 +65,11 @@ class Navbar extends Component {
           <li>
             <NavLink
               strict={true}
-              className={styles.navLink}
+              className={
+                styles.navLink +
+                " " +
+                (!userStore.authUser ? null : styles.marginRight)
+              }
               to={ROUTES.toolbox}
               activeClassName={styles.active}
             >
