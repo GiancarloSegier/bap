@@ -88,8 +88,12 @@ class TaskDetail extends Component {
               jobDescription !== "" &&
               jobDescription[0] !== "" ? (
                 <>
-                  {jobDescription.map(part => {
-                    return <p className={styles.description}>{part}</p>;
+                  {jobDescription.map((part, i) => {
+                    return (
+                      <p key={i} className={styles.description}>
+                        {part}
+                      </p>
+                    );
                   })}
                 </>
               ) : (
@@ -114,50 +118,45 @@ class TaskDetail extends Component {
                   {priority}
                 </p>
                 <div className={styles.memberImages}>
-                  {task.assignees.map((assignee, i) => (
-                    <>
-                      {members
-                        .slice()
-                        .filter(a => a.job.assignment === assignee.job)
-                        .map((member, index) => {
-                          let job = member.job.assignment
-                            .split(" ")
-                            .join("")
-                            .toLowerCase()
-                            .replace("&", "");
-                          return (
-                            <div
-                              key={index}
-                              className={memberStyles.memberBlock}
-                            >
-                              <img
-                                src={member.avatarUrl}
-                                className={
-                                  memberStyles.icon +
-                                  " " +
-                                  memberStyles.border +
-                                  " " +
-                                  memberStyles[job]
-                                }
-                                width="40"
-                                height="40"
-                                alt="member avatar"
-                              />
-                              <div className={memberStyles.nameTag}>
-                                {member.name === authUser.name &&
-                                member.surname === authUser.surname ? (
-                                  <p>me </p>
-                                ) : (
-                                  <p>
-                                    {member.name} {member.surname}
-                                  </p>
-                                )}
-                              </div>
+                  {task.assignees.map((assignee, i) => {
+                    return members
+                      .slice()
+                      .filter(a => a.job.assignment === assignee.job)
+                      .map((member, index) => {
+                        let job = member.job.assignment
+                          .split(" ")
+                          .join("")
+                          .toLowerCase()
+                          .replace("&", "");
+                        return (
+                          <div key={index} className={memberStyles.memberBlock}>
+                            <img
+                              src={member.avatarUrl}
+                              className={
+                                memberStyles.icon +
+                                " " +
+                                memberStyles.border +
+                                " " +
+                                memberStyles[job]
+                              }
+                              width="40"
+                              height="40"
+                              alt="member avatar"
+                            />
+                            <div className={memberStyles.nameTag}>
+                              {member.name === authUser.name &&
+                              member.surname === authUser.surname ? (
+                                <p>me </p>
+                              ) : (
+                                <p>
+                                  {member.name} {member.surname}
+                                </p>
+                              )}
                             </div>
-                          );
-                        })}
-                    </>
-                  ))}
+                          </div>
+                        );
+                      });
+                  })}
                 </div>
               </div>
             </div>

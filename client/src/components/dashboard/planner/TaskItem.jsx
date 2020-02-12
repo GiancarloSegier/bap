@@ -11,10 +11,10 @@ class TaskItem extends Component {
     this.state = {};
   }
 
-  componentDidMount = async () => {
-    await this.getPriority();
-    await this.getDueDate();
-    await this.checkCompletedTask();
+  componentDidMount = () => {
+    this.getPriority();
+    this.getDueDate();
+    this.checkCompletedTask();
   };
 
   checkCompletedTask = async () => {
