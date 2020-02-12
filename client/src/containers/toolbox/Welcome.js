@@ -1,10 +1,12 @@
 import React from "react";
 import styles from "../Toolbox.module.css";
+import { ROUTES } from "../../constants";
+import { Link } from "react-router-dom";
 const Welcome = () => {
   return (
     <>
       <div className={styles.container + " " + styles.margincontainer}>
-        <section className>
+        <section>
           <p className={styles.smalltitle}>Welcome</p>
           <h1 className={styles.heading1}>
             Organizing your race
@@ -42,43 +44,51 @@ const Welcome = () => {
           </div>
           <div className={styles.card_grid}>
             <div className={styles.chapter_card + " " + styles.grow}>
-              <div className={styles.image_container}>
-                <img
-                  className={styles.chapter_image}
-                  src="/assets/starting.png"
-                  alt=""
-                />
-              </div>
-              <div>
-                <p className={styles.card_subtitle}>chapter 1</p>
-                <h4 className={styles.card_title}>starting your event</h4>
-              </div>
+              <Link to={ROUTES.start}>
+                <div className={styles.image_container}>
+                  <img
+                    className={styles.chapter_image}
+                    src="/assets/starting.png"
+                    alt=""
+                  />
+                </div>
+                <div>
+                  <p className={styles.card_subtitle}>chapter 1</p>
+                  <h4 className={styles.card_title}>starting your event</h4>
+                </div>
+              </Link>
             </div>
             <div className={styles.chapter_card + " " + styles.grow}>
-              <div className={styles.image_container}>
-                <img
-                  className={styles.chapter_image}
-                  src="/assets/people.png"
-                  alt=""
-                />
-              </div>
-              <div>
-                <p className={styles.card_subtitle}>chapter 2</p>
-                <h4 className={styles.card_title}>Managing People</h4>
-              </div>
+              <Link to={ROUTES.people}>
+                <div className={styles.image_container}>
+                  <img
+                    className={styles.chapter_image}
+                    src="/assets/people.png"
+                    alt=""
+                  />
+                </div>
+                <div>
+                  <p className={styles.card_subtitle}>chapter 2</p>
+                  <h4 className={styles.card_title}>Managing People</h4>
+                </div>
+              </Link>
             </div>
             <div className={styles.chapter_card + " " + styles.grow}>
-              <div className={styles.image_container}>
-                <img
-                  className={styles.chapter_image}
-                  src="/assets/financial.png"
-                  alt=""
-                />
-              </div>
-              <div>
-                <p className={styles.card_subtitle}>chapter 3</p>
-                <h4 className={styles.card_title}>Financial &amp; Sponsors</h4>
-              </div>
+              <Link to={ROUTES.people}>
+                <div className={styles.image_container}>
+                  <img
+                    className={styles.chapter_image}
+                    src="/assets/financial.png"
+                    alt=""
+                  />
+                </div>
+                <div>
+                  <p className={styles.card_subtitle}>chapter 3</p>
+                  <h4 className={styles.card_title}>
+                    Financial &amp; Sponsors
+                  </h4>
+                </div>
+              </Link>
             </div>
           </div>
         </div>

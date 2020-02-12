@@ -1,15 +1,17 @@
 import React from "react";
 import styles from "../Toolbox.module.css";
 import FontAwesome from "react-fontawesome";
+import { ROUTES } from "../../constants";
+import { Link } from "react-router-dom";
 const EventManager = () => {
   return (
     <>
       <section className={styles.header_bg}>
         <div className={styles.container}>
-          <a className={styles.back} href="/">
+          <Link className={styles.back} to={ROUTES.people}>
             <FontAwesome name="chevron-left" className={styles.arrow} />
             managing people
-          </a>
+          </Link>
         </div>
         <div className={styles.container + " " + styles.header}>
           <img src="/assets/headerscrabble.png" alt="" />

@@ -37,7 +37,7 @@ class Invitations extends Component {
         ) : (
           <>
             {pendingRequests
-
+              .slice()
               .sort((a, b) => new Date(b.updatedAt) - new Date(a.updatedAt))
               .map((request, i) => {
                 return <InvitationListItem key={i} request={request} />;

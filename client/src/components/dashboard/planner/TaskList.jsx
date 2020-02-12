@@ -4,6 +4,10 @@ import FontAwesome from "react-fontawesome";
 import TaskItem from "./TaskItem";
 import { inject, observer } from "mobx-react";
 import Loader from "react-loader-spinner";
+import * as Scroll from "react-scroll";
+
+const scroller = Scroll.scroller;
+const animatedScroll = Scroll.animateScroll;
 
 class TaskList extends Component {
   constructor(props) {
@@ -21,11 +25,19 @@ class TaskList extends Component {
 
     if (opened === term) {
       this.setState({ opened: false });
+      animatedScroll.scrollToTop();
     } else {
       this.props.taskStore.getPeriodTasks(term);
       this.setState({ opened: term });
+
       setTimeout(() => {
         this.setState({ loading: false });
+        scroller.scrollTo(term, {
+          duration: 1500,
+          delay: 100,
+          smooth: true,
+          offset: -200
+        });
       }, 500);
     }
   };
@@ -65,8 +77,9 @@ class TaskList extends Component {
           return (
             <div key={i} className={styles.periodBlock}>
               <div
-                onClick={() => this.getPeriod(period.term)}
                 className={styles.periodHeader}
+                name={period.term}
+                onClick={() => this.getPeriod(period.term)}
               >
                 <FontAwesome
                   name="chevron-down"

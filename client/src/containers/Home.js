@@ -3,8 +3,11 @@ import styles from "./Home.module.css";
 import FontAwesome from "react-fontawesome";
 import { Link } from "react-router-dom";
 import { ROUTES } from "../constants";
+import * as Scroll from "react-scroll";
 
 const Home = () => {
+  const SmoothLink = Scroll.Link;
+
   return (
     <>
       <div className={styles.bg_img}>
@@ -25,14 +28,22 @@ const Home = () => {
               of a Race for the Cure
             </p>
 
-            <a href="#scrollto" className={styles.button}>
+            <SmoothLink
+              className={styles.button}
+              to="scrollto"
+              spy={true}
+              smooth={true}
+              offset={50}
+              duration={500}
+            >
               Learn more
               <FontAwesome className={styles.margin_left} name="chevron-down" />
-            </a>
+            </SmoothLink>
           </div>
         </section>
         <section
           id="scrollto"
+          name="scrollTo"
           className={styles.spacer + " " + styles.right + " " + styles.float}
         >
           <div className={styles.container}>
@@ -45,11 +56,7 @@ const Home = () => {
               experiences from many organisations. Use it as a guide to collect
               ideas to make your Race a great one.
             </p>
-            <Link
-              className={styles.button}
-              to={ROUTES.toolbox}
-              activeClassName={styles.active}
-            >
+            <Link className={styles.button} to={ROUTES.toolbox}>
               Toolbox
               <FontAwesome
                 className={styles.margin_left}
@@ -68,11 +75,7 @@ const Home = () => {
               With just a few clicks your fabulous posters and T-shirts will be
               ready for print!
             </p>
-            <Link
-              className={styles.button}
-              to={ROUTES.designstudio}
-              activeClassName={styles.active}
-            >
+            <Link className={styles.button} to={ROUTES.designstudio}>
               Designstudio
               <FontAwesome
                 className={styles.margin_left}

@@ -93,7 +93,7 @@ class MemberDashboard extends Component {
             </ul>
 
             {allUserTasks
-
+              .slice()
               .sort((a, b) => a.priorityLevel - b.priorityLevel)
               .slice(0, 4)
               .map((task, i) => {

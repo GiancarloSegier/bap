@@ -13,6 +13,7 @@
   font-weight: 500;
   font-size: 1.8rem;
   margin-bottom: 2rem;
+  color: var(--purple-high);
 }
 .heading3 {
   font-size: 2rem;

@@ -184,7 +184,7 @@
   transition: all 0.2s ease-in-out;
 }
 .chapter_card:hover {
-  border-bottom: solid 0.6rem var(--pink-mid);
+  border-color: var(--pink-mid);
   cursor: pointer;
 }
 .card_subtitle {
@@ -198,6 +198,7 @@
   font-size: 2.1rem;
   font-weight: bold;
   line-height: 2.1rem;
+  color: var(--purple-high);
 }
 .card_title_small {
   font-size: 1.8rem;
@@ -211,7 +212,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 65%;
+  height: 19rem;
 }
 
 .next {

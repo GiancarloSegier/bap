@@ -13,6 +13,9 @@
 .background_hidden {
   background-color: transparent;
 }
+.marginRight {
+  margin-right: 4rem;
+}
 .rightMenu {
   display: flex;
   align-items: center;

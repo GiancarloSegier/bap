@@ -33,6 +33,7 @@
 .data {
   font-size: 1.8rem;
   font-weight: bold;
+  color: var(--purple-high);
 }
 .stat_info {
   line-height: 2rem;

@@ -1,5 +1,7 @@
-import React, { Component } from "react";
+import React from "react";
 import styles from "../Toolbox.module.css";
+import { ROUTES } from "../../constants/index";
+import { Link } from "react-router-dom";
 const Chapter_Start = () => {
   return (
     <>
@@ -78,48 +80,56 @@ const Chapter_Start = () => {
           </div>
           <div className={styles.card_grid}>
             <div className={styles.chapter_card + " " + styles.grow}>
-              <div className={styles.image_container}>
-                <img
-                  className={styles.chapter_image}
-                  src="../assets/people.png"
-                  alt=""
-                />
-              </div>
+              <Link to={ROUTES.people}>
+                <div className={styles.image_container}>
+                  <img
+                    className={styles.chapter_image}
+                    src="../assets/people.png"
+                    alt=""
+                  />
+                </div>
 
-              <div>
-                <p className={styles.card_subtitle}>chapter 2</p>
-                <h4 className={styles.card_title}>Managing People</h4>
-              </div>
+                <div>
+                  <p className={styles.card_subtitle}>chapter 2</p>
+                  <h4 className={styles.card_title}>Managing People</h4>
+                </div>
+              </Link>
             </div>
             <div className={styles.chapter_card + " " + styles.grow}>
-              <div className={styles.image_container}>
-                <img
-                  className={styles.chapter_image}
-                  src="../assets/financial.png"
-                  alt=""
-                />
-              </div>
-              <div>
-                <p className={styles.card_subtitle}>chapter 3</p>
-                <h4 className={styles.card_title}>Financial and Sponsors</h4>
-              </div>
+              <Link to={ROUTES.people}>
+                <div className={styles.image_container}>
+                  <img
+                    className={styles.chapter_image}
+                    src="../assets/financial.png"
+                    alt=""
+                  />
+                </div>
+                <div>
+                  <p className={styles.card_subtitle}>chapter 3</p>
+                  <h4 className={styles.card_title}>Financial and Sponsors</h4>
+                </div>
+              </Link>
             </div>
             <div className={styles.chapter_card + " " + styles.grow}>
-              <div className={styles.image_container}>
-                <img
-                  className={styles.chapter_image}
-                  src="../assets/legal.png"
-                  alt=""
-                />
-              </div>
-              <div>
-                <p className={styles.card_subtitle}>chapter 4</p>
-                <h4
-                  className={styles.card_title + " " + styles.card_title_small}
-                >
-                  Legal, Security and Medical Provision
-                </h4>
-              </div>
+              <Link to={ROUTES.people}>
+                <div className={styles.image_container}>
+                  <img
+                    className={styles.chapter_image}
+                    src="../assets/legal.png"
+                    alt=""
+                  />
+                </div>
+                <div>
+                  <p className={styles.card_subtitle}>chapter 4</p>
+                  <h4
+                    className={
+                      styles.card_title + " " + styles.card_title_small
+                    }
+                  >
+                    Legal, Security and Medical Provision
+                  </h4>
+                </div>
+              </Link>
             </div>
           </div>
         </div>
