@@ -5,42 +5,32 @@ import { Link } from "react-router-dom";
 const Welcome = () => {
   return (
     <>
+      <img className={styles.welcome_img} src="/assets/welcome.png" />
       <div className={styles.container + " " + styles.margincontainer}>
-        <section>
-          <p className={styles.smalltitle}>Welcome</p>
-          <h1 className={styles.heading1}>
-            Organizing your race
-            <br />
-            From start to finish.
-          </h1>
-        </section>
         <section className={styles.introduction}>
-          <p className={styles.smalltitle}>Introduction</p>
-          <p className={styles.largebody}>
-            Over the last years, Race for the Cure grew to be the world’s
-            largest sporting event in the fight against
-            <span className={styles.highlight}> breast </span> cancer. But there
-            is always room for growth.
-          </p>
-          <p className={styles.largebody}>
-            This toolkit was created to help you organise a
-            <span className={styles.highlight}> Race for the Cure </span>
-            from start to finish. Whether you organise the Race for the first
-            time or not, use this toolkit as a
-            <span className={styles.highlight}> guideline </span> , a plan or
-            simply as inspiration. because it allows you focus on your tasks
-            while utilising their different talents and abilities.
-          </p>
+          <div className={styles.content}>
+            <p className={styles.smalltitle}>Introduction</p>
+            <h1 className={styles.heading1}>
+              Let these guidelines lead the way
+            </h1>
+
+            <p className={styles.largebody + " " + styles.margin_top}>
+              Race for the Cure grew to be the world’s largest sporting event in
+              the fight against breast cancer. Yet there is always room for
+              growth.
+            </p>
+            <p className={styles.largebody}>
+              This toolkit was created to help you organise a Race from start to
+              finish. Whether you organise it for the first time or not, use
+              this toolkit as a guideline, a plan or simply as inspiration.
+            </p>
+          </div>
         </section>
       </div>
       <section className={styles.purple_bg}>
         <div className={styles.container}>
           <div className={styles.next}>
             <h3 className={styles.heading2}>Getting Started</h3>
-            <p className={styles.copy}>
-              Let’s start of with the basics. Practical information about the
-              event and job functions.
-            </p>
           </div>
           <div className={styles.card_grid}>
             <div className={styles.chapter_card + " " + styles.grow}>
@@ -94,25 +84,25 @@ const Welcome = () => {
         </div>
       </section>
       <div className={styles.container}>
-        <section>
-          <div className={styles.purple_card}>
-            <div>
-              <p className={styles.smalltitle + " " + styles.white}>
-                Share experience
-              </p>
-              <p className={styles.heading3}>
-                Share your knowledge to expand our toolbox.
-              </p>
-              <a className={styles.button} href="/">
-                Get in touch
-              </a>
-            </div>
-            <p className={styles.copy}>
+        <section className={styles.share}>
+          <img
+            className={styles.shareImage}
+            src="/assets/empty_announcements.png"
+          />
+          <div className={styles.shareContent}>
+            <p className={styles.heading3}>
+              Share your knowledge to expand our toolbox.
+            </p>
+
+            <p className={styles.copy + " " + styles.margin_top}>
               Although the guidelines are carefully put together, they are far
               from complete. We are more than happy to hear your about
               experiences, tips and remarks so we can continuously update our
               guidelines.
             </p>
+            <a className={styles.button} href="/">
+              Get in touch
+            </a>
           </div>
         </section>
       </div>
