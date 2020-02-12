@@ -26,8 +26,9 @@ class AvatarNav extends Component {
 
   handleLogout = async e => {
     e.preventDefault();
-    window.location.href = "/";
+
     await this.props.userStore.logout();
+    window.location.href = "/";
   };
 
   render() {
