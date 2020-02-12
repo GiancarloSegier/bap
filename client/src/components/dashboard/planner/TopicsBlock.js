@@ -18,7 +18,7 @@ const TopicsBlock = () => {
     >
       <h3 className={styles.heading3}>More information?</h3>
       <div className={styles.cardGrid}>
-        <Link to={ROUTES.people} className={styles.topicBlock}>
+        <Link to={ROUTES.people} target="_blank" className={styles.topicBlock}>
           <img
             src="/assets/people.png"
             className={styles.topicImage}
@@ -31,6 +31,7 @@ const TopicsBlock = () => {
         </Link>
         <Link
           to={ROUTES.detail}
+          target="_blank"
           className={styles.topicBlock + " " + styles.topic}
         >
           <div className={styles.infoText}>

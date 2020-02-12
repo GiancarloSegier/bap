@@ -46,7 +46,11 @@ class Committee {
   setLogo = logo => (this.logo = logo);
 
   updateFromServer = values => {
-    this.setId(values._id);
+    if (values._id) {
+      this.setId(values._id);
+    } else {
+      this.setId(values.id);
+    }
     this.setName(values.name);
     this.setRaceday(values.raceday);
     this.setCity(values.city);

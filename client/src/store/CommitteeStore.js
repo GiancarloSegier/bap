@@ -125,8 +125,8 @@ class CommitteeStore {
   };
 
   deleteCommittee = committee => {
-    this.committees.remove(committee);
     this.api.delete(committee);
+    this.committees.remove(committee);
   };
   deleteCommitteeMember = member => {
     this.committeeMembers.remove(member);

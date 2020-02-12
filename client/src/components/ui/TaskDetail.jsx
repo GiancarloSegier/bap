@@ -46,6 +46,7 @@ class TaskDetail extends Component {
   checkTask = e => {
     const { task } = this.props;
     this.props.onCheckTask(e, task);
+    this.closeDetail();
   };
 
   render() {

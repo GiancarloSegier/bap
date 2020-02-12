@@ -17,6 +17,7 @@ class CommitteeDescription extends Component {
   }
 
   componentDidMount = () => {
+    this.props.committeeStore.getOne(this.props.committee.id);
     this.getDate();
   };
   showWarning = () => {
