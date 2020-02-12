@@ -43,5 +43,11 @@
 
 .link {
   color: var(--pink-mid);
+  transition: 0.25s ease-in-out;
   border-bottom: solid 0.2rem var(--pink-mid);
+}
+.link:hover {
+  cursor: pointer;
+  border-color: var(--pink-high);
+  color: var(--pink-high);
 }

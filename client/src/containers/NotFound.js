@@ -1,5 +1,7 @@
 import React from "react";
 import styles from "./NotFound.module.css";
+import { Link } from "react-router-dom";
+import { ROUTES } from "../constants";
 // import Form from "../components/Form";
 
 const NotFound = () => {
@@ -20,11 +22,19 @@ const NotFound = () => {
           for one of these pages:
         </p>
         <ul className={styles.list}>
-          <li className={styles.link}>Home</li>
-          <li className={styles.link}>Login</li>
+          <Link to={ROUTES.home} className={styles.link}>
+            Home
+          </Link>
+          <Link to={ROUTES.login} className={styles.link}>
+            Login
+          </Link>
 
-          <li className={styles.link}>Designstudio</li>
-          <li className={styles.link}>Toolbox</li>
+          <Link to={ROUTES.designstudio} className={styles.link}>
+            Designstudio
+          </Link>
+          <Link to={ROUTES.toolbox} className={styles.link}>
+            Toolbox
+          </Link>
         </ul>
       </div>
     </div>
