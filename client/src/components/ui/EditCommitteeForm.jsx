@@ -108,6 +108,7 @@ class EditCommitteeForm extends Component {
 
   uploadLogo = async () => {
     await fetch(`/image-upload`, {
+      method: "POST",
       body: this.state.formData
     })
       .then(res => res.json())
