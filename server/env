@@ -1,8 +1,0 @@
-SECRET=935e2b21-35e9-378e-9c24-e57f78876d98
-PORT=4000
-DB_URL=mongodb+srv://segiergiaci:test@cluster0-qxy0b.mongodb.net/thinkpink?retryWrites=true
-SENDGRID_API_KEY='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'
-CLOUD_NAME='thinkpink'
-CLOUDINARY_API_KEY='575643326425374'
-CLOUDINARY_SECRET='0iG0N1JKyfqWalJtXD5zzNcqP2Y'
-CLIENT_ORIGIN='http://localhost:4000/'
