@@ -156,3 +156,13 @@
   font-weight: bold;
   margin-bottom: 2rem;
 }
+
+.grow {
+  transition: all 0.2s ease-in-out;
+}
+.grow:hover {
+  transform: scale(1.03);
+  box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.04), 0px 2px 6px rgba(0, 0, 0, 0.04),
+    0px 16px 24px rgba(0, 0, 0, 0.06);
+  cursor: pointer;
+}

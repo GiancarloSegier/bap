@@ -34,6 +34,14 @@ class AdminRegisterForm extends Component {
     await this.props.requestStore.getOne(id);
   };
 
+  randomStr = (len, arr) => {
+    let ans = "";
+    for (let i = len; i > 0; i--) {
+      ans += arr[Math.floor(Math.random() * arr.length)];
+    }
+    return ans;
+  };
+
   handleSubmit = async e => {
     const mongoose = require("mongoose");
     e.preventDefault();
@@ -58,9 +66,8 @@ class AdminRegisterForm extends Component {
       correctPhone = phone;
     }
 
-    const randomstring = require("randomstring");
+    const randomId = this.randomStr(24, "12345abcde");
 
-    const randomId = randomstring.generate({ length: 24, charset: "hex" });
     const committeeId = mongoose.Types.ObjectId(randomId);
 
     await userStore

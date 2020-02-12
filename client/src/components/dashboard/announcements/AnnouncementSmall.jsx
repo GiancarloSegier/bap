@@ -36,7 +36,7 @@ class AnnouncementSmall extends Component {
         onClick={this.onView}
         className={styles.masonryBlock + " " + styles.hover}
       >
-        <article className={styles.card}>
+        <article className={styles.card + " " + styles.grow}>
           <div className={styles.container}>
             <div className={styles.gridHeader}>
               <h2 className={styles.title}>{announcement.title}</h2>

@@ -36,7 +36,7 @@ class Announcement extends Component {
 
     return (
       <div className={styles.masonryBlock}>
-        <article className={styles.card}>
+        <article className={styles.card + " " + styles.grow}>
           <div className={styles.container}>
             <div className={styles.gridHeader}>
               <h2 className={styles.title}>{announcement.title}</h2>
