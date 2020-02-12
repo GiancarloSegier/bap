@@ -41,7 +41,11 @@ cloudinary.config({
   api_secret: process.env.CLOUDINARY_SECRET
 });
 
-app.use(cors());
+app.use(
+  cors({
+    origin: "http://localhost:3000/"
+  })
+);
 
 app.use(formData.parse());
 

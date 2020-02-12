@@ -51,6 +51,9 @@
 }
 .teamlogo {
   display: block;
+  max-height: 20rem;
+  object-fit: contain;
+  max-width: 25rem;
 }
 
 .oneLine {
