@@ -8,7 +8,12 @@
   width: 80%;
   margin: 0 auto;
 }
-
+.welcome_img {
+  position: absolute;
+  right: 0;
+  top: 15rem;
+  width: 30%;
+}
 .container {
   max-width: 110rem;
   margin: 0 auto;
@@ -85,6 +90,7 @@
   font-weight: bold;
   font-family: "beatrice";
   line-height: 4.2rem;
+  color: var(--purple-mid);
 }
 
 .intro {
@@ -118,7 +124,6 @@
 
 /**/
 .card,
-.introduction,
 .introjobs {
   box-shadow: var(--dropshadow);
   background-color: white;
@@ -129,11 +134,24 @@
 }
 /**/
 .introduction {
-  padding: 8rem;
-  margin-top: 12rem;
-  margin-bottom: -6rem;
+  max-width: 60%;
+  padding: 0 8rem 12rem 0;
 }
-
+.margin_top {
+  margin-top: 6rem;
+}
+.share {
+  display: flex;
+  margin-top: 12rem;
+  margin-bottom: 12rem;
+  justify-content: space-between;
+}
+.shareContent {
+  width: 50%;
+}
+.shareImage {
+  height: 40rem;
+}
 .whenwere {
   margin-bottom: 16rem;
   margin-top: 16rem;
