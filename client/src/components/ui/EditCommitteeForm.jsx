@@ -58,7 +58,7 @@ class EditCommitteeForm extends Component {
   handleSubmit = async e => {
     e.preventDefault();
     if (this.state.formData) {
-      await this.uploadAvatar();
+      await this.uploadLogo();
     }
     const { currentCommittee } = this.props.committeeStore;
     const { name, raceday, city, country, description, logoUrl } = this.state;
@@ -106,9 +106,8 @@ class EditCommitteeForm extends Component {
     }
   };
 
-  uploadAvatar = async () => {
+  uploadLogo = async () => {
     await fetch(`/image-upload`, {
-      method: "POST",
       body: this.state.formData
     })
       .then(res => res.json())
