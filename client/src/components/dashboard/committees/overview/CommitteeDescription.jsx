@@ -101,7 +101,7 @@ class CommitteeDescription extends Component {
           ) : (
             <h1 className={typoStyles.heading2}>My Committee</h1>
           )}
-          {privileges === "admin" ? (
+          {privileges !== "public" ? (
             <div className={styles.buttonGroup}>
               {privileges === "supervisor" ? (
                 <button
