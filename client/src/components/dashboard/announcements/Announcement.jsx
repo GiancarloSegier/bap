@@ -24,10 +24,12 @@ class Announcement extends Component {
 
     this.setState({ dateString: dateString });
   }
-  onView = () => {
+  onView = e => {
+    e.stopPropagation();
     this.props.onView();
   };
-  onEdit = () => {
+  onEdit = e => {
+    e.stopPropagation();
     this.props.onEdit();
   };
 
@@ -36,7 +38,10 @@ class Announcement extends Component {
 
     return (
       <div className={styles.masonryBlock}>
-        <article className={styles.card + " " + styles.grow}>
+        <article
+          className={styles.card + " " + styles.grow}
+          onClick={this.onView}
+        >
           <div className={styles.container}>
             <div className={styles.gridHeader}>
               <h2 className={styles.title}>{announcement.title}</h2>

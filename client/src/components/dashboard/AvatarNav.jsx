@@ -4,6 +4,7 @@ import memberStyles from "../../styles/members.module.css";
 
 import FontAwesome from "react-fontawesome";
 import { inject, observer } from "mobx-react";
+import { ROUTES } from "../../constants";
 
 class AvatarNav extends Component {
   constructor(props) {
@@ -26,11 +27,8 @@ class AvatarNav extends Component {
 
   handleLogout = async e => {
     e.preventDefault();
-
+    window.location.href = ROUTES.home;
     await this.props.userStore.logout();
-    setTimeout(() => {
-      window.location.href = "/";
-    }, 200);
   };
 
   render() {
