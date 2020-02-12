@@ -132,7 +132,7 @@ class TaskItem extends Component {
           <p className={styles.taskname}>{task.title}</p>
           <div className={memberStyles.memberImages}>
             {task.assignees.map((assignee, i) => {
-              members
+              return members
                 .slice()
                 .filter(a => a.job.assignment === assignee.job)
                 .map((member, index) => {
