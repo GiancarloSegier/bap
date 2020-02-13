@@ -73,12 +73,6 @@ class MemberListItem extends Component {
           />
         ) : null}
 
-        {privileges === "supervisor" || privileges === "member" ? null : (
-          <div className={styles.icons}>
-            <FontAwesome className={styles.icon} name="trash" />
-            <FontAwesome className={styles.icon} name="edit" />
-          </div>
-        )}
         <div className={styles.listItem}>
           <div className={styles.person}>
             <img

@@ -142,7 +142,7 @@ class LoginForm extends Component {
               <p className={styles.question}>
                 Organisation fighting against breast cancer and interested in
                 organising a race?{" "}
-                <Link to={ROUTES.request} className={typoStyles.buttonInline}>
+                <Link to={ROUTES.request} className={styles.buttonInline}>
                   Request acces first.
                 </Link>
               </p>

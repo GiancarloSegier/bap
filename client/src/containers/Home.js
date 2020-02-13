@@ -89,8 +89,7 @@ const Home = () => {
             <div className={styles.card + " " + styles.float}>
               <div className={styles.modalContainer}>
                 <h3 className={styles.heading2}>
-                  Want to team up <br />
-                  with Think Pink Europe?
+                  Team up with Think Pink Europe
                 </h3>
                 <p className={styles.body}>
                   Is your organisation ready to take part in Europe’s

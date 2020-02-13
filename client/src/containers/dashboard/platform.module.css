@@ -68,7 +68,7 @@
 .navLink {
   composes: heading3 from "../../styles/typo.module.css";
   font-weight: 400;
-  margin-right: 2rem;
+  margin-right: 4rem;
   color: var(--grey-high);
   transition: 0.15s ease-in-out;
 }

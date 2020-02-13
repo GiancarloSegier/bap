@@ -73,6 +73,9 @@
   height: 3rem;
   padding: 0 1rem;
 }
+.listItem:nth-last-child(even) .job__input {
+  background-color: white;
+}
 .buttons {
   display: flex;
 }

@@ -29,20 +29,16 @@ const TopicsBlock = () => {
             <h4 className={styles.topicTitle}>Managing people</h4>
           </div>
         </Link>
-        <Link
-          to={ROUTES.detail}
-          target="_blank"
-          className={styles.topicBlock + " " + styles.topic}
-        >
-          <div className={styles.infoText}>
-            <p className={styles.subTitle}>Topic</p>
-            <h4 className={styles.topicTitle}>Volunteers</h4>
-          </div>
+        <Link to={ROUTES.people} target="_blank" className={styles.topicBlock}>
           <img
-            src="/assets/chaptercard.png"
+            src="/assets/empty_request.png"
             className={styles.topicImage}
             alt="illustration"
           />
+          <div className={styles.infoText}>
+            <p className={styles.subTitle}>Chapter 5</p>
+            <h4 className={styles.topicTitle}>Public relations</h4>
+          </div>
         </Link>
       </div>
     </div>

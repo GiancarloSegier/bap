@@ -93,3 +93,8 @@
   margin-bottom: 4rem;
   text-align: center;
 }
+
+.buttonInline {
+  composes: from buttonInline from "../../styles/typo.module.css";
+  font-size: 1.6rem;
+}

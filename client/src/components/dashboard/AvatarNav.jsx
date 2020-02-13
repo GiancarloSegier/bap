@@ -5,6 +5,7 @@ import memberStyles from "../../styles/members.module.css";
 import FontAwesome from "react-fontawesome";
 import { inject, observer } from "mobx-react";
 import { ROUTES } from "../../constants";
+import { Link } from "react-router-dom";
 
 class AvatarNav extends Component {
   constructor(props) {
@@ -44,17 +45,19 @@ class AvatarNav extends Component {
       <>
         <div className={styles.avatarGroup} ref={this.navLink}>
           <FontAwesome name="bell" className={styles.purple} />
-          <img
-            className={
-              styles.avatar +
-              " " +
-              memberStyles.border +
-              " " +
-              memberStyles[job]
-            }
-            src={authUser.avatarUrl}
-            alt={`Avatar from ${authUser.name}`}
-          />
+          <Link to={ROUTES.dashboard}>
+            <img
+              className={
+                styles.avatar +
+                " " +
+                memberStyles.border +
+                " " +
+                memberStyles[job]
+              }
+              src={authUser.avatarUrl}
+              alt={`Avatar from ${authUser.name}`}
+            />
+          </Link>
           <button
             type="button"
             className={styles.dropDown}
