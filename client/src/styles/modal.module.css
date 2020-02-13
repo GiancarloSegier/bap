@@ -8,6 +8,7 @@
 }
 .modalContainer {
   padding: 4rem;
+  width: 100%;
 }
 .heading3 {
   composes: heading3 from "./typo.module.css";

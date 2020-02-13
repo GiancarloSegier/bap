@@ -14,7 +14,7 @@ const EventManager = () => {
           </Link>
         </div>
         <div className={styles.container + " " + styles.header}>
-          <img src="/assets/headerscrabble.png" alt="" />
+          <img src="/assets/jobs/event.png" alt="" />
           <div className={styles.header_text}>
             <h1 className={styles.heading1}>Event manager</h1>
             <p className={styles.intro}>
@@ -55,7 +55,7 @@ const EventManager = () => {
           </div>
         </section>
 
-        <section className={styles.tasks}>
+        {/* <section className={styles.tasks}>
           <div className={styles.next}>
             <h3 className={styles.heading2}>Main tasks</h3>
             <p>
@@ -86,7 +86,7 @@ const EventManager = () => {
               </p>
             </div>
           </div>
-        </section>
+        </section> */}
       </div>
       <section className={styles.purple_bg}>
         <div className={styles.container}>
@@ -111,12 +111,12 @@ const EventManager = () => {
             <div className={styles.chapter_card + " " + styles.grow}>
               <img
                 className={styles.otherjob_image}
-                src="/assets/jobs/event.png"
+                src="/assets/jobs/volunteer.png"
                 alt=""
               />
               <div>
                 <p className={styles.card_subtitle}>Job</p>
-                <h4 className={styles.card_title}>Event manager</h4>
+                <h4 className={styles.card_title}>Volunteer manager</h4>
               </div>
             </div>
             <div className={styles.chapter_card + " " + styles.grow}>

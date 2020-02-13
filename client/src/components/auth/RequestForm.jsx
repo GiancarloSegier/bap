@@ -1,11 +1,13 @@
 import React, { Component } from "react";
 import { inject } from "mobx-react";
 
-import { withRouter } from "react-router-dom";
+import { withRouter, Link } from "react-router-dom";
 
 import styles from "./Auth.module.css";
 import modalStyles from "../../styles/modal.module.css";
 import formStyles from "../../styles/form.module.css";
+
+import { ROUTES } from "../../constants/index";
 
 class RequestForm extends Component {
   constructor(props) {
@@ -20,7 +22,8 @@ class RequestForm extends Component {
 
     this.state = {
       emailError: false,
-      error: false
+      error: false,
+      filledForm: false
     };
   }
   randomStr = (len, arr) => {
@@ -32,6 +35,7 @@ class RequestForm extends Component {
   };
 
   handleSubmit = e => {
+    this.setState({ filledForm: true });
     const mongoose = require("mongoose");
     const randomId = this.randomStr(24, "12345abcde");
     const requestId = mongoose.Types.ObjectId(randomId);
@@ -117,143 +121,171 @@ class RequestForm extends Component {
   };
 
   render() {
-    const { name, surname, email, message, phone, organisation } = this.state;
+    const {
+      name,
+      surname,
+      email,
+      message,
+      phone,
+      organisation,
+      filledForm
+    } = this.state;
 
     return (
       <>
-        <section className={modalStyles.modal}>
+        <section className={modalStyles.modal + " " + styles.modalHeight}>
           <div className={modalStyles.modalContainer}>
-            <form onSubmit={this.handleSubmit} className={styles.form}>
-              <h2 className="hidden">Request</h2>
-              <div className={modalStyles.grid}>
+            {!filledForm ? (
+              <form onSubmit={this.handleSubmit} className={styles.form}>
+                <h2 className="hidden">Request</h2>
+                <div className={modalStyles.grid}>
+                  <fieldset className={formStyles.form__group}>
+                    <label htmlFor="name" className={formStyles.form__label}>
+                      First name
+                    </label>
+                    <input
+                      type="text"
+                      name="name"
+                      id="name"
+                      placeholder="First name"
+                      ref={this.nameInput}
+                      className={formStyles.form__input}
+                      onChange={this.handleChange}
+                    />
+                  </fieldset>
+                  <fieldset className={formStyles.form__group}>
+                    <label htmlFor="surname" className={formStyles.form__label}>
+                      Last name
+                    </label>
+                    <input
+                      type="text"
+                      name="surname"
+                      id="surname"
+                      placeholder="Last name"
+                      ref={this.surnameInput}
+                      className={formStyles.form__input}
+                      onChange={this.handleChange}
+                    />
+                  </fieldset>
+                  <fieldset className={formStyles.form__group}>
+                    <label
+                      htmlFor="organisation"
+                      className={formStyles.form__label}
+                    >
+                      Organisation
+                    </label>
+                    <input
+                      type="text"
+                      name="organisation"
+                      id="organisation"
+                      placeholder="Organisation"
+                      ref={this.organisationInput}
+                      className={formStyles.form__input}
+                      onChange={this.handleChange}
+                    />
+                  </fieldset>
+
+                  <fieldset className={formStyles.form__group}>
+                    <label htmlFor="phone" className={formStyles.form__label}>
+                      Phone number
+                    </label>
+                    <input
+                      type="tel"
+                      name="phone"
+                      id="phone"
+                      placeholder="Phone"
+                      ref={this.phoneInput}
+                      className={formStyles.form__input}
+                      onChange={this.handleChange}
+                    />
+                  </fieldset>
+                </div>
+
                 <fieldset className={formStyles.form__group}>
-                  <label htmlFor="name" className={formStyles.form__label}>
-                    First name
+                  <label htmlFor="email" className={formStyles.form__label}>
+                    Email
                   </label>
                   <input
-                    type="text"
-                    name="name"
-                    id="name"
-                    placeholder="First name"
-                    ref={this.nameInput}
-                    className={formStyles.form__input}
-                    onChange={this.handleChange}
+                    name="email"
+                    id="email="
+                    placeholder="Email"
+                    ref={this.emailInput}
+                    className={
+                      formStyles.form__input +
+                      " " +
+                      (this.state.emailError ? formStyles.errorInput : null)
+                    }
+                    onChange={e => this.checkEmail(e, "email")}
                   />
-                </fieldset>
-                <fieldset className={formStyles.form__group}>
-                  <label htmlFor="surname" className={formStyles.form__label}>
-                    Last name
-                  </label>
-                  <input
-                    type="text"
-                    name="surname"
-                    id="surname"
-                    placeholder="Last name"
-                    ref={this.surnameInput}
-                    className={formStyles.form__input}
-                    onChange={this.handleChange}
-                  />
-                </fieldset>
-                <fieldset className={formStyles.form__group}>
-                  <label
-                    htmlFor="organisation"
-                    className={formStyles.form__label}
+                  <p
+                    className={
+                      this.state.emailError
+                        ? formStyles.error
+                        : formStyles.errorHidden
+                    }
                   >
-                    Organisation
-                  </label>
-                  <input
-                    type="text"
-                    name="organisation"
-                    id="organisation"
-                    placeholder="Organisation"
-                    ref={this.organisationInput}
-                    className={formStyles.form__input}
-                    onChange={this.handleChange}
-                  />
+                    No valid email
+                  </p>
                 </fieldset>
 
                 <fieldset className={formStyles.form__group}>
-                  <label htmlFor="phone" className={formStyles.form__label}>
-                    Phone number
+                  <label htmlFor="message" className={formStyles.form__label}>
+                    Message
                   </label>
-                  <input
-                    type="tel"
-                    name="phone"
-                    id="phone"
-                    placeholder="Phone"
-                    ref={this.phoneInput}
-                    className={formStyles.form__input}
+                  <textarea
+                    name="message"
+                    id="message"
+                    placeholder="Message"
+                    rows="10"
+                    ref={this.messageInput}
+                    className={
+                      formStyles.form__input + " " + formStyles.form__textarea
+                    }
                     onChange={this.handleChange}
                   />
                 </fieldset>
-              </div>
-
-              <fieldset className={formStyles.form__group}>
-                <label htmlFor="email" className={formStyles.form__label}>
-                  Email
-                </label>
-                <input
-                  name="email"
-                  id="email="
-                  placeholder="Email"
-                  ref={this.emailInput}
-                  className={
-                    formStyles.form__input +
-                    " " +
-                    (this.state.emailError ? formStyles.errorInput : null)
-                  }
-                  onChange={e => this.checkEmail(e, "email")}
+                <div className={styles.loginbuttonbox}>
+                  <p
+                    className={
+                      this.state.error
+                        ? formStyles.error
+                        : formStyles.errorHidden
+                    }
+                  >
+                    Please fill in all fields
+                  </p>
+                  <input
+                    type="submit"
+                    value="Send"
+                    className={formStyles.form__button}
+                    disabled={
+                      !name ||
+                      !surname ||
+                      !email ||
+                      !phone ||
+                      !message ||
+                      !organisation
+                    }
+                  />
+                </div>
+              </form>
+            ) : (
+              <div className={styles.requestConfirm}>
+                <img
+                  src="/assets/request_send.png"
+                  alt=""
+                  className={styles.image}
                 />
-                <p
-                  className={
-                    this.state.emailError
-                      ? formStyles.error
-                      : formStyles.errorHidden
-                  }
-                >
-                  No valid email
+                <h2 className={styles.confirmTitle}>Request send</h2>
+                <p className={styles.confirmText}>
+                  When you’ve been accepted, you will receive an email with an
+                  invitation link.
                 </p>
-              </fieldset>
-
-              <fieldset className={formStyles.form__group}>
-                <label htmlFor="message" className={formStyles.form__label}>
-                  Message
-                </label>
-                <textarea
-                  name="message"
-                  id="message"
-                  placeholder="Message"
-                  rows="10"
-                  ref={this.messageInput}
-                  className={
-                    formStyles.form__input + " " + formStyles.form__textarea
-                  }
-                  onChange={this.handleChange}
-                />
-              </fieldset>
-              <div className={styles.loginbuttonbox}>
-                <p
-                  className={
-                    this.state.error ? formStyles.error : formStyles.errorHidden
-                  }
-                >
-                  Please fill in all fields
-                </p>
-                <input
-                  type="submit"
-                  value="Send"
-                  className={formStyles.form__button}
-                  disabled={
-                    !name ||
-                    !surname ||
-                    !email ||
-                    !phone ||
-                    !message ||
-                    !organisation
-                  }
-                />
+                <Link to={ROUTES.home} className={formStyles.form__button}>
+                  Back to home
+                </Link>
               </div>
-            </form>
+            )}
           </div>
         </section>
       </>
