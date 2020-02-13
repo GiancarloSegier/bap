@@ -10,9 +10,11 @@
 }
 .welcome_img {
   position: absolute;
-  right: 0;
+  right: 5%;
   top: 15rem;
-  width: 30%;
+  width: 25%;
+  max-height: 60rem;
+  object-fit: contain;
 }
 .container {
   max-width: 110rem;
@@ -134,7 +136,7 @@
 }
 /**/
 .introduction {
-  max-width: 60%;
+  max-width: 65%;
   padding: 0 8rem 12rem 0;
 }
 .margin_top {
